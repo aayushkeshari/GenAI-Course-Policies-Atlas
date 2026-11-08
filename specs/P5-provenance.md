@@ -4,6 +4,8 @@
   into `site/data/timeline.json`. Every item has ts, actor (HUMAN/CLAUDE), phase, type, summary, and source.
 - **PROV-02** Actor attribution rules: prompts, `human:` commits, review-log entries, and spec edits are HUMAN.
   Responses, `agent:` commits, and generated code are CLAUDE. Ambiguous items are labelled "shared"; never guess.
+  Logged prompts are further classified: human-typed (the prompt starts with "[drafted by Aayush"); automated
+  (subagent reports, scheduled tasks, cross-session messages); shared if unclear.
 - **PROV-03** Timeline view: zoomable vertical timeline with filters for actor, phase, and type, and
   clear/compact markers.
 - **PROV-04** Q&A view: each prompt paired with the response excerpt that followed it, searchable.

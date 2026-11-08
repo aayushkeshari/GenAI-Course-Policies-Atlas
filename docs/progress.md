@@ -1065,3 +1065,23 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T08:42:43-05:00 — [P4→P5] PROV-02 prompt categories added to the P5 spec
+
+**What changed**
+- `specs/P5-provenance.md` PROV-02 now classifies logged prompts further:
+  - human-typed: the prompt starts with "[drafted by Aayush"
+  - automated: subagent reports, scheduled tasks, cross-session messages
+  - shared: if unclear
+
+  The wording is Aayush's instruction, verbatim.
+- Explorer data rebuilt, because spec text is an input to the traceability view.
+
+**Tests run**
+- Targeted: test_val_specs and test_val_data, 27 passed. `make test`: 508 passed (twice).
+
+**Decisions**
+- HUMAN: the PROV-02 categories and the "[drafted by Aayush" marker.
+
+**Open questions**
+- The P4 review-log entry lists four categories: human-typed / drafted with Claude chat / automated / shared. The spec instruction has three, and its marker "[drafted by Aayush" defines *human-typed*. Should "drafted with Claude chat" be its own category, with the marker identifying it instead? Confirm before P5 planning.

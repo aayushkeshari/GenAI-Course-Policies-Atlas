@@ -1,0 +1,405 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:41:26.945-05:00",
+ "finished": "2026-11-08T08:41:27.677-05:00",
+ "duration_s": 0.732,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "1b70b994daa00c8798892ab0605b4b9e088dc060",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "tests/test_val_specs.py",
+  "tests/test_val_data.py"
+ ],
+ "summary": {
+  "passed": 27
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_specs.py::test_parser_finds_every_requirement_bullet",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 11,
+   "body_sha256": "e6276c467d73af593cd30263b7e2561ab694c0ea4ec80fd22ba72332d18996af",
+   "status": "passed",
+   "duration_s": 0.001051,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_requirement_text_keeps_wrapped_lines_and_nested_bullets",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 26,
+   "body_sha256": "41c68b80fd78d71374d20d8e856b0d698a72712c064ad8e1e0d20444571c81dd",
+   "status": "passed",
+   "duration_s": 0.002175,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_every_req_tag_names_a_spec_requirement",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 42,
+   "body_sha256": "5356ac915e580f17b54b0bb503a897cbe6485cec003daaa951c80d6f00d96724",
+   "status": "passed",
+   "duration_s": 0.000513,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_validation_data_is_current",
+   "req_ids": [
+    "VAL-02",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_val_data.py",
+   "line": 29,
+   "body_sha256": "63ae7ed52ada199eeaa186475351fd168bd9d5f7fc5746af8acf8c74f057be38",
+   "status": "passed",
+   "duration_s": 0.466581,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_tests_json_is_the_snapshot_run_with_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 42,
+   "body_sha256": "f91e9fe24dc61e5d3f873ae9dbd52172844bdc704e59bfcfbfbf6dc8edbfeb08",
+   "status": "passed",
+   "duration_s": 0.04831,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_history_has_every_run_and_matches_each_run_file",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 60,
+   "body_sha256": "c3801c42ff46da7fa997fca98d2ab1cf57f21a1487e91375a690914d17d5eed4",
+   "status": "passed",
+   "duration_s": 0.008728,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_traceability_covers_every_requirement_with_correct_status",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 75,
+   "body_sha256": "b370e2c574dc078a2bc1ca9695a39bc144525beaae2e2a1b073499cf658546a0",
+   "status": "passed",
+   "duration_s": 0.005712,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses0-untested]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000175,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses1-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.00012,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses2-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses3-partial]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses4-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses5-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000109,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses6-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000109,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses7-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000114,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "passed",
+   "duration_s": 0.000938,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_attach_coverage_refuses_a_report_from_another_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 116,
+   "body_sha256": "178cfa8d7bf71ce5dcb591d01ee75253223321c44728b2e59522defd0abfeea9",
+   "status": "passed",
+   "duration_s": 0.00116,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_snapshot_is_a_make_test_run_and_unknown_runs_fail",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 135,
+   "body_sha256": "d9714e2cc4d005d11d53e3d80f8f56ca7a5e1bf076735d31e91fd70d1f8afd85",
+   "status": "passed",
+   "duration_s": 0.000936,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_review_log_is_copied_verbatim",
+   "req_ids": [
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 147,
+   "body_sha256": "50c11b428dfacbe8c6945362a14e17f8c4cc23e762ca90f6bca300815d1cb853",
+   "status": "passed",
+   "duration_s": 0.000101,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_truth_derived_results_only_in_the_validation_recovery_view",
+   "req_ids": [
+    "DASH-01",
+    "VAL-05"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 153,
+   "body_sha256": "1e2f4f3b4855423fd462277e212c7b73cb3207a52aeb74fe647cc616e693360c",
+   "status": "passed",
+   "duration_s": 0.002553,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_no_private_data_in_the_validation_site",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 173,
+   "body_sha256": "859ca290054e707aaa8216b55fe27b662f52f6a07657356e663a9f857c3b3e22",
+   "status": "passed",
+   "duration_s": 0.093872,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[cd '/Users/alice' && ls-cd '\\u2039redacted-path\\u203a' && ls]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000176,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[see a@b.org now-see \\u2039redacted-email\\u203a now]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000123,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[api_key = \"abcdefghij\"-api_key = \\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000126,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[sk-AAAAAAAAAAAAAAAAAAAAAAAA-\\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000125,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[\\n@pytest.mark.req('X')-\\n@pytest.mark.req('X')]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000119,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_every_data_file_is_labelled_synthetic",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 218,
+   "body_sha256": "29598ded797b97966ff0b40c15cbd6ec4fdf75ad1d57526abf94c20a224c9b54",
+   "status": "passed",
+   "duration_s": 0.003609,
+   "failure_message": ""
+  }
+ ]
+}

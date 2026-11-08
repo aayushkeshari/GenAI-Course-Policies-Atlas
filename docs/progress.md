@@ -648,3 +648,22 @@ not backdated. Each step has its own commit, listed below.
   - review the two tests changed after failing (step 4 clustering-width retarget; step 2 removal of 4 ungrounded rules)
   - review this phase and write a P2 review-log entry
   - decide whether to move .phase to P3
+
+## 2026-11-08T06:25:31-05:00 — [P2] Checkpoint before /clear: test changes accepted, bootstrap counts confirmed
+
+**What changed**
+- No code changes since `09a5c67`. HANDOFF rewritten.
+- Confirmed the bootstrap resample counts from the committed results and the code:
+  - descriptives, allowed_uses, assessment and association: 2,000 (`stats.N_BOOT`). The rhetoric correlation also uses 2,000.
+  - The 500 refits (`inference.REGRESSION_BOOT`) apply only to the regression cross-check.
+  - The descriptives schema fixes `resamples` to 2,000 with `const`, and `test_descriptives_record_bootstrap_settings` asserts it.
+
+**Tests run**
+- `make test`: 395 passed.
+
+**Decisions**
+- HUMAN: both test changes made after failures are accepted: step 2 (removing the 4 generator-derived coder rules) and step 4 (retargeting the clustering-width test).
+- HUMAN: 500 resamples is fine for the regression cross-check only. ANL-05 descriptives stay at 2,000.
+
+**Open questions**
+- Carried to HANDOFF: the P2 review-log entry, moving .phase to P3, and the PROV-02 prompt-source question for P5.

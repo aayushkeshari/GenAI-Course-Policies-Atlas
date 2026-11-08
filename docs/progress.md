@@ -1085,3 +1085,17 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - The P4 review-log entry lists four categories: human-typed / drafted with Claude chat / automated / shared. The spec instruction has three, and its marker "[drafted by Aayush" defines *human-typed*. Should "drafted with Claude chat" be its own category, with the marker identifying it instead? Confirm before P5 planning.
+
+## 2026-11-08T08:43:43-05:00 — [P4] Checkpoint before /clear: P4 complete and reviewed
+
+**What changed**
+- No code changes since `9bd44d7`. HANDOFF rewritten for P5 planning.
+
+**Tests run**
+- `make test`: 508 passed (2026-11-08T08:43).
+
+**Decisions**
+- None new.
+
+**Open questions**
+- Carried to HANDOFF: PROV-02 category wording (3 vs 4 categories), and moving .phase to P5.

@@ -103,3 +103,20 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 
 **Open questions**
 - The hooks did not start firing in this session (no `logs/` yet). The manual check must run in a fresh session.
+
+## 2026-11-08T04:25:57-05:00 — [P0] Step 5: Makefile (INST-06)
+
+**What changed**
+- Added a `Makefile` with the targets `data analysis test report tokens timeline site serve clean`, plus `setup`, which creates the venv.
+  - Every target except `test` is an echo stub that names the phase that will fill it in.
+  - `clean` removes caches only.
+- Added `tests/test_makefile.py`.
+
+**Tests run**
+- `make test`: 81 passed.
+
+**Decisions**
+- AGENT: added a `setup` target that the spec doesn't list.
+- AGENT: `clean` never deletes logs/, raw_logs/ or results/, and a test enforces this.
+
+**Open questions**: none.

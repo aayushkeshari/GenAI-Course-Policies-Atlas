@@ -460,3 +460,32 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Aayush: hand-code the 30 statements (ANL-04). Steps 4–9 of the P2 plan are not started.
+
+## 2026-11-08T06:03:10-05:00 — [P2] ANL-04 change: the sample is coded by Aayush; kappa labelled "Aayush vs coder" / "Aayush vs truth"
+
+**What changed**
+- Aayush's coded sample was committed unchanged first, as `human:` (`6374d78`).
+- `specs/P2-analysis.md` ANL-04 (at Aayush's direction): "The sample is coded by Aayush. Report Cohen's kappa as 'Aayush vs coder' and 'Aayush vs truth'." This replaces "human vs coder / human vs truth".
+- `src/evaluation/hand_sample.py`:
+  - Result keys `aayush_vs_coder` and `aayush_vs_truth` (were `human_vs_*`).
+  - Added `coder_by: "Aayush"` and `comparison_labels` with the display labels.
+  - The sample gets a `#` header comment naming Aayush as coder and the kappa labels. `read_sample` skips `#` lines, and `make_sample` writes the comment.
+- `data/reference/hand_code_sample.csv`: the header comment line was prepended. None of Aayush's coded cells changed (the diff is +1 line).
+- `tests/test_anl_eval.py`: renamed keys and docstrings, checks for `coder_by` and the labels, and a new test for the header comment.
+- `make analysis` wrote `results/kappa.json` for the first time.
+
+**Results (n = 30, unweighted Cohen's kappa)**
+- Aayush vs truth: stance 0.894; integrity, collaboration and careers 1.000 each.
+- Aayush vs coder: stance 0.649, integrity 0.500, collaboration 1.000, careers 0.462.
+- The coder agrees with Aayush less than the truth does. This matches the held-out finding (step 3): the coder misses reserved wording that a human reads correctly.
+
+**Tests run**
+- `make test`: 324 passed. The kappa test now runs and passes instead of skipping.
+
+**Decisions**
+- HUMAN: the ANL-04 sample is coded by Aayush, and kappa is labelled "Aayush vs coder" / "Aayush vs truth".
+- AGENT: the skip reason stays "awaiting human coding (ANL-04)", the exact text Aayush specified earlier. It is a pending-state message, not a kappa label.
+- AGENT: the coded file was committed as `human:` before the agent's one-line header change, so Aayush's coding has its own provenance.
+
+**Open questions**
+- None.

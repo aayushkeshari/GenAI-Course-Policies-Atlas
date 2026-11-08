@@ -73,6 +73,14 @@ def test_hand_sample_is_30_held_out_statements():
 
 
 @pytest.mark.req("ANL-04")
+def test_hand_sample_header_comment_names_aayush():
+    """The sample file starts with a # comment saying it is coded by Aayush and how kappa is labelled."""
+    first = hand_sample.SAMPLE.read_text(encoding="utf-8").splitlines()[0]
+    assert first == hand_sample.HEADER_COMMENT
+    assert "Coded by Aayush" in first and '"Aayush vs coder"' in first and '"Aayush vs truth"' in first
+
+
+@pytest.mark.req("ANL-04")
 def test_hand_sample_values_are_blank_or_valid():
     """Every code cell is blank (not yet coded) or an allowed value: stance -2..2, labels true/false."""
     for r in hand_sample.read_sample():
@@ -109,8 +117,8 @@ def test_cohen_kappa_known_values():
 
 @pytest.mark.req("ANL-04")
 def test_kappa_pipeline_works_on_a_truth_filled_copy(tmp_path):
-    """Filling a copy of the sample with the true labels gives kappa 1 for human vs truth, and a defined
-    kappa for human vs coder: the pipeline is ready before the real coding arrives."""
+    """Filling a copy of the sample with the true labels gives kappa 1 for Aayush vs truth, and a defined
+    kappa for Aayush vs coder: the pipeline works independently of the real coding."""
     gt = load_dir(RAW)["ground_truth"]["statements"]
     rows = hand_sample.read_sample()
     for r in rows:
@@ -123,19 +131,21 @@ def test_kappa_pipeline_works_on_a_truth_filled_copy(tmp_path):
         w.writerows(rows)
     rep = hand_sample.kappa_report(CLEAN, path)
     assert rep["n"] == 30
-    assert all(v == pytest.approx(1.0) for v in rep["human_vs_truth"].values())
-    assert all(-1.0 <= v <= 1.0 for v in rep["human_vs_coder"].values())
+    assert all(v == pytest.approx(1.0) for v in rep["aayush_vs_truth"].values())
+    assert all(-1.0 <= v <= 1.0 for v in rep["aayush_vs_coder"].values())
 
 
 @pytest.mark.req("ANL-04")
 @pytest.mark.kind("integration")
 def test_human_agreement_kappa_reported():
     """HUMAN task. Once Aayush has coded every row of the sample, results/kappa.json holds Cohen's kappa for
-    human vs coder and human vs truth, and matches a fresh computation. Until then this test is SKIPPED
+    "Aayush vs coder" and "Aayush vs truth", and matches a fresh computation. Until then this test is SKIPPED
     (not passed) with reason 'awaiting human coding (ANL-04)', so the validation explorer shows it as pending."""
     rows = hand_sample.read_sample()
     if hand_sample.status(rows) != "complete":
         pytest.skip(AWAITING)
     saved = json.loads((RESULTS / "kappa.json").read_text(encoding="utf-8"))
     fresh = _jsonable(hand_sample.kappa_report())
-    assert saved["human_vs_coder"] == fresh["human_vs_coder"] and saved["human_vs_truth"] == fresh["human_vs_truth"]
+    assert saved["aayush_vs_coder"] == fresh["aayush_vs_coder"] and saved["aayush_vs_truth"] == fresh["aayush_vs_truth"]
+    assert saved["coder_by"] == "Aayush"
+    assert saved["comparison_labels"] == {"aayush_vs_coder": "Aayush vs coder", "aayush_vs_truth": "Aayush vs truth"}

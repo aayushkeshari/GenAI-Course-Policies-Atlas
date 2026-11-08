@@ -13,7 +13,8 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
   split defined in `docs/data-dictionary.md`. Coder rules may only be tuned on the dev half; a test fails if the
   coder code reads held-out labels. Only `src/evaluation/` (and tests) may read ground truth.
 - **ANL-04** Human agreement (HUMAN task): generate `data/reference/hand_code_sample.csv` with 30 held-out
-  statements and blank label columns. Aayush fills it in. Report Cohen's kappa for human vs coder and human vs truth.
+  statements and blank label columns. The sample is coded by Aayush. Report Cohen's kappa as "Aayush vs coder"
+  and "Aayush vs truth".
 - **ANL-05** Descriptives with 95% bootstrap CIs (2,000 resamples, fixed seed): policy distribution by level,
   by is_se, by term; stance and theme prevalence by carnegie and year.
 - **ANL-06** Association: chi-square + Cramér's V for policy × level and policy × is_se.

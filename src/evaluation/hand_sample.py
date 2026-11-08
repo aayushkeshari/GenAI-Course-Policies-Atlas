@@ -1,4 +1,5 @@
-"""ANL-04: the hand-coding sample (30 held-out statements, blank labels) and Cohen's kappa once it is filled.
+"""ANL-04: the hand-coding sample (30 held-out statements, blank labels, coded by Aayush) and Cohen's kappa
+("Aayush vs coder", "Aayush vs truth") once it is filled.
 
 The sample is chosen with the public split rule only (no truth needed). It is never overwritten once any
 label has been filled in. Kappa is computed only when every row is fully coded; until then the status is
@@ -23,9 +24,16 @@ COLUMNS = ["stmt_id", "text"] + CODE_COLUMNS
 ALLOWED = {"stance": {"-2", "-1", "0", "1", "2"}, **{l: {"true", "false"} for l in LABELS}}
 
 
+HEADER_COMMENT = ("# ANL-04 hand-coding sample: 30 held-out statements (SYNTHETIC DATA). Coded by Aayush using the "
+                  "definitions in docs/codebook.md. Kappa is reported as \"Aayush vs coder\" and \"Aayush vs truth\". "
+                  "Lines starting with # are comments.")
+COMPARISONS = {"aayush_vs_coder": "Aayush vs coder", "aayush_vs_truth": "Aayush vs truth"}
+
+
 def read_sample(path: Path = SAMPLE) -> list[dict]:
+    """Rows of the sample, skipping # comment lines."""
     with Path(path).open(encoding="utf-8", newline="") as f:
-        return list(csv.DictReader(f))
+        return list(csv.DictReader(line for line in f if not line.startswith("#")))
 
 
 def status(rows: list[dict]) -> str:
@@ -45,6 +53,7 @@ def make_sample(clean_dir: Path = CLEAN, path: Path = SAMPLE) -> bool:
     text = dict(zip(s["stmt_id"], s["text"]))
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as f:
+        f.write(HEADER_COMMENT + "\n")
         w = csv.DictWriter(f, fieldnames=COLUMNS, lineterminator="\n")
         w.writeheader()
         for sid in chosen:
@@ -69,12 +78,14 @@ def kappa_report(clean_dir: Path = CLEAN, path: Path = SAMPLE) -> dict | None:
     coded = code_statements(s).set_index("stmt_id")
     truth = load_truth("heldout", dict(zip(s["stmt_id"], s["inst_id"])))
     ids = [r["stmt_id"] for r in rows]
-    human = {c: [r[c].strip().lower() for r in rows] for c in CODE_COLUMNS}
+    aayush = {c: [r[c].strip().lower() for r in rows] for c in CODE_COLUMNS}
     coder = {c: [str(int(coded.loc[i, c])) if c == "stance" else str(bool(coded.loc[i, c])).lower() for i in ids] for c in CODE_COLUMNS}
     true = {c: [str(truth[i][c]) if c == "stance" else str(truth[i][c]).lower() for i in ids] for c in CODE_COLUMNS}
     return {"n": len(rows),
-            "human_vs_coder": {c: cohen_kappa(human[c], coder[c]) for c in CODE_COLUMNS},
-            "human_vs_truth": {c: cohen_kappa(human[c], true[c]) for c in CODE_COLUMNS},
+            "coder_by": "Aayush",
+            "comparison_labels": COMPARISONS,
+            "aayush_vs_coder": {c: cohen_kappa(aayush[c], coder[c]) for c in CODE_COLUMNS},
+            "aayush_vs_truth": {c: cohen_kappa(aayush[c], true[c]) for c in CODE_COLUMNS},
             "kappa": "unweighted Cohen's kappa per code"}
 
 

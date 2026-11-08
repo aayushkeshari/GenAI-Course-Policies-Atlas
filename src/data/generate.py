@@ -94,6 +94,158 @@ def make_institutions(rng: random.Random, real_names: list[str]) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------------------------
+# Hidden institution parameters (DATA-09, DATA-10, DATA-11, DATA-17)
+# ---------------------------------------------------------------------------------------------
+# inst_effect shifts every course policy at the institution (see POLICY_MODEL). It does NOT depend
+# on control: the public/private effect is a planted null (DATA-10).
+SD_INST_EFFECT = 0.4
+# Rhetoric gap (DATA-17): this share of institutions gets an official stance that contradicts its
+# courses. Half "enthusiastic_rhetoric_restrictive_courses", half the reverse.
+RHETORIC_GAP_SHARE = 0.15
+RHETORIC_GAP = {
+    "enthusiastic_rhetoric_restrictive_courses": {"inst_effect": -1.0, "stance_latent": 1.5},
+    "cautious_rhetoric_permissive_courses": {"inst_effect": 1.0, "stance_latent": -1.5},
+}
+# Institution stance (continuous, before per-statement noise and rounding), DATA-09 / DATA-11:
+#   stance_latent = intercept + carnegie_effect[carnegie] + policy_coupling * inst_effect + N(0, sd)
+STANCE_MODEL = {
+    "intercept": -0.1,
+    "carnegie_effect": {"R1": 0.7, "R2": 0.25, "Masters": 0.0, "Baccalaureate": 0.0},
+    "policy_coupling": 1.2,
+    "inst_sd": 0.3,
+    "statement_sd": 0.5,
+}
+
+
+def make_institution_hidden(rng: random.Random, institutions: list[dict]) -> dict:
+    """Per-institution hidden values: inst_effect, stance_latent, rhetoric_gap (None or a kind)."""
+    n_gap = round(RHETORIC_GAP_SHARE * len(institutions))
+    gap_ids = rng.sample([r["inst_id"] for r in institutions], n_gap)
+    kinds = sorted(RHETORIC_GAP)
+    gap_kind = {iid: kinds[k % 2] for k, iid in enumerate(gap_ids)}
+    hidden = {}
+    for r in institutions:
+        effect = rng.gauss(0, SD_INST_EFFECT)
+        m = STANCE_MODEL
+        stance = (m["intercept"] + m["carnegie_effect"][r["carnegie"]]
+                  + m["policy_coupling"] * effect + rng.gauss(0, m["inst_sd"]))
+        kind = gap_kind.get(r["inst_id"])
+        if kind:
+            effect = RHETORIC_GAP[kind]["inst_effect"]
+            stance = RHETORIC_GAP[kind]["stance_latent"]
+        hidden[r["inst_id"]] = {"inst_effect": effect, "stance_latent": stance, "rhetoric_gap": kind}
+    return hidden
+
+
+# ---------------------------------------------------------------------------------------------
+# Statements (DATA-03, DATA-11)
+# ---------------------------------------------------------------------------------------------
+# How many institutions publish 0..4 statements. A fixed mix (shuffled across institutions) keeps the
+# total at exactly 348 for every seed; independent draws strayed outside +-10% of ~350.
+STATEMENT_COUNT_MIX = {0: 15, 1: 27, 2: 37, 3: 37, 4: 34}
+PUB_TYPES = ["policy_page", "news", "strategic_plan", "syllabus_template", "faq"]
+PUB_TYPE_WEIGHTS = [0.30, 0.20, 0.10, 0.20, 0.20]
+FIRST_MONTH, LAST_MONTH = (2023, 1), (2026, 10)
+# P(label = 1 | statement stance s, institution) — DATA-11, "correlated in documented ways":
+#   integrity is mentioned more when stance is negative; collaboration and careers more when positive;
+#   careers also more at R1s.
+LABEL_MODEL = {
+    "mentions_integrity": {"base": 0.55, "per_stance": -0.15},
+    "mentions_collaboration": {"base": 0.35, "per_stance": 0.12},
+    "mentions_careers": {"base": 0.25, "per_stance": 0.10, "r1_bonus": 0.15},
+}
+STANCE_SENTENCES = {
+    -2: ["The department prohibits the use of generative AI tools on any graded work.",
+         "Use of AI code generators or chatbots on coursework is not permitted in computer science courses.",
+         "Students may not use generative AI systems to complete assignments, projects, or exams."],
+    -1: ["The department urges caution with generative AI, and its use is limited to what an instructor explicitly allows.",
+         "Generative AI tools raise serious concerns, and students should assume they are not allowed unless told otherwise.",
+         "The faculty view AI assistants with caution and restrict them in most courses."],
+    0: ["Each instructor sets the policy on generative AI tools for their own course.",
+        "The department has not adopted a single rule on AI tools; course syllabi state what is allowed.",
+        "Expectations for using AI assistants vary by course and are described in each syllabus."],
+    1: ["The department supports thoughtful use of generative AI tools when students disclose how they used them.",
+        "Students are welcome to use AI assistants in many courses, provided they follow the course guidelines.",
+        "Generative AI can support learning, and the faculty are adopting it in a growing number of courses."],
+    2: ["The department embraces generative AI as a core part of how computing is taught and practiced.",
+        "We are integrating AI coding assistants throughout the curriculum and expect students to use them well.",
+        "Generative AI is transforming software development, and our courses are built to put it to work."],
+}
+LABEL_SENTENCES = {
+    "mentions_integrity": [
+        "Submitting AI-generated work as one's own is a violation of the academic integrity policy.",
+        "Undisclosed use of AI tools will be handled under the honor code.",
+        "Students remain responsible for the originality of their work and must not misrepresent AI output as their own."],
+    "mentions_collaboration": [
+        "Students are encouraged to treat AI tools as collaborators and to discuss their use openly with peers and instructors.",
+        "Faculty and students are working together to explore how AI assistants can support teamwork.",
+        "Several courses pair students with AI assistants in collaborative problem-solving exercises."],
+    "mentions_careers": [
+        "Employers increasingly expect graduates to work effectively with AI-assisted development tools.",
+        "Preparing students for an industry reshaped by AI is a priority for the department.",
+        "Fluency with AI tools is becoming an important skill for careers in software."],
+}
+NEUTRAL_SENTENCES = [
+    "This guidance applies to undergraduate and graduate courses offered by the department.",
+    "The guidance will be reviewed at the end of each academic year.",
+    "Questions about this guidance can be directed to the director of undergraduate studies.",
+    "A faculty working group prepared this statement after consulting students and staff.",
+    "Further details appear on the department's teaching resources page.",
+    "Course staff will explain how this guidance applies during the first week of classes.",
+]
+STATEMENT_COLUMNS = ["stmt_id", "inst_id", "pub_type", "pub_date", "text"]
+
+
+def _months():
+    (y, m), out = FIRST_MONTH, []
+    while (y, m) <= LAST_MONTH:
+        out.append(f"{y:04d}-{m:02d}")
+        y, m = (y + 1, 1) if m == 12 else (y, m + 1)
+    return out
+
+
+def _clip(x, lo, hi):
+    return max(lo, min(hi, x))
+
+
+def label_probability(label: str, stance: int, carnegie: str) -> float:
+    m = LABEL_MODEL[label]
+    p = m["base"] + m["per_stance"] * stance + (m.get("r1_bonus", 0.0) if carnegie == "R1" else 0.0)
+    return _clip(p, 0.02, 0.98)
+
+
+def make_statements(rng: random.Random, institutions: list[dict], hidden: dict):
+    """Statement rows plus their hidden labels {stmt_id: {stance, mentions_*}}."""
+    months = _months()
+    counts = [k for k, n_inst in sorted(STATEMENT_COUNT_MIX.items()) for _ in range(n_inst)]
+    assert len(counts) == len(institutions)
+    rng.shuffle(counts)
+    drafts = []
+    for inst, n in zip(institutions, counts):
+        h = hidden[inst["inst_id"]]
+        for _ in range(n):
+            stance = int(_clip(round(h["stance_latent"] + rng.gauss(0, STANCE_MODEL["statement_sd"])), -2, 2))
+            labels = {"stance": stance}
+            for label in sorted(LABEL_MODEL):
+                labels[label] = rng.random() < label_probability(label, stance, inst["carnegie"])
+            body = [rng.choice(LABEL_SENTENCES[l]) for l in sorted(LABEL_SENTENCES) if labels[l]]
+            n_sentences = max(rng.randint(2, 5), 1 + len(body))
+            body += rng.sample(NEUTRAL_SENTENCES, n_sentences - 1 - len(body))
+            rng.shuffle(body)
+            text = " ".join([rng.choice(STANCE_SENTENCES[stance])] + body)
+            drafts.append(({"inst_id": inst["inst_id"],
+                            "pub_type": rng.choices(PUB_TYPES, weights=PUB_TYPE_WEIGHTS)[0],
+                            "pub_date": rng.choice(months), "text": text}, labels))
+    drafts.sort(key=lambda d: (d[0]["inst_id"], d[0]["pub_date"]))  # stable: ties keep draw order
+    rows, labels_by_id = [], {}
+    for k, (row, labels) in enumerate(drafts, 1):
+        sid = f"S{k:04d}"
+        rows.append({"stmt_id": sid, **row})
+        labels_by_id[sid] = labels
+    return rows, labels_by_id
+
+
+# ---------------------------------------------------------------------------------------------
 # Output
 # ---------------------------------------------------------------------------------------------
 def _round_floats(obj, ndigits=4):
@@ -131,13 +283,24 @@ def build(seed: int) -> dict:
     """Generate every table in memory. Returns {"institutions": [...], ..., "ground_truth": {...}}."""
     rng = random.Random(seed)
     institutions = make_institutions(rng, load_real_names())
+    hidden = make_institution_hidden(rng, institutions)
+    statements, statement_labels = make_statements(rng, institutions, hidden)
     ground_truth = {
         "synthetic": True,
         "note": "SYNTHETIC DATA. Hidden labels and planted effects. Analysis code must never read this file.",
         "seed": seed,
         "generator_version": GENERATOR_VERSION,
+        "parameters": {
+            "institutions": {"sd_inst_effect": SD_INST_EFFECT, "rhetoric_gap_share": RHETORIC_GAP_SHARE,
+                             "rhetoric_gap": RHETORIC_GAP},
+            "stance_model": STANCE_MODEL,
+            "label_model": LABEL_MODEL,
+            "statement_count_mix": STATEMENT_COUNT_MIX,
+        },
+        "institutions": hidden,
+        "statements": statement_labels,
     }
-    return {"institutions": institutions, "ground_truth": ground_truth}
+    return {"institutions": institutions, "statements": statements, "ground_truth": ground_truth}
 
 
 def generate(seed: int, out: Path = DEFAULT_OUT) -> dict:
@@ -145,6 +308,7 @@ def generate(seed: int, out: Path = DEFAULT_OUT) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     tables = build(seed)
     write_csv(out / "institutions.csv", INSTITUTION_COLUMNS, tables["institutions"])
+    write_csv(out / "statements.csv", STATEMENT_COLUMNS, tables["statements"])
     write_json(out / "ground_truth.json", tables["ground_truth"])
     return tables
 

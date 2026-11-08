@@ -527,3 +527,33 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Aayush: review the retargeted clustering-width test above.
+
+## 2026-11-08T06:11:47-05:00 — [P2] Step 5: ANL-06 association, ANL-07 ordinal regression, ANL-14 clustering
+
+**What changed**
+- `src/analysis/inference.py`:
+  - `results/association.json`: policy × level and policy × is_se, each with a contingency table, chi-square p labelled naive, and Cramér's V with a cluster-bootstrap CI.
+  - `results/regression.json`: ordinal logit `policy ~ level + is_se + term_index + control + carnegie` (references intro, public, R1) on 1,890 known-policy rows across 150 institutions.
+    - Main inference: SEs clustered by inst_id.
+    - Also reported: naive SEs, and a cluster-bootstrap cross-check (500 institution resamples, seed 4005).
+    - Each coefficient ÷ the term coefficient, with delta-method CIs.
+- Registered in `make analysis`. The 500 bootstrap refits take ~75 s.
+
+**Results (seed 2026)**
+- Coefficients (clustered SE): intermediate +1.45 (0.20), upper +2.64 (0.19), graduate +2.79 (0.26), is_se +1.39 (0.20), term_index +0.49 (0.025). All p < 1e-10.
+- private +0.11 (0.24), **p = 0.64 clustered** vs 0.21 naive.
+- **Baccalaureate −0.35: naive p = 0.007, clustered p = 0.28.** There is no planted Carnegie effect on policy, so the naive model produces a false positive and clustering removes it.
+- Clustered SEs for institution-level predictors are 2.5–2.7× naive. Bootstrap SEs are within 0–8% of the sandwich SEs.
+- Ratios to the term effect: intermediate 2.96 [2.14, 3.78], upper 5.39 [4.63, 6.14], graduate 5.71 [4.64, 6.77], is_se 2.83 [2.06, 3.61], private 0.23 [−0.73, 1.19].
+- Cramér's V: policy × level 0.339 [0.319, 0.367]; policy × is_se 0.456 [0.387, 0.524].
+
+**Tests run**
+- `make test`: 347 passed.
+
+**Decisions**
+- AGENT: the regression bootstrap is 500 refits, not 2,000. It is a cross-check, ANL-05's 2,000 applies to the descriptives, and 2,000 refits would take ~5 min.
+- AGENT: the staleness test refits without the bootstrap. The bootstrap fields are covered by a separate agreement test (within 25% of the sandwich SE).
+- AGENT: the Carnegie reference is R1 and the control reference is public.
+
+**Open questions**
+- None.

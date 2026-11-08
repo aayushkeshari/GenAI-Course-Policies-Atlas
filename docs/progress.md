@@ -44,3 +44,20 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 **Open questions**
 - Should `fork` be added to the spec's SessionStart source list? (Spec-text change only. The hook already handles it.)
 - Resolved at 2026-11-08T04:16:47-05:00 follow-up. HUMAN: add `fork` to the SessionStart source list in the spec (done). HUMAN: keep raw_logs/ unredacted. Answers were drafted with Claude chat at the instructor's request.
+
+## 2026-11-08T04:19:34-05:00 — [P0] Step 2: pinned deps, pytest config, venv
+
+**What changed**
+- `.venv` created with Python 3.11.
+- `requirements.txt` pins pytest 9.2.0, pytest-cov 7.1.0, and every transitive dependency to exact versions.
+- `pytest.ini` sets `testpaths = tests` and `--strict-markers`, and registers the `req` and `kind` markers. A typo in a marker name now fails the run instead of quietly dropping the test from traceability.
+
+**Tests run**
+- `.venv/bin/python -m pytest -q` exited with 5 (no tests collected). This is expected: `tests/` doesn't exist yet.
+
+**Decisions**
+- AGENT: build the venv on 3.11, the minimum the project allows, so the pins are known to work there.
+- AGENT: pin transitive deps too, for reproducibility.
+- AGENT: the hook itself stays stdlib-only and runs under the system `python3`, not the venv.
+
+**Open questions**: none.

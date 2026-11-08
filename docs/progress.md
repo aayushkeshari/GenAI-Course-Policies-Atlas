@@ -205,3 +205,62 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 
 **Open questions**
 - The SessionEnd(clear) and SessionStart(clear) from this /clear are the first real test of those events. Check them during the manual check.
+
+## 2026-11-08T05:04:53-05:00 — [P1] Synthetic data generator, planted effects, schema tests, data dictionary
+
+One entry for steps 1–6. Per-step entries were not written as each step finished, and timestamps are
+not backdated. Each step has its own commit, listed below.
+
+**What changed**
+- Step 1 (`ec587a7`):
+  - `data/reference/real_universities.txt`: 159 real universities, written from memory, for Aayush to spot-check.
+  - `src/data/generate.py`: stdlib-only, deterministic, generates institutions.
+  - `tests/datautil.py`: shared test helpers.
+  - DATA-01/02 tests.
+- Step 2 (`02f8847`):
+  - Hidden institution parameters (inst_effect, stance_latent, rhetoric-gap flags).
+  - statements.csv: 348 rows at every seed, built from a fixed shuffled mix of 0–4 statements per institution.
+  - DATA-03/09/11 tests.
+- Step 3 (`4c08660`):
+  - Course catalog: 2–4 courses per institution, the first always intro. Each course runs each of the 7 terms with probability 0.635.
+  - Policy is a latent-score model. allowed_uses, tools_named, disclosure and assessment are generated conditionally on policy.
+  - DATA-04/06/07/08/10/15/16 tests.
+- Step 4 (`850a2a4`):
+  - Messy data in courses.csv: 8% MCAR missing policy with derived fields blanked, 10% re-cased level, 1% exact duplicates.
+  - The full ground_truth.json: exact parameters, plain-language planted effects, per-row truth, and a record of every change made by the messy-data step.
+  - `src/analysis/__init__.py` stub so the DATA-05 grep has a real target.
+  - DATA-05/12/17 tests.
+- Step 5 (`3753cc2`):
+  - `make data` (SEED ?= 2026) and the committed `data/raw/`.
+  - DATA-13 schema tests on the committed data and on seed 7, plus a stale-data check.
+- Step 6:
+  - `docs/data-dictionary.md` and DATA-14 tests.
+- Seed 2026 output:
+  - 150 institutions, 348 statements, 1,980 course rows (20 of them duplicates).
+  - 157 blanked policies, 196 re-cased levels, 22 rhetoric-gap institutions (11 of each kind).
+
+**Tests run**
+- `make test`: 236 passed. Every DATA-01..17 requirement has at least one tagged test.
+- Effect tests run on seeds 2026, 1, 2, 3, 4 (statements/courses) and 2026, 1, 2 (truth/mess).
+
+**Decisions**
+- HUMAN: terms are fall + spring, 7 terms (F23…F26).
+- HUMAN: tools_named is multi-label and semicolon-separated, empty when policy = 0.
+- HUMAN: a missing policy blanks policy, disclosure_required, allowed_uses and tools_named; assessment_adaptation is kept.
+- HUMAN: duplicates go in courses.csv only.
+- HUMAN: effects are moderate, and their exact parameters are recorded in ground_truth.json.
+- HUMAN: the real-university list may be written from memory.
+- HUMAN: commit per step, run through step 6, push at the end.
+- AGENT: stdlib only (random/csv/json), no new deps. Policy rounds halves up (not banker's rounding).
+- AGENT: statement count is a fixed mix (348). Independent draws gave 301 at seed 2026, outside ±10% of 350.
+- AGENT: course policy has a persistent course_effect, so a course's policy is stable across terms. This keeps term-to-term changes driven by the trend, and the term means rise strictly at all 5 seeds.
+- AGENT: the generator also rejects names that match the real list case-insensitively, which is stricter than DATA-02's exact match.
+- AGENT: the DATA-16 observed test compares pooled groups (0–1 > 2 > 3–4). Per-level strict order is checked on the planted weights.
+  - The first version required strict per-level order in the data and failed at seed 4: 0.107 vs 0.111 at policy 3→4, where the planted step is only 0.05 with ~100 rows at policy 4.
+  - **Aayush: please review whether this counts as an acceptable fix or as weakening the test.**
+- AGENT: the DATA-05 grep is case-insensitive, covers every file type under src/analysis/, and catches `ground-truth`/`groundtruth`. Only the package docstring that states the rule is exempt.
+- AGENT: ground_truth.json and data/raw are committed (deterministic, ~690 KB), because P4 needs the truth.
+
+**Open questions**
+- DATA-10 null: at seed 2 the observed public−private gap is −0.21, about 2.5 SE, entirely from sampling noise in institution effects. At seed 2026 it is +0.08. This is the false-positive trap the null is meant to set. P2 should model institution clustering, or a naive t-test on rows may flag it.
+- Real-university list: Aayush to spot-check `data/reference/real_universities.txt`.

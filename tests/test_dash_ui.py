@@ -289,7 +289,8 @@ def test_statement_explorer_search_and_filters(browser, server):
 @pytest.mark.req("DASH-08")
 def test_clicking_a_scatter_dot_opens_that_institution(browser, server):
     """Clicking a highlighted (top-decile) dot in the rhetoric-vs-practice scatter opens the drilldown for that
-    institution, which shows its course-term policies from courses.json and its statements."""
+    institution, which shows its course-term policies from courses.json and its statements, and a note that the
+    gap can reflect coder errors (e.g. the unhandled "far from banning" negation)."""
     p = Page(browser, server)
     p.view("statements")
     target = p.ev("""(() => { const ch = window.__dash.charts['c-scatter'], el = ch.getDatasetMeta(1).data[0];
@@ -308,6 +309,8 @@ def test_clicking_a_scatter_dot_opens_that_institution(browser, server):
     stmts = [s for s in load(DATA / "statements.json")["statements"] if s["inst_id"] == target["id"]]
     assert p.page.locator("#inst-detail .stmt").count() == len(stmts)
     assert "top decile" in p.page.locator("#inst-detail .inst-head").inner_text()
+    caveat = p.page.locator("#gap-caveat").inner_text()
+    assert "coding error" in caveat and "far from banning" in caveat
     assert p.errors == []
     p.page.close()
 

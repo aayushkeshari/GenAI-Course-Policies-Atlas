@@ -662,6 +662,8 @@ function renderInstitution(id) {
   document.getElementById("inst-detail").innerHTML = `
     <h3 id="inst-name">${esc(inst.name)}</h3>
     <div class="inst-head">${head.map(([l, v]) => `<div><span class="label">${l}</span>${v}</div>`).join("")}</div>
+    ${ri >= 0 ? `<p class="fine" id="gap-caveat"><strong>Read the statements before trusting the gap.</strong> Stance comes from the rule-based coder, so a large gap can be a coding error rather than a real mismatch. ` +
+      `For example, a negation such as “far from banning chatbots” is coded as prohibitive. See the known limits in <code>docs/methods.md</code>.</p>` : ""}
     <div class="cols">
       <div class="panel"><h3>Course policies by term</h3>
         <p class="fine">0 prohibited … 4 integrated / required. “n/a” = policy not stated; “·” = not offered that term. Hover a cell for uses and assessment.</p>

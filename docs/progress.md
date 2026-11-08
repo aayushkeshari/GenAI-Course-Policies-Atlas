@@ -795,3 +795,25 @@ not backdated. Each step has its own commit, listed below.
 **Open questions**
 - Aayush: review the dashboard (`make serve`, then http://127.0.0.1:8000/dashboard/).
 - The P2 review-log entry is still missing from docs/review-log.md.
+
+## 2026-11-08T07:39:44-05:00 — [P3] "Far from banning" coder error: documented as a known limit, not fixed
+
+**What changed**
+- Checked the dev half only (even-numbered inst_id, 168 statements) for "far from"-style negated prohibitions. I searched for "far from", "rather than / instead of banning", "not banned/prohibited/forbidden", "no longer", "anything but" and "hardly".
+  - The only hit is one phrasing, "AI use is not prohibited", in 12 dev statements. Its own rule `S+1-not-prohibited` already covers it.
+  - There is no "far from"-style wording in dev. Any general negation rule would have had to be written from the held-out example, so per Aayush's instruction the coder was not changed. The rules stay frozen at 32f3cd2.
+- `docs/methods.md` §6 "Of keyword coding": a new bullet describes the known error: what it is, why it is unfixed, and its effect on ANL-13. It has no numbers, as the methods-doc test requires.
+- Institution drilldown: a caveat appears whenever the institution has a rhetoric-gap row. It says the gap uses coder labels and can reflect a coding error, gives the "far from banning" example, and points to methods.md.
+- Tests:
+  - New `test_methods_documents_the_far_from_negation_limit` (ANL-10).
+  - The DASH-08 scatter-click test now also checks the caveat.
+
+**Tests run**
+- `make test`: 425 passed.
+
+**Decisions**
+- HUMAN: fix only if dev has the pattern, otherwise document it. Never tune on held-out.
+- AGENT: the dev search found only the already-handled "not prohibited", so this is documented, not fixed.
+
+**Open questions**
+- None.

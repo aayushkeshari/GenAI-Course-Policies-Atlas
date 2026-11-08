@@ -49,3 +49,14 @@ def test_methods_has_no_hardcoded_result_numbers():
     """methods.md does not quote estimates (decimals like 0.83), so it cannot drift from results/; numbers
     live only in results/*.json."""
     assert not re.findall(r"\b\d\.\d{2,}\b", text())
+
+
+@pytest.mark.req("ANL-10")
+def test_methods_documents_the_far_from_negation_limit():
+    """The known coder error found in P3 is documented as a limitation: the "far from banning" negation is
+    coded prohibitive, it was left unfixed because dev has no such wording (fixing it would tune on held-out),
+    and rhetoric-gap institutions may reflect coding errors."""
+    t = text()
+    limits = t[t.index("## 6. Limits"):]
+    for phrase in ["Far from banning", "S-2-ban", "tuning on held-out", "coding errors"]:
+        assert phrase in limits, phrase

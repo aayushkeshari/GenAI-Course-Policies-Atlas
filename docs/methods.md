@@ -87,6 +87,14 @@ this. The recovery checks ask four questions:
 - The rules only recognize wording close to what they were built from. New wording usually falls through:
   stance defaults to 0 and themes to false.
 - Negations and hedges are handled only where a rule was written for them.
+- Known error (found in P3, not fixed): a prohibition word inside a negation that no dev rule covers flips the
+  stance. "Far from banning chatbots, our curriculum makes them central…" matches the `S-2-ban` rule and is
+  coded −2 (prohibitive) when it is enthusiastic. The dev half contains only one negated prohibition ("AI use is
+  not prohibited"), which has its own rule, and no "far from"-style wording. A general negation rule would have
+  had to be written from the held-out example, which would be tuning on held-out data, so the rules stay frozen.
+  The flip is the worst kind of coder error for ANL-13, because it moves an institution to the opposite end of
+  the stance scale. Some institutions in the rhetoric-gap list may be there because of coding errors rather
+  than a real mismatch. The dashboard's institution drilldown says so and shows the statements so a reader can check.
 - The person who wrote the rules also wrote the generator, so they had seen the held-out wording. Tests block
   direct copying, but the held-out score may still be slightly optimistic.
 

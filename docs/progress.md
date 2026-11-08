@@ -282,3 +282,18 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T05:10:03-05:00 — [P1] Spec change: ANL-14 institution clustering (at Aayush's direction)
+
+**What changed**
+- `specs/P2-analysis.md`: added **ANL-14**. Inferential results on course data must account for clustering by `inst_id`, using cluster-robust SEs, a mixed model, or a cluster bootstrap. methods.md names the method used for each result, and a test checks that the DATA-10 null stays non-significant under it.
+
+**Tests run**
+- None needed (spec text only). `make test` is unaffected.
+
+**Decisions**
+- HUMAN: P2 must account for institution clustering. The spec edit was made by the agent at Aayush's direction.
+- AGENT: the ID is ANL-14, the next free number. It lists which existing requirements it applies to, and adds a null-under-clustering test.
+
+**Open questions**
+- None.

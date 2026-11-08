@@ -26,5 +26,11 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
 - **ANL-13** Rhetoric vs practice (RQ8): per institution, compare coded statement stance with mean course permissiveness
   (both standardized). Report the correlation and list institutions whose gap is in the top decile. A recovery test
   checks how many of the DATA-17 mismatched institutions land in that list (report precision/recall).
+- **ANL-14** Clustering: course-term rows are nested in courses and institutions, so they are not independent.
+  Every inferential result on course data (ANL-05 CIs, ANL-07 regression, ANL-08 recovery and null tests,
+  ANL-11, ANL-12) must account for clustering by `inst_id`. Use cluster-robust (sandwich) SEs, a mixed model
+  with an institution random effect, or a cluster bootstrap that resamples institutions. `docs/methods.md`
+  states which method was used for each result. A test checks that the DATA-10 null stays non-significant
+  under the clustered method, since naive row-level tests can flag sampling noise (seed 2: −0.21 gap).
 - **ANL-10** `docs/methods.md` describes the approach in plain language, including the limits of
   synthetic data and keyword coding.

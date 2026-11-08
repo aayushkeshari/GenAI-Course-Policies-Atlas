@@ -162,3 +162,28 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 - HUMAN: INST-05 is checked by a test on the progress.md section, plus Aayush's manual review entry.
 
 **Open questions**: none.
+
+## 2026-11-08T04:28:26-05:00 — [P0] Step 9: wrap-up, HANDOFF, push
+
+**What changed**
+- Final `make test` run.
+- Rewrote `docs/HANDOFF.md`.
+- Scanned the repo for home paths and emails: none found.
+- Pushed to origin/main.
+
+**Tests run**
+- `make test`: 95 passed.
+
+**Decisions**: none new.
+
+**Manual check for Aayush (INST manual check)**
+1. In a terminal: `cd "<project>" && claude`. This must be a NEW session, because the hooks weren't loaded in the one that created them. If prompted, approve the project hooks. `/hooks` lists them.
+2. Send 3 short prompts.
+3. Run `/compact`, then `/clear`.
+4. Send one more prompt, then exit.
+5. Check the results:
+   - `tail -n 20 logs/events.jsonl | python3 -m json.tool --json-lines` should show, in order: SessionStart(startup), [UserPromptSubmit, Stop] ×3, PreCompact(manual), SessionStart(compact), SessionEnd(clear), SessionStart(clear) with a new session_id, UserPromptSubmit, Stop, SessionEnd(prompt_input_exit). Every entry should show phase "P0:planning".
+   - `ls raw_logs/transcripts/` should list the first session's transcript. The second appears after you exit.
+   - `cat logs/hook_errors.log` should not exist or be empty.
+
+**Open questions**: none.

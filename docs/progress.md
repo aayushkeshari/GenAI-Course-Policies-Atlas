@@ -342,3 +342,20 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Carried over to HANDOFF: the ANL-03 split rule wording, the real-university list spot-check (Aayush), a P1 review-log entry, and the PROV-02 prompt-source question for P5.
+
+## 2026-11-08T05:35:58-05:00 — [P1] Checkpoint before /clear: P1 closed, P2 planning next
+
+**What changed**
+- No code changes since `d8d0851`.
+- Aayush's P1 review-log entry was added verbatim and committed as `human:` (`461b7ac`). That commit also included Aayush's `.phase` change to `P2:planning`.
+- HANDOFF rewritten for P2 planning.
+
+**Tests run**
+- `make test`: 244 passed.
+
+**Decisions**
+- HUMAN: P1 accepted (review-log entry). The real-university list was spot-checked: all 159 are real, no duplicates.
+- HUMAN: `.phase` set to `P2:planning`.
+
+**Open questions**
+- From Aayush's review-log note: decisions logged as "HUMAN" in progress.md were drafted with Claude chat. P5 provenance should tell "decided by Aayush" apart from "written by Aayush". This adds to the PROV-02 open question.

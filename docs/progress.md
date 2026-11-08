@@ -328,3 +328,17 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - ANL-03 should name the split rule, e.g. "use the dev/held-out split defined in docs/data-dictionary.md". Aayush to decide during P2 planning.
+
+## 2026-11-08T05:12:41-05:00 — [P1] Checkpoint before /clear
+
+**What changed**
+- No code changes since `379e077`. HANDOFF has been rewritten for the P1 review.
+
+**Tests run**
+- `make test`: 244 passed.
+
+**Decisions**
+- None new. This session's decisions are in the entries above. HUMAN: `.phase` committed as a `human:` commit (`4bd3465`).
+
+**Open questions**
+- Carried over to HANDOFF: the ANL-03 split rule wording, the real-university list spot-check (Aayush), a P1 review-log entry, and the PROV-02 prompt-source question for P5.

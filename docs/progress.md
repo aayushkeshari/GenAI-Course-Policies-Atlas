@@ -835,3 +835,28 @@ not backdated. Each step has its own commit, listed below.
   - moving .phase to P4
   - pushing `3b82ea8` and this checkpoint
   - PROV-02 prompt-source question (P5)
+
+## 2026-11-08T07:47:27-05:00 — [P4] Step 1: VAL-01 body sidecars (spec change), coverage in make test, spec parser
+
+**What changed**
+- `specs/P4-validation.md`: VAL-01/02 now say the run file records `body_sha256`, and the docstring and source are stored once per content hash in `results/tests/bodies/<sha>.json`. Body files are kept like run files. Old test-run/1 files stay as they are, and readers accept both formats.
+- `tests/conftest.py` now writes schema test-run/2. Each body file holds exactly `canonical_body(docstring, source)`, so its SHA-256 equals its name. A body file is written only if absent. Docstrings are now home-scrubbed too.
+- New `src/validation/runs.py` reads either format and verifies each body's hash. New `src/validation/specs.py` parses `- **AREA-NN**` bullets, joining wrapped lines and keeping nested bullets on their own lines. It finds 75 requirements.
+- `make test` adds `--cov=src --cov-report=json:results/coverage.json`.
+- Tests:
+  - `test_runfile.py` was adapted to the new format: the schema is test-run/2, and the field set has `body_sha256` instead of inline docstring/source. The docstring/source assertions are unchanged; they now read through the sidecar.
+  - New tests cover: content-addressing and write-once; plugin and reader producing the same bytes; reading old-format files; rejecting tampered bodies; every committed run file loading.
+  - New `test_val_specs.py` covers the parser and checks that every req tag names a real spec ID.
+  - New Makefile coverage test.
+- Run files shrink from about 490 KB to about 170 KB. 433 tests share 193 bodies, because parametrized tests share one.
+
+**Tests run**
+- `make test`: 433 passed.
+
+**Decisions**
+- HUMAN: option (c), sidecar bodies now, as a spec change to VAL-01/02. Keep every run.
+- AGENT: the exact spec wording, and the content-addressed directory layout (one file per hash).
+- AGENT: the 54 existing test-run/1 files are left untouched. Rewriting them wouldn't shrink git history and would alter historical records.
+
+**Open questions**
+- None.

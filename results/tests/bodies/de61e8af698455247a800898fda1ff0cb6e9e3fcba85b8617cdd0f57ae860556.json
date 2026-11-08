@@ -1,0 +1,1 @@
+{"docstring": "`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.", "source": "@pytest.mark.req(\"INST-07\")\ndef test_make_test_runs_pytest():\n    \"\"\"`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.\"\"\"\n    assert \"-m pytest\" in make_n(\"test\").stdout\n"}

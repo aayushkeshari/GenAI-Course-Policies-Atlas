@@ -35,3 +35,11 @@ def test_clean_never_touches_logs_or_run_history():
 def test_make_test_runs_pytest():
     """`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires."""
     assert "-m pytest" in make_n("test").stdout
+
+
+@pytest.mark.req("VAL-03")
+def test_make_test_writes_per_module_coverage():
+    """`make test` measures coverage of src/ with pytest-cov and writes it as JSON to
+    results/coverage.json, which the validation explorer reads."""
+    cmd = make_n("test").stdout
+    assert "--cov=src" in cmd and "--cov-report=json:results/coverage.json" in cmd

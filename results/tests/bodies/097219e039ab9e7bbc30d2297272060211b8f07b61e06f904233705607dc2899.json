@@ -1,0 +1,1 @@
+{"docstring": "With level in the model, the is_se coefficient's clustered CI is above 0.", "source": "@pytest.mark.req(\"ANL-08\")\n@pytest.mark.kind(\"recovery\")\ndef test_data07_se_more_permissive_at_same_level(res):\n    \"\"\"With level in the model, the is_se coefficient's clustered CI is above 0.\"\"\"\n    assert coef(res, \"is_se\")[\"ci_clustered\"][0] > 0\n"}

@@ -1,0 +1,1 @@
+{"docstring": "settings.json registers exactly the 5 spec'd events, so nothing else fires the hook.", "source": "@pytest.mark.req(\"INST-01\")\ndef test_no_unexpected_events_registered():\n    \"\"\"settings.json registers exactly the 5 spec'd events, so nothing else fires the hook.\"\"\"\n    assert sorted(json.loads(SETTINGS.read_text())[\"hooks\"]) == sorted(EVENTS)\n"}

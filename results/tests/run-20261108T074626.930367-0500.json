@@ -1,0 +1,180 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:46:26.930-05:00",
+ "finished": "2026-11-08T07:46:28.591-05:00",
+ "duration_s": 1.661,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "b4982fcee9cbf471e3fce4ef28e282aa6e6e7caa",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_runfile.py",
+  "-q"
+ ],
+ "summary": {
+  "passed": 11
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_runfile.py::test_every_test_has_all_val01_fields",
+   "req_ids": [
+    "INST-07",
+    "VAL-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 73,
+   "body_sha256": "249fd1107bcef92250ac3bbf678a15e24df99ca0a543eb48dfdf02396e394576",
+   "status": "passed",
+   "duration_s": 0.132799,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_statuses_cover_every_outcome",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 86,
+   "body_sha256": "aa8429154590fa1eb8f26db880d45774765b88549d1550faafd658f96fee910c",
+   "status": "passed",
+   "duration_s": 0.137689,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_phase_from_first_req_prefix_and_kind_default",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 100,
+   "body_sha256": "8abe0f007c4d870dfcffa120c164db09d0fbf8e73d7ae3f1c5508f716c55723a",
+   "status": "passed",
+   "duration_s": 0.140159,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_messages_docstrings_and_source_captured",
+   "req_ids": [
+    "INST-07",
+    "VAL-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 115,
+   "body_sha256": "300cbf3b3ac5570e94fb05541852141a4619f6f6cc9ebaa180418538a074c0f8",
+   "status": "passed",
+   "duration_s": 0.13497,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_home_directory_scrubbed_from_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 131,
+   "body_sha256": "a131bd98b793cd7d3b4eaf358da7f0695ffa9cb0b14132ea4d64ff8ff5e6847b",
+   "status": "passed",
+   "duration_s": 0.135817,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_collection_error_still_writes_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_runfile.py",
+   "line": 145,
+   "body_sha256": "7b03b002ea03fac1471ca1397b0925d0932601be9a075a78888588f7520da33a",
+   "status": "passed",
+   "duration_s": 0.155194,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_each_run_writes_a_new_file",
+   "req_ids": [
+    "INST-07",
+    "VAL-02"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 157,
+   "body_sha256": "e6e8bd3ff2af09c6a3e2d75185db99940e3ea760281fbd008d3ed3fc59ba65cd",
+   "status": "passed",
+   "duration_s": 0.247562,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_bodies_are_content_addressed_and_written_once",
+   "req_ids": [
+    "VAL-01",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 167,
+   "body_sha256": "cc493ae6cfc23ac193603488398b47ae5ce21a0fa4ed7ec36249efc3daeb57c5",
+   "status": "passed",
+   "duration_s": 0.403157,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_plugin_and_reader_agree_on_body_bytes",
+   "req_ids": [
+    "VAL-01"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 191,
+   "body_sha256": "174ed3d73bf70540c4bc0caf8b0663ce5823d203a6db7f7f62505a9304456bac",
+   "status": "passed",
+   "duration_s": 0.000118,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_reader_accepts_old_inline_format_and_rejects_tampered_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 200,
+   "body_sha256": "66b83d887e53d0ba7bbdfab12f4a01007345829a6718fc81a6242e02d59b4e58",
+   "status": "passed",
+   "duration_s": 0.000895,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_every_committed_run_file_loads",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 217,
+   "body_sha256": "27e447a8f3164a7afce47edb5f1e557cf9c3586c3bdbf1066566381e6239c01b",
+   "status": "passed",
+   "duration_s": 0.098716,
+   "failure_message": ""
+  }
+ ]
+}

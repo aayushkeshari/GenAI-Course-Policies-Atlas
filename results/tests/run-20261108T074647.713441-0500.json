@@ -1,0 +1,232 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:46:47.713-05:00",
+ "finished": "2026-11-08T07:46:47.885-05:00",
+ "duration_s": 0.172,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "b4982fcee9cbf471e3fce4ef28e282aa6e6e7caa",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_specs.py",
+  "tests/test_makefile.py",
+  "-q"
+ ],
+ "summary": {
+  "passed": 15
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_specs.py::test_parser_finds_every_requirement_bullet",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 11,
+   "body_sha256": "e6276c467d73af593cd30263b7e2561ab694c0ea4ec80fd22ba72332d18996af",
+   "status": "passed",
+   "duration_s": 0.000967,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_requirement_text_keeps_wrapped_lines_and_nested_bullets",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 26,
+   "body_sha256": "41c68b80fd78d71374d20d8e856b0d698a72712c064ad8e1e0d20444571c81dd",
+   "status": "passed",
+   "duration_s": 0.002114,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_every_req_tag_names_a_spec_requirement",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 42,
+   "body_sha256": "5356ac915e580f17b54b0bb503a897cbe6485cec003daaa951c80d6f00d96724",
+   "status": "passed",
+   "duration_s": 0.000495,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[data]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.01126,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[analysis]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008598,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[test]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008099,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[report]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007746,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[tokens]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007418,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[timeline]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007736,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[site]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007731,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[serve]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007692,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[clean]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007822,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_clean_never_touches_logs_or_run_history",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 25,
+   "body_sha256": "146b62929efb51e5a67494c85a18b180807b0ca673c1a920c2c391225fab718c",
+   "status": "passed",
+   "duration_s": 0.007702,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_runs_pytest",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 34,
+   "body_sha256": "de61e8af698455247a800898fda1ff0cb6e9e3fcba85b8617cdd0f57ae860556",
+   "status": "passed",
+   "duration_s": 0.008126,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_writes_per_module_coverage",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 40,
+   "body_sha256": "2a8cfa1addf3523fad34497fd57361ca4e294a51c560a7fb4c3b08fb43eb619e",
+   "status": "passed",
+   "duration_s": 0.008899,
+   "failure_message": ""
+  }
+ ]
+}

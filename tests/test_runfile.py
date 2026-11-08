@@ -1,16 +1,19 @@
-"""INST-07: the conftest plugin writes a machine-readable run file in the VAL-01 format.
+"""INST-07 / VAL-01 / VAL-02: the conftest plugin writes a machine-readable run file in the VAL-01 format.
 
 Each test copies tests/conftest.py into an isolated pytester project, runs pytest there in a
 subprocess, and inspects the run file it produces.
 """
+import hashlib
 import json
 from pathlib import Path
 
 import pytest
 
+from src.validation.runs import canonical_body, load_run
+
 CONFTEST = (Path(__file__).parent / "conftest.py").read_text()
 FIELDS = {"nodeid", "req_ids", "phase", "kind", "status", "duration_s", "failure_message",
-          "docstring", "source"}
+          "body_sha256"}
 
 SAMPLE = '''
 import pytest
@@ -63,17 +66,17 @@ def runfile(pytester):
     pytester.makepyfile(test_sample=SAMPLE)
     _, files = run(pytester)
     assert len(files) == 1
-    data = json.loads(files[0].read_text())
+    data = load_run(files[0])  # resolves docstring/source from the body sidecar
     return data, {t["nodeid"].split("::")[-1]: t for t in data["tests"]}
 
 
-@pytest.mark.req("INST-07")
+@pytest.mark.req("INST-07", "VAL-01")
 @pytest.mark.kind("integration")
 def test_every_test_has_all_val01_fields(runfile):
     """Every test entry has every VAL-01 field (nodeid, req_ids, phase, kind, status,
-    duration_s, failure_message, docstring, source), and every executed test appears."""
+    duration_s, failure_message, body_sha256), and every executed test appears."""
     data, tests = runfile
-    assert data["schema"] == "test-run/1"
+    assert data["schema"] == "test-run/2"
     assert len(tests) == 7
     for t in tests.values():
         assert FIELDS <= set(t), FIELDS - set(t)
@@ -109,11 +112,12 @@ def test_phase_from_first_req_prefix_and_kind_default(runfile):
     assert data["current_phase"] == "untagged"  # no .phase in the pytester project
 
 
-@pytest.mark.req("INST-07")
+@pytest.mark.req("INST-07", "VAL-01")
 @pytest.mark.kind("integration")
 def test_messages_docstrings_and_source_captured(runfile):
     """failure_message holds the assertion text, skip reason, or setup error. docstring and
-    source come from the test function. Passing tests have an empty message."""
+    source come from the test function (read back through the body sidecar). Passing tests
+    have an empty message."""
     _, tests = runfile
     assert "boom-marker" in tests["test_fail"]["failure_message"]
     assert "skip-reason-marker" in tests["test_skip"]["failure_message"]
@@ -134,6 +138,8 @@ def test_home_directory_scrubbed_from_run_file(pytester):
     text = files[0].read_text()
     assert str(Path.home()) not in text
     assert "~" in json.loads(text)["tests"][-1]["failure_message"]
+    for body in (files[0].parent / "bodies").glob("*.json"):
+        assert str(Path.home()) not in body.read_text()
 
 
 @pytest.mark.req("INST-07")
@@ -148,7 +154,7 @@ def test_collection_error_still_writes_run_file(pytester):
     assert "nonexistent_module_xyz" in data["collection_errors"][0]["message"]
 
 
-@pytest.mark.req("INST-07")
+@pytest.mark.req("INST-07", "VAL-02")
 @pytest.mark.kind("integration")
 def test_each_run_writes_a_new_file(pytester):
     """Two runs produce two distinct run files. Earlier runs are never overwritten."""
@@ -156,3 +162,65 @@ def test_each_run_writes_a_new_file(pytester):
     run(pytester)
     _, files = run(pytester)
     assert len(files) == 2
+
+
+@pytest.mark.req("VAL-01", "VAL-02")
+@pytest.mark.kind("integration")
+def test_bodies_are_content_addressed_and_written_once(pytester):
+    """Each body file's SHA-256 equals its name, and every body_sha256 in the run has a file.
+    A second run of unchanged tests adds a run file but no body files and leaves existing
+    body files byte-identical. Editing one test adds exactly one body file and keeps the old one."""
+    pytester.makepyfile(test_sample=SAMPLE)
+    _, files = run(pytester)
+    bodies = files[0].parent / "bodies"
+    before = {p.name: p.read_bytes() for p in bodies.glob("*.json")}
+    assert len(before) == 7
+    for name, raw in before.items():
+        assert hashlib.sha256(raw).hexdigest() + ".json" == name
+    shas = {t["body_sha256"] for t in json.loads(files[0].read_text())["tests"]}
+    assert {s + ".json" for s in shas} == set(before)
+    _, files = run(pytester)
+    assert len(files) == 2
+    assert {p.name: p.read_bytes() for p in bodies.glob("*.json")} == before
+    pytester.makepyfile(test_sample=SAMPLE.replace("Proves the passing path.", "Proves it, edited."))
+    run(pytester)
+    after = {p.name for p in bodies.glob("*.json")}
+    assert len(after) == 8 and set(before) <= after
+
+
+@pytest.mark.req("VAL-01")
+def test_plugin_and_reader_agree_on_body_bytes():
+    """tests/conftest.py and src/validation/runs.py produce the same canonical body bytes, so the
+    reader's hash check accepts what the plugin writes (including non-ASCII text)."""
+    import conftest
+    for doc, src in [("", ""), ("Doc — ü", "def f():\n    pass\n"), ('q "x"', "a\tb")]:
+        assert conftest.canonical_body(doc, src) == canonical_body(doc, src)
+
+
+@pytest.mark.req("VAL-01", "VAL-02")
+def test_reader_accepts_old_inline_format_and_rejects_tampered_bodies(tmp_path):
+    """A test-run/1 file (docstring/source inline) loads with a computed body_sha256. A body file
+    whose bytes don't hash to its name is rejected, so the explorer can't show the wrong source."""
+    old = {"schema": "test-run/1", "tests": [{"nodeid": "t::a", "docstring": "D", "source": "S"}]}
+    (tmp_path / "run-1.json").write_text(json.dumps(old))
+    t = load_run(tmp_path / "run-1.json")["tests"][0]
+    assert t["body_sha256"] == hashlib.sha256(canonical_body("D", "S")).hexdigest()
+    sha = t["body_sha256"]
+    (tmp_path / "bodies").mkdir()
+    (tmp_path / "bodies" / f"{sha}.json").write_bytes(canonical_body("D", "tampered"))
+    new = {"schema": "test-run/2", "tests": [{"nodeid": "t::a", "body_sha256": sha}]}
+    (tmp_path / "run-2.json").write_text(json.dumps(new))
+    with pytest.raises(ValueError, match="does not hash"):
+        load_run(tmp_path / "run-2.json")
+
+
+@pytest.mark.req("VAL-02")
+def test_every_committed_run_file_loads():
+    """Every run file in results/tests/ (old and new format) loads, and every new-format run's
+    bodies resolve and verify. Nothing has been pruned or corrupted."""
+    from src.validation.runs import run_files
+    files = run_files()
+    assert len(files) >= 54
+    for f in files:
+        run = load_run(f)
+        assert run["tests"], f.name

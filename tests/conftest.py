@@ -1,18 +1,21 @@
 """Pytest plugin: write results/tests/run-<timestamp>.json for every run.
 
 Requirement INST-07; the file format is defined by VAL-01. For each test it records nodeid,
-req_ids, phase, kind, status, duration_s, failure_message, docstring and source.
+req_ids, phase, kind, status, duration_s, failure_message and body_sha256. The docstring and source
+live once per content hash in results/tests/bodies/<body_sha256>.json (written only if absent), whose
+bytes are exactly canonical_body(docstring, source), so sha256(file) == its name.
 
 - phase comes from the first requirement ID's area prefix (INST -> P0, DATA -> P1, ...), so an
   old test keeps its phase no matter what .phase says when the run happens. With no req marker,
   phase is "untagged".
 - kind comes from @pytest.mark.kind("..."), default "unit".
 - status is one of passed | failed | skipped | error | xfailed | xpassed.
-- Every run file is kept (VAL-02). The home directory is replaced with "~" in all text.
+- Every run file and body file is kept (VAL-02). The home directory is replaced with "~" in all text.
 
 This file holds only the plugin. Test helpers live in tests/hookutil.py, so test_runfile.py can
 load this exact source into an isolated pytester project.
 """
+import hashlib
 import inspect
 import json
 import platform
@@ -22,7 +25,7 @@ from pathlib import Path
 
 import pytest
 
-SCHEMA = "test-run/1"
+SCHEMA = "test-run/2"
 PHASE_BY_AREA = {"INST": "P0", "DATA": "P1", "ANL": "P2", "DASH": "P3",
                  "VAL": "P4", "PROV": "P5", "TOK": "P6", "PUB": "P7"}
 KINDS = ("unit", "property", "integration", "recovery", "ui", "fault")
@@ -31,6 +34,12 @@ HOME = str(Path.home())
 
 def _clean(text):
     return (text or "").replace(HOME, "~")
+
+
+def canonical_body(docstring, source):
+    """The exact bytes stored in a body file. Its SHA-256 is the test's body_sha256."""
+    text = json.dumps({"docstring": docstring, "source": source}, sort_keys=True, ensure_ascii=False)
+    return (text + "\n").encode("utf-8")
 
 
 def _git(root, *args):
@@ -62,7 +71,7 @@ def describe(item):
         "kind": kind_mark.args[0] if kind_mark and kind_mark.args else "unit",
         "file": path,
         "line": (line + 1) if line is not None else None,
-        "docstring": (inspect.getdoc(fn) or "") if fn else "",
+        "docstring": _clean(inspect.getdoc(fn) or "") if fn else "",
         "source": _clean(source),
     }
 
@@ -74,6 +83,7 @@ class RunRecorder:
         self.started = datetime.now().astimezone()
         self.meta = {}
         self.results = {}
+        self.bodies = {}
         self.collection_errors = []
         self.git_commit = _git(self.root, "rev-parse", "HEAD")
         status = _git(self.root, "status", "--porcelain")
@@ -112,10 +122,13 @@ class RunRecorder:
         finished = datetime.now().astimezone()
         tests = []
         for nodeid, r in self.results.items():
-            info = self.meta.get(nodeid) or {"nodeid": nodeid, "req_ids": [], "phase": "untagged",
+            info = dict(self.meta.get(nodeid) or {"nodeid": nodeid, "req_ids": [], "phase": "untagged",
                                              "kind": "unit", "file": None, "line": None,
-                                             "docstring": "", "source": ""}
-            tests.append({**info, "status": r["status"] or "error",
+                                             "docstring": "", "source": ""})
+            body = canonical_body(info.pop("docstring"), info.pop("source"))
+            sha = hashlib.sha256(body).hexdigest()
+            self.bodies[sha] = body
+            tests.append({**info, "body_sha256": sha, "status": r["status"] or "error",
                           "duration_s": round(r["duration_s"], 6),
                           "failure_message": "\n".join(m for m in r["messages"] if m)})
         summary = {}
@@ -146,8 +159,15 @@ class RunRecorder:
         out_dir = self.root / "results" / "tests"
         out_dir.mkdir(parents=True, exist_ok=True)
         stamp = self.started.strftime("%Y%m%dT%H%M%S.%f%z")
+        run = self.build(exitstatus)
+        bodies = out_dir / "bodies"
+        bodies.mkdir(exist_ok=True)
+        for sha, body in self.bodies.items():
+            target = bodies / f"{sha}.json"
+            if not target.exists():
+                target.write_bytes(body)
         path = out_dir / f"run-{stamp}.json"
-        path.write_text(json.dumps(self.build(exitstatus), indent=1, ensure_ascii=False) + "\n",
+        path.write_text(json.dumps(run, indent=1, ensure_ascii=False) + "\n",
                         encoding="utf-8")
 
 

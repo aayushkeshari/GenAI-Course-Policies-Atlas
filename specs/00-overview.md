@@ -15,6 +15,8 @@
 - RQ5 How do software engineering courses differ from other CS courses?
 - RQ6 Do policies separate using AI to *learn* (explanations, debugging help) from using AI to *produce graded work*
   (writing code that gets submitted)? This is the line students and TAs actually deal with in intro courses.
+- RQ7 How are courses changing *how they assess* students (in-class exams, oral defenses, process logs) because of AI?
+- RQ8 Does what a department *says* about AI match what its courses actually *allow*?
 
 ## Phases
 | Phase | Spec | Output |

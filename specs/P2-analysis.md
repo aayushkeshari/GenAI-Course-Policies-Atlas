@@ -22,5 +22,9 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
 - **ANL-09** `results/` JSON files follow schemas in `src/report/schemas/`, validated by tests.
 - **ANL-11** Allowed-uses analysis (RQ6): prevalence of each use by level and by is_se, with bootstrap CIs.
   A recovery test checks that the intro-course gap between explanation/debugging and code_generation (DATA-15) shows up.
+- **ANL-12** Assessment analysis (RQ7): assessment_adaptation by policy level and course level, with chi-square and Cramér's V.
+- **ANL-13** Rhetoric vs practice (RQ8): per institution, compare coded statement stance with mean course permissiveness
+  (both standardized). Report the correlation and list institutions whose gap is in the top decile. A recovery test
+  checks how many of the DATA-17 mismatched institutions land in that list (report precision/recall).
 - **ANL-10** `docs/methods.md` describes the approach in plain language, including the limits of
   synthetic data and keyword coding.

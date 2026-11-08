@@ -942,3 +942,28 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - For Aayush: should behavioral tests be added for F01, F05, F07, F08 and F09, for example a regression sign check on planted data, term_index == 0 for F23, a hand-computed gap denominator, a gap sign check on a constructed institution, and a field list check on the export? Not done, because it wasn't asked for.
+
+## 2026-11-08T08:14:32-05:00 — [P4] Step 4: validation explorer UI (site/validation/)
+
+**What changed**
+- New `site/validation/{index.html,style.css,app.js}`. No build step and no chart library. It reuses `../dashboard/style.css` for tokens and components, so the two pages read as one system and share the theme toggle. The pinned CDN libraries are marked 12.0.2 and DOMPurify 3.1.6 from cdnjs, used for the review log only.
+- Views:
+  - **Tests:** KPIs, plus search over node ID, docstring and source, and filters for phase, kind, status and requirement. Filter state lives in the URL hash. Each row has a status pill and a 20-run history strip. The detail pane shows the docstring, failure message, full history strip with legend and pass count, linked spec text, source, and body SHA.
+  - **Traceability:** all 75 requirements, with counts and phase/status filters. Untested and failing requirements are red, and a "phase not started" badge marks later phases; nothing is hidden.
+  - **Coverage:** total and per-module meters with numbers.
+  - **Fault injection:** detection rate, behavioral rate, uncaught count; the method, UI and self-test exclusions; an explicit uncaught list and golden-only list; every fault with its diff and catching tests, each tagged golden or behavioral.
+  - **Recovery vs. ground truth (validation only):** a separate view with its own note.
+  - **Review log:** the log next to an automated-evidence summary.
+  - **Claims:** built here; its data comes in step 5.
+- Statuses use the reserved status palette, always with an icon and a text label (dataviz method). Coverage meters use the accent on a lighter step of the same hue.
+- I checked rendering in Chromium at 1280 and 390 px wide, with no horizontal overflow and no JS errors. The only 404 is claims.json, which arrives in step 5.
+
+**Tests run**
+- `make test`: 470 passed. The Playwright tests for the explorer (VAL-08) come in step 6.
+
+**Decisions**
+- HUMAN: marked plus DOMPurify from the CDN, pinned.
+- AGENT: share the dashboard stylesheet rather than copy it; use plain `<pre>` for source with no highlighter, which avoids another CDN dependency; share the theme key with the dashboard.
+
+**Open questions**
+- None.

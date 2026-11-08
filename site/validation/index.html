@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation Explorer</title>
+<meta name="description" content="Test, traceability, coverage and fault-injection evidence behind the synthetic-data GenAI policy study.">
+<link rel="stylesheet" href="../dashboard/style.css">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Apply a saved theme before first paint (shared with the dashboard). Storage can be blocked; the page works without it.
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Validation explorer</h1>
+    <div class="top-actions">
+      <a href="../dashboard/" class="btn">Findings dashboard</a>
+      <button id="theme-toggle" class="btn" type="button" aria-label="Color theme: follow system">Theme: auto</button>
+    </div>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — illustrative only.</strong>
+    The study's institutions, courses and statements are invented. This page shows the evidence for the project's code:
+    its tests, requirement coverage and fault injection.</p>
+  <nav class="tabs" role="tablist" aria-label="Validation views" id="tabs">
+    <button role="tab" id="tab-tests" aria-controls="view-tests" data-view="tests">Tests</button>
+    <button role="tab" id="tab-trace" aria-controls="view-trace" data-view="trace">Traceability</button>
+    <button role="tab" id="tab-coverage" aria-controls="view-coverage" data-view="coverage">Coverage</button>
+    <button role="tab" id="tab-faults" aria-controls="view-faults" data-view="faults">Fault injection</button>
+    <button role="tab" id="tab-claims" aria-controls="view-claims" data-view="claims">Claims</button>
+    <button role="tab" id="tab-recovery" aria-controls="view-recovery" data-view="recovery">Recovery vs. ground truth (validation only)</button>
+    <button role="tab" id="tab-review" aria-controls="view-review" data-view="review">Review log</button>
+  </nav>
+</header>
+
+<main id="main">
+  <p id="load-error" class="error" hidden></p>
+  <p class="fine" id="run-line"></p>
+
+  <section role="tabpanel" id="view-tests" aria-labelledby="tab-tests" hidden>
+    <h2>Tests</h2>
+    <div class="kpis" id="test-kpis"></div>
+    <form class="filters" id="test-filters" role="search" aria-label="Filter tests" onsubmit="return false">
+      <label>Search <input id="f-q" type="search" placeholder="node ID, docstring or source" autocomplete="off"></label>
+      <label>Phase <select id="f-phase"></select></label>
+      <label>Kind <select id="f-kind"></select></label>
+      <label>Status <select id="f-status"></select></label>
+      <label>Requirement <select id="f-req"></select></label>
+      <button class="btn" type="button" id="f-clear">Clear</button>
+    </form>
+    <p class="count" id="test-count" aria-live="polite"></p>
+    <div class="split">
+      <div class="table-wrap list-wrap"><table id="test-table">
+        <caption class="sr">Tests in the snapshot run. Select a test to see its details.</caption>
+        <thead><tr><th>Status</th><th>Test</th><th>Last 20 runs</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <aside class="panel detail" id="test-detail" aria-live="polite" tabindex="-1">
+        <p class="fine">Select a test to see its docstring, source, history and the spec text it covers.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="view-trace" aria-labelledby="tab-trace" hidden>
+    <h2>Requirement traceability</h2>
+    <p class="fine" id="trace-intro"></p>
+    <div class="kpis" id="trace-kpis"></div>
+    <form class="filters" onsubmit="return false" aria-label="Filter requirements">
+      <label>Phase <select id="t-phase"></select></label>
+      <label>Status <select id="t-status"></select></label>
+    </form>
+    <p class="count" id="trace-count" aria-live="polite"></p>
+    <div class="table-wrap"><table id="trace-table">
+      <caption class="sr">Each requirement, its status and its tests</caption>
+      <thead><tr><th>Requirement</th><th>Status</th><th>Spec text</th><th class="n">Tests</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section role="tabpanel" id="view-coverage" aria-labelledby="tab-coverage" hidden>
+    <h2>Line coverage of src/</h2>
+    <p class="fine" id="cov-intro"></p>
+    <div class="kpis" id="cov-kpis"></div>
+    <div class="table-wrap"><table id="cov-table">
+      <caption>Per module, from pytest-cov for the snapshot run</caption>
+      <thead><tr><th>Module</th><th class="n">Statements</th><th class="n">Missed</th><th class="n">Covered</th><th>Coverage</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+
+  <section role="tabpanel" id="view-faults" aria-labelledby="tab-faults" hidden>
+    <h2>Fault injection</h2>
+    <div class="kpis" id="fault-kpis"></div>
+    <div class="panel notes" id="fault-method"></div>
+    <h3 class="sub-h">Uncaught faults</h3>
+    <p id="fault-uncaught"></p>
+    <h3 class="sub-h">Caught only by golden-file tests</h3>
+    <p id="fault-golden"></p>
+    <h3 class="sub-h">Every fault</h3>
+    <ol class="faults" id="fault-list"></ol>
+  </section>
+
+  <section role="tabpanel" id="view-claims" aria-labelledby="tab-claims" hidden>
+    <h2>Claims and their evidence</h2>
+    <p class="fine" id="claims-intro"></p>
+    <ol class="claims" id="claim-list"></ol>
+  </section>
+
+  <section role="tabpanel" id="view-recovery" aria-labelledby="tab-recovery" hidden>
+    <h2>Recovery vs. ground truth (validation only)</h2>
+    <p class="banner truth-note" role="note" id="recovery-note"><strong>Validation only.</strong>
+      These results compare the analysis with the synthetic data's hidden ground truth: the planted effects and the true
+      statement labels. A real study has no ground truth, so none of this appears on the findings dashboard. It shows
+      whether the pipeline can recover what was planted.</p>
+    <div id="recovery-body"></div>
+  </section>
+
+  <section role="tabpanel" id="view-review" aria-labelledby="tab-review" hidden>
+    <h2>Manual review log</h2>
+    <p class="fine">Aayush's own reviews (<code>docs/review-log.md</code>), shown verbatim next to the automated evidence.</p>
+    <div class="cols review-cols">
+      <article class="panel md" id="review-body"></article>
+      <aside class="panel" id="review-side"></aside>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <p>Synthetic data. Built from <code>results/tests/</code>, <code>specs/</code>, <code>results/faults.json</code> and
+    <code>docs/review-log.md</code> by <code>make report</code>. Published test text has fake fixture values (home paths, emails,
+    credential-like strings) replaced with <code>‹redacted-…›</code> placeholders.</p>
+</footer>
+</body>
+</html>

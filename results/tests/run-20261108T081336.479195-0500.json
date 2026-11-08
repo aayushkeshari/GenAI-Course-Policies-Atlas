@@ -1,0 +1,6695 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:13:36.479-05:00",
+ "finished": "2026-11-08T08:13:58.379-05:00",
+ "duration_s": 21.9,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "b0efeed9439cdd407805cfc9db0a09e2438e2ca3",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "--cov=src",
+  "--cov-report=json:results/tests/coverage/latest.json"
+ ],
+ "summary": {
+  "passed": 470
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_anl_clean.py::test_duplicates_removed_match_planted_duplicates[committed]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 22,
+   "body_sha256": "0db7ced07dd6a57d687f4b8d3a2b62db095adfc23908f6b9b195af301e79abc3",
+   "status": "passed",
+   "duration_s": 0.027281,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_level_is_normalized[committed]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 34,
+   "body_sha256": "7497b21c06ba353f40115b41502126e5448f2bf5dc856692034521dbcd55e85f",
+   "status": "passed",
+   "duration_s": 0.007127,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_missing_policy_kept_as_na_not_imputed[committed]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 46,
+   "body_sha256": "923784cbd40ca73aaf0509bbaa9f7ae22265d7117dd6a79de77c7144dd890a62",
+   "status": "passed",
+   "duration_s": 0.007154,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_log_counts_match_files[committed]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 59,
+   "body_sha256": "5363fed2f619e9b8f6dfaefb5cad062736c7a136a992acb56a76879e01e74b97",
+   "status": "passed",
+   "duration_s": 0.004285,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_duplicates_removed_match_planted_duplicates[seed7]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 22,
+   "body_sha256": "0db7ced07dd6a57d687f4b8d3a2b62db095adfc23908f6b9b195af301e79abc3",
+   "status": "passed",
+   "duration_s": 0.105234,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_level_is_normalized[seed7]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 34,
+   "body_sha256": "7497b21c06ba353f40115b41502126e5448f2bf5dc856692034521dbcd55e85f",
+   "status": "passed",
+   "duration_s": 0.007048,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_missing_policy_kept_as_na_not_imputed[seed7]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 46,
+   "body_sha256": "923784cbd40ca73aaf0509bbaa9f7ae22265d7117dd6a79de77c7144dd890a62",
+   "status": "passed",
+   "duration_s": 0.007089,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_log_counts_match_files[seed7]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 59,
+   "body_sha256": "5363fed2f619e9b8f6dfaefb5cad062736c7a136a992acb56a76879e01e74b97",
+   "status": "passed",
+   "duration_s": 0.004372,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_committed_clean_data_and_log_are_current",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 68,
+   "body_sha256": "1ca2dceb7e61f13b41c9e66a1841d903689063d4bbbc93a5fcd95ee4df007658",
+   "status": "passed",
+   "duration_s": 0.012167,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_codebook_defines_every_code_with_include_exclude_and_examples",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 34,
+   "body_sha256": "4db0f9082da3c08a078689516ad23b9740f51b9077a6151a9faa9cf10aad697d",
+   "status": "passed",
+   "duration_s": 0.00038,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_rule_table_in_codebook_matches_code",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 48,
+   "body_sha256": "48a9c33d1d0172ef0ddb5a9304636af45542dcbf1720d2bbf9ab51f4472a8724",
+   "status": "passed",
+   "duration_s": 0.000207,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-not-prohibited]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001235,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-not-by-default]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001197,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-no-single-rule]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001141,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-neither-nor]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001147,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-2-prohibit]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001165,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-2-not-permitted]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001146,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-2-may-not-use]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001121,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-2-ban]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001136,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-2-no-credit]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001119,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-caution]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001121,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-concerns]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001118,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-not-allowed-unless]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001119,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-avoid]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001094,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-limited]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001157,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S-1-restrict]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001187,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-each-instructor]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001144,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-vary]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.00112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-left-to-faculty]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.00112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S0-differ]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.00114,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-thoughtful]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001122,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-welcome]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001107,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-support-learning]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-adopting]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-may-use]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001109,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+1-responsible]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+2-embrace]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001117,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+2-curriculum]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001125,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+2-transforming]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001116,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[S+2-required]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-academic-integrity]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001122,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-honor-code]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001094,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-originality]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001102,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-misrepresent]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001125,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-dishonesty]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.0011,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-conduct]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001096,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[I-plagiarism]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-collaborators]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001105,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-teamwork]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001091,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-collab-problem]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.00115,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-teammate]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.00111,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-partners]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001134,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-group-work]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001148,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-co-design]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001114,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[C-together]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001133,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[K-employers]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001093,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[K-industry]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001092,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[K-careers]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001102,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[K-internship]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001124,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_rule_is_grounded_in_dev_text[K-job]",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 56,
+   "body_sha256": "8afc01eacb3c35287dad0ba9d51765c3c6c823514b597659a53bff9fa8feff98",
+   "status": "passed",
+   "duration_s": 0.001096,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_every_coded_value_traces_to_a_rule",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 66,
+   "body_sha256": "fab4790c68517ca9a1ec7408dade4ef5f4b4c88a6ed62b7939356f44ff998555",
+   "status": "passed",
+   "duration_s": 0.093043,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_coder_uses_no_llm_or_network",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 84,
+   "body_sha256": "c303022e2a275351f7aaf3b91c85c5e7a000a5334d87354308efb75b4ec6f127",
+   "status": "passed",
+   "duration_s": 0.002815,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_negation_rules_precede_their_cue_words",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 93,
+   "body_sha256": "2ff9d7719c9d36ec15e0851b8cd94ec0c109d9af562cc284af8583c3cd839113",
+   "status": "passed",
+   "duration_s": 0.000555,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_committed_coded_statements_are_current",
+   "req_ids": [
+    "ANL-02"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 106,
+   "body_sha256": "34f8fbb6fd6c1f05b0e4235f9ff2f49543cd4cef300cde2ee7510b544668fce3",
+   "status": "passed",
+   "duration_s": 0.075121,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_coder_never_opens_the_truth_file",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 115,
+   "body_sha256": "7eb7ba8eb4fc210992c1b86b4f0a787480734aa228df70ead74a3d46925a036b",
+   "status": "passed",
+   "duration_s": 0.072379,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_analysis_package_never_imports_evaluation",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 132,
+   "body_sha256": "4a2139c8e5f8edeb08ecec57d71f493ca376a859fb646511bacd1e6df23a7b1d",
+   "status": "passed",
+   "duration_s": 0.017072,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_dev_truth_loader_returns_only_dev_statements",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 142,
+   "body_sha256": "d0dffaf79dca6804a6caf7929db6e4c0e743d68720d66f763c2e3031b1c06045",
+   "status": "passed",
+   "duration_s": 0.002839,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_dev_report_is_unchanged_when_held_out_labels_are_scrambled",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 152,
+   "body_sha256": "3b99ba8519a9c443080a128288db22bee3a1d4d5a7b3dfc20365373ea3c33077",
+   "status": "passed",
+   "duration_s": 0.168948,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_no_held_out_only_wording_in_rules_or_codebook",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 175,
+   "body_sha256": "166b92b4ff3ea7ed045f9ec2e320f1b2f4947aa5c9aa5420921d9bd2b93438c6",
+   "status": "passed",
+   "duration_s": 0.007506,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_coder.py::test_codebook_examples_are_dev_text",
+   "req_ids": [
+    "ANL-02",
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_coder.py",
+   "line": 189,
+   "body_sha256": "d5b438db6f3aab4ae23745b4a2e9de31aed51545116643be2e1735357075e271",
+   "status": "passed",
+   "duration_s": 0.001339,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_cluster_bootstrap_resamples_whole_institutions_deterministically",
+   "req_ids": [
+    "ANL-05",
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 27,
+   "body_sha256": "bd6c2d0e237c7dd2cbc279b162d1941b83ff52065526c09c99a7080c3495cd11",
+   "status": "passed",
+   "duration_s": 0.000695,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_identical_institutions_give_zero_width_interval",
+   "req_ids": [
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 41,
+   "body_sha256": "72dee2ac0af48f792159ff04a0977a3c30fb17abc07dbe20fbe2be9bf4c747ff",
+   "status": "passed",
+   "duration_s": 0.000906,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_clustered_intervals_are_wider_than_row_level_intervals",
+   "req_ids": [
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "property",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 50,
+   "body_sha256": "ef72240d55460336bcbab4521a5f32c219637534940ac58a849ce440830165fd",
+   "status": "passed",
+   "duration_s": 0.149173,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_descriptives_record_bootstrap_settings",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 76,
+   "body_sha256": "d1efdd222ed02f0c4f480bfd61416ac083a47bf7c162b1cbb442527df1ccf0ef",
+   "status": "passed",
+   "duration_s": 0.000623,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_policy_estimates_match_direct_computation[level]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 83,
+   "body_sha256": "468a8918c0efc5f53c511f9d5bfb9a2b61b76576124b5724ba2348fe20034e36",
+   "status": "passed",
+   "duration_s": 0.006611,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_policy_estimates_match_direct_computation[is_se_label]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 83,
+   "body_sha256": "468a8918c0efc5f53c511f9d5bfb9a2b61b76576124b5724ba2348fe20034e36",
+   "status": "passed",
+   "duration_s": 0.005723,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_policy_estimates_match_direct_computation[term]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 83,
+   "body_sha256": "468a8918c0efc5f53c511f9d5bfb9a2b61b76576124b5724ba2348fe20034e36",
+   "status": "passed",
+   "duration_s": 0.005655,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_policy_estimates_match_direct_computation[census_region]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 83,
+   "body_sha256": "468a8918c0efc5f53c511f9d5bfb9a2b61b76576124b5724ba2348fe20034e36",
+   "status": "passed",
+   "duration_s": 0.005534,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_policy_estimates_match_direct_computation[all]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 83,
+   "body_sha256": "468a8918c0efc5f53c511f9d5bfb9a2b61b76576124b5724ba2348fe20034e36",
+   "status": "passed",
+   "duration_s": 0.005427,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_statement_code_prevalence_matches_coded_data[carnegie]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 102,
+   "body_sha256": "08c83c735198483e57ffca4fae63663e477be181bf3201936864b792f60d761e",
+   "status": "passed",
+   "duration_s": 0.013204,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_statement_code_prevalence_matches_coded_data[year]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 102,
+   "body_sha256": "08c83c735198483e57ffca4fae63663e477be181bf3201936864b792f60d761e",
+   "status": "passed",
+   "duration_s": 0.013039,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_statement_code_prevalence_matches_coded_data[census_region]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 102,
+   "body_sha256": "08c83c735198483e57ffca4fae63663e477be181bf3201936864b792f60d761e",
+   "status": "passed",
+   "duration_s": 0.013338,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_statement_code_prevalence_matches_coded_data[all]",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 102,
+   "body_sha256": "08c83c735198483e57ffca4fae63663e477be181bf3201936864b792f60d761e",
+   "status": "passed",
+   "duration_s": 0.0047,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_missing_policy_excluded_not_imputed",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 119,
+   "body_sha256": "24ff947cbcca799b215bda54cde39e56398248fac4a1e8968b146f51f102b5b4",
+   "status": "passed",
+   "duration_s": 0.00017,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_census_region_and_overall_groupings_cover_every_row",
+   "req_ids": [
+    "ANL-05"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 127,
+   "body_sha256": "f8a403cda22f77b4617029c95421fb3bdc25b965a704e7346229e298f85ba09b",
+   "status": "passed",
+   "duration_s": 0.000168,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_allowed_uses_prevalence_by_level_and_se",
+   "req_ids": [
+    "ANL-11"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 142,
+   "body_sha256": "30d638849242b15baadb0d80f79b06caa5c498597e3ef8c0868b3d68ffd95ce7",
+   "status": "passed",
+   "duration_s": 0.024335,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_intro_gap_between_learning_uses_and_code_generation_shows_up",
+   "req_ids": [
+    "ANL-11"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 155,
+   "body_sha256": "c23d3f7c5c6e71e72a5713cbc0310d7426b8cbd16587057d1676d5d37c948c64",
+   "status": "passed",
+   "duration_s": 0.000164,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_assessment_by_policy_and_level_with_chi_square_and_cramers_v",
+   "req_ids": [
+    "ANL-12"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 166,
+   "body_sha256": "350741556e63af1eb3a0687d47f4ec9cb0c7e9a0be656ed4c1009ff3325179fb",
+   "status": "passed",
+   "duration_s": 0.00039,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_cramers_v_known_values",
+   "req_ids": [
+    "ANL-12"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 183,
+   "body_sha256": "dce9155f90fea8e7f9759bb38416a9894ed5dc7cd733553888ee63a42eb024e9",
+   "status": "passed",
+   "duration_s": 0.000182,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_committed_descriptive_results_are_current",
+   "req_ids": [
+    "ANL-05",
+    "ANL-11",
+    "ANL-12"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 190,
+   "body_sha256": "55ff5fe8c6bcb994e7e59aab4dcc2f34aa55b334c792f746edb1da03e9536aff",
+   "status": "passed",
+   "duration_s": 0.168092,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_score_computes_known_metrics",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 15,
+   "body_sha256": "d009a6fe2d050a934017cc0bc342e76b552847222c699d8af189629125155211",
+   "status": "passed",
+   "duration_s": 0.000787,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_heldout_report_is_current_and_rules_are_frozen",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 36,
+   "body_sha256": "e5855a540c9b08c2b117a6fda2993e752bb91647427cd5c51205205c9a1911c5",
+   "status": "passed",
+   "duration_s": 0.100884,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_heldout_report_covers_the_held_out_half_and_reports_target_honestly",
+   "req_ids": [
+    "ANL-03"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 48,
+   "body_sha256": "df9a8e2cff7f36371c7a52cf1974629544ccc99b85ab675f2dd5822517e695ca",
+   "status": "passed",
+   "duration_s": 0.001561,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_hand_sample_is_30_held_out_statements",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 61,
+   "body_sha256": "a26e1c76d3240d68782148482f1d020075d2fe8bc61caf107d0721b614c63ddd",
+   "status": "passed",
+   "duration_s": 0.001403,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_hand_sample_header_comment_names_aayush",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 75,
+   "body_sha256": "8c68161ae21f32f83a6977aac75104cf7f019c0a8799bf7cfe7fa24da0f2c2c3",
+   "status": "passed",
+   "duration_s": 0.000179,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_hand_sample_values_are_blank_or_valid",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 83,
+   "body_sha256": "f58c1f293569c4532728534caf10092f30bdeff98ffdaa90460a8d8baa2b8d89",
+   "status": "passed",
+   "duration_s": 0.000292,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_sample_is_never_overwritten_once_coding_has_started",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 92,
+   "body_sha256": "ef82f60d89c78ba40cacedad7d33908a0e029889f8c0285b9a2d84941d462ea4",
+   "status": "passed",
+   "duration_s": 0.002826,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_cohen_kappa_known_values",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 108,
+   "body_sha256": "43f82c434031a061fd112e18ce06fcb81a845de4403ec9fe8765ce2b28e36889",
+   "status": "passed",
+   "duration_s": 0.000217,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_kappa_pipeline_works_on_a_truth_filled_copy",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_eval.py",
+   "line": 118,
+   "body_sha256": "08f18fa2a4dc36746ca333f6462afd77d6106102232d84cb44c3681ee3bd698e",
+   "status": "passed",
+   "duration_s": 0.083936,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_eval.py::test_human_agreement_kappa_reported",
+   "req_ids": [
+    "ANL-04"
+   ],
+   "phase": "P2",
+   "kind": "integration",
+   "file": "tests/test_anl_eval.py",
+   "line": 138,
+   "body_sha256": "5bb8d64d39ea037ea9b96c33a30b2d92f068d035e38b4437074b7fdecf482529",
+   "status": "passed",
+   "duration_s": 0.076438,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_policy_by_level_and_by_se_associations",
+   "req_ids": [
+    "ANL-06"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 28,
+   "body_sha256": "606154b1ffc5f9544fc39915e85977ec77ed6bbe1e6fbabe7993e465d8203adc",
+   "status": "passed",
+   "duration_s": 0.000418,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_committed_association_is_current",
+   "req_ids": [
+    "ANL-06"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 41,
+   "body_sha256": "b82389932e493f51bfd0582f22f1cdc15626aa27b9250a921c7dd7da46384dea",
+   "status": "passed",
+   "duration_s": 0.025223,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_regression_reports_coefficients_cis_and_n",
+   "req_ids": [
+    "ANL-07"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 48,
+   "body_sha256": "91b6eb4746f37cd266a5c2b80097d0c6b23e8d70d7641e4f99f091ec9fe95c50",
+   "status": "passed",
+   "duration_s": 0.003152,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_committed_regression_is_current",
+   "req_ids": [
+    "ANL-07",
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 64,
+   "body_sha256": "3de59ebe462c4c905b3a62be20469526859520ffb02c8c08ed2e52e0fb0e601b",
+   "status": "passed",
+   "duration_s": 0.441028,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_main_inference_is_clustered_by_institution",
+   "req_ids": [
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 77,
+   "body_sha256": "d6bcb2afe7c18c89318ce9803805a345652e7ddd8ad6dfb1c01bf765986b3398",
+   "status": "passed",
+   "duration_s": 0.000193,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_clustering_widens_institution_level_predictors",
+   "req_ids": [
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "property",
+   "file": "tests/test_anl_inference.py",
+   "line": 86,
+   "body_sha256": "eeb789a48043252c26dbc60a840bc9e9c1d22f8d4029d8330b8eff26a72f1634",
+   "status": "passed",
+   "duration_s": 0.000154,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_bootstrap_cross_check_agrees_with_sandwich",
+   "req_ids": [
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 96,
+   "body_sha256": "79dcc22de410dc749e4e1ac0060c37cd8a636775d774fc170166fe8535a3ae0d",
+   "status": "passed",
+   "duration_s": 0.000165,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_inference.py::test_ratio_ci_delta_method",
+   "req_ids": [
+    "ANL-07"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 104,
+   "body_sha256": "662bf34326f349c38998a3819908ff511079933234cf5e23ddf312e3b79d7294",
+   "status": "passed",
+   "duration_s": 0.000754,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_says_synthetic_up_front",
+   "req_ids": [
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 15,
+   "body_sha256": "98a2270746419dbea88f885af877920e4b16ab549aad20ca0d3fd348d0381ef1",
+   "status": "passed",
+   "duration_s": 0.000288,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_covers_every_analysis_and_the_limits",
+   "req_ids": [
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 23,
+   "body_sha256": "3217c0a5149ae1b8913e76d695ee8217e4f038c4ec4908f2e3f7ddba1bab857d",
+   "status": "passed",
+   "duration_s": 0.000201,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[descriptives]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000465,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[allowed_uses]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000224,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[assessment]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.00022,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[association]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000213,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[regression]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000217,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[rhetoric]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000214,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_states_inference_method_for_each_result[recovery]",
+   "req_ids": [
+    "ANL-14",
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 35,
+   "body_sha256": "e5624ae39bc92b4461ab8b3fddf910863f5187527acdb83aca8eef70e413a9e3",
+   "status": "passed",
+   "duration_s": 0.000216,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_has_no_hardcoded_result_numbers",
+   "req_ids": [
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 47,
+   "body_sha256": "c4d7ff1198a1e6545739e3dec71f5020697f4b861aaadd44cec5cae2423fb625",
+   "status": "passed",
+   "duration_s": 0.00028,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_methods.py::test_methods_documents_the_far_from_negation_limit",
+   "req_ids": [
+    "ANL-10"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_methods.py",
+   "line": 54,
+   "body_sha256": "3d782a2a9b0a90a3db1642fd7820c9e03a1c572260c64c07e81226340141e11e",
+   "status": "passed",
+   "duration_s": 0.000164,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_data06_intro_more_restrictive_than_upper",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 31,
+   "body_sha256": "6d673f086ef79a14ef10afe157973e48c1d25bb1602e04e82810ce143faab212",
+   "status": "passed",
+   "duration_s": 0.000446,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_data07_se_more_permissive_at_same_level",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 39,
+   "body_sha256": "097219e039ab9e7bbc30d2297272060211b8f07b61e06f904233705607dc2899",
+   "status": "passed",
+   "duration_s": 0.00023,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_data08_permissiveness_rises_each_term",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 46,
+   "body_sha256": "e47f05968da11edb1da4db71c014ec66751e4bdec32ea6e7cf46c707010f3690",
+   "status": "passed",
+   "duration_s": 0.000197,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_data09_r1_more_positive_coded_stance",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 55,
+   "body_sha256": "f80b93d0adf3dabd4a849fd2dca3b0314452b195a1793d48700a56d09db324cb",
+   "status": "passed",
+   "duration_s": 0.000155,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_data10_null_not_significant_under_clustering",
+   "req_ids": [
+    "ANL-08",
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 64,
+   "body_sha256": "e37804fd31ffb43bba201d6fbadbb7cb7f89f8b632fb523139f21b17c475bd57",
+   "status": "passed",
+   "duration_s": 0.000146,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_effect_ratios_within_25_percent_of_planted",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 72,
+   "body_sha256": "315c3ff9acc98d6354146767f8526c63457732fe1b2ef981b9af3b3057818b98",
+   "status": "passed",
+   "duration_s": 0.006352,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_clustered_ci_covers_planted_value_on_at_least_4_of_5_seeds",
+   "req_ids": [
+    "ANL-08",
+    "ANL-14"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_recovery.py",
+   "line": 92,
+   "body_sha256": "35dbe2e99132c09d04cf8eec5a3f1c6d0ea66a5591e020e007fdc32c6f256675",
+   "status": "passed",
+   "duration_s": 0.000162,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_recovery.py::test_committed_recovery_is_current",
+   "req_ids": [
+    "ANL-08"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_recovery.py",
+   "line": 105,
+   "body_sha256": "f92d47fded9140fdad1b463bbedcccccbe70d46a478e2c606097261c945170ef",
+   "status": "passed",
+   "duration_s": 2.642354,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_rhetoric.py::test_institution_scores_are_standardized_and_gap_defined",
+   "req_ids": [
+    "ANL-13"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_rhetoric.py",
+   "line": 19,
+   "body_sha256": "a06ed3c57999c5aefd3da4635ede7fa451c5f5669d8f1f225ddfbc28b15aa0d0",
+   "status": "passed",
+   "duration_s": 0.001342,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_rhetoric.py::test_top_decile_lists_the_largest_gaps",
+   "req_ids": [
+    "ANL-13"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_rhetoric.py",
+   "line": 34,
+   "body_sha256": "2302216cde6396fa94a59a43663c66552672583f27d3d7532d524b6dce0576d2",
+   "status": "passed",
+   "duration_s": 0.000177,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_rhetoric.py::test_rhetoric_gap_institutions_are_recovered",
+   "req_ids": [
+    "ANL-13"
+   ],
+   "phase": "P2",
+   "kind": "recovery",
+   "file": "tests/test_anl_rhetoric.py",
+   "line": 47,
+   "body_sha256": "cdfffc7e6b1b2efe9c96afbed813e5b4dd573a41d882c63de17f502262fc0118",
+   "status": "passed",
+   "duration_s": 0.006447,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_rhetoric.py::test_committed_rhetoric_results_are_current",
+   "req_ids": [
+    "ANL-13"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_rhetoric.py",
+   "line": 65,
+   "body_sha256": "23cce1f92d83f3e7669354137d9c11a00599b898c8601e8447ff6296fc347312",
+   "status": "passed",
+   "duration_s": 0.154935,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_every_results_file_has_a_schema_and_vice_versa",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 22,
+   "body_sha256": "175d026698da809698e2cfeb4c37d9d36f72756c6a6a136404cae0c50cb0e172",
+   "status": "passed",
+   "duration_s": 0.000376,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.010831,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.014469,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.009242,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.006841,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.027511,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.100481,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.024864,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.012633,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005984,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.016975,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.013515,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.016579,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.003915,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.004847,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.008051,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001791,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000831,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001798,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.006089,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.030792,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.003701,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000626,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.002441,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.003525,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.018942,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.00064,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_malformed_values",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 52,
+   "body_sha256": "a9d6ac31513f725836191c812919e68ae79f0c70aaab0d5b9aa1561b46bc9150",
+   "status": "passed",
+   "duration_s": 0.006562,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_site_data_is_current",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 34,
+   "body_sha256": "3695df88cd910c653bbd415734fe53350897dbeb2988a5a54170bc530a058b9a",
+   "status": "passed",
+   "duration_s": 0.230499,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_results_are_copied_unchanged_and_schema_valid",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 43,
+   "body_sha256": "eb0093d8f0db763dd98444cde501b07e33719b47c3d469705f69cffb3710a0db",
+   "status": "passed",
+   "duration_s": 0.000563,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_schema_invalid_results_stop_the_build",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 52,
+   "body_sha256": "97c1f5a9b75b3eba01acb06a5463f5f6afd225b97caa677afce43233c148b4a3",
+   "status": "passed",
+   "duration_s": 0.19509,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_no_ground_truth_reaches_the_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 67,
+   "body_sha256": "2b5407e37f9edae90e6eb754d76213c692a47c8a6d3d687435acf5c0594ded1d",
+   "status": "passed",
+   "duration_s": 0.025771,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_statement_labels_are_the_coders_not_the_truth",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 86,
+   "body_sha256": "1cca180f01e9e513d70f7eff99c205b115122fa665030fb69ff3b21365f9e0df",
+   "status": "passed",
+   "duration_s": 0.006996,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_row_files_are_labelled_synthetic_raw_rows",
+   "req_ids": [
+    "DASH-01",
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 103,
+   "body_sha256": "f3b62e725f15971f26c1c1f53870f46fc5997f47af319b37096322bffe46a053",
+   "status": "passed",
+   "duration_s": 0.021962,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_course_rows_match_clean_data",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 114,
+   "body_sha256": "db72cf1f6cc386b1c3359cd68541361d97cec5a7773a6db294ba4137a4d4e782",
+   "status": "passed",
+   "duration_s": 0.004527,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.885314,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.659094,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.70818,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.678896,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_displayed_number_matches_results_json",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 148,
+   "body_sha256": "b57e780091a1a9d9e6b9c9f0a0d8cf35480dab1a7636e668abb03565c66f5330",
+   "status": "passed",
+   "duration_s": 0.970361,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_chart_value_matches_its_source",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 162,
+   "body_sha256": "fd9a085479a17e2b23c3e78735d1ba5118f6783b1124dd2fed01a4e73d4d744e",
+   "status": "passed",
+   "duration_s": 0.015984,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_tables_and_tiles_show_no_unsourced_numbers",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 190,
+   "body_sha256": "87f24feb6ba3d24efa1efbc10f0c3819182727a3e254cc25bcab842c8d4fbec8",
+   "status": "passed",
+   "duration_s": 0.003852,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_synthetic_banner_visible_on_every_view",
+   "req_ids": [
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 204,
+   "body_sha256": "477b7e8e644ff326620495ad4e8ffd901c8d3e68a4fb64aade5ab0cbbbdda4c5",
+   "status": "passed",
+   "duration_s": 1.361309,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_each_chart_has_takeaway_table_toggle_and_source_link",
+   "req_ids": [
+    "DASH-05"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 222,
+   "body_sha256": "26f589c8c518f69ec182e4d26e175a2a38147557fd1537deaac9aae3c5c323bf",
+   "status": "passed",
+   "duration_s": 1.205562,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_statement_explorer_search_and_filters",
+   "req_ids": [
+    "DASH-04"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 252,
+   "body_sha256": "d1d6e7f150aa3147658df42d6e7b8b25797f8681fef28aaf5e57c7489243f919",
+   "status": "passed",
+   "duration_s": 0.316285,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_clicking_a_scatter_dot_opens_that_institution",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 289,
+   "body_sha256": "0f62d587cd6a3b856448d7f5733c63419c5c9eb889c1cdfa1dba062e8ec721e3",
+   "status": "passed",
+   "duration_s": 0.272319,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_drilldown_picker_and_deep_link",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 318,
+   "body_sha256": "e8820a30eb44ed04b076822f49835599d91b0b404d09e04c46cba1db9c9f7f09",
+   "status": "passed",
+   "duration_s": 0.363327,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_keyboard_navigation_and_theme_toggle",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 337,
+   "body_sha256": "68f27a30e0f2659abb5309bbe1b459e54166c29218017c57a27b7a3c2e6a26bc",
+   "status": "passed",
+   "duration_s": 0.353978,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_palettes_are_defined_for_both_themes",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 368,
+   "body_sha256": "ae8df10a41e2cecaefa552ef407214ff44e737f92d675ba36450d7ee725fcc46",
+   "status": "passed",
+   "duration_s": 0.000644,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_cdn_libraries_pinned_and_no_build_step",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 383,
+   "body_sha256": "9412210bf3c58ad366f2df381b82552596e5747f05419c2257e8a7e3490743b0",
+   "status": "passed",
+   "duration_s": 0.000827,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 410,
+   "body_sha256": "db4dfd9940643927cf17e1cd8a19695d57c2406bc72b4361a76a08ff92ea1461",
+   "status": "passed",
+   "duration_s": 0.171703,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_required_view_is_present_with_the_right_shape",
+   "req_ids": [
+    "DASH-03"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 428,
+   "body_sha256": "8be57c8b6f60dd0763483c353973e6e5c1e8d9fbefeb143d35986c8b772f8863",
+   "status": "passed",
+   "duration_s": 0.117055,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_course_rows_and_columns[2026]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 38,
+   "body_sha256": "b1803a67b76b88c294b8130a6333c18f5fefb88af3bcd4d4b1a74102d944891d",
+   "status": "passed",
+   "duration_s": 0.095599,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_course_rows_and_columns[1]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 38,
+   "body_sha256": "b1803a67b76b88c294b8130a6333c18f5fefb88af3bcd4d4b1a74102d944891d",
+   "status": "passed",
+   "duration_s": 0.091139,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_course_rows_and_columns[2]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 38,
+   "body_sha256": "b1803a67b76b88c294b8130a6333c18f5fefb88af3bcd4d4b1a74102d944891d",
+   "status": "passed",
+   "duration_s": 0.087353,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_course_rows_and_columns[3]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 38,
+   "body_sha256": "b1803a67b76b88c294b8130a6333c18f5fefb88af3bcd4d4b1a74102d944891d",
+   "status": "passed",
+   "duration_s": 0.086019,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_course_rows_and_columns[4]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 38,
+   "body_sha256": "b1803a67b76b88c294b8130a6333c18f5fefb88af3bcd4d4b1a74102d944891d",
+   "status": "passed",
+   "duration_s": 0.091292,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_policy_dependent_fields_follow_policy[2026]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 52,
+   "body_sha256": "1bdf5e89628c2dd80928c78a7b199fd39267aee5ef9293264661142d282028f9",
+   "status": "passed",
+   "duration_s": 0.009599,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_policy_dependent_fields_follow_policy[1]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 52,
+   "body_sha256": "1bdf5e89628c2dd80928c78a7b199fd39267aee5ef9293264661142d282028f9",
+   "status": "passed",
+   "duration_s": 0.009259,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_policy_dependent_fields_follow_policy[2]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 52,
+   "body_sha256": "1bdf5e89628c2dd80928c78a7b199fd39267aee5ef9293264661142d282028f9",
+   "status": "passed",
+   "duration_s": 0.008744,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_policy_dependent_fields_follow_policy[3]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 52,
+   "body_sha256": "1bdf5e89628c2dd80928c78a7b199fd39267aee5ef9293264661142d282028f9",
+   "status": "passed",
+   "duration_s": 0.008726,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_policy_dependent_fields_follow_policy[4]",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 52,
+   "body_sha256": "1bdf5e89628c2dd80928c78a7b199fd39267aee5ef9293264661142d282028f9",
+   "status": "passed",
+   "duration_s": 0.009384,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_same_course_keeps_its_identity_across_terms",
+   "req_ids": [
+    "DATA-04"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 68,
+   "body_sha256": "2bd36724de4001cb4e8bc72bb2c877e1f1db9ceec3e30e15fae0c0aafbd49b49",
+   "status": "passed",
+   "duration_s": 0.008722,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_more_restrictive_than_upper[2026]",
+   "req_ids": [
+    "DATA-06"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 77,
+   "body_sha256": "e763a7039bc2e11a2f84720f757f08fc17d5265d4d93ddb650297a11c8ecf407",
+   "status": "passed",
+   "duration_s": 0.00905,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_more_restrictive_than_upper[1]",
+   "req_ids": [
+    "DATA-06"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 77,
+   "body_sha256": "e763a7039bc2e11a2f84720f757f08fc17d5265d4d93ddb650297a11c8ecf407",
+   "status": "passed",
+   "duration_s": 0.030278,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_more_restrictive_than_upper[2]",
+   "req_ids": [
+    "DATA-06"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 77,
+   "body_sha256": "e763a7039bc2e11a2f84720f757f08fc17d5265d4d93ddb650297a11c8ecf407",
+   "status": "passed",
+   "duration_s": 0.008602,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_more_restrictive_than_upper[3]",
+   "req_ids": [
+    "DATA-06"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 77,
+   "body_sha256": "e763a7039bc2e11a2f84720f757f08fc17d5265d4d93ddb650297a11c8ecf407",
+   "status": "passed",
+   "duration_s": 0.008369,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_more_restrictive_than_upper[4]",
+   "req_ids": [
+    "DATA-06"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 77,
+   "body_sha256": "e763a7039bc2e11a2f84720f757f08fc17d5265d4d93ddb650297a11c8ecf407",
+   "status": "passed",
+   "duration_s": 0.008936,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[intermediate-2026]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008812,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[intermediate-1]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008644,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[intermediate-2]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008202,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[intermediate-3]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008165,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[intermediate-4]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008827,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[upper-2026]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008917,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[upper-1]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008724,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[upper-2]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.00835,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[upper-3]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008253,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[upper-4]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.009162,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[graduate-2026]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.009282,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[graduate-1]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008879,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[graduate-2]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008718,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[graduate-3]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008229,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_more_permissive_than_non_se_at_same_level[graduate-4]",
+   "req_ids": [
+    "DATA-07"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 86,
+   "body_sha256": "5077eb262cf8d2b430ce219fe1cad5e9a351995e416bb15e45baf022bd21f0ae",
+   "status": "passed",
+   "duration_s": 0.008763,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_permissiveness_rises_every_term[2026]",
+   "req_ids": [
+    "DATA-08"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 97,
+   "body_sha256": "3a30fb7c33532887fc81c172f0a254b2085481aed90c9de24196916306183c86",
+   "status": "passed",
+   "duration_s": 0.010483,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_permissiveness_rises_every_term[1]",
+   "req_ids": [
+    "DATA-08"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 97,
+   "body_sha256": "3a30fb7c33532887fc81c172f0a254b2085481aed90c9de24196916306183c86",
+   "status": "passed",
+   "duration_s": 0.010274,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_permissiveness_rises_every_term[2]",
+   "req_ids": [
+    "DATA-08"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 97,
+   "body_sha256": "3a30fb7c33532887fc81c172f0a254b2085481aed90c9de24196916306183c86",
+   "status": "passed",
+   "duration_s": 0.009727,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_permissiveness_rises_every_term[3]",
+   "req_ids": [
+    "DATA-08"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 97,
+   "body_sha256": "3a30fb7c33532887fc81c172f0a254b2085481aed90c9de24196916306183c86",
+   "status": "passed",
+   "duration_s": 0.009787,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_permissiveness_rises_every_term[4]",
+   "req_ids": [
+    "DATA-08"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 97,
+   "body_sha256": "3a30fb7c33532887fc81c172f0a254b2085481aed90c9de24196916306183c86",
+   "status": "passed",
+   "duration_s": 0.010523,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_control_effect_is_planted_as_exactly_zero",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 106,
+   "body_sha256": "420f5aa920bb4286e122d4d1833a5f5056b40326098db6ba2a8868652b919485",
+   "status": "passed",
+   "duration_s": 0.000139,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_public_private_gap_is_small_next_to_real_effects[2026]",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 112,
+   "body_sha256": "8bcfa72b76355745e0e62d0776cea415b557a3d6e48a46b23f76c2ba45161b31",
+   "status": "passed",
+   "duration_s": 0.01627,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_public_private_gap_is_small_next_to_real_effects[1]",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 112,
+   "body_sha256": "8bcfa72b76355745e0e62d0776cea415b557a3d6e48a46b23f76c2ba45161b31",
+   "status": "passed",
+   "duration_s": 0.015806,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_public_private_gap_is_small_next_to_real_effects[2]",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 112,
+   "body_sha256": "8bcfa72b76355745e0e62d0776cea415b557a3d6e48a46b23f76c2ba45161b31",
+   "status": "passed",
+   "duration_s": 0.036189,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_public_private_gap_is_small_next_to_real_effects[3]",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 112,
+   "body_sha256": "8bcfa72b76355745e0e62d0776cea415b557a3d6e48a46b23f76c2ba45161b31",
+   "status": "passed",
+   "duration_s": 0.014887,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_public_private_gap_is_small_next_to_real_effects[4]",
+   "req_ids": [
+    "DATA-10"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 112,
+   "body_sha256": "8bcfa72b76355745e0e62d0776cea415b557a3d6e48a46b23f76c2ba45161b31",
+   "status": "passed",
+   "duration_s": 0.016296,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_allows_learning_uses_not_code_generation[2026]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 141,
+   "body_sha256": "a0c9643ddbb44f8c3f2d7614047d551f388471b590159df29b02a789240ce059",
+   "status": "passed",
+   "duration_s": 0.009214,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_allows_learning_uses_not_code_generation[1]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 141,
+   "body_sha256": "a0c9643ddbb44f8c3f2d7614047d551f388471b590159df29b02a789240ce059",
+   "status": "passed",
+   "duration_s": 0.008862,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_allows_learning_uses_not_code_generation[2]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 141,
+   "body_sha256": "a0c9643ddbb44f8c3f2d7614047d551f388471b590159df29b02a789240ce059",
+   "status": "passed",
+   "duration_s": 0.008559,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_allows_learning_uses_not_code_generation[3]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 141,
+   "body_sha256": "a0c9643ddbb44f8c3f2d7614047d551f388471b590159df29b02a789240ce059",
+   "status": "passed",
+   "duration_s": 0.008924,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_intro_allows_learning_uses_not_code_generation[4]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 141,
+   "body_sha256": "a0c9643ddbb44f8c3f2d7614047d551f388471b590159df29b02a789240ce059",
+   "status": "passed",
+   "duration_s": 0.009108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[code_generation-2026]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009937,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[code_generation-1]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.00973,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[code_generation-2]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009193,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[code_generation-3]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.00902,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[code_generation-4]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009734,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[testing-2026]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009671,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[testing-1]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009439,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[testing-2]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.00912,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[testing-3]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.008957,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_se_courses_most_likely_to_allow_generation_and_testing[testing-4]",
+   "req_ids": [
+    "DATA-15"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 152,
+   "body_sha256": "ad9444d298adb025e518338a7313c16b776f32a84097a3af3e62688f962564ac",
+   "status": "passed",
+   "duration_s": 0.009937,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_restrictive_policies_use_exams_and_oral_defenses[2026]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 162,
+   "body_sha256": "e8a55f16df621241031a51decd8d964bbfde4b69daab9641eeb30a9081acf41b",
+   "status": "passed",
+   "duration_s": 0.009138,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_restrictive_policies_use_exams_and_oral_defenses[1]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 162,
+   "body_sha256": "e8a55f16df621241031a51decd8d964bbfde4b69daab9641eeb30a9081acf41b",
+   "status": "passed",
+   "duration_s": 0.008675,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_restrictive_policies_use_exams_and_oral_defenses[2]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 162,
+   "body_sha256": "e8a55f16df621241031a51decd8d964bbfde4b69daab9641eeb30a9081acf41b",
+   "status": "passed",
+   "duration_s": 0.00825,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_restrictive_policies_use_exams_and_oral_defenses[3]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 162,
+   "body_sha256": "e8a55f16df621241031a51decd8d964bbfde4b69daab9641eeb30a9081acf41b",
+   "status": "passed",
+   "duration_s": 0.008198,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_restrictive_policies_use_exams_and_oral_defenses[4]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 162,
+   "body_sha256": "e8a55f16df621241031a51decd8d964bbfde4b69daab9641eeb30a9081acf41b",
+   "status": "passed",
+   "duration_s": 0.008776,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_cochran_armitage_matches_known_values",
+   "req_ids": [],
+   "phase": "untagged",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 193,
+   "body_sha256": "69226a0c9d609d6c3bd2ae159113740479c9e0fcc604986176ce79a9cb8ef69a",
+   "status": "passed",
+   "duration_s": 0.000317,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_assessment_trends_across_policy_are_significant_on_most_seeds",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "property",
+   "file": "tests/test_data_courses.py",
+   "line": 203,
+   "body_sha256": "d9ce627fa8c38958b84b147bf22431ab1afa7033a4faeaf6d380f2020fd52661",
+   "status": "passed",
+   "duration_s": 0.07571,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_planted_exam_share_decreases_at_every_policy_level",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 221,
+   "body_sha256": "892ffc63f1221331d40d87714c11af917960ae57919145544488ac2a1bf0cb47",
+   "status": "passed",
+   "duration_s": 0.000159,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_process_logs_and_ai_critique_mostly_at_policy_2_plus[2026]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 232,
+   "body_sha256": "ad81af39a38070a896a5979aa96c7b88e9d8e1f9ca887a6eff55f9c9dd62373d",
+   "status": "passed",
+   "duration_s": 0.009431,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_process_logs_and_ai_critique_mostly_at_policy_2_plus[1]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 232,
+   "body_sha256": "ad81af39a38070a896a5979aa96c7b88e9d8e1f9ca887a6eff55f9c9dd62373d",
+   "status": "passed",
+   "duration_s": 0.008816,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_process_logs_and_ai_critique_mostly_at_policy_2_plus[2]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 232,
+   "body_sha256": "ad81af39a38070a896a5979aa96c7b88e9d8e1f9ca887a6eff55f9c9dd62373d",
+   "status": "passed",
+   "duration_s": 0.008457,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_process_logs_and_ai_critique_mostly_at_policy_2_plus[3]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 232,
+   "body_sha256": "ad81af39a38070a896a5979aa96c7b88e9d8e1f9ca887a6eff55f9c9dd62373d",
+   "status": "passed",
+   "duration_s": 0.007843,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_courses.py::test_process_logs_and_ai_critique_mostly_at_policy_2_plus[4]",
+   "req_ids": [
+    "DATA-16"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_courses.py",
+   "line": 232,
+   "body_sha256": "ad81af39a38070a896a5979aa96c7b88e9d8e1f9ca887a6eff55f9c9dd62373d",
+   "status": "passed",
+   "duration_s": 0.00847,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_dictionary.py::test_every_column_documented[institutions]",
+   "req_ids": [
+    "DATA-14"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_dictionary.py",
+   "line": 17,
+   "body_sha256": "bd6a5f28abe17deb529a82f69fd2a8dd56adf3e9d5c9a4cc61d05df72d98ee49",
+   "status": "passed",
+   "duration_s": 0.006607,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_dictionary.py::test_every_column_documented[statements]",
+   "req_ids": [
+    "DATA-14"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_dictionary.py",
+   "line": 17,
+   "body_sha256": "bd6a5f28abe17deb529a82f69fd2a8dd56adf3e9d5c9a4cc61d05df72d98ee49",
+   "status": "passed",
+   "duration_s": 0.006194,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_dictionary.py::test_every_column_documented[courses]",
+   "req_ids": [
+    "DATA-14"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_dictionary.py",
+   "line": 17,
+   "body_sha256": "bd6a5f28abe17deb529a82f69fd2a8dd56adf3e9d5c9a4cc61d05df72d98ee49",
+   "status": "passed",
+   "duration_s": 0.006474,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_dictionary.py::test_ground_truth_keys_documented",
+   "req_ids": [
+    "DATA-14"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_dictionary.py",
+   "line": 26,
+   "body_sha256": "a66b2ce0d9f636f9f10f12848623bcf2cd4370006035a01637ed0b8ca984d41d",
+   "status": "passed",
+   "duration_s": 0.006027,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_dictionary.py::test_states_data_is_synthetic",
+   "req_ids": [
+    "DATA-14"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_dictionary.py",
+   "line": 34,
+   "body_sha256": "2ef8e31fa74c2ed1f7b3ea2bb6d8bd5aa60567efd6949033d74a7867178d3a62",
+   "status": "passed",
+   "duration_s": 0.000158,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_same_seed_gives_byte_identical_files",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 11,
+   "body_sha256": "250392eb22d3dc08f0b685834885493c79653e875532f104f33b7bd96d2ba558",
+   "status": "passed",
+   "duration_s": 0.171665,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_different_seed_gives_different_data",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 24,
+   "body_sha256": "0b6e3c4879d1e1bd89ddc9b7efead1b000deac711964f3a3a09b2f9c37b1323a",
+   "status": "passed",
+   "duration_s": 0.000494,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_cli_accepts_seed_flag",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 30,
+   "body_sha256": "cb083a543955f9ece1e13b450ebfe836cb84d22955a11401ffac70185f14d37b",
+   "status": "passed",
+   "duration_s": 0.086048,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_reference_list_has_about_150_real_universities",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 37,
+   "body_sha256": "b5034f46595eee4664bd61dcb4b9fa754cb24b0f78fdbbbe91a5bc951a381fbd",
+   "status": "passed",
+   "duration_s": 0.000281,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institutions_have_150_unique_fictional_names[2026]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 45,
+   "body_sha256": "1a68f9137873757a441bc3664710a7c8772b9f012da5a54fc1742019f7e4edf1",
+   "status": "passed",
+   "duration_s": 0.006209,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institutions_have_150_unique_fictional_names[1]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 45,
+   "body_sha256": "1a68f9137873757a441bc3664710a7c8772b9f012da5a54fc1742019f7e4edf1",
+   "status": "passed",
+   "duration_s": 0.006132,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institutions_have_150_unique_fictional_names[2]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 45,
+   "body_sha256": "1a68f9137873757a441bc3664710a7c8772b9f012da5a54fc1742019f7e4edf1",
+   "status": "passed",
+   "duration_s": 0.005803,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institutions_have_150_unique_fictional_names[3]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 45,
+   "body_sha256": "1a68f9137873757a441bc3664710a7c8772b9f012da5a54fc1742019f7e4edf1",
+   "status": "passed",
+   "duration_s": 0.005743,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_generator_rejects_names_on_the_real_list",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 58,
+   "body_sha256": "b16e5ac1516e1e3101ed25e5afffa8cbb2bd8e109acd751e119f8ef848d07a38",
+   "status": "passed",
+   "duration_s": 0.061934,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institution_columns",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 69,
+   "body_sha256": "019f332f151675bcc2e086afb2106b9e809d353db0259fa7d4215bb2c6bdaada",
+   "status": "passed",
+   "duration_s": 0.006023,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_row_counts_within_ten_percent[committed]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 25,
+   "body_sha256": "43b99bf1bb958388254da64f1c53297e0774296659bac74d201ccd1e0ec6d0f2",
+   "status": "passed",
+   "duration_s": 0.005848,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_institution_types_and_values[committed]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 33,
+   "body_sha256": "54d5291cca1b2a0f5aea9b1e668b43f69f42c133f913e13aaff1c4eb06c18724",
+   "status": "passed",
+   "duration_s": 0.000544,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_statement_types_and_values[committed]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 49,
+   "body_sha256": "850c9b75b3ff323d868ad2919c0193bca33b5f944669e76d0d3b68d3f313400e",
+   "status": "passed",
+   "duration_s": 0.00072,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_course_types_and_values[committed]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 63,
+   "body_sha256": "3d4e90a4ce0f7b8027acc78a8e053ed2ae19ea5b45d055977ffd0dafef686850",
+   "status": "passed",
+   "duration_s": 0.005673,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_referential_integrity[committed]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 86,
+   "body_sha256": "a715f52d43246680e3a9869d1b9cac5d121a4ac39251d2ca12f62acfde700f32",
+   "status": "passed",
+   "duration_s": 0.001403,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_row_counts_within_ten_percent[seed7]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 25,
+   "body_sha256": "43b99bf1bb958388254da64f1c53297e0774296659bac74d201ccd1e0ec6d0f2",
+   "status": "passed",
+   "duration_s": 0.006559,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_institution_types_and_values[seed7]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 33,
+   "body_sha256": "54d5291cca1b2a0f5aea9b1e668b43f69f42c133f913e13aaff1c4eb06c18724",
+   "status": "passed",
+   "duration_s": 0.000476,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_statement_types_and_values[seed7]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 49,
+   "body_sha256": "850c9b75b3ff323d868ad2919c0193bca33b5f944669e76d0d3b68d3f313400e",
+   "status": "passed",
+   "duration_s": 0.000645,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_course_types_and_values[seed7]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 63,
+   "body_sha256": "3d4e90a4ce0f7b8027acc78a8e053ed2ae19ea5b45d055977ffd0dafef686850",
+   "status": "passed",
+   "duration_s": 0.005614,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_referential_integrity[seed7]",
+   "req_ids": [
+    "DATA-13"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 86,
+   "body_sha256": "a715f52d43246680e3a9869d1b9cac5d121a4ac39251d2ca12f62acfde700f32",
+   "status": "passed",
+   "duration_s": 0.0015,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_schema.py::test_committed_data_matches_generator",
+   "req_ids": [
+    "DATA-13",
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_schema.py",
+   "line": 103,
+   "body_sha256": "c9743c3c16cf84a5c1cc0bd5407eb3f1dfb7830fa5152dbb49f6e2d908676e95",
+   "status": "passed",
+   "duration_s": 0.086318,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_statement_counts_and_fields[2026]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 24,
+   "body_sha256": "90ffb6d4034062e90ab36e23dd7c19acb1e4cd1f5928ef93be9e1fcbf80a1d55",
+   "status": "passed",
+   "duration_s": 0.006721,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_statement_counts_and_fields[1]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 24,
+   "body_sha256": "90ffb6d4034062e90ab36e23dd7c19acb1e4cd1f5928ef93be9e1fcbf80a1d55",
+   "status": "passed",
+   "duration_s": 0.006518,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_statement_counts_and_fields[2]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 24,
+   "body_sha256": "90ffb6d4034062e90ab36e23dd7c19acb1e4cd1f5928ef93be9e1fcbf80a1d55",
+   "status": "passed",
+   "duration_s": 0.006557,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_statement_counts_and_fields[3]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 24,
+   "body_sha256": "90ffb6d4034062e90ab36e23dd7c19acb1e4cd1f5928ef93be9e1fcbf80a1d55",
+   "status": "passed",
+   "duration_s": 0.006104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_statement_counts_and_fields[4]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 24,
+   "body_sha256": "90ffb6d4034062e90ab36e23dd7c19acb1e4cd1f5928ef93be9e1fcbf80a1d55",
+   "status": "passed",
+   "duration_s": 0.006558,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_text_is_assembled_from_phrase_banks_keyed_to_labels[2026]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 47,
+   "body_sha256": "5ca5144cce007a96e62b60956f7c1e90b55219a392aa670b92f514242b4702ae",
+   "status": "passed",
+   "duration_s": 0.017507,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_text_is_assembled_from_phrase_banks_keyed_to_labels[1]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 47,
+   "body_sha256": "5ca5144cce007a96e62b60956f7c1e90b55219a392aa670b92f514242b4702ae",
+   "status": "passed",
+   "duration_s": 0.017737,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_phrase_banks_have_variety",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 62,
+   "body_sha256": "c56d27a905d9119f6ba1de9e6d14c7a4d79f9ed99f4b2f15ffd06f4150eb8c28",
+   "status": "passed",
+   "duration_s": 0.006674,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_hard_cases_are_in_banks_and_in_the_data",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 76,
+   "body_sha256": "3ebd9378325dd2f5a33adccbf81b8d486ae1998def5a106c258827b70c9d466d",
+   "status": "passed",
+   "duration_s": 0.006202,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_reserved_phrasings_appear_only_in_held_out_half[2026]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 96,
+   "body_sha256": "d9bb9cd46ee84a9f9ec158f91c30b01efca217cd4921dd2c74a2d9f357dde0e4",
+   "status": "passed",
+   "duration_s": 0.008293,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_reserved_phrasings_appear_only_in_held_out_half[1]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 96,
+   "body_sha256": "d9bb9cd46ee84a9f9ec158f91c30b01efca217cd4921dd2c74a2d9f357dde0e4",
+   "status": "passed",
+   "duration_s": 0.008306,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_reserved_phrasings_appear_only_in_held_out_half[2]",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 96,
+   "body_sha256": "d9bb9cd46ee84a9f9ec158f91c30b01efca217cd4921dd2c74a2d9f357dde0e4",
+   "status": "passed",
+   "duration_s": 0.008221,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_hidden_labels_are_not_in_statements_csv",
+   "req_ids": [
+    "DATA-03"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 118,
+   "body_sha256": "aab29852c34b6587adc24e6e73fb315193f3f163ad9fbc6c9af41e6c7ea89f2b",
+   "status": "passed",
+   "duration_s": 0.006137,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_r1_statements_are_more_positive[2026]",
+   "req_ids": [
+    "DATA-09"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 126,
+   "body_sha256": "f105db6546ba096339e913e747fccb98749aa84a871945ae9ef250dc8fcea18b",
+   "status": "passed",
+   "duration_s": 0.006196,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_r1_statements_are_more_positive[1]",
+   "req_ids": [
+    "DATA-09"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 126,
+   "body_sha256": "f105db6546ba096339e913e747fccb98749aa84a871945ae9ef250dc8fcea18b",
+   "status": "passed",
+   "duration_s": 0.006103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_r1_statements_are_more_positive[2]",
+   "req_ids": [
+    "DATA-09"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 126,
+   "body_sha256": "f105db6546ba096339e913e747fccb98749aa84a871945ae9ef250dc8fcea18b",
+   "status": "passed",
+   "duration_s": 0.006053,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_r1_statements_are_more_positive[3]",
+   "req_ids": [
+    "DATA-09"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 126,
+   "body_sha256": "f105db6546ba096339e913e747fccb98749aa84a871945ae9ef250dc8fcea18b",
+   "status": "passed",
+   "duration_s": 0.005873,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_r1_statements_are_more_positive[4]",
+   "req_ids": [
+    "DATA-09"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 126,
+   "body_sha256": "f105db6546ba096339e913e747fccb98749aa84a871945ae9ef250dc8fcea18b",
+   "status": "passed",
+   "duration_s": 0.006215,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_labels_correlate_with_stance_as_documented[2026]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 144,
+   "body_sha256": "5a6efa5c3dbfc321a635f94037ec5245f33a50e22718fbf608cd0a4342a5fffa",
+   "status": "passed",
+   "duration_s": 0.006596,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_labels_correlate_with_stance_as_documented[1]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 144,
+   "body_sha256": "5a6efa5c3dbfc321a635f94037ec5245f33a50e22718fbf608cd0a4342a5fffa",
+   "status": "passed",
+   "duration_s": 0.006559,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_labels_correlate_with_stance_as_documented[2]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 144,
+   "body_sha256": "5a6efa5c3dbfc321a635f94037ec5245f33a50e22718fbf608cd0a4342a5fffa",
+   "status": "passed",
+   "duration_s": 0.006142,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_labels_correlate_with_stance_as_documented[3]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 144,
+   "body_sha256": "5a6efa5c3dbfc321a635f94037ec5245f33a50e22718fbf608cd0a4342a5fffa",
+   "status": "passed",
+   "duration_s": 0.006145,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_labels_correlate_with_stance_as_documented[4]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 144,
+   "body_sha256": "5a6efa5c3dbfc321a635f94037ec5245f33a50e22718fbf608cd0a4342a5fffa",
+   "status": "passed",
+   "duration_s": 0.006499,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_stance_tracks_institution_policy_effect_outside_rhetoric_gap[2026]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 159,
+   "body_sha256": "0f7df69e14f16bef2de424be5bc24d8c46ec185fc28cc5000ef42ec99e8d74ce",
+   "status": "passed",
+   "duration_s": 0.00624,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_stance_tracks_institution_policy_effect_outside_rhetoric_gap[1]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 159,
+   "body_sha256": "0f7df69e14f16bef2de424be5bc24d8c46ec185fc28cc5000ef42ec99e8d74ce",
+   "status": "passed",
+   "duration_s": 0.00612,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_stance_tracks_institution_policy_effect_outside_rhetoric_gap[2]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 159,
+   "body_sha256": "0f7df69e14f16bef2de424be5bc24d8c46ec185fc28cc5000ef42ec99e8d74ce",
+   "status": "passed",
+   "duration_s": 0.005882,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_stance_tracks_institution_policy_effect_outside_rhetoric_gap[3]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 159,
+   "body_sha256": "0f7df69e14f16bef2de424be5bc24d8c46ec185fc28cc5000ef42ec99e8d74ce",
+   "status": "passed",
+   "duration_s": 0.00584,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_statements.py::test_stance_tracks_institution_policy_effect_outside_rhetoric_gap[4]",
+   "req_ids": [
+    "DATA-11"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_statements.py",
+   "line": 159,
+   "body_sha256": "0f7df69e14f16bef2de424be5bc24d8c46ec185fc28cc5000ef42ec99e8d74ce",
+   "status": "passed",
+   "duration_s": 0.006181,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_analysis_code_never_references_ground_truth",
+   "req_ids": [
+    "DATA-05"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 25,
+   "body_sha256": "9fbb98f451e8293ebcdb1dc06c6ea75384c3f60269e614b82a01c7ff1c571ba2",
+   "status": "passed",
+   "duration_s": 0.000788,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_ground_truth_grep_catches_violations",
+   "req_ids": [
+    "DATA-05"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 36,
+   "body_sha256": "74ebd1f1fe8d25f1cf2b24629a9ede1d87c83a3973f4a8119089ecca2323ba70",
+   "status": "passed",
+   "duration_s": 0.001041,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_hidden_values_only_in_ground_truth",
+   "req_ids": [
+    "DATA-05"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 45,
+   "body_sha256": "0c8016a7e130ae258b7cf734db4d0c2917152a68ceecbf2cb09154cd85adbc33",
+   "status": "passed",
+   "duration_s": 0.006003,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_ground_truth_records_exact_effect_parameters",
+   "req_ids": [
+    "DATA-05"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 61,
+   "body_sha256": "494b245f113358a188c2d4dc46dcd0c4f67062651e99a8760f8c8651558fadd2",
+   "status": "passed",
+   "duration_s": 0.005845,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_8_percent_of_policies_missing_with_derived_fields_blank[2026]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 83,
+   "body_sha256": "c8d4b8e99275f63773694616465bf3140fed6c043f69c23af88118b1651ed7b5",
+   "status": "passed",
+   "duration_s": 0.006897,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_8_percent_of_policies_missing_with_derived_fields_blank[1]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 83,
+   "body_sha256": "c8d4b8e99275f63773694616465bf3140fed6c043f69c23af88118b1651ed7b5",
+   "status": "passed",
+   "duration_s": 0.006791,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_8_percent_of_policies_missing_with_derived_fields_blank[2]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 83,
+   "body_sha256": "c8d4b8e99275f63773694616465bf3140fed6c043f69c23af88118b1651ed7b5",
+   "status": "passed",
+   "duration_s": 0.007037,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_missingness_is_unrelated_to_true_policy[2026]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 99,
+   "body_sha256": "d894ddc1fe992c7e7df556971244e4c822615dc2498bd87ce7feb8ccaca5ce5c",
+   "status": "passed",
+   "duration_s": 0.006775,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_missingness_is_unrelated_to_true_policy[1]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 99,
+   "body_sha256": "d894ddc1fe992c7e7df556971244e4c822615dc2498bd87ce7feb8ccaca5ce5c",
+   "status": "passed",
+   "duration_s": 0.006439,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_missingness_is_unrelated_to_true_policy[2]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 99,
+   "body_sha256": "d894ddc1fe992c7e7df556971244e4c822615dc2498bd87ce7feb8ccaca5ce5c",
+   "status": "passed",
+   "duration_s": 0.006404,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_level_casing_is_inconsistent[2026]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 109,
+   "body_sha256": "0754bb414878969cafc4dc1392c003ebcbdaf1799f0ad479df3ab3c77dc556bc",
+   "status": "passed",
+   "duration_s": 0.006287,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_level_casing_is_inconsistent[1]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 109,
+   "body_sha256": "0754bb414878969cafc4dc1392c003ebcbdaf1799f0ad479df3ab3c77dc556bc",
+   "status": "passed",
+   "duration_s": 0.006257,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_level_casing_is_inconsistent[2]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 109,
+   "body_sha256": "0754bb414878969cafc4dc1392c003ebcbdaf1799f0ad479df3ab3c77dc556bc",
+   "status": "passed",
+   "duration_s": 0.00591,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_1_percent_duplicate_course_rows[2026]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 120,
+   "body_sha256": "84059e8fb60846069be72c23dde87888bd2609dfe2e2cb7078ba8c4ee4e3095c",
+   "status": "passed",
+   "duration_s": 0.007008,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_1_percent_duplicate_course_rows[1]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 120,
+   "body_sha256": "84059e8fb60846069be72c23dde87888bd2609dfe2e2cb7078ba8c4ee4e3095c",
+   "status": "passed",
+   "duration_s": 0.00678,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_about_1_percent_duplicate_course_rows[2]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 120,
+   "body_sha256": "84059e8fb60846069be72c23dde87888bd2609dfe2e2cb7078ba8c4ee4e3095c",
+   "status": "passed",
+   "duration_s": 0.006609,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_some_statements_mention_both_integrity_and_collaboration[2026]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 133,
+   "body_sha256": "454d18238b469f5ef1baa40029afca53432c22ae4e00863c4195157715d94311",
+   "status": "passed",
+   "duration_s": 0.006293,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_some_statements_mention_both_integrity_and_collaboration[1]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 133,
+   "body_sha256": "454d18238b469f5ef1baa40029afca53432c22ae4e00863c4195157715d94311",
+   "status": "passed",
+   "duration_s": 0.005973,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_some_statements_mention_both_integrity_and_collaboration[2]",
+   "req_ids": [
+    "DATA-12"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 133,
+   "body_sha256": "454d18238b469f5ef1baa40029afca53432c22ae4e00863c4195157715d94311",
+   "status": "passed",
+   "duration_s": 0.005797,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_fifteen_percent_flagged_in_ground_truth_only[2026]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 144,
+   "body_sha256": "d102521b9b221d7f38842a755715d6b436d589c3bba557b50467a4e666558407",
+   "status": "passed",
+   "duration_s": 0.006031,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_fifteen_percent_flagged_in_ground_truth_only[1]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 144,
+   "body_sha256": "d102521b9b221d7f38842a755715d6b436d589c3bba557b50467a4e666558407",
+   "status": "passed",
+   "duration_s": 0.005993,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_fifteen_percent_flagged_in_ground_truth_only[2]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 144,
+   "body_sha256": "d102521b9b221d7f38842a755715d6b436d589c3bba557b50467a4e666558407",
+   "status": "passed",
+   "duration_s": 0.005688,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_rhetoric_gap_is_a_real_mismatch_in_the_data[2026]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 155,
+   "body_sha256": "3c26021f906a50864c412129048096191b066e8926d64d2011f265c3c224dcda",
+   "status": "passed",
+   "duration_s": 0.008123,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_rhetoric_gap_is_a_real_mismatch_in_the_data[1]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 155,
+   "body_sha256": "3c26021f906a50864c412129048096191b066e8926d64d2011f265c3c224dcda",
+   "status": "passed",
+   "duration_s": 0.008432,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_truth.py::test_rhetoric_gap_is_a_real_mismatch_in_the_data[2]",
+   "req_ids": [
+    "DATA-17"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_truth.py",
+   "line": 155,
+   "body_sha256": "3c26021f906a50864c412129048096191b066e8926d64d2011f265c3c224dcda",
+   "status": "passed",
+   "duration_s": 0.007663,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[UserPromptSubmit-prompt]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "body_sha256": "2d29dbb59c25340405ff07449cd11bc52f7db3b83d04900727ee842f84e4383c",
+   "status": "passed",
+   "duration_s": 0.000512,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[Stop-last_assistant_message]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "body_sha256": "2d29dbb59c25340405ff07449cd11bc52f7db3b83d04900727ee842f84e4383c",
+   "status": "passed",
+   "duration_s": 0.000305,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[PreCompact-trigger]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "body_sha256": "2d29dbb59c25340405ff07449cd11bc52f7db3b83d04900727ee842f84e4383c",
+   "status": "passed",
+   "duration_s": 0.000296,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[SessionStart-source]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "body_sha256": "2d29dbb59c25340405ff07449cd11bc52f7db3b83d04900727ee842f84e4383c",
+   "status": "passed",
+   "duration_s": 0.000293,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[SessionEnd-reason]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "body_sha256": "2d29dbb59c25340405ff07449cd11bc52f7db3b83d04900727ee842f84e4383c",
+   "status": "passed",
+   "duration_s": 0.000292,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_common_fields_and_project_dir_quoting",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 36,
+   "body_sha256": "ebebb37da0e7922ff729e6b549dd150c1cf7c7d8ebb1f65cf54624c6b24b428e",
+   "status": "passed",
+   "duration_s": 0.000199,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_docs_check_logged_before_hook_was_written",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 45,
+   "body_sha256": "961b3739990fe264d4b93418fd77c1b0b3ad024e50f4c3093f323a5c9047b418",
+   "status": "passed",
+   "duration_s": 0.000276,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_record_has_exact_schema_and_local_iso_ts",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 36,
+   "body_sha256": "f337d3a9d7d112e17d9e978f08d150229eb643300b10de25f7cef93174878911",
+   "status": "passed",
+   "duration_s": 0.029758,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_user_prompt_submit_logs_full_prompt_untruncated",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 50,
+   "body_sha256": "cbd1d1f0eeff9d889b8b69534891561a246965aa3222dbcdc56228ebd7dde9ff",
+   "status": "passed",
+   "duration_s": 0.054221,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_stop_uses_last_assistant_message_first_1000_chars",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 58,
+   "body_sha256": "5a4d1fc585410d2d63aaeba65c74caeba69c88c080ed243b3620dc8f2f7de8ad",
+   "status": "passed",
+   "duration_s": 0.034226,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_stop_falls_back_to_last_assistant_text_in_transcript",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 66,
+   "body_sha256": "2a02db0d4c54ae9cddc7dce9699a6301f1fefd3bd83d44b9511dc2ead7103e34",
+   "status": "passed",
+   "duration_s": 0.028177,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_precompact_logs_trigger[manual]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 85,
+   "body_sha256": "c7d662c530d4e5f862c9269b6c3e584b91a62ca92566be216fcb500194ccc110",
+   "status": "passed",
+   "duration_s": 0.029531,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_precompact_logs_trigger[auto]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 85,
+   "body_sha256": "c7d662c530d4e5f862c9269b6c3e584b91a62ca92566be216fcb500194ccc110",
+   "status": "passed",
+   "duration_s": 0.02811,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[startup]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "body_sha256": "8163284717c433f28bf63a850b9dedc6843cd3f29d9a5ee84ab9c8041d39cb84",
+   "status": "passed",
+   "duration_s": 0.026949,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[resume]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "body_sha256": "8163284717c433f28bf63a850b9dedc6843cd3f29d9a5ee84ab9c8041d39cb84",
+   "status": "passed",
+   "duration_s": 0.028479,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[clear]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "body_sha256": "8163284717c433f28bf63a850b9dedc6843cd3f29d9a5ee84ab9c8041d39cb84",
+   "status": "passed",
+   "duration_s": 0.026923,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[compact]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "body_sha256": "8163284717c433f28bf63a850b9dedc6843cd3f29d9a5ee84ab9c8041d39cb84",
+   "status": "passed",
+   "duration_s": 0.028675,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[fork]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "body_sha256": "8163284717c433f28bf63a850b9dedc6843cd3f29d9a5ee84ab9c8041d39cb84",
+   "status": "passed",
+   "duration_s": 0.027865,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[clear]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "body_sha256": "26a3b353077c9fc420e0bc78bfb74593926fff7128cb8fc2274423799d7d0bbc",
+   "status": "passed",
+   "duration_s": 0.027032,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[resume]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "body_sha256": "26a3b353077c9fc420e0bc78bfb74593926fff7128cb8fc2274423799d7d0bbc",
+   "status": "passed",
+   "duration_s": 0.027418,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[logout]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "body_sha256": "26a3b353077c9fc420e0bc78bfb74593926fff7128cb8fc2274423799d7d0bbc",
+   "status": "passed",
+   "duration_s": 0.027473,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[prompt_input_exit]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "body_sha256": "26a3b353077c9fc420e0bc78bfb74593926fff7128cb8fc2274423799d7d0bbc",
+   "status": "passed",
+   "duration_s": 0.027742,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[other]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "body_sha256": "26a3b353077c9fc420e0bc78bfb74593926fff7128cb8fc2274423799d7d0bbc",
+   "status": "passed",
+   "duration_s": 0.027917,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_manual_check_sequence_appends_in_order",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_log_event.py",
+   "line": 109,
+   "body_sha256": "884ed011eb69baae5fbb0a561cf41dfae1acdab5d534ff3c75e36b9bcb44674f",
+   "status": "passed",
+   "duration_s": 0.297929,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[None]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "body_sha256": "c80f50bfb97b02e20a756e84143c2ab823aec263b6388b8b654bb9ab1ed542e5",
+   "status": "passed",
+   "duration_s": 0.02837,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "body_sha256": "c80f50bfb97b02e20a756e84143c2ab823aec263b6388b8b654bb9ab1ed542e5",
+   "status": "passed",
+   "duration_s": 0.026281,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[  \\n\\t]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "body_sha256": "c80f50bfb97b02e20a756e84143c2ab823aec263b6388b8b654bb9ab1ed542e5",
+   "status": "passed",
+   "duration_s": 0.027093,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_change_takes_effect_on_next_event",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 140,
+   "body_sha256": "ff45887b8c2d3505b35791a04594bbd28f073e0b4a08799ce4461cabd43ad7e5",
+   "status": "passed",
+   "duration_s": 0.053764,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "body_sha256": "df4fa15fb7c81c62905be6515870642c11c48cbdba88a2334a62561008459e48",
+   "status": "passed",
+   "duration_s": 0.026469,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[{not json]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "body_sha256": "df4fa15fb7c81c62905be6515870642c11c48cbdba88a2334a62561008459e48",
+   "status": "passed",
+   "duration_s": 0.029925,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[[1, 2]]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "body_sha256": "df4fa15fb7c81c62905be6515870642c11c48cbdba88a2334a62561008459e48",
+   "status": "passed",
+   "duration_s": 0.028464,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[null]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "body_sha256": "df4fa15fb7c81c62905be6515870642c11c48cbdba88a2334a62561008459e48",
+   "status": "passed",
+   "duration_s": 0.029178,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unreadable_transcript_on_stop_still_logs_event",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 162,
+   "body_sha256": "f58535807fc23d6dbb58bae76cf04180e0b5dd047ae9aef6a2c2ac1628f2ae4b",
+   "status": "passed",
+   "duration_s": 0.030693,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unwritable_logs_dir_still_exits_0",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 172,
+   "body_sha256": "8342e174b5240257cbafc8281829a1569504281c93f120c2d4d527806698d156",
+   "status": "passed",
+   "duration_s": 0.0305,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unknown_event_is_logged_with_empty_payload",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 181,
+   "body_sha256": "bd286e31af40202bd28105d2f95f2d1c67d7a88fd227bbaf6b425a67e55e09f5",
+   "status": "passed",
+   "duration_s": 0.030251,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_hook_does_not_import_third_party_packages",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 189,
+   "body_sha256": "587372aa15c28b1ad4067877bb0f519f6438c415c977f2d34a994204d55a5427",
+   "status": "passed",
+   "duration_s": 0.003129,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_transcript_copied_verbatim_to_raw_logs[PreCompact-extra0]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 204,
+   "body_sha256": "6fc013aa327275a874dc5b48c6005a2f992c538647f22622417eadddeb97e488",
+   "status": "passed",
+   "duration_s": 0.0292,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_transcript_copied_verbatim_to_raw_logs[SessionEnd-extra1]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 204,
+   "body_sha256": "6fc013aa327275a874dc5b48c6005a2f992c538647f22622417eadddeb97e488",
+   "status": "passed",
+   "duration_s": 0.028083,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_later_copy_replaces_earlier_with_superset",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 216,
+   "body_sha256": "7ad58832995ec50a22451aa83c5520949d67a862b6525aff59920dac700cb93c",
+   "status": "passed",
+   "duration_s": 0.055848,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[UserPromptSubmit]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "body_sha256": "65265643c5448d741fd57d91ed8d5c52a36f7bf26cf7d824ede9bdc61dd3e245",
+   "status": "passed",
+   "duration_s": 0.028125,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[Stop]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "body_sha256": "65265643c5448d741fd57d91ed8d5c52a36f7bf26cf7d824ede9bdc61dd3e245",
+   "status": "passed",
+   "duration_s": 0.026922,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[SessionStart]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "body_sha256": "65265643c5448d741fd57d91ed8d5c52a36f7bf26cf7d824ede9bdc61dd3e245",
+   "status": "passed",
+   "duration_s": 0.028379,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_id_is_sanitized_into_filename",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 239,
+   "body_sha256": "6d730b1f9e65c0e58659ff811543a29a2b21e2fade7aaa8abb57a7ff903ad4e7",
+   "status": "passed",
+   "duration_s": 0.027485,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_missing_transcript_on_copy_logs_error_but_keeps_event",
+   "req_ids": [
+    "INST-04",
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 249,
+   "body_sha256": "2dd3e887c508f41d9becee3b7615e4cc7a82539b899768c9717dc3f916f1bb2a",
+   "status": "passed",
+   "duration_s": 0.029436,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[data]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.012332,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[analysis]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009647,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[test]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009813,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[report]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009057,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[tokens]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008599,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[timeline]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.00945,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[site]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008993,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[serve]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009454,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[clean]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009138,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_clean_never_touches_logs_or_run_history",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 25,
+   "body_sha256": "146b62929efb51e5a67494c85a18b180807b0ca673c1a920c2c391225fab718c",
+   "status": "passed",
+   "duration_s": 0.009235,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_runs_pytest",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 34,
+   "body_sha256": "de61e8af698455247a800898fda1ff0cb6e9e3fcba85b8617cdd0f57ae860556",
+   "status": "passed",
+   "duration_s": 0.009135,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_writes_per_module_coverage",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 40,
+   "body_sha256": "978c49c1f13a33d62c343ebf66dc040993c7c600b49f36331566523d82635600",
+   "status": "passed",
+   "duration_s": 0.008889,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[mail me@example.com now-mail [EMAIL] now]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000369,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[a.b+tag@sub.uni.edu-[EMAIL]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000223,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[key sk-ant-api03-AbC123_def-456ghiJKL789 end-key [REDACTED_TOKEN] end]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000234,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[sk-proj-abcdefghijklmnop1234-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000234,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[ghp_abcdefghijklmnopqrstuvwxyz0123456789-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000237,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[github_pat_11ABCDEFG0123456789_abcdefghijklmnop-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000235,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig-Authorization: [REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000235,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[/Users/someone/Desktop/CS 4005/Project 2-~/Desktop/CS 4005/Project 2]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000239,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[/home/bob/.ssh/id_rsa-~/.ssh/id_rsa]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000234,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[cd '/Users/alice' && ls-cd '~' && ls]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000233,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[file:///Users/alice/x.html-file://~/x.html]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "body_sha256": "55fed89d1a5682decfc6c5cd191eab6cffa18622d708d5b59a0ab5d54ea842c5",
+   "status": "passed",
+   "duration_s": 0.000236,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[task-list and sk-learn are fine]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.000192,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[a task-management-system-overview]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.000194,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[the bearer of bad news]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.000189,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[see https://example.com/Users/guide]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.00019,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[src/home/page.py]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.000188,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[ratio 3@4]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "body_sha256": "0b901e2ed85fbbaf51c394e1bc6afb1aceec20264dc8ceffd6d4fb4c802408a6",
+   "status": "passed",
+   "duration_s": 0.000185,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_nested_structures_and_is_idempotent",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 45,
+   "body_sha256": "5b7d695bfa35c06a89bf6bd3011ccbb4dc46464a4c78124dfd672b5acac4c666",
+   "status": "passed",
+   "duration_s": 0.000152,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_no_secret_reaches_events_jsonl",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_redaction.py",
+   "line": 59,
+   "body_sha256": "1716d3b545c22d6911eac322b5225e8325c648848c7ed679e8cad676f4bb5a2e",
+   "status": "passed",
+   "duration_s": 0.053425,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_stop_excerpt_redacts_before_truncating",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 73,
+   "body_sha256": "3f9cd05a5f906301c4ed4ced29f9c806a1edc45f35acf95000b8de0d5eac10e4",
+   "status": "passed",
+   "duration_s": 0.028371,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_hook_errors_log_is_redacted",
+   "req_ids": [
+    "INST-09",
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_redaction.py",
+   "line": 85,
+   "body_sha256": "b083bf261660a4b5e89af07304a124f0aa409c10e6a2108703af0f42f2fae498",
+   "status": "passed",
+   "duration_s": 0.029103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_every_test_has_all_val01_fields",
+   "req_ids": [
+    "INST-07",
+    "VAL-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 73,
+   "body_sha256": "249fd1107bcef92250ac3bbf678a15e24df99ca0a543eb48dfdf02396e394576",
+   "status": "passed",
+   "duration_s": 0.151416,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_statuses_cover_every_outcome",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 86,
+   "body_sha256": "aa8429154590fa1eb8f26db880d45774765b88549d1550faafd658f96fee910c",
+   "status": "passed",
+   "duration_s": 0.145484,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_phase_from_first_req_prefix_and_kind_default",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 100,
+   "body_sha256": "8abe0f007c4d870dfcffa120c164db09d0fbf8e73d7ae3f1c5508f716c55723a",
+   "status": "passed",
+   "duration_s": 0.144516,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_messages_docstrings_and_source_captured",
+   "req_ids": [
+    "INST-07",
+    "VAL-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 115,
+   "body_sha256": "300cbf3b3ac5570e94fb05541852141a4619f6f6cc9ebaa180418538a074c0f8",
+   "status": "passed",
+   "duration_s": 0.148131,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_home_directory_scrubbed_from_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 131,
+   "body_sha256": "a131bd98b793cd7d3b4eaf358da7f0695ffa9cb0b14132ea4d64ff8ff5e6847b",
+   "status": "passed",
+   "duration_s": 0.150105,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_collection_error_still_writes_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_runfile.py",
+   "line": 145,
+   "body_sha256": "7b03b002ea03fac1471ca1397b0925d0932601be9a075a78888588f7520da33a",
+   "status": "passed",
+   "duration_s": 0.167788,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_each_run_writes_a_new_file",
+   "req_ids": [
+    "INST-07",
+    "VAL-02"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 157,
+   "body_sha256": "e6e8bd3ff2af09c6a3e2d75185db99940e3ea760281fbd008d3ed3fc59ba65cd",
+   "status": "passed",
+   "duration_s": 0.265063,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_bodies_are_content_addressed_and_written_once",
+   "req_ids": [
+    "VAL-01",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 167,
+   "body_sha256": "cc493ae6cfc23ac193603488398b47ae5ce21a0fa4ed7ec36249efc3daeb57c5",
+   "status": "passed",
+   "duration_s": 0.430126,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_plugin_and_reader_agree_on_body_bytes",
+   "req_ids": [
+    "VAL-01"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 191,
+   "body_sha256": "174ed3d73bf70540c4bc0caf8b0663ce5823d203a6db7f7f62505a9304456bac",
+   "status": "passed",
+   "duration_s": 0.000232,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_reader_accepts_old_inline_format_and_rejects_tampered_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 200,
+   "body_sha256": "66b83d887e53d0ba7bbdfab12f4a01007345829a6718fc81a6242e02d59b4e58",
+   "status": "passed",
+   "duration_s": 0.001539,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_every_committed_run_file_loads",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_runfile.py",
+   "line": 217,
+   "body_sha256": "27e447a8f3164a7afce47edb5f1e557cf9c3586c3bdbf1066566381e6239c01b",
+   "status": "passed",
+   "duration_s": 0.354997,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[UserPromptSubmit]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "body_sha256": "716b609d9df6b10855794adced43f56eee97d3713c08dc488b1f31b08dcb8671",
+   "status": "passed",
+   "duration_s": 0.000334,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[Stop]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "body_sha256": "716b609d9df6b10855794adced43f56eee97d3713c08dc488b1f31b08dcb8671",
+   "status": "passed",
+   "duration_s": 0.00023,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[PreCompact]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "body_sha256": "716b609d9df6b10855794adced43f56eee97d3713c08dc488b1f31b08dcb8671",
+   "status": "passed",
+   "duration_s": 0.00022,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[SessionStart]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "body_sha256": "716b609d9df6b10855794adced43f56eee97d3713c08dc488b1f31b08dcb8671",
+   "status": "passed",
+   "duration_s": 0.000216,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[SessionEnd]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "body_sha256": "716b609d9df6b10855794adced43f56eee97d3713c08dc488b1f31b08dcb8671",
+   "status": "passed",
+   "duration_s": 0.000215,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_no_unexpected_events_registered",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 31,
+   "body_sha256": "9c3f5a19ca0e0f1796268a9185ad5d2c202373a160bd0babbf95a8f00253132c",
+   "status": "passed",
+   "duration_s": 0.000167,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_session_end_timeout_exceeds_default_budget",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 37,
+   "body_sha256": "3a65cab12aeba13bcc063f78aab048ebae82bc9e2bea26fd5975eaf402a872cb",
+   "status": "passed",
+   "duration_s": 0.000159,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[UserPromptSubmit]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "body_sha256": "f071deb9b977ba710e347ec8185c85745efda4a14526b447562b0f6793baa606",
+   "status": "passed",
+   "duration_s": 0.038524,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[Stop]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "body_sha256": "f071deb9b977ba710e347ec8185c85745efda4a14526b447562b0f6793baa606",
+   "status": "passed",
+   "duration_s": 0.039744,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[PreCompact]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "body_sha256": "f071deb9b977ba710e347ec8185c85745efda4a14526b447562b0f6793baa606",
+   "status": "passed",
+   "duration_s": 0.039435,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[SessionStart]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "body_sha256": "f071deb9b977ba710e347ec8185c85745efda4a14526b447562b0f6793baa606",
+   "status": "passed",
+   "duration_s": 0.037592,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[SessionEnd]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "body_sha256": "f071deb9b977ba710e347ec8185c85745efda4a14526b447562b0f6793baa606",
+   "status": "passed",
+   "duration_s": 0.038356,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_validation_data_is_current",
+   "req_ids": [
+    "VAL-02",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_val_data.py",
+   "line": 29,
+   "body_sha256": "63ae7ed52ada199eeaa186475351fd168bd9d5f7fc5746af8acf8c74f057be38",
+   "status": "passed",
+   "duration_s": 0.389456,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_tests_json_is_the_snapshot_run_with_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 42,
+   "body_sha256": "f91e9fe24dc61e5d3f873ae9dbd52172844bdc704e59bfcfbfbf6dc8edbfeb08",
+   "status": "passed",
+   "duration_s": 0.051071,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_history_has_every_run_and_matches_each_run_file",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 60,
+   "body_sha256": "c3801c42ff46da7fa997fca98d2ab1cf57f21a1487e91375a690914d17d5eed4",
+   "status": "passed",
+   "duration_s": 0.031482,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_traceability_covers_every_requirement_with_correct_status",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 75,
+   "body_sha256": "b370e2c574dc078a2bc1ca9695a39bc144525beaae2e2a1b073499cf658546a0",
+   "status": "passed",
+   "duration_s": 0.007857,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses0-untested]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000308,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses1-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000238,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses2-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000245,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses3-partial]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000239,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses4-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.00023,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses5-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000228,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses6-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000227,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses7-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000228,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "passed",
+   "duration_s": 0.001093,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_attach_coverage_refuses_a_report_from_another_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 116,
+   "body_sha256": "178cfa8d7bf71ce5dcb591d01ee75253223321c44728b2e59522defd0abfeea9",
+   "status": "passed",
+   "duration_s": 0.001313,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_snapshot_is_a_make_test_run_and_unknown_runs_fail",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 135,
+   "body_sha256": "d9714e2cc4d005d11d53e3d80f8f56ca7a5e1bf076735d31e91fd70d1f8afd85",
+   "status": "passed",
+   "duration_s": 0.001482,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_review_log_is_copied_verbatim",
+   "req_ids": [
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 147,
+   "body_sha256": "50c11b428dfacbe8c6945362a14e17f8c4cc23e762ca90f6bca300815d1cb853",
+   "status": "passed",
+   "duration_s": 0.000193,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_truth_derived_results_only_in_the_validation_recovery_view",
+   "req_ids": [
+    "DASH-01",
+    "VAL-05"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 153,
+   "body_sha256": "1e2f4f3b4855423fd462277e212c7b73cb3207a52aeb74fe647cc616e693360c",
+   "status": "passed",
+   "duration_s": 0.004286,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_no_private_data_in_the_validation_site",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 173,
+   "body_sha256": "859ca290054e707aaa8216b55fe27b662f52f6a07657356e663a9f857c3b3e22",
+   "status": "passed",
+   "duration_s": 0.082638,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[cd '/Users/alice' && ls-cd '\\u2039redacted-path\\u203a' && ls]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.00036,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[see a@b.org now-see \\u2039redacted-email\\u203a now]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000277,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[api_key = \"abcdefghij\"-api_key = \\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000263,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[sk-AAAAAAAAAAAAAAAAAAAAAAAA-\\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.00028,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[\\n@pytest.mark.req('X')-\\n@pytest.mark.req('X')]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000254,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_every_data_file_is_labelled_synthetic",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 218,
+   "body_sha256": "29598ded797b97966ff0b40c15cbd6ec4fdf75ad1d57526abf94c20a224c9b54",
+   "status": "passed",
+   "duration_s": 0.003516,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_runner_records_caught_and_uncaught_faults_without_touching_the_repo",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 38,
+   "body_sha256": "3236e46f66752c985eb85d22c46f1472d7ea08dbce0d88d9e693f76a184827c6",
+   "status": "passed",
+   "duration_s": 0.400719,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_a_fault_must_match_exactly_once",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 58,
+   "body_sha256": "2cb7fd157d4424b2834ff836ebbc23426b0123185c28145a45fd0d14087475fc",
+   "status": "passed",
+   "duration_s": 0.002598,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_baseline_must_be_clean",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 75,
+   "body_sha256": "57349f5657a4722bce277f9cdd1840bebf5a4086588c59c542f4735ab059bcb0",
+   "status": "passed",
+   "duration_s": 0.136327,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_committed_fault_report_is_current_and_consistent",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 91,
+   "body_sha256": "b661665b4bdaa4d46057dd5262c1e8f5c5faa6bb4862550944752d60656cb35a",
+   "status": "passed",
+   "duration_s": 0.000814,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_fault_report_published_with_redacted_node_ids",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 117,
+   "body_sha256": "bedbac96efad0b3d893bde8b3fc82cb459dd70f43e85f9e318a7dc68902de37f",
+   "status": "passed",
+   "duration_s": 0.002833,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_make_faults_target",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 131,
+   "body_sha256": "c9ea62350979affba47e2a5fad4d1c804178bfd29654d93e463335dac1bed65e",
+   "status": "passed",
+   "duration_s": 0.013233,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_inference.py::test_committed_regression_is_current-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000402,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_clean.py::test_committed_clean_data_and_log_are_current-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000225,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_x.py::test_thing_is_current[seed7]-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000241,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_eval.py::test_cohen_kappa_known_values-False]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000231,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_x.py::test_is_currently_wrong-False]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000266,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_parser_finds_every_requirement_bullet",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 11,
+   "body_sha256": "e6276c467d73af593cd30263b7e2561ab694c0ea4ec80fd22ba72332d18996af",
+   "status": "passed",
+   "duration_s": 0.001692,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_requirement_text_keeps_wrapped_lines_and_nested_bullets",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 26,
+   "body_sha256": "41c68b80fd78d71374d20d8e856b0d698a72712c064ad8e1e0d20444571c81dd",
+   "status": "passed",
+   "duration_s": 0.001803,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_specs.py::test_every_req_tag_names_a_spec_requirement",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_specs.py",
+   "line": 42,
+   "body_sha256": "5356ac915e580f17b54b0bb503a897cbe6485cec003daaa951c80d6f00d96724",
+   "status": "passed",
+   "duration_s": 0.002037,
+   "failure_message": ""
+  }
+ ]
+}

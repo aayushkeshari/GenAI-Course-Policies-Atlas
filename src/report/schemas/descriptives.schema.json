@@ -1,0 +1,218 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "descriptives.schema.json",
+ "title": "ANL-05 descriptives with cluster-bootstrap CIs",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-05"
+  },
+  "bootstrap": {
+   "type": "object",
+   "properties": {
+    "method": {
+     "const": "cluster bootstrap (percentile)"
+    },
+    "cluster": {
+     "const": "inst_id"
+    },
+    "resamples": {
+     "const": 2000
+    },
+    "seed": {
+     "type": "integer"
+    },
+    "ci_level": {
+     "const": 0.95
+    }
+   },
+   "required": [
+    "method",
+    "cluster",
+    "resamples",
+    "seed",
+    "ci_level"
+   ],
+   "additionalProperties": false
+  },
+  "courses": {
+   "type": "object",
+   "properties": {
+    "n_rows": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "n_known_policy": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "n_excluded_missing_policy": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "term_order": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 7
+    },
+    "level_order": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 4
+    }
+   },
+   "required": [
+    "n_rows",
+    "n_known_policy",
+    "n_excluded_missing_policy",
+    "term_order",
+    "level_order"
+   ],
+   "additionalProperties": false
+  },
+  "statements": {
+   "type": "object",
+   "properties": {
+    "n": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "n_institutions": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "source": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "n",
+    "n_institutions",
+    "source"
+   ],
+   "additionalProperties": false
+  },
+  "policy": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "by": {
+      "type": "string"
+     },
+     "group": {
+      "type": "string"
+     },
+     "outcome": {
+      "type": "string"
+     },
+     "category": {
+      "type": "string"
+     },
+     "estimate": {
+      "type": "number"
+     },
+     "ci_low": {
+      "type": "number"
+     },
+     "ci_high": {
+      "type": "number"
+     },
+     "n_rows": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "n_clusters": {
+      "type": "integer",
+      "minimum": 1
+     }
+    },
+    "required": [
+     "by",
+     "group",
+     "outcome",
+     "category",
+     "estimate",
+     "ci_low",
+     "ci_high",
+     "n_rows",
+     "n_clusters"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  },
+  "statement_codes": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "by": {
+      "type": "string"
+     },
+     "group": {
+      "type": "string"
+     },
+     "outcome": {
+      "type": "string"
+     },
+     "category": {
+      "type": "string"
+     },
+     "estimate": {
+      "type": "number"
+     },
+     "ci_low": {
+      "type": "number"
+     },
+     "ci_high": {
+      "type": "number"
+     },
+     "n_rows": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "n_clusters": {
+      "type": "integer",
+      "minimum": 1
+     }
+    },
+    "required": [
+     "by",
+     "group",
+     "outcome",
+     "category",
+     "estimate",
+     "ci_low",
+     "ci_high",
+     "n_rows",
+     "n_clusters"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "bootstrap",
+  "courses",
+  "statements",
+  "policy",
+  "statement_codes"
+ ],
+ "additionalProperties": false
+}

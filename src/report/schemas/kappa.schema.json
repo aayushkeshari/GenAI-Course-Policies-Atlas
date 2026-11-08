@@ -1,0 +1,119 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "kappa.schema.json",
+ "title": "ANL-04 Cohen's kappa: Aayush vs coder, Aayush vs truth",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-04"
+  },
+  "n": {
+   "const": 30
+  },
+  "coder_by": {
+   "const": "Aayush"
+  },
+  "comparison_labels": {
+   "type": "object",
+   "properties": {
+    "aayush_vs_coder": {
+     "const": "Aayush vs coder"
+    },
+    "aayush_vs_truth": {
+     "const": "Aayush vs truth"
+    }
+   },
+   "required": [
+    "aayush_vs_coder",
+    "aayush_vs_truth"
+   ],
+   "additionalProperties": false
+  },
+  "aayush_vs_coder": {
+   "type": "object",
+   "properties": {
+    "stance": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_integrity": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_collaboration": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_careers": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    }
+   },
+   "required": [
+    "stance",
+    "mentions_integrity",
+    "mentions_collaboration",
+    "mentions_careers"
+   ],
+   "additionalProperties": false
+  },
+  "aayush_vs_truth": {
+   "type": "object",
+   "properties": {
+    "stance": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_integrity": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_collaboration": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "mentions_careers": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    }
+   },
+   "required": [
+    "stance",
+    "mentions_integrity",
+    "mentions_collaboration",
+    "mentions_careers"
+   ],
+   "additionalProperties": false
+  },
+  "kappa": {
+   "type": "string"
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "n",
+  "coder_by",
+  "comparison_labels",
+  "aayush_vs_coder",
+  "aayush_vs_truth",
+  "kappa"
+ ],
+ "additionalProperties": false
+}

@@ -1,0 +1,225 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "regression.schema.json",
+ "title": "ANL-07 ordinal logistic regression with clustered SEs (ANL-14)",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": [
+    "ANL-07",
+    "ANL-14"
+   ]
+  },
+  "model": {
+   "type": "string"
+  },
+  "reference_categories": {
+   "type": "object",
+   "properties": {
+    "level": {
+     "type": "string"
+    },
+    "control": {
+     "type": "string"
+    },
+    "carnegie": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "level",
+    "control",
+    "carnegie"
+   ],
+   "additionalProperties": false
+  },
+  "n_used": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "n_excluded_missing_policy": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "n_clusters": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "inference": {
+   "type": "object",
+   "properties": {
+    "main": {
+     "const": "cluster-robust (sandwich) SEs grouped by inst_id"
+    },
+    "also_reported": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "main",
+    "also_reported"
+   ],
+   "additionalProperties": false
+  },
+  "coefficients": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "term": {
+      "type": "string"
+     },
+     "coef": {
+      "type": "number"
+     },
+     "se_clustered": {
+      "type": "number",
+      "minimum": 0
+     },
+     "ci_clustered": {
+      "type": "array",
+      "items": {
+       "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "p_clustered": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "se_naive": {
+      "type": "number",
+      "minimum": 0
+     },
+     "ci_naive": {
+      "type": "array",
+      "items": {
+       "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "p_naive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "se_cluster_bootstrap": {
+      "type": "number",
+      "minimum": 0
+     },
+     "ci_cluster_bootstrap": {
+      "type": "array",
+      "items": {
+       "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     }
+    },
+    "required": [
+     "term",
+     "coef",
+     "se_clustered",
+     "ci_clustered",
+     "p_clustered",
+     "se_naive",
+     "ci_naive",
+     "p_naive"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  },
+  "thresholds": {
+   "type": "array",
+   "items": {
+    "type": "number"
+   },
+   "minItems": 4
+  },
+  "ratios_to_term_effect": {
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string"
+    },
+    "ratios": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "numerator": {
+        "type": "string"
+       },
+       "denominator": {
+        "const": "term_index"
+       },
+       "estimate": {
+        "type": "number"
+       },
+       "se": {
+        "type": "number",
+        "minimum": 0
+       },
+       "ci": {
+        "type": "array",
+        "items": {
+         "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+       }
+      },
+      "required": [
+       "numerator",
+       "denominator",
+       "estimate",
+       "se",
+       "ci"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "description",
+    "ratios"
+   ],
+   "additionalProperties": false
+  },
+  "converged": {
+   "const": true
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "model",
+  "reference_categories",
+  "n_used",
+  "n_excluded_missing_policy",
+  "n_clusters",
+  "inference",
+  "coefficients",
+  "thresholds",
+  "ratios_to_term_effect",
+  "converged"
+ ],
+ "additionalProperties": false
+}

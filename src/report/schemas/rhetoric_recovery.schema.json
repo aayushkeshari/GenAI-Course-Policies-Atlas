@@ -1,0 +1,74 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "rhetoric_recovery.schema.json",
+ "title": "ANL-13 recovery of DATA-17 rhetoric-gap institutions",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-13"
+  },
+  "kind": {
+   "type": "string"
+  },
+  "n_listed": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "n_flagged_eligible": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "n_flagged_total": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "hits": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 0
+  },
+  "precision": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "recall": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "base_rate": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "direction_correct": {
+   "type": "integer",
+   "minimum": 0
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "kind",
+  "n_listed",
+  "n_flagged_eligible",
+  "n_flagged_total",
+  "hits",
+  "precision",
+  "recall",
+  "base_rate",
+  "direction_correct"
+ ],
+ "additionalProperties": false
+}

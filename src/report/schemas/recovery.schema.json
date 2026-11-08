@@ -1,0 +1,294 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "recovery.schema.json",
+ "title": "ANL-08 recovery of planted effects",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-08"
+  },
+  "kind": {
+   "type": "string"
+  },
+  "directions": {
+   "type": "object",
+   "properties": {
+    "DATA-06": {
+     "type": "object",
+     "properties": {
+      "claim": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "object"
+      },
+      "recovered": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "claim",
+      "evidence",
+      "recovered"
+     ],
+     "additionalProperties": false
+    },
+    "DATA-07": {
+     "type": "object",
+     "properties": {
+      "claim": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "object"
+      },
+      "recovered": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "claim",
+      "evidence",
+      "recovered"
+     ],
+     "additionalProperties": false
+    },
+    "DATA-08": {
+     "type": "object",
+     "properties": {
+      "claim": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "object"
+      },
+      "recovered": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "claim",
+      "evidence",
+      "recovered"
+     ],
+     "additionalProperties": false
+    },
+    "DATA-09": {
+     "type": "object",
+     "properties": {
+      "claim": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "object"
+      },
+      "recovered": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "claim",
+      "evidence",
+      "recovered"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "required": [
+    "DATA-06",
+    "DATA-07",
+    "DATA-08",
+    "DATA-09"
+   ],
+   "additionalProperties": false
+  },
+  "null": {
+   "type": "object",
+   "properties": {
+    "DATA-10": {
+     "type": "object",
+     "properties": {
+      "claim": {
+       "type": "string"
+      },
+      "coef_private": {
+       "type": "number"
+      },
+      "p_clustered": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "p_naive": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "alpha": {
+       "const": 0.05
+      },
+      "recovered": {
+       "type": "boolean"
+      }
+     },
+     "required": [
+      "claim",
+      "coef_private",
+      "p_clustered",
+      "p_naive",
+      "alpha",
+      "recovered"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "required": [
+    "DATA-10"
+   ],
+   "additionalProperties": false
+  },
+  "magnitude": {
+   "type": "object",
+   "properties": {
+    "tolerance": {
+     "const": 0.25
+    },
+    "ratios": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "ratio": {
+        "type": "string"
+       },
+       "planted": {
+        "type": "number"
+       },
+       "estimate": {
+        "type": "number"
+       },
+       "ci": {
+        "type": "array",
+        "items": {
+         "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+       },
+       "relative_error": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "within_tolerance": {
+        "type": "boolean"
+       }
+      },
+      "required": [
+       "ratio",
+       "planted",
+       "estimate",
+       "ci",
+       "relative_error",
+       "within_tolerance"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "tolerance",
+    "ratios"
+   ],
+   "additionalProperties": false
+  },
+  "coverage": {
+   "type": "object",
+   "properties": {
+    "seeds": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 5
+    },
+    "min_covered": {
+     "const": 4
+    },
+    "covered_counts": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "integer",
+      "minimum": 0
+     }
+    },
+    "all_met": {
+     "type": "boolean"
+    },
+    "per_seed": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "seed": {
+        "type": "integer"
+       },
+       "covered": {
+        "type": "object",
+        "additionalProperties": {
+         "type": "boolean"
+        }
+       },
+       "private_p_clustered": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "private_p_naive": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "required": [
+       "seed",
+       "covered",
+       "private_p_clustered",
+       "private_p_naive"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 5
+    }
+   },
+   "required": [
+    "seeds",
+    "min_covered",
+    "covered_counts",
+    "all_met",
+    "per_seed"
+   ],
+   "additionalProperties": false
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "kind",
+  "directions",
+  "null",
+  "magnitude",
+  "coverage"
+ ],
+ "additionalProperties": false
+}

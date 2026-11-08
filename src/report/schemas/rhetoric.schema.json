@@ -1,0 +1,162 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "rhetoric.schema.json",
+ "title": "ANL-13 rhetoric vs practice",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string"
+  },
+  "requirement": {
+   "const": "ANL-13"
+  },
+  "n_institutions": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "correlation": {
+   "type": "object",
+   "properties": {
+    "pearson_r": {
+     "type": "number",
+     "minimum": -1,
+     "maximum": 1
+    },
+    "ci": {
+     "type": "array",
+     "items": {
+      "type": "number"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "ci_method": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "pearson_r",
+    "ci",
+    "ci_method"
+   ],
+   "additionalProperties": false
+  },
+  "gap_definition": {
+   "type": "string"
+  },
+  "top_decile_k": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "top_decile": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "inst_id": {
+      "type": "string",
+      "pattern": "^I\\d{3}$"
+     },
+     "gap": {
+      "type": "number"
+     },
+     "z_stance": {
+      "type": "number"
+     },
+     "z_policy": {
+      "type": "number"
+     },
+     "mean_stance": {
+      "type": "number"
+     },
+     "mean_policy": {
+      "type": "number"
+     },
+     "n_statements": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "direction": {
+      "enum": [
+       "rhetoric more permissive than courses",
+       "courses more permissive than rhetoric"
+      ]
+     }
+    },
+    "required": [
+     "inst_id",
+     "gap",
+     "z_stance",
+     "z_policy",
+     "mean_stance",
+     "mean_policy",
+     "n_statements",
+     "direction"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  },
+  "institutions": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "inst_id": {
+      "type": "string"
+     },
+     "mean_stance": {
+      "type": "number"
+     },
+     "mean_policy": {
+      "type": "number"
+     },
+     "z_stance": {
+      "type": "number"
+     },
+     "z_policy": {
+      "type": "number"
+     },
+     "gap": {
+      "type": "number"
+     },
+     "n_statements": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "n_course_rows": {
+      "type": "integer",
+      "minimum": 0
+     }
+    },
+    "required": [
+     "inst_id",
+     "mean_stance",
+     "mean_policy",
+     "z_stance",
+     "z_policy",
+     "gap",
+     "n_statements",
+     "n_course_rows"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "n_institutions",
+  "correlation",
+  "gap_definition",
+  "top_decile_k",
+  "top_decile",
+  "institutions"
+ ],
+ "additionalProperties": false
+}

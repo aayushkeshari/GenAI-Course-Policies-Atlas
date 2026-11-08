@@ -1,0 +1,167 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "association.schema.json",
+ "title": "ANL-06 chi-square and Cramér's V",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": [
+    "ANL-06",
+    "ANL-14"
+   ]
+  },
+  "bootstrap": {
+   "type": "object",
+   "properties": {
+    "method": {
+     "const": "cluster bootstrap (percentile)"
+    },
+    "cluster": {
+     "const": "inst_id"
+    },
+    "resamples": {
+     "const": 2000
+    },
+    "seed": {
+     "type": "integer"
+    },
+    "ci_level": {
+     "const": 0.95
+    }
+   },
+   "required": [
+    "method",
+    "cluster",
+    "resamples",
+    "seed",
+    "ci_level"
+   ],
+   "additionalProperties": false
+  },
+  "n_used": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "n_excluded_missing_policy": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "associations": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "row": {
+      "type": "string"
+     },
+     "col": {
+      "type": "string"
+     },
+     "row_levels": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "minItems": 2
+     },
+     "col_levels": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "minItems": 2
+     },
+     "table": {
+      "type": "array",
+      "items": {
+       "type": "array",
+       "items": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "minItems": 2
+      },
+      "minItems": 2
+     },
+     "n": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "n_clusters": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "chi2": {
+      "type": "number",
+      "minimum": 0
+     },
+     "dof": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "p_value_naive": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "p_value_note": {
+      "type": "string",
+      "pattern": "naive"
+     },
+     "cramers_v": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "cramers_v_ci": {
+      "type": "array",
+      "items": {
+       "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+     },
+     "cramers_v_ci_method": {
+      "type": "string",
+      "pattern": "cluster bootstrap"
+     }
+    },
+    "required": [
+     "row",
+     "col",
+     "row_levels",
+     "col_levels",
+     "table",
+     "n",
+     "n_clusters",
+     "chi2",
+     "dof",
+     "p_value_naive",
+     "p_value_note",
+     "cramers_v",
+     "cramers_v_ci",
+     "cramers_v_ci_method"
+    ],
+    "additionalProperties": true
+   },
+   "minItems": 2
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "bootstrap",
+  "n_used",
+  "n_excluded_missing_policy",
+  "associations"
+ ],
+ "additionalProperties": false
+}

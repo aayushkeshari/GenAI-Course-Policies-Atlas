@@ -1,0 +1,155 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "allowed_uses.schema.json",
+ "title": "ANL-11 allowed uses with cluster-bootstrap CIs",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-11"
+  },
+  "bootstrap": {
+   "type": "object",
+   "properties": {
+    "method": {
+     "const": "cluster bootstrap (percentile)"
+    },
+    "cluster": {
+     "const": "inst_id"
+    },
+    "resamples": {
+     "const": 2000
+    },
+    "seed": {
+     "type": "integer"
+    },
+    "ci_level": {
+     "const": 0.95
+    }
+   },
+   "required": [
+    "method",
+    "cluster",
+    "resamples",
+    "seed",
+    "ci_level"
+   ],
+   "additionalProperties": false
+  },
+  "denominator": {
+   "type": "string"
+  },
+  "n_rows": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "uses": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "by": {
+      "type": "string"
+     },
+     "group": {
+      "type": "string"
+     },
+     "outcome": {
+      "type": "string"
+     },
+     "category": {
+      "type": "string"
+     },
+     "estimate": {
+      "type": "number"
+     },
+     "ci_low": {
+      "type": "number"
+     },
+     "ci_high": {
+      "type": "number"
+     },
+     "n_rows": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "n_clusters": {
+      "type": "integer",
+      "minimum": 1
+     }
+    },
+    "required": [
+     "by",
+     "group",
+     "outcome",
+     "category",
+     "estimate",
+     "ci_low",
+     "ci_high",
+     "n_rows",
+     "n_clusters"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 1
+  },
+  "intro_learning_vs_generation_gap": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "group": {
+      "type": "string"
+     },
+     "minuend": {
+      "type": "string"
+     },
+     "subtrahend": {
+      "type": "string"
+     },
+     "estimate": {
+      "type": "number"
+     },
+     "ci_low": {
+      "type": "number"
+     },
+     "ci_high": {
+      "type": "number"
+     },
+     "n_rows": {
+      "type": "integer",
+      "minimum": 0
+     }
+    },
+    "required": [
+     "group",
+     "minuend",
+     "subtrahend",
+     "estimate",
+     "ci_low",
+     "ci_high",
+     "n_rows"
+    ],
+    "additionalProperties": false
+   },
+   "minItems": 2
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "bootstrap",
+  "denominator",
+  "n_rows",
+  "uses",
+  "intro_learning_vs_generation_gap"
+ ],
+ "additionalProperties": false
+}

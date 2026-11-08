@@ -611,3 +611,21 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T06:15:12-05:00 — [P2] Step 8: ANL-09 JSON schemas for every results file
+
+**What changed**
+- `src/report/schemas/*.schema.json`: 12 Draft 2020-12 schemas, one per `results/*.json` (clean_log, coder_dev_eval, coder_eval, kappa, descriptives, allowed_uses, assessment, association, regression, rhetoric, rhetoric_recovery, recovery).
+  - All require `synthetic: true` and a note containing "SYNTHETIC", and reject unknown top-level keys.
+  - Value constraints: CIs are 2-number arrays, probabilities lie in [0, 1], kappa in [−1, 1], and the bootstrap settings and the regression's clustered main inference are fixed by `const`.
+- `tests/test_anl_schemas.py`: one schema per results file and vice versa, each schema valid and each file validating, plus negative tests (a missing synthetic flag, an unknown key, a one-sided CI, a probability > 1, a non-clustered main inference) to show the schemas are not vacuous.
+
+**Tests run**
+- `make test`: 385 passed.
+
+**Decisions**
+- AGENT: the schemas are hand-specified JSON (built once from shared definitions in a scratch script). P3/P4 pages can read them directly.
+- AGENT: results/tests/ run files are excluded. They belong to P0 (INST-07) and have their own format.
+
+**Open questions**
+- None.

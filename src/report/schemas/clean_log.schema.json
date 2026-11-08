@@ -1,0 +1,129 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "clean_log.schema.json",
+ "title": "ANL-01 cleaning log",
+ "type": "object",
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "ANL-01"
+  },
+  "tables": {
+   "type": "object",
+   "properties": {
+    "institutions": {
+     "type": "object",
+     "properties": {
+      "rows_before": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "rows_after": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "duplicates_removed": {
+       "type": "integer",
+       "minimum": 0
+      }
+     },
+     "required": [
+      "rows_before",
+      "rows_after",
+      "duplicates_removed"
+     ],
+     "additionalProperties": true
+    },
+    "statements": {
+     "type": "object",
+     "properties": {
+      "rows_before": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "rows_after": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "duplicates_removed": {
+       "type": "integer",
+       "minimum": 0
+      }
+     },
+     "required": [
+      "rows_before",
+      "rows_after",
+      "duplicates_removed"
+     ],
+     "additionalProperties": true
+    },
+    "courses": {
+     "type": "object",
+     "properties": {
+      "rows_before": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "rows_after": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "duplicates_removed": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "level_values_before": {
+       "type": "object",
+       "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+       }
+      },
+      "level_values_normalized": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "policy_missing": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "policy_missing_share": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      }
+     },
+     "required": [
+      "rows_before",
+      "rows_after",
+      "duplicates_removed",
+      "level_values_before",
+      "level_values_normalized",
+      "policy_missing",
+      "policy_missing_share"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "required": [
+    "institutions",
+    "statements",
+    "courses"
+   ],
+   "additionalProperties": false
+  }
+ },
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "tables"
+ ],
+ "additionalProperties": false
+}

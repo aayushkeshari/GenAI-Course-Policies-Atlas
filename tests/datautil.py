@@ -34,7 +34,10 @@ def read_csv(path: Path) -> list[dict]:
 
 
 def load(seed: int) -> dict:
-    d = generated_dir(seed)
+    return load_dir(generated_dir(seed))
+
+
+def load_dir(d: Path) -> dict:
     tables = {p.stem: read_csv(p) for p in sorted(d.glob("*.csv"))}
     tables["ground_truth"] = json.loads((d / "ground_truth.json").read_text(encoding="utf-8"))
     return tables

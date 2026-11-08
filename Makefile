@@ -8,8 +8,10 @@ PY ?= .venv/bin/python
 setup:  ## create the venv and install pinned deps
 	python3.11 -m venv .venv && $(PY) -m pip install -q -r requirements.txt
 
-data:  ## P1: generate synthetic data + ground truth
-	@echo "data: not implemented yet (P1)"
+SEED ?= 2026
+
+data:  ## P1: generate synthetic data + ground truth into data/raw/ (deterministic for a given SEED)
+	$(PY) src/data/generate.py --seed $(SEED) --out data/raw
 
 analysis:  ## P2: clean, code, analyze -> results/
 	@echo "analysis: not implemented yet (P2)"

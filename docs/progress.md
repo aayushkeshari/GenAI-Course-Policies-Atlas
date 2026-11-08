@@ -187,3 +187,21 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
    - `cat logs/hook_errors.log` should not exist or be empty.
 
 **Open questions**: none.
+
+## 2026-11-08T04:31:40-05:00 — [P0] Checkpoint before /clear
+
+**What changed**
+- No code changes.
+- The hooks became active mid-session: Claude Code's file watcher picked up settings.json after step 9.
+- `logs/events.jsonl` now has live entries: Stop at 04:28:38 and UserPromptSubmit("/prep-clear") at 04:30:59. Both are tagged `P0:planning`.
+- A scan of the log found no home paths or emails. `hook_errors.log` is absent.
+- The live log is being committed for the first time.
+
+**Tests run**
+- `make test`: 95 passed.
+
+**Decisions**
+- AGENT: commit `logs/`, the hook-owned provenance that P5 needs. Its contents were not edited.
+
+**Open questions**
+- The SessionEnd(clear) and SessionStart(clear) from this /clear are the first real test of those events. Check them during the manual check.

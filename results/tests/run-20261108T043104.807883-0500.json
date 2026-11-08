@@ -1,0 +1,1462 @@
+{
+ "schema": "test-run/1",
+ "started": "2026-11-08T04:31:04.807-05:00",
+ "finished": "2026-11-08T04:31:07.872-05:00",
+ "duration_s": 3.065,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "dbc52172025853d4324c7d7399ea29846ed1d59c",
+ "git_dirty": true,
+ "current_phase": "P0:planning",
+ "args": [],
+ "summary": {
+  "passed": 95
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[UserPromptSubmit-prompt]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "docstring": "The 'Hooks docs confirmed' section names each hooked event and the stdin field\nlog_event.py reads for it, so the field names were checked against the docs and not guessed.",
+   "source": "@pytest.mark.req(\"INST-05\")\n@pytest.mark.parametrize(\"event,field\", [\n    (\"UserPromptSubmit\", \"prompt\"), (\"Stop\", \"last_assistant_message\"),\n    (\"PreCompact\", \"trigger\"), (\"SessionStart\", \"source\"), (\"SessionEnd\", \"reason\"),\n])\ndef test_section_records_each_event_and_its_field(event, field):\n    \"\"\"The 'Hooks docs confirmed' section names each hooked event and the stdin field\n    log_event.py reads for it, so the field names were checked against the docs and not guessed.\"\"\"\n    _, m = section()\n    body = m.group(1)\n    assert f\"**{event}**\" in body\n    line = next(l for l in body.splitlines() if f\"**{event}**\" in l)\n    assert f\"`{field}`\" in line\n",
+   "status": "passed",
+   "duration_s": 0.000446,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[Stop-last_assistant_message]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "docstring": "The 'Hooks docs confirmed' section names each hooked event and the stdin field\nlog_event.py reads for it, so the field names were checked against the docs and not guessed.",
+   "source": "@pytest.mark.req(\"INST-05\")\n@pytest.mark.parametrize(\"event,field\", [\n    (\"UserPromptSubmit\", \"prompt\"), (\"Stop\", \"last_assistant_message\"),\n    (\"PreCompact\", \"trigger\"), (\"SessionStart\", \"source\"), (\"SessionEnd\", \"reason\"),\n])\ndef test_section_records_each_event_and_its_field(event, field):\n    \"\"\"The 'Hooks docs confirmed' section names each hooked event and the stdin field\n    log_event.py reads for it, so the field names were checked against the docs and not guessed.\"\"\"\n    _, m = section()\n    body = m.group(1)\n    assert f\"**{event}**\" in body\n    line = next(l for l in body.splitlines() if f\"**{event}**\" in l)\n    assert f\"`{field}`\" in line\n",
+   "status": "passed",
+   "duration_s": 0.000205,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[PreCompact-trigger]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "docstring": "The 'Hooks docs confirmed' section names each hooked event and the stdin field\nlog_event.py reads for it, so the field names were checked against the docs and not guessed.",
+   "source": "@pytest.mark.req(\"INST-05\")\n@pytest.mark.parametrize(\"event,field\", [\n    (\"UserPromptSubmit\", \"prompt\"), (\"Stop\", \"last_assistant_message\"),\n    (\"PreCompact\", \"trigger\"), (\"SessionStart\", \"source\"), (\"SessionEnd\", \"reason\"),\n])\ndef test_section_records_each_event_and_its_field(event, field):\n    \"\"\"The 'Hooks docs confirmed' section names each hooked event and the stdin field\n    log_event.py reads for it, so the field names were checked against the docs and not guessed.\"\"\"\n    _, m = section()\n    body = m.group(1)\n    assert f\"**{event}**\" in body\n    line = next(l for l in body.splitlines() if f\"**{event}**\" in l)\n    assert f\"`{field}`\" in line\n",
+   "status": "passed",
+   "duration_s": 0.000184,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[SessionStart-source]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "docstring": "The 'Hooks docs confirmed' section names each hooked event and the stdin field\nlog_event.py reads for it, so the field names were checked against the docs and not guessed.",
+   "source": "@pytest.mark.req(\"INST-05\")\n@pytest.mark.parametrize(\"event,field\", [\n    (\"UserPromptSubmit\", \"prompt\"), (\"Stop\", \"last_assistant_message\"),\n    (\"PreCompact\", \"trigger\"), (\"SessionStart\", \"source\"), (\"SessionEnd\", \"reason\"),\n])\ndef test_section_records_each_event_and_its_field(event, field):\n    \"\"\"The 'Hooks docs confirmed' section names each hooked event and the stdin field\n    log_event.py reads for it, so the field names were checked against the docs and not guessed.\"\"\"\n    _, m = section()\n    body = m.group(1)\n    assert f\"**{event}**\" in body\n    line = next(l for l in body.splitlines() if f\"**{event}**\" in l)\n    assert f\"`{field}`\" in line\n",
+   "status": "passed",
+   "duration_s": 0.000169,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_each_event_and_its_field[SessionEnd-reason]",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 21,
+   "docstring": "The 'Hooks docs confirmed' section names each hooked event and the stdin field\nlog_event.py reads for it, so the field names were checked against the docs and not guessed.",
+   "source": "@pytest.mark.req(\"INST-05\")\n@pytest.mark.parametrize(\"event,field\", [\n    (\"UserPromptSubmit\", \"prompt\"), (\"Stop\", \"last_assistant_message\"),\n    (\"PreCompact\", \"trigger\"), (\"SessionStart\", \"source\"), (\"SessionEnd\", \"reason\"),\n])\ndef test_section_records_each_event_and_its_field(event, field):\n    \"\"\"The 'Hooks docs confirmed' section names each hooked event and the stdin field\n    log_event.py reads for it, so the field names were checked against the docs and not guessed.\"\"\"\n    _, m = section()\n    body = m.group(1)\n    assert f\"**{event}**\" in body\n    line = next(l for l in body.splitlines() if f\"**{event}**\" in l)\n    assert f\"`{field}`\" in line\n",
+   "status": "passed",
+   "duration_s": 0.00016,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_section_records_common_fields_and_project_dir_quoting",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 36,
+   "docstring": "The section records the common stdin fields (session_id, transcript_path,\nhook_event_name) and the confirmed $CLAUDE_PROJECT_DIR quoting rule.",
+   "source": "@pytest.mark.req(\"INST-05\")\ndef test_section_records_common_fields_and_project_dir_quoting():\n    \"\"\"The section records the common stdin fields (session_id, transcript_path,\n    hook_event_name) and the confirmed $CLAUDE_PROJECT_DIR quoting rule.\"\"\"\n    _, m = section()\n    for f in (\"session_id\", \"transcript_path\", \"hook_event_name\", \"$CLAUDE_PROJECT_DIR\"):\n        assert f in m.group(1)\n",
+   "status": "passed",
+   "duration_s": 0.000125,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_docs.py::test_docs_check_logged_before_hook_was_written",
+   "req_ids": [
+    "INST-05"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_docs.py",
+   "line": 45,
+   "docstring": "The docs check comes earlier in the append-only log than the entry that wrote\nlog_event.py: 'before writing the hook' really happened first.",
+   "source": "@pytest.mark.req(\"INST-05\")\ndef test_docs_check_logged_before_hook_was_written():\n    \"\"\"The docs check comes earlier in the append-only log than the entry that wrote\n    log_event.py: 'before writing the hook' really happened first.\"\"\"\n    text, m = section()\n    hook_entry = re.search(r\"^## .*log_event\\.py\", text, re.M)\n    assert hook_entry and m.start() < hook_entry.start()\n",
+   "status": "passed",
+   "duration_s": 0.000164,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_record_has_exact_schema_and_local_iso_ts",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 36,
+   "docstring": "A record has exactly {ts, event, session_id, phase, payload}, and ts is ISO 8601 with a\ntimezone offset (local tz, not naive).",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\ndef test_record_has_exact_schema_and_local_iso_ts(project):\n    \"\"\"A record has exactly {ts, event, session_id, phase, payload}, and ts is ISO 8601 with a\n    timezone offset (local tz, not naive).\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=\"startup\")))\n    [rec] = events(project)\n    assert set(rec) == {\"ts\", \"event\", \"session_id\", \"phase\", \"payload\"}\n    ts = datetime.fromisoformat(rec[\"ts\"])\n    assert ts.tzinfo is not None\n    assert ts.utcoffset() == datetime.now().astimezone().utcoffset()\n    assert rec[\"event\"] == \"SessionStart\" and rec[\"session_id\"] == \"sess-1\"\n    assert rec[\"phase\"] == \"P0:test\"\n",
+   "status": "passed",
+   "duration_s": 0.02833,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_user_prompt_submit_logs_full_prompt_untruncated",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 50,
+   "docstring": "UserPromptSubmit stores the full prompt text (5,000+ chars, multi-line, unicode) unchanged.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\ndef test_user_prompt_submit_logs_full_prompt_untruncated(project):\n    \"\"\"UserPromptSubmit stores the full prompt text (5,000+ chars, multi-line, unicode) unchanged.\"\"\"\n    prompt = \"Line one ✓\\n\" + \"x\" * 5000 + \"\\n\\\"quoted\\\"\"\n    ok(run_hook(project, sample(\"UserPromptSubmit\", prompt=prompt)))\n    assert events(project)[0][\"payload\"] == {\"prompt\": prompt}\n",
+   "status": "passed",
+   "duration_s": 0.052564,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_stop_uses_last_assistant_message_first_1000_chars",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 58,
+   "docstring": "Stop stores the first 1,000 characters of last_assistant_message as response_excerpt.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\ndef test_stop_uses_last_assistant_message_first_1000_chars(project):\n    \"\"\"Stop stores the first 1,000 characters of last_assistant_message as response_excerpt.\"\"\"\n    msg = \"\".join(chr(ord(\"a\") + i % 26) for i in range(2500))\n    ok(run_hook(project, sample(\"Stop\", last_assistant_message=msg, stop_hook_active=False)))\n    assert events(project)[0][\"payload\"] == {\"response_excerpt\": msg[:1000]}\n",
+   "status": "passed",
+   "duration_s": 0.031934,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_stop_falls_back_to_last_assistant_text_in_transcript",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 66,
+   "docstring": "With no last_assistant_message, Stop takes the text of the LAST assistant entry in\ntranscript_path. It ignores tool_use blocks, user entries, and blank or corrupt lines.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\ndef test_stop_falls_back_to_last_assistant_text_in_transcript(project, tmp_path):\n    \"\"\"With no last_assistant_message, Stop takes the text of the LAST assistant entry in\n    transcript_path. It ignores tool_use blocks, user entries, and blank or corrupt lines.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [\n        {\"type\": \"user\", \"message\": {\"role\": \"user\", \"content\": \"q1\"}},\n        {\"type\": \"assistant\", \"message\": {\"content\": [{\"type\": \"text\", \"text\": \"old answer\"}]}},\n        {\"type\": \"user\", \"message\": {\"role\": \"user\", \"content\": \"q2\"}},\n        {\"type\": \"assistant\", \"message\": {\"content\": [{\"type\": \"text\", \"text\": \"new \"},\n                                                      {\"type\": \"tool_use\", \"name\": \"Bash\"},\n                                                      {\"type\": \"text\", \"text\": \"answer\"}]}},\n        {\"type\": \"assistant\", \"message\": {\"content\": [{\"type\": \"tool_use\", \"name\": \"Read\"}]}},\n    ])\n    with open(t, \"a\") as f:\n        f.write(\"{not json\\n\\n\")\n    ok(run_hook(project, sample(\"Stop\", transcript_path=str(t))))\n    assert events(project)[0][\"payload\"] == {\"response_excerpt\": \"new \\nanswer\"}\n",
+   "status": "passed",
+   "duration_s": 0.024723,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_precompact_logs_trigger[manual]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 85,
+   "docstring": "PreCompact stores payload.trigger (manual/auto).",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"trigger\", [\"manual\", \"auto\"])\ndef test_precompact_logs_trigger(project, trigger):\n    \"\"\"PreCompact stores payload.trigger (manual/auto).\"\"\"\n    ok(run_hook(project, sample(\"PreCompact\", trigger=trigger, custom_instructions=None)))\n    assert events(project)[0][\"payload\"] == {\"trigger\": trigger}\n",
+   "status": "passed",
+   "duration_s": 0.026417,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_precompact_logs_trigger[auto]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 85,
+   "docstring": "PreCompact stores payload.trigger (manual/auto).",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"trigger\", [\"manual\", \"auto\"])\ndef test_precompact_logs_trigger(project, trigger):\n    \"\"\"PreCompact stores payload.trigger (manual/auto).\"\"\"\n    ok(run_hook(project, sample(\"PreCompact\", trigger=trigger, custom_instructions=None)))\n    assert events(project)[0][\"payload\"] == {\"trigger\": trigger}\n",
+   "status": "passed",
+   "duration_s": 0.024676,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[startup]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "docstring": "SessionStart stores payload.source for every documented value, fork included.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"source\", [\"startup\", \"resume\", \"clear\", \"compact\", \"fork\"])\ndef test_session_start_logs_source(project, source):\n    \"\"\"SessionStart stores payload.source for every documented value, fork included.\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=source)))\n    assert events(project)[0][\"payload\"] == {\"source\": source}\n",
+   "status": "passed",
+   "duration_s": 0.025411,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[resume]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "docstring": "SessionStart stores payload.source for every documented value, fork included.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"source\", [\"startup\", \"resume\", \"clear\", \"compact\", \"fork\"])\ndef test_session_start_logs_source(project, source):\n    \"\"\"SessionStart stores payload.source for every documented value, fork included.\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=source)))\n    assert events(project)[0][\"payload\"] == {\"source\": source}\n",
+   "status": "passed",
+   "duration_s": 0.025429,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[clear]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "docstring": "SessionStart stores payload.source for every documented value, fork included.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"source\", [\"startup\", \"resume\", \"clear\", \"compact\", \"fork\"])\ndef test_session_start_logs_source(project, source):\n    \"\"\"SessionStart stores payload.source for every documented value, fork included.\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=source)))\n    assert events(project)[0][\"payload\"] == {\"source\": source}\n",
+   "status": "passed",
+   "duration_s": 0.0251,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[compact]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "docstring": "SessionStart stores payload.source for every documented value, fork included.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"source\", [\"startup\", \"resume\", \"clear\", \"compact\", \"fork\"])\ndef test_session_start_logs_source(project, source):\n    \"\"\"SessionStart stores payload.source for every documented value, fork included.\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=source)))\n    assert events(project)[0][\"payload\"] == {\"source\": source}\n",
+   "status": "passed",
+   "duration_s": 0.024727,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_start_logs_source[fork]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 93,
+   "docstring": "SessionStart stores payload.source for every documented value, fork included.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"source\", [\"startup\", \"resume\", \"clear\", \"compact\", \"fork\"])\ndef test_session_start_logs_source(project, source):\n    \"\"\"SessionStart stores payload.source for every documented value, fork included.\"\"\"\n    ok(run_hook(project, sample(\"SessionStart\", source=source)))\n    assert events(project)[0][\"payload\"] == {\"source\": source}\n",
+   "status": "passed",
+   "duration_s": 0.023997,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[clear]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "docstring": "SessionEnd stores payload.reason for every documented value.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"reason\", [\"clear\", \"resume\", \"logout\", \"prompt_input_exit\", \"other\"])\ndef test_session_end_logs_reason(project, reason):\n    \"\"\"SessionEnd stores payload.reason for every documented value.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", reason=reason)))\n    assert events(project)[0][\"payload\"] == {\"reason\": reason}\n",
+   "status": "passed",
+   "duration_s": 0.024731,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[resume]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "docstring": "SessionEnd stores payload.reason for every documented value.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"reason\", [\"clear\", \"resume\", \"logout\", \"prompt_input_exit\", \"other\"])\ndef test_session_end_logs_reason(project, reason):\n    \"\"\"SessionEnd stores payload.reason for every documented value.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", reason=reason)))\n    assert events(project)[0][\"payload\"] == {\"reason\": reason}\n",
+   "status": "passed",
+   "duration_s": 0.02592,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[logout]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "docstring": "SessionEnd stores payload.reason for every documented value.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"reason\", [\"clear\", \"resume\", \"logout\", \"prompt_input_exit\", \"other\"])\ndef test_session_end_logs_reason(project, reason):\n    \"\"\"SessionEnd stores payload.reason for every documented value.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", reason=reason)))\n    assert events(project)[0][\"payload\"] == {\"reason\": reason}\n",
+   "status": "passed",
+   "duration_s": 0.024792,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[prompt_input_exit]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "docstring": "SessionEnd stores payload.reason for every documented value.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"reason\", [\"clear\", \"resume\", \"logout\", \"prompt_input_exit\", \"other\"])\ndef test_session_end_logs_reason(project, reason):\n    \"\"\"SessionEnd stores payload.reason for every documented value.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", reason=reason)))\n    assert events(project)[0][\"payload\"] == {\"reason\": reason}\n",
+   "status": "passed",
+   "duration_s": 0.025693,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_end_logs_reason[other]",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 101,
+   "docstring": "SessionEnd stores payload.reason for every documented value.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.parametrize(\"reason\", [\"clear\", \"resume\", \"logout\", \"prompt_input_exit\", \"other\"])\ndef test_session_end_logs_reason(project, reason):\n    \"\"\"SessionEnd stores payload.reason for every documented value.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", reason=reason)))\n    assert events(project)[0][\"payload\"] == {\"reason\": reason}\n",
+   "status": "passed",
+   "duration_s": 0.026144,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_manual_check_sequence_appends_in_order",
+   "req_ids": [
+    "INST-02",
+    "INST-08"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_log_event.py",
+   "line": 109,
+   "docstring": "Simulates Aayush's manual check (start, 3 prompts with replies, /compact, /clear) and\nchecks events.jsonl has one line per event, in order, all tagged with the phase.",
+   "source": "@pytest.mark.req(\"INST-02\", \"INST-08\")\n@pytest.mark.kind(\"integration\")\ndef test_manual_check_sequence_appends_in_order(project):\n    \"\"\"Simulates Aayush's manual check (start, 3 prompts with replies, /compact, /clear) and\n    checks events.jsonl has one line per event, in order, all tagged with the phase.\"\"\"\n    seq = [sample(\"SessionStart\", source=\"startup\")]\n    for i in range(3):\n        seq += [sample(\"UserPromptSubmit\", prompt=f\"p{i}\"),\n                sample(\"Stop\", last_assistant_message=f\"r{i}\")]\n    seq += [sample(\"PreCompact\", trigger=\"manual\"), sample(\"SessionStart\", source=\"compact\"),\n            sample(\"SessionEnd\", reason=\"clear\"),\n            sample(\"SessionStart\", source=\"clear\", session_id=\"sess-2\")]\n    for s in seq:\n        ok(run_hook(project, s))\n    recs = events(project)\n    assert [r[\"event\"] for r in recs] == [s[\"hook_event_name\"] for s in seq]\n    assert {r[\"phase\"] for r in recs} == {\"P0:test\"}\n    assert [r[\"ts\"] for r in recs] == sorted(r[\"ts\"] for r in recs)\n",
+   "status": "passed",
+   "duration_s": 0.267954,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[None]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "docstring": "phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\nfile's contents, stripped.",
+   "source": "@pytest.mark.req(\"INST-02\")\n@pytest.mark.parametrize(\"content\", [None, \"\", \"  \\n\\t\"])\ndef test_phase_is_untagged_when_phase_file_missing_or_blank(tmp_path, content):\n    \"\"\"phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\n    file's contents, stripped.\"\"\"\n    if content is not None:\n        (tmp_path / \".phase\").write_text(content)\n    ok(run_hook(tmp_path, sample(\"SessionStart\", source=\"startup\")))\n    assert events(tmp_path)[0][\"phase\"] == \"untagged\"\n",
+   "status": "passed",
+   "duration_s": 0.026606,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "docstring": "phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\nfile's contents, stripped.",
+   "source": "@pytest.mark.req(\"INST-02\")\n@pytest.mark.parametrize(\"content\", [None, \"\", \"  \\n\\t\"])\ndef test_phase_is_untagged_when_phase_file_missing_or_blank(tmp_path, content):\n    \"\"\"phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\n    file's contents, stripped.\"\"\"\n    if content is not None:\n        (tmp_path / \".phase\").write_text(content)\n    ok(run_hook(tmp_path, sample(\"SessionStart\", source=\"startup\")))\n    assert events(tmp_path)[0][\"phase\"] == \"untagged\"\n",
+   "status": "passed",
+   "duration_s": 0.025589,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_is_untagged_when_phase_file_missing_or_blank[  \\n\\t]",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 129,
+   "docstring": "phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\nfile's contents, stripped.",
+   "source": "@pytest.mark.req(\"INST-02\")\n@pytest.mark.parametrize(\"content\", [None, \"\", \"  \\n\\t\"])\ndef test_phase_is_untagged_when_phase_file_missing_or_blank(tmp_path, content):\n    \"\"\"phase is \"untagged\" when .phase is missing, empty, or whitespace. Otherwise it is the\n    file's contents, stripped.\"\"\"\n    if content is not None:\n        (tmp_path / \".phase\").write_text(content)\n    ok(run_hook(tmp_path, sample(\"SessionStart\", source=\"startup\")))\n    assert events(tmp_path)[0][\"phase\"] == \"untagged\"\n",
+   "status": "passed",
+   "duration_s": 0.024596,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_phase_change_takes_effect_on_next_event",
+   "req_ids": [
+    "INST-02"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 140,
+   "docstring": ".phase is read on every event, so editing it retags later events without a restart.",
+   "source": "@pytest.mark.req(\"INST-02\")\ndef test_phase_change_takes_effect_on_next_event(project):\n    \"\"\".phase is read on every event, so editing it retags later events without a restart.\"\"\"\n    ok(run_hook(project, sample(\"UserPromptSubmit\", prompt=\"a\")))\n    (project / \".phase\").write_text(\"P1:build\")\n    ok(run_hook(project, sample(\"UserPromptSubmit\", prompt=\"b\")))\n    assert [e[\"phase\"] for e in events(project)] == [\"P0:test\", \"P1:build\"]\n",
+   "status": "passed",
+   "duration_s": 0.049947,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "docstring": "Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\nwritten to logs/hook_errors.log and nothing is added to events.jsonl.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\n@pytest.mark.parametrize(\"stdin\", [\"\", \"{not json\", \"[1, 2]\", \"null\"])\ndef test_bad_input_exits_0_silently_and_logs_error(project, stdin):\n    \"\"\"Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\n    written to logs/hook_errors.log and nothing is added to events.jsonl.\"\"\"\n    ok(run_hook(project, stdin))\n    assert events(project) == []\n    assert \"Traceback\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.028435,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[{not json]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "docstring": "Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\nwritten to logs/hook_errors.log and nothing is added to events.jsonl.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\n@pytest.mark.parametrize(\"stdin\", [\"\", \"{not json\", \"[1, 2]\", \"null\"])\ndef test_bad_input_exits_0_silently_and_logs_error(project, stdin):\n    \"\"\"Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\n    written to logs/hook_errors.log and nothing is added to events.jsonl.\"\"\"\n    ok(run_hook(project, stdin))\n    assert events(project) == []\n    assert \"Traceback\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.029078,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[[1, 2]]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "docstring": "Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\nwritten to logs/hook_errors.log and nothing is added to events.jsonl.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\n@pytest.mark.parametrize(\"stdin\", [\"\", \"{not json\", \"[1, 2]\", \"null\"])\ndef test_bad_input_exits_0_silently_and_logs_error(project, stdin):\n    \"\"\"Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\n    written to logs/hook_errors.log and nothing is added to events.jsonl.\"\"\"\n    ok(run_hook(project, stdin))\n    assert events(project) == []\n    assert \"Traceback\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.029701,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_bad_input_exits_0_silently_and_logs_error[null]",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 151,
+   "docstring": "Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\nwritten to logs/hook_errors.log and nothing is added to events.jsonl.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\n@pytest.mark.parametrize(\"stdin\", [\"\", \"{not json\", \"[1, 2]\", \"null\"])\ndef test_bad_input_exits_0_silently_and_logs_error(project, stdin):\n    \"\"\"Empty, malformed, or non-object input still exits 0 with empty stdout. The failure is\n    written to logs/hook_errors.log and nothing is added to events.jsonl.\"\"\"\n    ok(run_hook(project, stdin))\n    assert events(project) == []\n    assert \"Traceback\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.029368,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unreadable_transcript_on_stop_still_logs_event",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 162,
+   "docstring": "A Stop with no last_assistant_message and a transcript_path that doesn't exist still\nlogs the event (empty excerpt), exits 0, and records the error.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\ndef test_unreadable_transcript_on_stop_still_logs_event(project, tmp_path):\n    \"\"\"A Stop with no last_assistant_message and a transcript_path that doesn't exist still\n    logs the event (empty excerpt), exits 0, and records the error.\"\"\"\n    ok(run_hook(project, sample(\"Stop\", transcript_path=str(tmp_path / \"missing.jsonl\"))))\n    assert events(project)[0][\"payload\"] == {\"response_excerpt\": \"\"}\n    assert \"could not read transcript\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.029529,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unwritable_logs_dir_still_exits_0",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 172,
+   "docstring": "If logs/ can't be created (a regular file sits in its place), so neither log can be\nwritten, the hook still exits 0 with no stdout.",
+   "source": "@pytest.mark.req(\"INST-03\")\n@pytest.mark.kind(\"recovery\")\ndef test_unwritable_logs_dir_still_exits_0(project):\n    \"\"\"If logs/ can't be created (a regular file sits in its place), so neither log can be\n    written, the hook still exits 0 with no stdout.\"\"\"\n    (project / \"logs\").write_text(\"i am a file\")\n    ok(run_hook(project, sample(\"UserPromptSubmit\", prompt=\"hi\")))\n",
+   "status": "passed",
+   "duration_s": 0.027686,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_unknown_event_is_logged_with_empty_payload",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 181,
+   "docstring": "An event the hook doesn't know about is still logged (empty payload), not dropped or crashed.",
+   "source": "@pytest.mark.req(\"INST-03\")\ndef test_unknown_event_is_logged_with_empty_payload(project):\n    \"\"\"An event the hook doesn't know about is still logged (empty payload), not dropped or crashed.\"\"\"\n    ok(run_hook(project, sample(\"Notification\", message=\"m\")))\n    assert events(project)[0][\"event\"] == \"Notification\"\n    assert events(project)[0][\"payload\"] == {}\n",
+   "status": "passed",
+   "duration_s": 0.027913,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_hook_does_not_import_third_party_packages",
+   "req_ids": [
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 189,
+   "docstring": "log_event.py imports only standard-library modules, so it runs under any system\npython3, outside the venv.",
+   "source": "@pytest.mark.req(\"INST-03\")\ndef test_hook_does_not_import_third_party_packages():\n    \"\"\"log_event.py imports only standard-library modules, so it runs under any system\n    python3, outside the venv.\"\"\"\n    import ast\n    import sys\n    from hookutil import HOOK\n    tree = ast.parse(HOOK.read_text())\n    names = {a.name.split(\".\")[0] for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names}\n    names |= {n.module.split(\".\")[0] for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)}\n    assert names <= set(sys.stdlib_module_names), names - set(sys.stdlib_module_names)\n",
+   "status": "passed",
+   "duration_s": 0.001568,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_transcript_copied_verbatim_to_raw_logs[PreCompact-extra0]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 204,
+   "docstring": "On PreCompact and SessionEnd, the transcript is copied byte-for-byte to\nraw_logs/transcripts/<session_id>.jsonl. It is not redacted, because raw_logs/ is gitignored.",
+   "source": "@pytest.mark.req(\"INST-04\")\n@pytest.mark.parametrize(\"event,extra\", [(\"PreCompact\", {\"trigger\": \"manual\"}),\n                                         (\"SessionEnd\", {\"reason\": \"clear\"})])\ndef test_transcript_copied_verbatim_to_raw_logs(project, tmp_path, event, extra):\n    \"\"\"On PreCompact and SessionEnd, the transcript is copied byte-for-byte to\n    raw_logs/transcripts/<session_id>.jsonl. It is not redacted, because raw_logs/ is gitignored.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"type\": \"user\", \"message\": {\"content\": \"me@x.com\"}}])\n    ok(run_hook(project, sample(event, transcript_path=str(t), **extra)))\n    copy = project / \"raw_logs\" / \"transcripts\" / \"sess-1.jsonl\"\n    assert copy.read_bytes() == t.read_bytes()\n",
+   "status": "passed",
+   "duration_s": 0.028171,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_transcript_copied_verbatim_to_raw_logs[SessionEnd-extra1]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 204,
+   "docstring": "On PreCompact and SessionEnd, the transcript is copied byte-for-byte to\nraw_logs/transcripts/<session_id>.jsonl. It is not redacted, because raw_logs/ is gitignored.",
+   "source": "@pytest.mark.req(\"INST-04\")\n@pytest.mark.parametrize(\"event,extra\", [(\"PreCompact\", {\"trigger\": \"manual\"}),\n                                         (\"SessionEnd\", {\"reason\": \"clear\"})])\ndef test_transcript_copied_verbatim_to_raw_logs(project, tmp_path, event, extra):\n    \"\"\"On PreCompact and SessionEnd, the transcript is copied byte-for-byte to\n    raw_logs/transcripts/<session_id>.jsonl. It is not redacted, because raw_logs/ is gitignored.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"type\": \"user\", \"message\": {\"content\": \"me@x.com\"}}])\n    ok(run_hook(project, sample(event, transcript_path=str(t), **extra)))\n    copy = project / \"raw_logs\" / \"transcripts\" / \"sess-1.jsonl\"\n    assert copy.read_bytes() == t.read_bytes()\n",
+   "status": "passed",
+   "duration_s": 0.028648,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_later_copy_replaces_earlier_with_superset",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 216,
+   "docstring": "A PreCompact copy followed by a SessionEnd copy of the grown transcript leaves the latest\n(superset) contents in one file per session.",
+   "source": "@pytest.mark.req(\"INST-04\")\ndef test_later_copy_replaces_earlier_with_superset(project, tmp_path):\n    \"\"\"A PreCompact copy followed by a SessionEnd copy of the grown transcript leaves the latest\n    (superset) contents in one file per session.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"n\": 1}])\n    ok(run_hook(project, sample(\"PreCompact\", transcript_path=str(t), trigger=\"auto\")))\n    write_transcript(t, [{\"n\": 1}, {\"n\": 2}])\n    ok(run_hook(project, sample(\"SessionEnd\", transcript_path=str(t), reason=\"other\")))\n    files = list((project / \"raw_logs\" / \"transcripts\").iterdir())\n    assert [f.name for f in files] == [\"sess-1.jsonl\"]\n    assert files[0].read_bytes() == t.read_bytes()\n",
+   "status": "passed",
+   "duration_s": 0.052617,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[UserPromptSubmit]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "docstring": "Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.",
+   "source": "@pytest.mark.req(\"INST-04\")\n@pytest.mark.parametrize(\"event\", [\"UserPromptSubmit\", \"Stop\", \"SessionStart\"])\ndef test_other_events_do_not_copy(project, tmp_path, event):\n    \"\"\"Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"n\": 1}])\n    ok(run_hook(project, sample(event, transcript_path=str(t), prompt=\"p\",\n                                last_assistant_message=\"r\", source=\"startup\")))\n    assert not (project / \"raw_logs\").exists()\n",
+   "status": "passed",
+   "duration_s": 0.026847,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[Stop]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "docstring": "Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.",
+   "source": "@pytest.mark.req(\"INST-04\")\n@pytest.mark.parametrize(\"event\", [\"UserPromptSubmit\", \"Stop\", \"SessionStart\"])\ndef test_other_events_do_not_copy(project, tmp_path, event):\n    \"\"\"Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"n\": 1}])\n    ok(run_hook(project, sample(event, transcript_path=str(t), prompt=\"p\",\n                                last_assistant_message=\"r\", source=\"startup\")))\n    assert not (project / \"raw_logs\").exists()\n",
+   "status": "passed",
+   "duration_s": 0.027797,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_other_events_do_not_copy[SessionStart]",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 229,
+   "docstring": "Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.",
+   "source": "@pytest.mark.req(\"INST-04\")\n@pytest.mark.parametrize(\"event\", [\"UserPromptSubmit\", \"Stop\", \"SessionStart\"])\ndef test_other_events_do_not_copy(project, tmp_path, event):\n    \"\"\"Only PreCompact and SessionEnd copy transcripts. Other events leave raw_logs/ alone.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"n\": 1}])\n    ok(run_hook(project, sample(event, transcript_path=str(t), prompt=\"p\",\n                                last_assistant_message=\"r\", source=\"startup\")))\n    assert not (project / \"raw_logs\").exists()\n",
+   "status": "passed",
+   "duration_s": 0.028208,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_session_id_is_sanitized_into_filename",
+   "req_ids": [
+    "INST-04"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_log_event.py",
+   "line": 239,
+   "docstring": "A session_id containing path separators can't write outside raw_logs/transcripts/.",
+   "source": "@pytest.mark.req(\"INST-04\")\ndef test_session_id_is_sanitized_into_filename(project, tmp_path):\n    \"\"\"A session_id containing path separators can't write outside raw_logs/transcripts/.\"\"\"\n    t = write_transcript(tmp_path / \"t.jsonl\", [{\"n\": 1}])\n    ok(run_hook(project, sample(\"SessionEnd\", transcript_path=str(t), reason=\"other\",\n                                session_id=\"../../evil\")))\n    assert [f.name for f in (project / \"raw_logs\" / \"transcripts\").iterdir()] == [\"______evil.jsonl\"]\n    assert not (project.parent / \"evil.jsonl\").exists()\n",
+   "status": "passed",
+   "duration_s": 0.026739,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_log_event.py::test_missing_transcript_on_copy_logs_error_but_keeps_event",
+   "req_ids": [
+    "INST-04",
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_log_event.py",
+   "line": 249,
+   "docstring": "If the transcript to copy doesn't exist, the event is still logged, the hook exits 0,\nand the copy failure goes to hook_errors.log.",
+   "source": "@pytest.mark.req(\"INST-04\", \"INST-03\")\n@pytest.mark.kind(\"recovery\")\ndef test_missing_transcript_on_copy_logs_error_but_keeps_event(project, tmp_path):\n    \"\"\"If the transcript to copy doesn't exist, the event is still logged, the hook exits 0,\n    and the copy failure goes to hook_errors.log.\"\"\"\n    ok(run_hook(project, sample(\"SessionEnd\", transcript_path=str(tmp_path / \"nope.jsonl\"),\n                                reason=\"logout\")))\n    assert events(project)[0][\"payload\"] == {\"reason\": \"logout\"}\n    assert \"could not copy transcript\" in errors(project)\n",
+   "status": "passed",
+   "duration_s": 0.029902,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[data]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010937,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[analysis]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.009741,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[test]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010472,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[report]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010392,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[tokens]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.009952,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[timeline]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010611,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[site]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010244,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[serve]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.009178,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[clean]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.010928,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_clean_never_touches_logs_or_run_history",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 25,
+   "docstring": "`make clean` doesn't delete logs/, raw_logs/, or results/: hooks own the logs, and\nVAL-02 keeps every run file.",
+   "source": "@pytest.mark.req(\"INST-06\")\ndef test_clean_never_touches_logs_or_run_history():\n    \"\"\"`make clean` doesn't delete logs/, raw_logs/, or results/: hooks own the logs, and\n    VAL-02 keeps every run file.\"\"\"\n    cmds = make_n(\"clean\").stdout\n    for protected in (\"logs\", \"raw_logs\", \"results\"):\n        assert protected not in cmds\n",
+   "status": "passed",
+   "duration_s": 0.010677,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_runs_pytest",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 34,
+   "docstring": "`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.",
+   "source": "@pytest.mark.req(\"INST-07\")\ndef test_make_test_runs_pytest():\n    \"\"\"`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.\"\"\"\n    assert \"-m pytest\" in make_n(\"test\").stdout\n",
+   "status": "passed",
+   "duration_s": 0.010603,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[mail me@example.com now-mail [EMAIL] now]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000253,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[a.b+tag@sub.uni.edu-[EMAIL]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000117,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[key sk-ant-api03-AbC123_def-456ghiJKL789 end-key [REDACTED_TOKEN] end]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[sk-proj-abcdefghijklmnop1234-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000118,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[ghp_abcdefghijklmnopqrstuvwxyz0123456789-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000119,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[github_pat_11ABCDEFG0123456789_abcdefghijklmnop-[REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig-Authorization: [REDACTED_TOKEN]]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.00012,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[/Users/someone/Desktop/CS 4005/Project 2-~/Desktop/CS 4005/Project 2]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[/home/bob/.ssh/id_rsa-~/.ssh/id_rsa]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000266,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[cd '/Users/alice' && ls-cd '~' && ls]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000136,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_each_secret_class[file:///Users/alice/x.html-file://~/x.html]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 10,
+   "docstring": "Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n/home paths) is replaced with its placeholder. The text around it is unchanged.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"raw,expected\", [\n    (\"mail me@example.com now\", \"mail [EMAIL] now\"),\n    (\"a.b+tag@sub.uni.edu\", \"[EMAIL]\"),\n    (\"key sk-ant-api03-AbC123_def-456ghiJKL789 end\", f\"key {TOKEN} end\"),\n    (\"sk-proj-abcdefghijklmnop1234\", TOKEN),\n    (\"ghp_abcdefghijklmnopqrstuvwxyz0123456789\", TOKEN),\n    (\"github_pat_11ABCDEFG0123456789_abcdefghijklmnop\", TOKEN),\n    (\"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.payload.sig\", f\"Authorization: {TOKEN}\"),\n    (\"/Users/someone/Desktop/CS 4005/Project 2\", \"~/Desktop/CS 4005/Project 2\"),\n    (\"/home/bob/.ssh/id_rsa\", \"~/.ssh/id_rsa\"),\n    (\"cd '/Users/alice' && ls\", \"cd '~' && ls\"),\n    (\"file:///Users/alice/x.html\", \"file://~/x.html\"),\n])\ndef test_redacts_each_secret_class(raw, expected):\n    \"\"\"Each pattern class in INST-09 (emails, sk-/ghp_/github_pat_/Bearer tokens, /Users and\n    /home paths) is replaced with its placeholder. The text around it is unchanged.\"\"\"\n    assert redact(raw) == expected\n",
+   "status": "passed",
+   "duration_s": 0.000116,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[task-list and sk-learn are fine]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 0.0001,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[a task-management-system-overview]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 9.2e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[the bearer of bad news]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 0.0001,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[see https://example.com/Users/guide]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 8.7e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[src/home/page.py]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 8.2e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_leaves_lookalikes_alone[ratio 3@4]",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 30,
+   "docstring": "Strings that only look like secrets or home paths are not changed, so the logs stay\nreadable for P5.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.parametrize(\"text\", [\n    \"task-list and sk-learn are fine\",          # sk- prefix but too short to be a key\n    \"a task-management-system-overview\",       # long, but 'sk-' is mid-word\n    \"the bearer of bad news\",                   # 'bearer' in prose\n    \"see https://example.com/Users/guide\",      # /Users inside a URL path, not a home dir\n    \"src/home/page.py\",                         # relative path containing 'home'\n    \"ratio 3@4\",                                # '@' with no domain\n])\ndef test_leaves_lookalikes_alone(text):\n    \"\"\"Strings that only look like secrets or home paths are not changed, so the logs stay\n    readable for P5.\"\"\"\n    assert redact(text) == text\n",
+   "status": "passed",
+   "duration_s": 8.7e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_redacts_nested_structures_and_is_idempotent",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 45,
+   "docstring": "redact() walks dicts and lists, leaves non-strings alone, and running it twice gives the\nsame result as running it once.",
+   "source": "@pytest.mark.req(\"INST-09\")\ndef test_redacts_nested_structures_and_is_idempotent():\n    \"\"\"redact() walks dicts and lists, leaves non-strings alone, and running it twice gives the\n    same result as running it once.\"\"\"\n    data = {\"a\": [\"x@y.io\", {\"b\": \"/home/z/f\"}], \"n\": 3, \"none\": None}\n    once = redact(data)\n    assert once == {\"a\": [\"[EMAIL]\", {\"b\": \"~/f\"}], \"n\": 3, \"none\": None}\n    assert redact(once) == once\n",
+   "status": "passed",
+   "duration_s": 7.6e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_no_secret_reaches_events_jsonl",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_redaction.py",
+   "line": 59,
+   "docstring": "End to end: a prompt and a Stop message that carry every secret class produce an\nevents.jsonl file containing none of them.",
+   "source": "@pytest.mark.req(\"INST-09\")\n@pytest.mark.kind(\"integration\")\ndef test_no_secret_reaches_events_jsonl(tmp_path):\n    \"\"\"End to end: a prompt and a Stop message that carry every secret class produce an\n    events.jsonl file containing none of them.\"\"\"\n    blob = \" | \".join(SECRETS)\n    run_hook(tmp_path, {\"hook_event_name\": \"UserPromptSubmit\", \"session_id\": \"s\", \"prompt\": blob})\n    run_hook(tmp_path, {\"hook_event_name\": \"Stop\", \"session_id\": \"s\", \"last_assistant_message\": blob})\n    raw = (tmp_path / \"logs\" / \"events.jsonl\").read_text()\n    assert len(events(tmp_path)) == 2\n    for s in SECRETS:\n        assert s not in raw\n",
+   "status": "passed",
+   "duration_s": 0.052893,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_stop_excerpt_redacts_before_truncating",
+   "req_ids": [
+    "INST-09"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_redaction.py",
+   "line": 73,
+   "docstring": "A token straddling the 1,000-char cut is redacted, not left as a partial key that's too\nshort to match.",
+   "source": "@pytest.mark.req(\"INST-09\")\ndef test_stop_excerpt_redacts_before_truncating(tmp_path):\n    \"\"\"A token straddling the 1,000-char cut is redacted, not left as a partial key that's too\n    short to match.\"\"\"\n    # The space matters: the sk- pattern requires a word boundary, so \"task-management-…\" is not\n    # redacted (see test_leaves_lookalikes_alone). The redacted token then spans chars 990-1005.\n    msg = \"x\" * 989 + \" sk-ant-api03-ABCDEFGHIJKLMNOPQRSTUV\"\n    run_hook(tmp_path, {\"hook_event_name\": \"Stop\", \"session_id\": \"s\", \"last_assistant_message\": msg})\n    excerpt = events(tmp_path)[0][\"payload\"][\"response_excerpt\"]\n    assert \"sk-ant\" not in excerpt and excerpt.endswith(\"[REDACTED_\")\n",
+   "status": "passed",
+   "duration_s": 0.027413,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_redaction.py::test_hook_errors_log_is_redacted",
+   "req_ids": [
+    "INST-09",
+    "INST-03"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_redaction.py",
+   "line": 85,
+   "docstring": "Malformed input containing secrets is quoted in hook_errors.log only in redacted form,\nincluding the home path in the traceback.",
+   "source": "@pytest.mark.req(\"INST-09\", \"INST-03\")\n@pytest.mark.kind(\"recovery\")\ndef test_hook_errors_log_is_redacted(tmp_path):\n    \"\"\"Malformed input containing secrets is quoted in hook_errors.log only in redacted form,\n    including the home path in the traceback.\"\"\"\n    run_hook(tmp_path, \"{broken \" + \" \".join(SECRETS))\n    log = errors(tmp_path)\n    assert \"Traceback\" in log\n    for s in SECRETS:\n        assert s not in log\n",
+   "status": "passed",
+   "duration_s": 0.027285,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_every_test_has_all_val01_fields",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 70,
+   "docstring": "Every test entry has every VAL-01 field (nodeid, req_ids, phase, kind, status,\nduration_s, failure_message, docstring, source), and every executed test appears.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_every_test_has_all_val01_fields(runfile):\n    \"\"\"Every test entry has every VAL-01 field (nodeid, req_ids, phase, kind, status,\n    duration_s, failure_message, docstring, source), and every executed test appears.\"\"\"\n    data, tests = runfile\n    assert data[\"schema\"] == \"test-run/1\"\n    assert len(tests) == 7\n    for t in tests.values():\n        assert FIELDS <= set(t), FIELDS - set(t)\n        assert isinstance(t[\"duration_s\"], float) and t[\"duration_s\"] >= 0\n",
+   "status": "passed",
+   "duration_s": 0.148002,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_statuses_cover_every_outcome",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 83,
+   "docstring": "Pass, fail, skip, fixture-setup error and xfail are each recorded with the right status,\nand the summary counts match.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_statuses_cover_every_outcome(runfile):\n    \"\"\"Pass, fail, skip, fixture-setup error and xfail are each recorded with the right status,\n    and the summary counts match.\"\"\"\n    data, tests = runfile\n    assert {n: t[\"status\"] for n, t in tests.items()} == {\n        \"test_pass\": \"passed\", \"test_fail\": \"failed\", \"test_skip\": \"skipped\",\n        \"test_untagged\": \"passed\", \"test_error\": \"error\", \"test_xfail\": \"xfailed\",\n        \"test_home_leak\": \"failed\"}\n    assert data[\"summary\"] == {\"passed\": 2, \"failed\": 2, \"skipped\": 1, \"error\": 1, \"xfailed\": 1}\n    assert data[\"exit_status\"] == 1\n",
+   "status": "passed",
+   "duration_s": 0.167751,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_phase_from_first_req_prefix_and_kind_default",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 97,
+   "docstring": "phase comes from the first req ID's area (DATA -> P1, INST -> P0, TOK -> P6),\nnot from .phase. With no req, phase is \"untagged\". kind defaults to unit.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_phase_from_first_req_prefix_and_kind_default(runfile):\n    \"\"\"phase comes from the first req ID's area (DATA -> P1, INST -> P0, TOK -> P6),\n    not from .phase. With no req, phase is \"untagged\". kind defaults to unit.\"\"\"\n    data, tests = runfile\n    assert (tests[\"test_pass\"][\"req_ids\"], tests[\"test_pass\"][\"phase\"]) == ([\"DATA-03\"], \"P1\")\n    assert (tests[\"test_fail\"][\"req_ids\"], tests[\"test_fail\"][\"phase\"]) == ([\"INST-01\", \"VAL-02\"], \"P0\")\n    assert tests[\"test_skip\"][\"phase\"] == \"P6\"\n    assert (tests[\"test_untagged\"][\"req_ids\"], tests[\"test_untagged\"][\"phase\"]) == ([], \"untagged\")\n    assert tests[\"test_pass\"][\"kind\"] == \"property\"\n    assert tests[\"test_fail\"][\"kind\"] == \"unit\"\n    assert data[\"current_phase\"] == \"untagged\"  # no .phase in the pytester project\n",
+   "status": "passed",
+   "duration_s": 0.152358,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_messages_docstrings_and_source_captured",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 112,
+   "docstring": "failure_message holds the assertion text, skip reason, or setup error. docstring and\nsource come from the test function. Passing tests have an empty message.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_messages_docstrings_and_source_captured(runfile):\n    \"\"\"failure_message holds the assertion text, skip reason, or setup error. docstring and\n    source come from the test function. Passing tests have an empty message.\"\"\"\n    _, tests = runfile\n    assert \"boom-marker\" in tests[\"test_fail\"][\"failure_message\"]\n    assert \"skip-reason-marker\" in tests[\"test_skip\"][\"failure_message\"]\n    assert \"setup-broke-marker\" in tests[\"test_error\"][\"failure_message\"]\n    assert tests[\"test_pass\"][\"failure_message\"] == \"\"\n    assert tests[\"test_pass\"][\"docstring\"] == \"Proves the passing path.\"\n    assert tests[\"test_fail\"][\"source\"].startswith('@pytest.mark.req(\"INST-01\", \"VAL-02\")')\n    assert \"def test_fail():\" in tests[\"test_fail\"][\"source\"]\n",
+   "status": "passed",
+   "duration_s": 0.153375,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_home_directory_scrubbed_from_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 127,
+   "docstring": "The home directory path never appears in the run file (it may be published in P4/P7).\nIt's replaced with ~.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_home_directory_scrubbed_from_run_file(pytester):\n    \"\"\"The home directory path never appears in the run file (it may be published in P4/P7).\n    It's replaced with ~.\"\"\"\n    pytester.makepyfile(test_sample=SAMPLE)\n    _, files = run(pytester)\n    text = files[0].read_text()\n    assert str(Path.home()) not in text\n    assert \"~\" in json.loads(text)[\"tests\"][-1][\"failure_message\"]\n",
+   "status": "passed",
+   "duration_s": 0.157231,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_collection_error_still_writes_run_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "recovery",
+   "file": "tests/test_runfile.py",
+   "line": 139,
+   "docstring": "A test module that fails to import still produces a run file, with the error under\ncollection_errors.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"recovery\")\ndef test_collection_error_still_writes_run_file(pytester):\n    \"\"\"A test module that fails to import still produces a run file, with the error under\n    collection_errors.\"\"\"\n    pytester.makepyfile(test_broken=\"import nonexistent_module_xyz\\n\")\n    _, files = run(pytester)\n    data = json.loads(files[0].read_text())\n    assert data[\"collection_errors\"]\n    assert \"nonexistent_module_xyz\" in data[\"collection_errors\"][0][\"message\"]\n",
+   "status": "passed",
+   "duration_s": 0.198101,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_runfile.py::test_each_run_writes_a_new_file",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_runfile.py",
+   "line": 151,
+   "docstring": "Two runs produce two distinct run files. Earlier runs are never overwritten.",
+   "source": "@pytest.mark.req(\"INST-07\")\n@pytest.mark.kind(\"integration\")\ndef test_each_run_writes_a_new_file(pytester):\n    \"\"\"Two runs produce two distinct run files. Earlier runs are never overwritten.\"\"\"\n    pytester.makepyfile(test_one=\"def test_a():\\n    pass\\n\")\n    run(pytester)\n    _, files = run(pytester)\n    assert len(files) == 2\n",
+   "status": "passed",
+   "duration_s": 0.282166,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[UserPromptSubmit]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "docstring": "Each of the 5 events has exactly one command hook, and it calls\n.claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_each_event_registers_log_event_via_project_dir(event):\n    \"\"\"Each of the 5 events has exactly one command hook, and it calls\n    .claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.\"\"\"\n    hooks = _commands(event)\n    assert len(hooks) == 1, hooks\n    assert hooks[0][\"type\"] == \"command\"\n    assert '\"$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py\"' in hooks[0][\"command\"]\n",
+   "status": "passed",
+   "duration_s": 0.000424,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[Stop]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "docstring": "Each of the 5 events has exactly one command hook, and it calls\n.claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_each_event_registers_log_event_via_project_dir(event):\n    \"\"\"Each of the 5 events has exactly one command hook, and it calls\n    .claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.\"\"\"\n    hooks = _commands(event)\n    assert len(hooks) == 1, hooks\n    assert hooks[0][\"type\"] == \"command\"\n    assert '\"$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py\"' in hooks[0][\"command\"]\n",
+   "status": "passed",
+   "duration_s": 0.000149,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[PreCompact]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "docstring": "Each of the 5 events has exactly one command hook, and it calls\n.claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_each_event_registers_log_event_via_project_dir(event):\n    \"\"\"Each of the 5 events has exactly one command hook, and it calls\n    .claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.\"\"\"\n    hooks = _commands(event)\n    assert len(hooks) == 1, hooks\n    assert hooks[0][\"type\"] == \"command\"\n    assert '\"$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py\"' in hooks[0][\"command\"]\n",
+   "status": "passed",
+   "duration_s": 0.000114,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[SessionStart]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "docstring": "Each of the 5 events has exactly one command hook, and it calls\n.claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_each_event_registers_log_event_via_project_dir(event):\n    \"\"\"Each of the 5 events has exactly one command hook, and it calls\n    .claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.\"\"\"\n    hooks = _commands(event)\n    assert len(hooks) == 1, hooks\n    assert hooks[0][\"type\"] == \"command\"\n    assert '\"$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py\"' in hooks[0][\"command\"]\n",
+   "status": "passed",
+   "duration_s": 0.000106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_each_event_registers_log_event_via_project_dir[SessionEnd]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 20,
+   "docstring": "Each of the 5 events has exactly one command hook, and it calls\n.claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_each_event_registers_log_event_via_project_dir(event):\n    \"\"\"Each of the 5 events has exactly one command hook, and it calls\n    .claude/hooks/log_event.py through a double-quoted $CLAUDE_PROJECT_DIR path.\"\"\"\n    hooks = _commands(event)\n    assert len(hooks) == 1, hooks\n    assert hooks[0][\"type\"] == \"command\"\n    assert '\"$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py\"' in hooks[0][\"command\"]\n",
+   "status": "passed",
+   "duration_s": 0.000103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_no_unexpected_events_registered",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 31,
+   "docstring": "settings.json registers exactly the 5 spec'd events, so nothing else fires the hook.",
+   "source": "@pytest.mark.req(\"INST-01\")\ndef test_no_unexpected_events_registered():\n    \"\"\"settings.json registers exactly the 5 spec'd events, so nothing else fires the hook.\"\"\"\n    assert sorted(json.loads(SETTINGS.read_text())[\"hooks\"]) == sorted(EVENTS)\n",
+   "status": "passed",
+   "duration_s": 8.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_session_end_timeout_exceeds_default_budget",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_settings.py",
+   "line": 37,
+   "docstring": "SessionEnd sets a timeout above the 1.5 s shared budget, so the transcript copy (INST-04)\nisn't cut off.",
+   "source": "@pytest.mark.req(\"INST-01\")\ndef test_session_end_timeout_exceeds_default_budget():\n    \"\"\"SessionEnd sets a timeout above the 1.5 s shared budget, so the transcript copy (INST-04)\n    isn't cut off.\"\"\"\n    assert _commands(\"SessionEnd\")[0].get(\"timeout\", 0) >= 5\n",
+   "status": "passed",
+   "duration_s": 8.5e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[UserPromptSubmit]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "docstring": "The exact command string from settings.json, run through a shell from a project dir\nwhose path contains spaces (like the real one), reaches the hook and logs the event.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.kind(\"integration\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_registered_command_runs_from_path_with_spaces(tmp_path, event):\n    \"\"\"The exact command string from settings.json, run through a shell from a project dir\n    whose path contains spaces (like the real one), reaches the hook and logs the event.\"\"\"\n    project = tmp_path / \"proj with spaces\"\n    (project / \".claude\" / \"hooks\").mkdir(parents=True)\n    shutil.copy(HOOK, project / \".claude\" / \"hooks\" / \"log_event.py\")\n    cmd = _commands(event)[0][\"command\"]\n    env = {**os.environ, \"CLAUDE_PROJECT_DIR\": str(project)}\n    stdin = json.dumps({\"hook_event_name\": event, \"session_id\": \"s\", \"transcript_path\": \"\",\n                        \"last_assistant_message\": \"x\"})\n    proc = subprocess.run([\"/bin/sh\", \"-c\", cmd], input=stdin, text=True,\n                          capture_output=True, env=env, timeout=30)\n    assert proc.returncode == 0 and proc.stdout == \"\"\n    assert [e[\"event\"] for e in events(project)] == [event]\n",
+   "status": "passed",
+   "duration_s": 0.03917,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[Stop]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "docstring": "The exact command string from settings.json, run through a shell from a project dir\nwhose path contains spaces (like the real one), reaches the hook and logs the event.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.kind(\"integration\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_registered_command_runs_from_path_with_spaces(tmp_path, event):\n    \"\"\"The exact command string from settings.json, run through a shell from a project dir\n    whose path contains spaces (like the real one), reaches the hook and logs the event.\"\"\"\n    project = tmp_path / \"proj with spaces\"\n    (project / \".claude\" / \"hooks\").mkdir(parents=True)\n    shutil.copy(HOOK, project / \".claude\" / \"hooks\" / \"log_event.py\")\n    cmd = _commands(event)[0][\"command\"]\n    env = {**os.environ, \"CLAUDE_PROJECT_DIR\": str(project)}\n    stdin = json.dumps({\"hook_event_name\": event, \"session_id\": \"s\", \"transcript_path\": \"\",\n                        \"last_assistant_message\": \"x\"})\n    proc = subprocess.run([\"/bin/sh\", \"-c\", cmd], input=stdin, text=True,\n                          capture_output=True, env=env, timeout=30)\n    assert proc.returncode == 0 and proc.stdout == \"\"\n    assert [e[\"event\"] for e in events(project)] == [event]\n",
+   "status": "passed",
+   "duration_s": 0.039584,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[PreCompact]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "docstring": "The exact command string from settings.json, run through a shell from a project dir\nwhose path contains spaces (like the real one), reaches the hook and logs the event.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.kind(\"integration\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_registered_command_runs_from_path_with_spaces(tmp_path, event):\n    \"\"\"The exact command string from settings.json, run through a shell from a project dir\n    whose path contains spaces (like the real one), reaches the hook and logs the event.\"\"\"\n    project = tmp_path / \"proj with spaces\"\n    (project / \".claude\" / \"hooks\").mkdir(parents=True)\n    shutil.copy(HOOK, project / \".claude\" / \"hooks\" / \"log_event.py\")\n    cmd = _commands(event)[0][\"command\"]\n    env = {**os.environ, \"CLAUDE_PROJECT_DIR\": str(project)}\n    stdin = json.dumps({\"hook_event_name\": event, \"session_id\": \"s\", \"transcript_path\": \"\",\n                        \"last_assistant_message\": \"x\"})\n    proc = subprocess.run([\"/bin/sh\", \"-c\", cmd], input=stdin, text=True,\n                          capture_output=True, env=env, timeout=30)\n    assert proc.returncode == 0 and proc.stdout == \"\"\n    assert [e[\"event\"] for e in events(project)] == [event]\n",
+   "status": "passed",
+   "duration_s": 0.038176,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[SessionStart]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "docstring": "The exact command string from settings.json, run through a shell from a project dir\nwhose path contains spaces (like the real one), reaches the hook and logs the event.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.kind(\"integration\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_registered_command_runs_from_path_with_spaces(tmp_path, event):\n    \"\"\"The exact command string from settings.json, run through a shell from a project dir\n    whose path contains spaces (like the real one), reaches the hook and logs the event.\"\"\"\n    project = tmp_path / \"proj with spaces\"\n    (project / \".claude\" / \"hooks\").mkdir(parents=True)\n    shutil.copy(HOOK, project / \".claude\" / \"hooks\" / \"log_event.py\")\n    cmd = _commands(event)[0][\"command\"]\n    env = {**os.environ, \"CLAUDE_PROJECT_DIR\": str(project)}\n    stdin = json.dumps({\"hook_event_name\": event, \"session_id\": \"s\", \"transcript_path\": \"\",\n                        \"last_assistant_message\": \"x\"})\n    proc = subprocess.run([\"/bin/sh\", \"-c\", cmd], input=stdin, text=True,\n                          capture_output=True, env=env, timeout=30)\n    assert proc.returncode == 0 and proc.stdout == \"\"\n    assert [e[\"event\"] for e in events(project)] == [event]\n",
+   "status": "passed",
+   "duration_s": 0.037897,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_settings.py::test_registered_command_runs_from_path_with_spaces[SessionEnd]",
+   "req_ids": [
+    "INST-01"
+   ],
+   "phase": "P0",
+   "kind": "integration",
+   "file": "tests/test_settings.py",
+   "line": 44,
+   "docstring": "The exact command string from settings.json, run through a shell from a project dir\nwhose path contains spaces (like the real one), reaches the hook and logs the event.",
+   "source": "@pytest.mark.req(\"INST-01\")\n@pytest.mark.kind(\"integration\")\n@pytest.mark.parametrize(\"event\", EVENTS)\ndef test_registered_command_runs_from_path_with_spaces(tmp_path, event):\n    \"\"\"The exact command string from settings.json, run through a shell from a project dir\n    whose path contains spaces (like the real one), reaches the hook and logs the event.\"\"\"\n    project = tmp_path / \"proj with spaces\"\n    (project / \".claude\" / \"hooks\").mkdir(parents=True)\n    shutil.copy(HOOK, project / \".claude\" / \"hooks\" / \"log_event.py\")\n    cmd = _commands(event)[0][\"command\"]\n    env = {**os.environ, \"CLAUDE_PROJECT_DIR\": str(project)}\n    stdin = json.dumps({\"hook_event_name\": event, \"session_id\": \"s\", \"transcript_path\": \"\",\n                        \"last_assistant_message\": \"x\"})\n    proc = subprocess.run([\"/bin/sh\", \"-c\", cmd], input=stdin, text=True,\n                          capture_output=True, env=env, timeout=30)\n    assert proc.returncode == 0 and proc.stdout == \"\"\n    assert [e[\"event\"] for e in events(project)] == [event]\n",
+   "status": "passed",
+   "duration_s": 0.03828,
+   "failure_message": ""
+  }
+ ]
+}

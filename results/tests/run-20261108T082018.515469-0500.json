@@ -1,0 +1,427 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:20:18.515-05:00",
+ "finished": "2026-11-08T08:20:24.495-05:00",
+ "duration_s": 5.98,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "8b32db044dbd4b80d2f179fd79f0f1684a986112",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_ui.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 26,
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_ui.py::test_every_view_loads_with_banner_and_no_overflow[light-1280]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 89,
+   "body_sha256": "37ec6461b1edeff8599216ed104dcbc0c5be6abf3fed0f2b2fd92575bb3d775e",
+   "status": "passed",
+   "duration_s": 0.903483,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_every_view_loads_with_banner_and_no_overflow[dark-1280]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 89,
+   "body_sha256": "37ec6461b1edeff8599216ed104dcbc0c5be6abf3fed0f2b2fd92575bb3d775e",
+   "status": "passed",
+   "duration_s": 0.67459,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_every_view_loads_with_banner_and_no_overflow[light-390]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 89,
+   "body_sha256": "37ec6461b1edeff8599216ed104dcbc0c5be6abf3fed0f2b2fd92575bb3d775e",
+   "status": "failed",
+   "duration_s": 0.685094,
+   "failure_message": "browser = <Browser type=<BrowserType name=chromium executable_path=~/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing> version=153.0.8010.12>\nserver = 'http://127.0.0.1:61835/', scheme = 'light', width = 390\n\n    @pytest.mark.req(\"VAL-08\", \"VAL-05\")\n    @pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 390)])\n    def test_every_view_loads_with_banner_and_no_overflow(browser, server, scheme, width):\n        \"\"\"In light and dark mode and at phone width, every view loads its data with no JS errors, shows its panel and\n        the synthetic-data banner, and has no horizontal page scroll.\"\"\"\n        page = open_view(browser, server, \"view=tests\", width=width, scheme=scheme)\n        for v in VIEWS:\n            go(page, view=v)\n            assert page.locator(f\"#view-{v}\").is_visible(), v\n            assert page.locator(\"#synthetic-banner\").is_visible() and \"Synthetic data\" in page.inner_text(\"#synthetic-banner\")\n>           assert page.evaluate(\"document.documentElement.scrollWidth <= window.innerWidth + 1\"), (v, width)\nE           AssertionError: ('review', 390)\nE           assert False\nE            +  where False = evaluate('document.documentElement.scrollWidth <= window.innerWidth + 1')\nE            +    where evaluate = <Page url='http://127.0.0.1:61835/validation/#view=review'>.evaluate\n\ntests/test_val_ui.py:99: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_missing_data_file_shows_an_error_not_a_blank_page",
+   "req_ids": [
+    "VAL-08"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 104,
+   "body_sha256": "ab86fad560ce0b4b11ac6a5dea399e4302dbaf37cd8870f01c230cca82c1828f",
+   "status": "passed",
+   "duration_s": 0.132976,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_header_numbers_match_the_data",
+   "req_ids": [
+    "VAL-08",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 117,
+   "body_sha256": "41018cf70d5d7e785f2e797dc88366a3c6861d440eff7814b96a617e814ecb43",
+   "status": "passed",
+   "duration_s": 0.232523,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[none]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.081053,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[phase=P4]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.070093,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[kind=fault]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.068749,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[kind=ui]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.070107,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[status=passed]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.080942,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[req=VAL-04]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.067996,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[q=redact]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.069733,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[q=ground truth]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.07004,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[phase=P2-kind=unit-q=bootstrap]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.070894,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filters_show_exactly_the_matching_tests[req=DASH-01-kind=ui]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 135,
+   "body_sha256": "3493d1cbff446264f328f6674590c387a07cf760488df73eb6b6cb454a642cc2",
+   "status": "passed",
+   "duration_s": 0.069903,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_filter_controls_update_the_list_and_the_url",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 149,
+   "body_sha256": "c1cb2a9329134df4d06b3461f14d3ddfadb86e8f8f39e78123e6e69255f22de6",
+   "status": "passed",
+   "duration_s": 0.578209,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_clicking_a_test_shows_docstring_source_history_and_spec_text",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05",
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 167,
+   "body_sha256": "28a4ca77ad91c006f9d913521fefc0fa72f71ab5d61491da23c66133e57bce62",
+   "status": "passed",
+   "duration_s": 0.166339,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_deep_link_to_a_test_and_keyboard_selection",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 190,
+   "body_sha256": "632f6ed4c93f1bf44ded202914573970eb61774ad698cf9704adbb8966d85b81",
+   "status": "passed",
+   "duration_s": 0.266817,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_traceability_rows_statuses_and_red_untested",
+   "req_ids": [
+    "VAL-08",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 205,
+   "body_sha256": "0fa3cd8d1fb0b54e2ee62650eb081dde00074f831b6fa29946f0fd174f50967a",
+   "status": "passed",
+   "duration_s": 0.181788,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_requirement_test_count_links_to_its_tests",
+   "req_ids": [
+    "VAL-08",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 225,
+   "body_sha256": "f30b965304a77ed0468c982c99b5b40aa76d94acc912fc90ab700969a9c23ec4",
+   "status": "passed",
+   "duration_s": 0.161914,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_coverage_table_matches_the_data",
+   "req_ids": [
+    "VAL-08",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 238,
+   "body_sha256": "32b4ebe242878ccc7321abbf35d58b36c1095c6b4df4e06e7daef349007768cb",
+   "status": "passed",
+   "duration_s": 0.06767,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_fault_page_shows_rates_every_fault_and_lists_uncaught",
+   "req_ids": [
+    "VAL-08",
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 247,
+   "body_sha256": "93c42a36ed313debb0425c4ae0be766ffbe5a5d5d518fa0f8480a8b1826b6c71",
+   "status": "passed",
+   "duration_s": 0.075808,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_dashboard_evidence_link_opens_the_claim",
+   "req_ids": [
+    "VAL-08",
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 267,
+   "body_sha256": "b9f3c128386ebd56400c41eca0fe59158f14e31604d382611cf78ff1abb670e3",
+   "status": "passed",
+   "duration_s": 0.265258,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_recovery_view_is_separate_and_labelled_validation_only",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 285,
+   "body_sha256": "a893a178a50888e9dbb306216dbb81b422308948b7870663d1d23c8e2418d8ba",
+   "status": "passed",
+   "duration_s": 0.066753,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_review_log_renders_every_entry",
+   "req_ids": [
+    "VAL-08",
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 298,
+   "body_sha256": "d5bce3d32e441907d4f1d90bb698babb9cf3deb74591667f43601b0a6a94cee0",
+   "status": "passed",
+   "duration_s": 0.066828,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_keyboard_tabs_and_aria",
+   "req_ids": [
+    "VAL-08"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 311,
+   "body_sha256": "c6fc8340891d6258a1266f14083cd029121ce62c82e552441ce55d0977eec11a",
+   "status": "passed",
+   "duration_s": 0.377273,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_ui.py::test_cdn_libraries_pinned_and_no_build_step",
+   "req_ids": [
+    "VAL-08"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 330,
+   "body_sha256": "d41d60f76890ac39e752dd50c7660fe49e82aa62e8427b4cc14f462d93d218fd",
+   "status": "passed",
+   "duration_s": 0.269921,
+   "failure_message": ""
+  }
+ ]
+}

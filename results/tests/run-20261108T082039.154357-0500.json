@@ -1,0 +1,38 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:20:39.154-05:00",
+ "finished": "2026-11-08T08:20:40.584-05:00",
+ "duration_s": 1.43,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "8b32db044dbd4b80d2f179fd79f0f1684a986112",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_ui.py::test_every_view_loads_with_banner_and_no_overflow[light-390]",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_ui.py::test_every_view_loads_with_banner_and_no_overflow[light-390]",
+   "req_ids": [
+    "VAL-08",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "ui",
+   "file": "tests/test_val_ui.py",
+   "line": 89,
+   "body_sha256": "37ec6461b1edeff8599216ed104dcbc0c5be6abf3fed0f2b2fd92575bb3d775e",
+   "status": "failed",
+   "duration_s": 1.353872,
+   "failure_message": "browser = <Browser type=<BrowserType name=chromium executable_path=~/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing> version=153.0.8010.12>\nserver = 'http://127.0.0.1:62186/', scheme = 'light', width = 390\n\n    @pytest.mark.req(\"VAL-08\", \"VAL-05\")\n    @pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 390)])\n    def test_every_view_loads_with_banner_and_no_overflow(browser, server, scheme, width):\n        \"\"\"In light and dark mode and at phone width, every view loads its data with no JS errors, shows its panel and\n        the synthetic-data banner, and has no horizontal page scroll.\"\"\"\n        page = open_view(browser, server, \"view=tests\", width=width, scheme=scheme)\n        for v in VIEWS:\n            go(page, view=v)\n            assert page.locator(f\"#view-{v}\").is_visible(), v\n            assert page.locator(\"#synthetic-banner\").is_visible() and \"Synthetic data\" in page.inner_text(\"#synthetic-banner\")\n>           assert page.evaluate(\"document.documentElement.scrollWidth <= window.innerWidth + 1\"), (v, width)\nE           AssertionError: ('review', 390)\nE           assert False\nE            +  where False = evaluate('document.documentElement.scrollWidth <= window.innerWidth + 1')\nE            +    where evaluate = <Page url='http://127.0.0.1:62186/validation/#view=review'>.evaluate\n\ntests/test_val_ui.py:99: AssertionError"
+  }
+ ]
+}

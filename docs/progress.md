@@ -993,3 +993,37 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T08:26:59-05:00 — [P4] Step 6: explorer Playwright tests (VAL-08), final fault run, P4 checkpoint
+
+**What changed**
+- New `tests/test_val_ui.py` (27 tests, kind ui). Expected values come from Python over `site/validation/data/`, independently of app.js. They cover:
+  - every view in light, dark and 390 px, with the synthetic banner and no horizontal scroll
+  - a 404 on a data file showing an explicit error
+  - header numbers
+  - 10 filter combinations set by URL, matching a Python filter exactly
+  - the form controls writing the hash, and Clear resetting it
+  - the detail pane: docstring, source, one history cell per run, pass count, spec text
+  - deep links and Enter-to-select
+  - the traceability rows and KPI counts, untested requirements in red, filters, and count links leading to the right tests
+  - coverage rows
+  - fault rates, cards and the uncaught/golden lists
+  - the dashboard Evidence link opening the claim
+  - the recovery tab's exact label and note
+  - the review log's headings rendering, sanitized
+  - keyboard tabs and ARIA
+  - exact CDN pins
+- Fixes the tests found:
+  - The review log overflowed at 390 px because of a long unbreakable word: `.md { overflow-wrap: anywhere }`.
+  - In one test, `innerText` keeps a trailing newline in `<pre>`, so both sides are now stripped before comparing. This was a test-side comparison fix.
+- `make faults` was rerun on the final suite. F09 now includes `test_dash_ui.py` and `test_val_ui.py`. The result is unchanged at 10/10 caught and 5/10 behavioral. Even with the UI tests, F09 (census_region dropped from institutions.json) is caught only by `test_site_data_is_current`.
+
+**Tests run**
+- `make faults`: 10/10, 5/10 behavioral.
+- `make test`: 502 passed (twice, after `make report`).
+
+**Decisions**
+- AGENT: GitHub Pages is not enabled on the repo, and deploying is P7 (PUB-02/03), so I did not enable it. The explorer is local-only until P7.
+
+**Open questions**
+- See HANDOFF: P4 review-log entry, behavioral tests for the five golden-only faults, PROV-02.

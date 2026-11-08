@@ -95,6 +95,7 @@ pre.code.msg { white-space: pre-wrap; word-break: break-word; border-left: 3px s
 /* recovery and review */
 .truth-note { margin: 0 0 12px; max-width: none; }
 .review-cols { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+.md { overflow-wrap: anywhere; }
 .md h1, .md h2 { font-size: 1.05rem; }
 .md h3 { font-size: 0.95rem; margin-top: 12px; }
 .md p, .md li { font-size: 0.9rem; }

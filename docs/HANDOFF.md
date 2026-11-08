@@ -1,50 +1,42 @@
 # HANDOFF — overwritten at each /prep-clear
-Updated: 2026-11-08T07:40:09-05:00
-Current phase: P3 (findings dashboard). DASH-01..08 are implemented and tested. 425 tests pass. .phase is "P3:writing-code" (only Aayush changes it).
-  Done: P2 review-log entry (5750dc4, pushed). Not pushed: 3b82ea8 (far-from limitation) and this checkpoint commit.
-Last completed task: documented the "far from banning" coder error as a known limitation.
-  - The dev half has no such wording (only "not prohibited", already covered by rule S+1-not-prohibited), so the rules were not changed.
-  - Added the limitation to methods.md §6 and a caveat in the institution drilldown, each with a test.
+Updated: 2026-11-08T08:26:59-05:00
+Current phase: P4 (validation explorer). VAL-01..08 are implemented and tested. 502 tests pass. .phase is "P4:writing-code" (only Aayush changes it).
+Last completed task: P4 step 6, the VAL-08 Playwright tests, plus a final `make faults` on the full suite. All commits are pushed.
 Next task (exact, actionable):
-  1. Tell Aayush P3 is ready for review.
-     - Run `make serve` (http://127.0.0.1:8000/dashboard/).
-     - Ask for a P3 review-log entry. If Aayush pastes one, append it verbatim to docs/review-log.md and commit it as `human: P3 review-log entry`.
-     - Ask whether to push and whether .phase should move to P4.
-  2. Once .phase is P4: read specs/P4-validation.md only and propose a P4 plan in chat. Write no code before approval.
-     Constraints for the plan:
-     - The validation explorer goes in site/validation/, with the same no-build/pinned-CDN/synthetic-banner rules as the dashboard.
-     - VAL-01 run files already exist: results/tests/run-*.json, written by tests/conftest.py.
-     - `make report` (src/report/build_site_data.py) is where P4 data building should hook in.
-     - The truth-derived results kept out of site/data/ for P3 (recovery.json, rhetoric_recovery.json, coder_dev_eval.json) are P4's call; propose explicitly whether the validation explorer shows them.
-Files touched in P3: Makefile (report, serve, setup), requirements.txt (playwright 1.63.0, greenlet, pyee),
-  src/analysis/descriptives.py, specs/P2-analysis.md (ANL-05 text), src/report/{__init__,build_site_data}.py,
-  src/report/schemas/descriptives.schema.json, results/descriptives.json, site/data/*.json (11), site/dashboard/{index.html,style.css,app.js},
-  tests/{test_anl_descriptives,test_anl_methods,test_dash_data,test_dash_ui}.py, docs/{methods,progress,review-log,HANDOFF}.md, .phase
-Test status (command + result): `make test`: 425 passed (2026-11-08T07:39). The UI tests need the network (Chart.js loads from the pinned CDN).
+  1. Tell Aayush P4 is ready for review: `make serve`, then http://127.0.0.1:8000/validation/ (the dashboard is at /dashboard/).
+     - Ask for a P4 review-log entry; the P3 one is also still pending, since Aayush is checking the dashboard first. Append either one verbatim to docs/review-log.md and commit it as `human: P<n> review-log entry`. Then `make test && make report && make test`, because the review log is an input to the explorer.
+     - Ask whether .phase should move to P5.
+  2. Once .phase is P5, read specs/P5-provenance.md only and propose a plan. Settle PROV-02 (below) first.
+Files touched in P4: specs/P4-validation.md (VAL-01/02, approved), tests/conftest.py (test-run/2 + body sidecars), Makefile (test: --cov + attach-coverage; faults; report),
+  .gitignore, src/validation/{__init__,runs,specs,redact,faults}.py, src/report/build_validation_data.py, src/report/claims.json,
+  src/report/schemas/faults.schema.json, results/faults.json, results/tests/{bodies,coverage}/, site/validation/{index.html,style.css,app.js,data/**},
+  site/dashboard/app.js (Evidence links), tests/{test_runfile,test_makefile,test_dash_ui,test_val_specs,test_val_data,test_val_faults,test_val_claims,test_val_ui}.py, docs/{progress,HANDOFF}.md
+Test status (command + result): `make test`: 502 passed (2026-11-08T08:26:59-05:00). `make faults`: 10/10 caught, 5/10 by behavioral tests.
 Decisions (HUMAN/AGENT):
-  HUMAN: export trimmed institutions/courses/statements as "raw synthetic rows"; no ground-truth field in site/ (tested).
-  HUMAN: ANL-05 gains census_region and overall groupings (P2 spec, schema and tests updated).
-  HUMAN: `make report` builds site/data/; `make site` will call it in P7.
-  HUMAN: Playwright is pinned, Chromium is installed by `make setup`, and the UI tests fail, never skip.
-  HUMAN: the far-from negation is fixed only if dev has the pattern (it doesn't), so it is documented instead. Never tune on held-out.
-  HUMAN: the P2 review-log entry stays exactly as committed in 5750dc4.
-  AGENT: coder labels are exported as coded_*. Truth-derived recovery files are not in site/data/.
-  AGENT: provenance: every displayed number is a <span data-src="file.json#/ptr" data-fmt>, every chart dataset has srcs, and the tests resolve them.
-  AGENT: CDN pins are Chart.js 4.4.1 (cdnjs) and chartjs-chart-matrix 2.0.1 (jsdelivr). `make serve` is a minimal http.server (P7 may extend it).
-Key facts for P4:
-  - 13 charts / 11 panels / 8 tabs. 451 plotted values and 400+ text numbers are checked against results/ by tests/test_dash_ui.py.
-  - The top-decile rhetoric gaps include at least one coder error (S0067, "Far from banning", coded −2).
+  HUMAN: VAL-01/02 spec change: body sidecars by content hash (results/tests/bodies/<sha>.json), keep every run and body.
+  HUMAN: marked 12.0.2 + DOMPurify 3.1.6 (cdnjs) for the review log. Faults skip the UI tests except for F09. One claim per panel plus the headline tiles.
+  HUMAN: truth-derived recovery files are shown only on "Recovery vs. ground truth (validation only)"; site/data and the dashboard stay truth-free (tested).
+  AGENT: the old test-run/1 files are left as they are; the reader accepts both formats.
+  AGENT: the snapshot is the newest `make test` run (one with results/tests/coverage/<run>); freshness is checked by rebuilding from manifest.run.
+  AGENT: published test text is redacted (src/validation/redact.py) with visible ‹redacted-…› placeholders. The P3 privacy test now scans decoded JSON strings, which is strictly stronger.
+  AGENT: fault runs set PYTHONDONTWRITEBYTECODE=1 (a stale .pyc otherwise hides same-size edits) and always exclude tests/test_val_faults.py.
+  AGENT: the fault report separates golden-file catches (*_is_current / *_are_current) from behavioral ones.
+Key facts for P5+:
+  - After any code change, run `make test && make report` twice so the snapshot is an all-green run; `test_validation_data_is_current` rebuilds from manifest.run.
+  - Changing results/faults.json, claims.json, specs or review-log.md requires `make report`. Changing a fault target's code may break "old text occurs exactly once" (tested).
+  - GitHub Pages is NOT enabled yet. P7 (PUB-02) deploys; the expected URL is https://aayushkeshari.github.io/genai-cs-policy/validation/.
 Open questions for Aayush:
-  - P3 review-log entry; push; .phase → P4.
-  - Possible error in the committed P2 review-log entry: it gives stance as 0.76. The held-out stance macro-F1 is 0.741; accuracy is 0.761. Aayush chose to leave the entry as committed.
+  - P3 and P4 review-log entries; .phase → P5.
+  - Add behavioral tests for the five golden-only faults (F01 regression sign, F05 term_index base, F07 gap denominator, F08 gap sign, F09 export fields)? Not done; it wasn't asked for.
+  - Review the P3 privacy-test change (decoded JSON scan) and the redaction of INST-09's "/Users/<name>" example in the published spec text.
   - [P5] PROV-02: UserPromptSubmit also fires for scheduled tasks, background subagents and cross-session messages, so a logged prompt is not
     necessarily human-typed. Some "HUMAN" decisions were drafted with Claude chat. Decide before P5 planning.
+  - Possible error in the committed P2 review-log entry (stance 0.76 vs macro-F1 0.741 / accuracy 0.761). Aayush chose to leave it.
 Gotchas for the next session:
   - The project path has spaces, so quote paths. Use .venv/bin/python (3.11). pytest has pythonpath = . (import src.*).
-  - `make test` takes ~17 s (UI tests included). `make analysis` takes ~80 s.
-  - Changing results/ or data/clean/ requires `make report`, then committing site/data/, or test_site_data_is_current fails.
+  - `make test` takes ~30 s, including the UI tests, which need the network. `make faults` takes ~2.5 min. `make analysis` takes ~80 s.
+  - Every top-level results/*.json needs a schema in src/report/schemas/ (ANL-09). The full coverage report lives at results/tests/coverage/latest.json (gitignored).
   - Do NOT edit src/analysis/code_text.py or docs/codebook.md: the rules are frozen (SHA-256 test).
-  - src/analysis/ must never mention ground_truth or import src.evaluation. The same applies to src/report/build_site_data.py (tested).
-  - methods.md must not quote decimals (test). Dashboard text must not hand-type digits: use num() with a JSON pointer (test).
-  - tests/conftest.py must contain only the plugin. Helpers go in tests/hookutil.py and tests/datautil.py.
-  - Never edit logs/ or raw_logs/. Hooks own them.
+  - src/analysis/ must never mention ground_truth or import src.evaluation; the same applies to both src/report builders (tested).
+  - The dashboard's .panel-foot may hold only data-source links (P3 test); Evidence links go below it.
+  - tests/conftest.py must contain only the plugin. Never edit logs/ or raw_logs/; hooks own them.

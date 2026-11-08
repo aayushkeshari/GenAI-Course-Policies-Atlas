@@ -383,3 +383,21 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T05:44:45-05:00 — [P2] Step 1: ANL-01 cleaning
+
+**What changed**
+- `src/analysis/common.py`: paths and deterministic writers. Results JSON has sorted keys, floats rounded to 6 places, a synthetic-data note, and no timestamps.
+- `src/analysis/clean.py`: exact dedupe, `level` stripped and lowercased, missing policy kept blank (read back as NA, no imputation), `term_index` added. Writes `data/clean/` and `results/clean_log.json`. Registered in `src/analysis/run.py`.
+- Seed 2026: courses 2,075 → 2,054 rows (21 duplicates removed), 205 levels normalized, 164 policies missing (7.98%). Institutions 150 and statements 348 are unchanged.
+- `tests/test_anl_clean.py`: dedupe, casing, NA and log checks on the committed data and on seed 7, plus a staleness check.
+
+**Tests run**
+- `make test`: 253 passed. The first run failed one test: my staleness test compared an unrounded float with the rounded file value. Fixed the test to compare after the writer's rounding.
+
+**Decisions**
+- AGENT: data/clean/ is committed (deterministic). A staleness test guards it, as for data/raw/.
+- AGENT: cleaned booleans stay as "true"/"false" text in CSV. `read_clean` gives typed columns (policy as Int64 with NA).
+
+**Open questions**
+- None.

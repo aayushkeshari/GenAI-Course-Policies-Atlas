@@ -1,0 +1,39 @@
+{
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "requirement": "ANL-01",
+ "synthetic": true,
+ "tables": {
+  "courses": {
+   "duplicates_removed": 21,
+   "level_values_before": {
+    "GRADUATE": 12,
+    "Graduate": 9,
+    "INTERMEDIATE": 26,
+    "INTRO": 31,
+    "Intermediate": 27,
+    "Intro": 41,
+    "UPPER": 23,
+    "Upper": 36,
+    "graduate": 250,
+    "intermediate": 438,
+    "intro": 610,
+    "upper": 551
+   },
+   "level_values_normalized": 205,
+   "policy_missing": 164,
+   "policy_missing_share": 0.079844,
+   "rows_after": 2054,
+   "rows_before": 2075
+  },
+  "institutions": {
+   "duplicates_removed": 0,
+   "rows_after": 150,
+   "rows_before": 150
+  },
+  "statements": {
+   "duplicates_removed": 0,
+   "rows_after": 348,
+   "rows_before": 348
+  }
+ }
+}

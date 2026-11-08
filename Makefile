@@ -5,8 +5,9 @@ PY ?= .venv/bin/python
 
 .PHONY: setup data analysis test report tokens timeline site serve clean
 
-setup:  ## create the venv and install pinned deps
+setup:  ## create the venv, install pinned deps, and install Chromium for the dashboard UI tests (DASH-07)
 	python3.11 -m venv .venv && $(PY) -m pip install -q -r requirements.txt
+	$(PY) -m playwright install chromium
 
 SEED ?= 2026
 

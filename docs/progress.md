@@ -717,3 +717,46 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None blocking.
+
+## 2026-11-08T07:09:50-05:00 — [P3] Steps 2–5: dashboard shell, chart views, statement explorer, institution drilldown (DASH-02..06, DASH-08)
+
+**What changed**
+- New `site/dashboard/`: `index.html`, `style.css` and `app.js`. Plain HTML/CSS/JS with no build step.
+  - CDN libraries are pinned: Chart.js 4.4.1 (cdnjs) and chartjs-chart-matrix 2.0.1 (jsdelivr, for the heatmap).
+- **DASH-02:** a "Synthetic data — illustrative only" banner sits in the shared header, so every view shows it. The footer repeats it. The app refuses to render any data file that lacks `synthetic: true`.
+- **DASH-03:** 13 canvases across 5 chart views, plus the KPI summary:
+  - Course policy: policy by level (100% stacked bars), SE vs non-SE, trend by term (mean with a CI band), census region (mean policy and mean stance as small multiples, each on its own axis).
+  - Uses & assessment: allowed uses by level (heatmap), assessment by policy level.
+  - Statements: stance and theme prevalence, rhetoric-vs-practice scatter.
+  - Regression: coefficient plot with clustered vs naive CIs.
+  - Coder accuracy: F1 by statement set, kappa.
+- Inference labelling:
+  - Cramér's V is shown with its cluster-bootstrap CI as the main inference; chi-square p is labelled naive.
+  - The regression shows clustered CIs as thick bars and naive CIs as thin grey bars. Its note gives the Baccalaureate naive-vs-clustered p.
+- **DASH-04:** the statement explorer has text search (with highlighting), filters for stance, theme (including "no theme"), pub_type and year, and pages of 30. Each card shows the coded stance, the coded themes and the rule IDs that fired.
+- **DASH-05:** each panel has a one-sentence takeaway built from the data, a "Show data table" toggle (aria-expanded) and a link to its JSON. Takeaway wording that depends on the data (for example "barely predicts", "does not matter", "CIs overlap") is chosen by a condition on the data, not hard-coded.
+- **DASH-06:**
+  - Colors: Okabe-Ito-style categorical slots in fixed order from the dataviz reference palette, an ordinal blue ramp for policy 0–4, and a binned blue ramp for the heatmap. Each mode has its own selected steps.
+  - Theme: light/dark/auto toggle, saved in localStorage inside try/catch.
+  - Keyboard: ARIA tabs with arrow/Home/End keys, a skip link, labelled form controls, and canvases with role="img" and an aria-label holding the takeaway.
+- **DASH-08:** the institution drilldown shows the institution's facts and its rhetoric row (with a top-decile flag), a course × term policy grid (n/a = not stated, · = not offered), and its statements. Clicking a scatter dot, an institution name on a statement card, or a top-decile table row opens it. The URL hash (`#view=drilldown&inst=I027`) makes every view linkable.
+- Provenance hooks for DASH-07:
+  - Every displayed number is a `<span data-src="file.json#/pointer" data-fmt>`.
+  - Every chart dataset carries `srcs` (one JSON pointer per value).
+  - The explorer's filtered counts are tagged `data-derived`.
+- Playwright 1.63.0 (+ greenlet, pyee) is pinned in requirements.txt. `make setup` now runs `playwright install chromium`.
+
+**Tests run**
+- `make test`: 407 passed. No UI tests yet; they come in step 6.
+- Rendered every view headlessly at 1280px light and 375px dark: no console errors, and no horizontal page scroll at 375px. Checked the screenshots by eye.
+  - Fixed: heatmap colors were blended in RGB (they looked grey) and had black labels on dark cells. They now use binned ramp steps with ink chosen per step.
+  - Fixed: the drilldown course grid was cramped in two columns, so it is now full width.
+  - Fixed: the sticky header takes too much room on phones, so it is not sticky below 600px.
+
+**Decisions**
+- HUMAN: Playwright is pinned, Chromium is installed by `make setup`, and the UI test fails rather than skips without it.
+- AGENT: the views are grouped into 8 tabs. The heatmap uses the chartjs-chart-matrix plugin because Chart.js has no native heatmap.
+- AGENT: stance and theme bars use a single series color rather than a diverging palette, because the axis labels already carry the stance.
+
+**Open questions**
+- Observed while checking: the drilldown's default institution (top-decile gap −4.55) has one statement that the coder labels −2 via `S-2-ban`. The statement says "Far from banning chatbots…", which is a negation miss. Some top-decile "gaps" are therefore coder errors. The rhetoric-gap recall of 0.68 already reflects this. Nothing to change in P3; worth a line in the P2/P4 discussion.

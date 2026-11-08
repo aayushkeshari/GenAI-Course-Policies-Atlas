@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenAI Policy Findings</title>
+<meta name="description" content="Findings dashboard for a study of generative-AI policy in US CS departments. All data is synthetic.">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Apply a saved theme before first paint. Storage can be blocked; the page works without it.
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@2.0.1/dist/chartjs-chart-matrix.min.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Generative AI in CS departments: findings</h1>
+    <button id="theme-toggle" class="btn" type="button" aria-label="Color theme: follow system">Theme: auto</button>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — illustrative only.</strong>
+    Every institution, course and statement is invented. No number here describes a real department.</p>
+  <nav class="tabs" role="tablist" aria-label="Dashboard views" id="tabs">
+    <button role="tab" id="tab-summary" aria-controls="view-summary" data-view="summary">Summary</button>
+    <button role="tab" id="tab-policy" aria-controls="view-policy" data-view="policy">Course policy</button>
+    <button role="tab" id="tab-uses" aria-controls="view-uses" data-view="uses">Uses &amp; assessment</button>
+    <button role="tab" id="tab-statements" aria-controls="view-statements" data-view="statements">Statements</button>
+    <button role="tab" id="tab-model" aria-controls="view-model" data-view="model">Regression</button>
+    <button role="tab" id="tab-coder" aria-controls="view-coder" data-view="coder">Coder accuracy</button>
+    <button role="tab" id="tab-explorer" aria-controls="view-explorer" data-view="explorer">Statement explorer</button>
+    <button role="tab" id="tab-drilldown" aria-controls="view-drilldown" data-view="drilldown">Institution</button>
+  </nav>
+</header>
+
+<main id="main">
+  <p id="load-error" class="error" hidden></p>
+
+  <section role="tabpanel" id="view-summary" aria-labelledby="tab-summary" hidden>
+    <h2>Summary</h2>
+    <div class="kpis" id="kpis"></div>
+    <p class="fine" id="summary-note"></p>
+  </section>
+
+  <section role="tabpanel" id="view-policy" aria-labelledby="tab-policy" hidden>
+    <h2>Course policy</h2>
+    <p class="scale" id="policy-scale"></p>
+    <div class="grid" id="panels-policy"></div>
+  </section>
+
+  <section role="tabpanel" id="view-uses" aria-labelledby="tab-uses" hidden>
+    <h2>Allowed uses and assessment</h2>
+    <div class="grid" id="panels-uses"></div>
+  </section>
+
+  <section role="tabpanel" id="view-statements" aria-labelledby="tab-statements" hidden>
+    <h2>Official statements</h2>
+    <div class="grid" id="panels-statements"></div>
+  </section>
+
+  <section role="tabpanel" id="view-model" aria-labelledby="tab-model" hidden>
+    <h2>Regression</h2>
+    <div class="grid" id="panels-model"></div>
+  </section>
+
+  <section role="tabpanel" id="view-coder" aria-labelledby="tab-coder" hidden>
+    <h2>Coder accuracy</h2>
+    <div class="grid" id="panels-coder"></div>
+  </section>
+
+  <section role="tabpanel" id="view-explorer" aria-labelledby="tab-explorer" hidden>
+    <h2>Statement explorer</h2>
+    <p class="fine">Labels are the rule-based coder's output (with the rule IDs that fired), not the truth. Read the text and judge the coder.</p>
+    <form class="filters" id="explorer-form" role="search" onsubmit="return false">
+      <label>Search text<input type="search" id="f-q" placeholder="e.g. honor code"></label>
+      <label>Stance<select id="f-stance"></select></label>
+      <label>Theme<select id="f-theme"></select></label>
+      <label>Type<select id="f-type"></select></label>
+      <label>Year<select id="f-year"></select></label>
+      <button type="button" class="btn" id="f-reset">Reset</button>
+    </form>
+    <p class="count" id="explorer-count" aria-live="polite"></p>
+    <ol class="stmts" id="explorer-list"></ol>
+    <button type="button" class="btn" id="explorer-more" hidden>Show more</button>
+  </section>
+
+  <section role="tabpanel" id="view-drilldown" aria-labelledby="tab-drilldown" hidden>
+    <h2>Institution drilldown</h2>
+    <p class="fine">Course policies next to the institution's official statements. Pick a dot in the rhetoric-vs-practice scatter (Statements view) to land here.</p>
+    <label class="pick">Institution<select id="inst-pick"></select></label>
+    <div id="inst-detail"></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Synthetic data — illustrative only. Numbers come from <code>results/*.json</code>, copied to <code>site/data/</code> by <code>make report</code>.
+    Course-level confidence intervals are cluster-bootstrap (resampling institutions) unless a label says otherwise.</p>
+</footer>
+</body>
+</html>

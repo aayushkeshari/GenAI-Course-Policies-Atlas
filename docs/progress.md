@@ -401,3 +401,32 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T05:48:20-05:00 — [P2] Step 2: ANL-02 codebook and rule-based coder, tuned on dev only; ANL-03 leakage guards
+
+**What changed**
+- `src/analysis/code_text.py`: 29 stance rules (ordered, negations first, default 0) and 20 theme rules.
+  - Every rule cites a verbatim dev example. Every coded value records the rule ID behind it.
+  - Writes `data/clean/statements_coded.csv`. Registered in `make analysis`.
+- `src/evaluation/truth.py`: the only non-test reader of the truth file. `load_truth(split, stmt->inst)` picks statements by the public split rule and returns labels for that split only.
+- `src/evaluation/coder_eval.py`: `score()` (per-label P/R/F1, stance per-class P/R/F1 + confusion matrix, macro-F1) and `dev_report()` (dev-only scores and errors → `results/coder_dev_eval.json`).
+- `docs/codebook.md`: stance −2..+2 and the three themes with include/exclude rules and dev examples, the decision procedure, a rule table generated from code, and known limits. The limits include that the rule author also wrote the held-out phrasings.
+- `tests/test_anl_coder.py`:
+  - ANL-02: codebook completeness, rule table in sync, every value traces to a rule, no LLM/network imports, negation and keyword-trap cases, coded output current.
+  - ANL-03: an audit-hook test that the coder never opens the truth file; src/analysis never imports src/evaluation; the dev loader returns only dev; the dev report is unchanged when held-out labels are scrambled; no reserved-only 4-gram in the rules or codebook; every rule and codebook example is dev text.
+
+**Tuning on dev**
+- First dev run: macro-F1 0.996. The 2 errors were "Internship partners" firing a collaboration rule; fixed with a lookbehind. Dev is now 1.000.
+- The dev score is near-perfect by construction (the rules come from dev wording) and says nothing about generalization. The held-out score in step 3 is the real measure.
+
+**Tests run**
+- `make test`: 314 passed.
+- The new grounding test failed on 4 rules: S+2-not-a-threat, S-2-no-form, S+2-master, S+2-designed-around. Their examples are non-reserved generator phrasings that never occur in any dev statement, so I had written them from knowledge of the generator, not from dev data. **I removed the rules rather than change the test.** The dev score stayed at 1.000.
+
+**Decisions**
+- AGENT: a rule may only cite and target wording seen in dev statements, generalizing by stem at most (e.g. `ban\w*`). No synonyms are added from outside dev.
+- AGENT: overall macro-F1 = the mean of the three theme F1s (positive class) and the stance macro-F1 (mean over the stance classes present).
+- AGENT: the leakage test uses a Python audit hook on `open`, so it catches any read of the truth file, not just a string reference.
+
+**Open questions**
+- None.

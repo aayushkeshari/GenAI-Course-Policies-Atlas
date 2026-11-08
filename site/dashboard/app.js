@@ -170,6 +170,7 @@ function panel(container, { id, title, takeaway, canvases, table, sources, note,
       <button type="button" class="btn table-toggle" aria-expanded="false" aria-controls="table-${id}">Show data table</button>
       <span>Source: ${sources.map(s => `<a href="${DATA_DIR}${s}.json">${s}.json</a>`).join(", ")}</span>
     </div>
+    <p class="panel-note">${evidence(id)}</p>
     <div class="table-wrap" id="table-${id}" hidden>${table}</div>`;
   el.querySelector(".table-toggle").addEventListener("click", e => {
     const wrap = el.querySelector(".table-wrap"), open = wrap.hidden;
@@ -178,6 +179,10 @@ function panel(container, { id, title, takeaway, canvases, table, sources, note,
     e.currentTarget.textContent = open ? "Hide data table" : "Show data table";
   });
   container.appendChild(el);
+}
+// VAL-06: every finding links to the tests that support it, on the validation explorer's Claims view.
+function evidence(claimId) {
+  return `<a class="evidence" href="../validation/#view=claims&amp;claim=${claimId}">Evidence: supporting tests</a>`;
 }
 function tableHTML(caption, head, rows) {
   return `<table><caption>${esc(caption)}</caption><thead><tr>${head.map((h, i) => `<th${i ? ' class="n"' : ""} scope="col">${h}</th>`).join("")}</tr></thead>
@@ -190,17 +195,18 @@ function buildSummary() {
   const c = "descriptives.json#/courses", s = "descriptives.json#/statements";
   const allMean = find("descriptives", "policy", { by: "all", category: "mean" });
   const ho = "coder_eval.json#/heldout";
-  const tiles = [
-    ["Course-term rows", num(c + "/n_rows", "int"), `${num(c + "/n_known_policy", "int")} with a stated policy; ${num(c + "/n_excluded_missing_policy", "int")} blank and excluded`],
-    ["Institutions", num("regression.json#/n_clusters", "int"), "fictional CS departments; the unit for every clustered interval"],
-    ["Official statements", num(s + "/n", "int"), `from ${num(s + "/n_institutions", "int")} institutions, coded by the rule-based coder`],
-    ["Mean course policy (0–4)", num(allMean + "/estimate", "f2"), `95% CI ${ciText(allMean, "f2")}; 2 = permitted with disclosure`],
-    ["Coder macro-F1, held-out", num(ho + "/macro_f1", "f3"), `target ${num("coder_eval.json#/target_macro_f1", "f2")} · ${D.coder_eval.target_met ? "met" : "not met"}`],
+  const tiles = [  // [label, value, sub, claim id]
+    ["Course-term rows", num(c + "/n_rows", "int"), `${num(c + "/n_known_policy", "int")} with a stated policy; ${num(c + "/n_excluded_missing_policy", "int")} blank and excluded`, "kpi-rows"],
+    ["Institutions", num("regression.json#/n_clusters", "int"), "fictional CS departments; the unit for every clustered interval", "kpi-institutions"],
+    ["Official statements", num(s + "/n", "int"), `from ${num(s + "/n_institutions", "int")} institutions, coded by the rule-based coder`, "kpi-statements"],
+    ["Mean course policy (0–4)", num(allMean + "/estimate", "f2"), `95% CI ${ciText(allMean, "f2")}; 2 = permitted with disclosure`, "kpi-mean-policy"],
+    ["Coder macro-F1, held-out", num(ho + "/macro_f1", "f3"), `target ${num("coder_eval.json#/target_macro_f1", "f2")} · ${D.coder_eval.target_met ? "met" : "not met"}`, "kpi-macro-f1"],
     ["Rhetoric vs practice, r", num("rhetoric.json#/correlation/pearson_r", "f2"),
-     `95% CI ${num("rhetoric.json#/correlation/ci/0", "f2")} to ${num("rhetoric.json#/correlation/ci/1", "f2")} across ${num("rhetoric.json#/n_institutions", "int")} institutions`],
+     `95% CI ${num("rhetoric.json#/correlation/ci/0", "f2")} to ${num("rhetoric.json#/correlation/ci/1", "f2")} across ${num("rhetoric.json#/n_institutions", "int")} institutions`, "kpi-rhetoric-r"],
   ];
-  document.getElementById("kpis").innerHTML = tiles.map(([l, v, sub]) =>
-    `<div class="kpi"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${sub}</div></div>`).join("");
+  document.getElementById("kpis").innerHTML = tiles.map(([l, v, sub, claim]) =>
+    `<div class="kpi" data-claim="${claim}"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${sub}</div>
+      <div class="sub">${evidence(claim)}</div></div>`).join("");
   document.getElementById("summary-note").innerHTML =
     `Intervals are 95% cluster-bootstrap intervals (${num("descriptives.json#/bootstrap/resamples", "int")} resamples of whole institutions), ` +
     `because courses in the same department are not independent. Sources: <a href="${DATA_DIR}descriptives.json">descriptives.json</a>, ` +

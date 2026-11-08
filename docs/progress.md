@@ -967,3 +967,29 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T08:18:51-05:00 — [P4] Step 5: claims (VAL-06) and dashboard evidence links
+
+**What changed**
+- New `src/report/claims.json` with 17 claims: one per dashboard chart panel (11) and one per summary headline tile (6).
+  - Each claim gives the finding in words and the tests that support it: computation tests, recovery tests where they apply, and the dashboard UI and data tests that check the display.
+  - There are no numbers in the claim text. The builder publishes each test's snapshot status and a rolled-up claim status, and a missing test counts as failing.
+- The dashboard has an "Evidence: supporting tests" link under each panel's footer and in each headline tile, pointing to `../validation/#view=claims&claim=<id>`.
+  - My first version put the link inside `.panel-foot`, which broke the P3 test that all footer links are data-source links. The link moved out of the footer; the test is unchanged.
+- New `tests/test_val_claims.py` (5 tests):
+  - claims match the dashboard's panels and tiles exactly
+  - each claim has at least two computation tests, all present in the snapshot run
+  - the published status is the rollup
+  - the two conditional claim wordings ("barely predicts", "does not matter") match the data
+  - the dashboard renders the Evidence links
+- One run had a transient Playwright timeout in `test_synthetic_banner_visible_on_every_view`: the CDN stalled and that run took 50 s. It passed on the next three runs. Not changed.
+
+**Tests run**
+- `make test`: 475 passed.
+
+**Decisions**
+- HUMAN: one claim per panel plus the headline numbers.
+- AGENT: which tests support each claim; claims include recovery tests as method evidence, labeled validation-only on the explorer.
+
+**Open questions**
+- None.

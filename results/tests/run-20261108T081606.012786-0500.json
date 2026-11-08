@@ -1,0 +1,91 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:16:06.012-05:00",
+ "finished": "2026-11-08T08:16:06.073-05:00",
+ "duration_s": 0.061,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "243cd46fbe88d698a6a7c32617733a09c2c9f3be",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_claims.py",
+  "-q"
+ ],
+ "summary": {
+  "passed": 5
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_claims.py::test_every_dashboard_finding_has_exactly_one_claim",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 16,
+   "body_sha256": "b9823d0fe7f920f9aa6d0acf8828e71d4ada5942c54356e8f0bcdf29e4618cf1",
+   "status": "passed",
+   "duration_s": 0.000258,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_every_claim_has_computation_tests_that_exist",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 30,
+   "body_sha256": "a3124c35b7ee77fbc74bb57c46f9428695558f09e2b7e3758b8f05d3e83509cd",
+   "status": "passed",
+   "duration_s": 0.000163,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_published_claim_status_is_the_rollup_of_its_tests",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 40,
+   "body_sha256": "b7196aaef71f8f4c818db1b4450eae1ab92c3f4062130ebc5b7db7c1dcc28ff8",
+   "status": "passed",
+   "duration_s": 0.000117,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_claims_with_conditional_wording_match_the_data",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 50,
+   "body_sha256": "7eac0dce91e9262b3a5b9b0f8404681484498ff2f6d262fc75002ac56df40751",
+   "status": "passed",
+   "duration_s": 0.000256,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_dashboard_links_every_finding_to_its_claim",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 62,
+   "body_sha256": "661312fa5812d331aef6e3b28f36e976eacc70bb03bd1758d004e506a5d2f343",
+   "status": "passed",
+   "duration_s": 7.3e-05,
+   "failure_message": ""
+  }
+ ]
+}

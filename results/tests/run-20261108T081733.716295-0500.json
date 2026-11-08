@@ -1,0 +1,265 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:17:33.716-05:00",
+ "finished": "2026-11-08T08:17:41.841-05:00",
+ "duration_s": 8.125,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "243cd46fbe88d698a6a7c32617733a09c2c9f3be",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_dash_ui.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 17
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.871908,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.664321,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.673428,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.677618,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_displayed_number_matches_results_json",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 148,
+   "body_sha256": "b57e780091a1a9d9e6b9c9f0a0d8cf35480dab1a7636e668abb03565c66f5330",
+   "status": "passed",
+   "duration_s": 0.96384,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_chart_value_matches_its_source",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 162,
+   "body_sha256": "fd9a085479a17e2b23c3e78735d1ba5118f6783b1124dd2fed01a4e73d4d744e",
+   "status": "passed",
+   "duration_s": 0.012273,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_tables_and_tiles_show_no_unsourced_numbers",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 190,
+   "body_sha256": "87f24feb6ba3d24efa1efbc10f0c3819182727a3e254cc25bcab842c8d4fbec8",
+   "status": "passed",
+   "duration_s": 0.00378,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_synthetic_banner_visible_on_every_view",
+   "req_ids": [
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 204,
+   "body_sha256": "477b7e8e644ff326620495ad4e8ffd901c8d3e68a4fb64aade5ab0cbbbdda4c5",
+   "status": "passed",
+   "duration_s": 1.385824,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_each_chart_has_takeaway_table_toggle_and_source_link",
+   "req_ids": [
+    "DASH-05"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 222,
+   "body_sha256": "26f589c8c518f69ec182e4d26e175a2a38147557fd1537deaac9aae3c5c323bf",
+   "status": "passed",
+   "duration_s": 1.22695,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_statement_explorer_search_and_filters",
+   "req_ids": [
+    "DASH-04"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 252,
+   "body_sha256": "d1d6e7f150aa3147658df42d6e7b8b25797f8681fef28aaf5e57c7489243f919",
+   "status": "passed",
+   "duration_s": 0.333077,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_clicking_a_scatter_dot_opens_that_institution",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 289,
+   "body_sha256": "0f62d587cd6a3b856448d7f5733c63419c5c9eb889c1cdfa1dba062e8ec721e3",
+   "status": "passed",
+   "duration_s": 0.270929,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_drilldown_picker_and_deep_link",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 318,
+   "body_sha256": "e8820a30eb44ed04b076822f49835599d91b0b404d09e04c46cba1db9c9f7f09",
+   "status": "passed",
+   "duration_s": 0.338683,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_keyboard_navigation_and_theme_toggle",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 337,
+   "body_sha256": "68f27a30e0f2659abb5309bbe1b459e54166c29218017c57a27b7a3c2e6a26bc",
+   "status": "passed",
+   "duration_s": 0.352773,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_palettes_are_defined_for_both_themes",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 368,
+   "body_sha256": "ae8df10a41e2cecaefa552ef407214ff44e737f92d675ba36450d7ee725fcc46",
+   "status": "passed",
+   "duration_s": 0.000396,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_cdn_libraries_pinned_and_no_build_step",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 383,
+   "body_sha256": "9412210bf3c58ad366f2df381b82552596e5747f05419c2257e8a7e3490743b0",
+   "status": "passed",
+   "duration_s": 0.00063,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 410,
+   "body_sha256": "db4dfd9940643927cf17e1cd8a19695d57c2406bc72b4361a76a08ff92ea1461",
+   "status": "passed",
+   "duration_s": 0.155945,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_required_view_is_present_with_the_right_shape",
+   "req_ids": [
+    "DASH-03"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 428,
+   "body_sha256": "8be57c8b6f60dd0763483c353973e6e5c1e8d9fbefeb143d35986c8b772f8863",
+   "status": "passed",
+   "duration_s": 0.127985,
+   "failure_message": ""
+  }
+ ]
+}

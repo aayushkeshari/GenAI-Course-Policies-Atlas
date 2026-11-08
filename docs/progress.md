@@ -581,3 +581,33 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T06:14:05-05:00 — [P2] Step 7: ANL-08 recovery tests (directions, null, magnitudes, coverage)
+
+**What changed**
+- `src/evaluation/recovery.py` → `results/recovery.json` (reads the truth): directions for DATA-06..09, the DATA-10 null under clustering, ratio magnitudes against planted values (±25%), and clustered-CI coverage across seeds 2026, 1–4 (each regenerated, cleaned and refit; ~2.5 s).
+- `tests/test_anl_recovery.py`: each check is re-derived from the results files and the truth.
+
+**Results**
+- Directions: DATA-06, 07, 08 and 09 all recovered.
+- Null: private p = 0.64 clustered (0.21 naive). Not significant. Clustered p is above 0.05 on all 5 seeds, while naive p is below 0.05 on seeds 2 (p < 0.001) and 4 (p = 0.013).
+- Ratios to the term effect (planted → estimate [CI]):
+  - intermediate 3.5 → 2.96 [2.14, 3.78]
+  - upper 6.0 → 5.39 [4.63, 6.14]
+  - graduate 6.5 → 5.71 [4.64, 6.77]
+  - is_se 3.0 → 2.83 [2.06, 3.61]
+  - private 0 → 0.23 [−0.73, 1.19]
+  
+  All are within ±25%, and all run 6–15% low.
+- Coverage (of 5 seeds): upper 5, is_se 5, private 5, intermediate 4, graduate 4. Seed 4 misses intermediate and graduate.
+
+**Tests run**
+- `make test`: 359 passed.
+
+**Decisions**
+- HUMAN: ±25% sanity check plus coverage ≥ 4/5.
+- AGENT: magnitudes are compared as ratios to the term effect. Logit coefficients sit on a different scale from the generator's latent scale, but ratios are scale-free.
+- AGENT: the consistent 6–15% underestimate is likely attenuation from fitting a logit to latent normal noise with rounding and clipping. To be noted in methods.md, not corrected.
+
+**Open questions**
+- None.

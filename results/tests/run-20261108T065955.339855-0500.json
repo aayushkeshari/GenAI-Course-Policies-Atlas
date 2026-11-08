@@ -1,0 +1,411 @@
+{
+ "schema": "test-run/1",
+ "started": "2026-11-08T06:59:55.339-05:00",
+ "finished": "2026-11-08T06:59:55.665-05:00",
+ "duration_s": 0.326,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "a62fbf7c88c0beb4895688ac0ab4ef90f2dfd1b8",
+ "git_dirty": true,
+ "current_phase": "P3:writing-code",
+ "args": [
+  "-q",
+  "tests/test_anl_schemas.py"
+ ],
+ "summary": {
+  "passed": 26
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_every_results_file_has_a_schema_and_vice_versa",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 22,
+   "docstring": "There is exactly one schema per top-level results/*.json file (results/tests/ run files are P0's).",
+   "source": "@pytest.mark.req(\"ANL-09\")\ndef test_every_results_file_has_a_schema_and_vice_versa():\n    \"\"\"There is exactly one schema per top-level results/*.json file (results/tests/ run files are P0's).\"\"\"\n    assert RESULT_FILES, \"no results files\"\n    assert sorted(p.name.removesuffix(\".schema.json\") for p in SCHEMAS.glob(\"*.schema.json\")) == RESULT_FILES\n",
+   "status": "passed",
+   "duration_s": 0.00023,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.00462,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.005909,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.003868,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.00285,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.011263,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.03991,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.009915,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.002439,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.006814,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.005493,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.006629,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "docstring": "The schema is a valid Draft 2020-12 schema and the committed results file validates against it.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_results_file_validates_against_its_schema(name):\n    \"\"\"The schema is a valid Draft 2020-12 schema and the committed results file validates against it.\"\"\"\n    sc = schema(name)\n    Draft202012Validator.check_schema(sc)\n    errors = sorted(Draft202012Validator(sc).iter_errors(result(name)), key=str)\n    assert not errors, [e.message for e in errors[:3]]\n",
+   "status": "passed",
+   "duration_s": 0.001622,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.001864,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.003036,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.000749,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.000392,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.000762,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.002422,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.011366,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.000314,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.001005,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.001399,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.007031,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "docstring": "Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.",
+   "source": "@pytest.mark.req(\"ANL-09\")\n@pytest.mark.parametrize(\"name\", RESULT_FILES)\ndef test_schema_rejects_a_file_without_the_synthetic_flag(name):\n    \"\"\"Schemas are not vacuous: dropping the synthetic flag, or adding an unknown top-level key, fails validation.\"\"\"\n    v = Draft202012Validator(schema(name))\n    bad = copy.deepcopy(result(name))\n    del bad[\"synthetic\"]\n    assert list(v.iter_errors(bad))\n    bad = copy.deepcopy(result(name))\n    bad[\"unexpected\"] = 1\n    assert list(v.iter_errors(bad))\n",
+   "status": "passed",
+   "duration_s": 0.000319,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_malformed_values",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 52,
+   "docstring": "Spot checks that value constraints bite: a CI with one bound, a probability above 1, and a regression\nwhose main inference is not clustered are all rejected.",
+   "source": "@pytest.mark.req(\"ANL-09\")\ndef test_schema_rejects_malformed_values():\n    \"\"\"Spot checks that value constraints bite: a CI with one bound, a probability above 1, and a regression\n    whose main inference is not clustered are all rejected.\"\"\"\n    reg = copy.deepcopy(result(\"regression\"))\n    reg[\"coefficients\"][0][\"ci_clustered\"] = [0.1]\n    assert list(Draft202012Validator(schema(\"regression\")).iter_errors(reg))\n    reg = copy.deepcopy(result(\"regression\"))\n    reg[\"inference\"][\"main\"] = \"naive\"\n    assert list(Draft202012Validator(schema(\"regression\")).iter_errors(reg))\n    ev = copy.deepcopy(result(\"coder_eval\"))\n    ev[\"heldout\"][\"macro_f1\"] = 1.2\n    assert list(Draft202012Validator(schema(\"coder_eval\")).iter_errors(ev))\n",
+   "status": "passed",
+   "duration_s": 0.002619,
+   "failure_message": ""
+  }
+ ]
+}

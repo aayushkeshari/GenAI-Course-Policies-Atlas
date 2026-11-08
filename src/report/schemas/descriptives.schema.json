@@ -109,7 +109,13 @@
     "type": "object",
     "properties": {
      "by": {
-      "type": "string"
+      "enum": [
+       "level",
+       "is_se_label",
+       "term",
+       "census_region",
+       "all"
+      ]
      },
      "group": {
       "type": "string"
@@ -159,7 +165,12 @@
     "type": "object",
     "properties": {
      "by": {
-      "type": "string"
+      "enum": [
+       "carnegie",
+       "year",
+       "census_region",
+       "all"
+      ]
      },
      "group": {
       "type": "string"

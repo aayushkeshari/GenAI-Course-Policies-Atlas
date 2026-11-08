@@ -17,7 +17,9 @@ from src.analysis.stats import BOOTSTRAP_INFO, ClusterBootstrap, association, in
 
 POLICIES = [0, 1, 2, 3, 4]
 ORDER = {"level": LEVELS, "term": TERMS, "is_se_label": ["non-SE", "SE"],
-         "carnegie": ["R1", "R2", "Masters", "Baccalaureate"], "policy": POLICIES}
+         "carnegie": ["R1", "R2", "Masters", "Baccalaureate"], "policy": POLICIES,
+         "census_region": ["Northeast", "Midwest", "South", "West"], "all": ["all"]}
+OVERALL = "all"  # by == group == "all": one group holding every row (overall prevalence)
 STANCES = [-2, -1, 0, 1, 2]
 THEMES = ["mentions_integrity", "mentions_collaboration", "mentions_careers"]
 USES = ["explanation", "debugging", "code_generation", "testing", "writing"]
@@ -28,18 +30,22 @@ def load_courses(clean_dir: Path) -> pd.DataFrame:
     c = read_clean("courses", clean_dir)
     c["is_se_label"] = np.where(c["is_se"], "SE", "non-SE")
     c["level"] = pd.Categorical(c["level"], LEVELS, ordered=True).astype(str)
+    inst = read_clean("institutions", clean_dir)[["inst_id", "census_region"]]
+    c = c.merge(inst, on="inst_id", how="left", validate="many_to_one")
+    c[OVERALL] = OVERALL
     return c
 
 
 def load_statements(clean_dir: Path) -> pd.DataFrame:
     coded = pd.read_csv(Path(clean_dir) / "statements_coded.csv", dtype=str, keep_default_na=False)
     s = read_clean("statements", clean_dir)[["stmt_id", "pub_date"]]
-    inst = read_clean("institutions", clean_dir)[["inst_id", "carnegie"]]
+    inst = read_clean("institutions", clean_dir)[["inst_id", "carnegie", "census_region"]]
     df = coded.merge(s, on="stmt_id").merge(inst, on="inst_id")
     df["stance"] = df["stance"].astype(int)
     for t in THEMES:
         df[t] = df[t] == "true"
     df["year"] = df["pub_date"].str[:4]
+    df[OVERALL] = OVERALL
     return df
 
 
@@ -49,13 +55,13 @@ def descriptives(clean_dir: Path = CLEAN) -> dict:
     known["policy"] = known["policy"].astype(int)
     cb = ClusterBootstrap(known["inst_id"])
     policy = []
-    for by in ["level", "is_se_label", "term"]:
+    for by in ["level", "is_se_label", "term", "census_region", OVERALL]:
         policy += share_records(known, by, "policy", POLICIES, cb, order=ORDER.get(by))
         policy += mean_records(known, by, "policy", cb, order=ORDER.get(by))
     s = load_statements(clean_dir)
     sb = ClusterBootstrap(s["inst_id"])
     statements = []
-    for by in ["carnegie", "year"]:
+    for by in ["carnegie", "year", "census_region", OVERALL]:
         statements += share_records(s, by, "stance", STANCES, sb, "coded_stance", order=ORDER.get(by))
         statements += mean_records(s, by, "stance", sb, order=ORDER.get(by))
         for t in THEMES:

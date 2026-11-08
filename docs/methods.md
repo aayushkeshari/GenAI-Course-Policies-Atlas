@@ -57,8 +57,9 @@ Baccalaureate-college effect. Every inferential result therefore accounts for cl
 
 ## 4. The analyses
 - **Descriptives (ANL-05):**
-  - the share of each policy level, and the mean policy, by course level, by SE vs non-SE, and by term
-  - coded stance and theme prevalence by Carnegie class and by year
+  - the share of each policy level, and the mean policy, by course level, by SE vs non-SE, by term, by census region, and overall
+  - coded stance and theme prevalence by Carnegie class, by year, by census region, and overall
+  - census regions are compared instead of states: with about three synthetic institutions per state, a state average is mostly noise
 - **Allowed uses (ANL-11):** how often each use (explanation, debugging, code generation, testing, writing) is allowed, by level and by SE, among courses that allow AI at all.
 - **Assessment (ANL-12):** which assessment adaptations appear at each policy level and course level.
 - **Association (ANL-06):** chi-square and Cramér's V for policy against level, and policy against SE.

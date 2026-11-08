@@ -667,3 +667,21 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Carried to HANDOFF: the P2 review-log entry, moving .phase to P3, and the PROV-02 prompt-source question for P5.
+
+## 2026-11-08T07:00:13-05:00 — [P3] Step 1a: census_region and overall groupings added to ANL-05
+
+**What changed**
+- `src/analysis/descriptives.py`: policy descriptives are now also by census_region and overall (`by == group == "all"`); statement stance and themes are also by census_region and overall. Course rows take census_region from institutions.csv.
+- `specs/P2-analysis.md` ANL-05 text, `src/report/schemas/descriptives.schema.json` (`by` is now an enum), `docs/methods.md` §4 updated to match.
+- `results/descriptives.json` regenerated with `make analysis`. No other results file changed: the bootstrap weights are drawn once per table, so adding groups does not move existing records.
+- Tests: the two ANL-05 parametrized tests now cover census_region and all; new `test_census_region_and_overall_groupings_cover_every_row`.
+
+**Tests run**
+- `make test`: 400 passed.
+
+**Decisions**
+- HUMAN: add census_region and an overall grouping to ANL-05 (P3 plan question 2), and update the P2 spec, schema and tests.
+- AGENT: the overall group is encoded as by = "all", group = "all", so the dashboard reads it with the same record shape.
+
+**Open questions**
+- None.

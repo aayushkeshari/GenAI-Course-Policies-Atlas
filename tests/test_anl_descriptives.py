@@ -81,7 +81,7 @@ def test_descriptives_record_bootstrap_settings(results):
 
 
 @pytest.mark.req("ANL-05")
-@pytest.mark.parametrize("by", ["level", "is_se_label", "term"])
+@pytest.mark.parametrize("by", ["level", "is_se_label", "term", "census_region", "all"])
 def test_policy_estimates_match_direct_computation(results, by):
     """Mean policy and the share of each policy value per group equal a direct pandas computation; shares
     in each group sum to 1; each estimate lies inside its CI; groups come in natural order."""
@@ -100,10 +100,10 @@ def test_policy_estimates_match_direct_computation(results, by):
 
 
 @pytest.mark.req("ANL-05")
-@pytest.mark.parametrize("by", ["carnegie", "year"])
+@pytest.mark.parametrize("by", ["carnegie", "year", "census_region", "all"])
 def test_statement_code_prevalence_matches_coded_data(results, by):
-    """Coded stance means and theme prevalence by carnegie and by year equal a direct computation from the
-    coder's output (not the truth)."""
+    """Coded stance means and theme prevalence by carnegie, year, census_region and overall equal a direct
+    computation from the coder's output (not the truth)."""
     s = D.load_statements(CLEAN)
     recs = [r for r in results["descriptives"]["statement_codes"] if r["by"] == by]
     for r in recs:
@@ -122,6 +122,20 @@ def test_missing_policy_excluded_not_imputed(results):
     c = results["descriptives"]["courses"]
     assert c["n_rows"] - c["n_known_policy"] == c["n_excluded_missing_policy"] > 0
     assert sum(r["n_rows"] for r in results["descriptives"]["policy"] if r["by"] == "level" and r["category"] == "mean") == c["n_known_policy"]
+
+
+@pytest.mark.req("ANL-05")
+def test_census_region_and_overall_groupings_cover_every_row(results):
+    """The census_region groups are the four regions in a fixed order, and their row counts add up to the
+    single overall group, which holds every known-policy course row (or every statement)."""
+    d = results["descriptives"]
+    for key, total in [("policy", d["courses"]["n_known_policy"]), ("statement_codes", d["statements"]["n"])]:
+        means = [r for r in d[key] if r["category"] == "mean"]
+        region = [r for r in means if r["by"] == "census_region"]
+        overall = [r for r in means if r["by"] == "all"]
+        assert [r["group"] for r in region] == ["Northeast", "Midwest", "South", "West"]
+        assert [r["group"] for r in overall] == ["all"]
+        assert sum(r["n_rows"] for r in region) == overall[0]["n_rows"] == total
 
 
 # --- ANL-11 ------------------------------------------------------------------------------------------

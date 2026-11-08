@@ -16,7 +16,8 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
   statements and blank label columns. The sample is coded by Aayush. Report Cohen's kappa as "Aayush vs coder"
   and "Aayush vs truth".
 - **ANL-05** Descriptives with 95% bootstrap CIs (2,000 resamples, fixed seed): policy distribution by level,
-  by is_se, by term; stance and theme prevalence by carnegie and year.
+  by is_se, by term, by census_region, and overall; stance and theme prevalence by carnegie, year,
+  census_region, and overall. (census_region and overall added in P3 at Aayush's direction, for the dashboard.)
 - **ANL-06** Association: chi-square + Cramér's V for policy × level and policy × is_se.
 - **ANL-07** Ordinal logistic regression: policy ~ level + is_se + term_index + control + carnegie
   (statsmodels OrderedModel). Report coefficients, 95% CIs, and n used.

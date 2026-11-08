@@ -1048,3 +1048,20 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None. `make faults` is rerun in the next commit.
+
+## 2026-11-08T08:41:15-05:00 — [P4] Fault injection rerun with the behavioral tests
+
+**What changed**
+- `make faults` was rerun and `results/faults.json` and the explorer data were rebuilt.
+- The detection rate is still **10/10**. The behavioral rate rose from **5/10 to 10/10**: every fault is now caught by at least one test that checks the specific behavior, and no fault is golden-file only.
+  - F01, F05, F07, F08 and F09 are each caught by their new behavioral test as well as the golden-file test.
+
+**Tests run**
+- `make faults`: 10/10 caught, 10/10 behavioral.
+- `make test`: 508 passed (twice).
+
+**Decisions**
+- None new.
+
+**Open questions**
+- None.

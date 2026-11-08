@@ -2,29 +2,23 @@
  "synthetic": true,
  "note": "SYNTHETIC DATA project. Each fault is a deliberate bug injected into a temporary copy of the repo; the committed code is unchanged.",
  "requirement": "VAL-04",
- "generated": "2026-11-08T08:25:26-05:00",
- "git_commit": "8b32db044dbd4b80d2f179fd79f0f1684a986112",
+ "generated": "2026-11-08T08:40:06-05:00",
+ "git_commit": "ac347408a35abd2a969214cc1f2b7db0ddd182cc",
  "method": "Temporary copy of the repo; one fault applied at a time; full pytest suite; a test 'catches' a fault if it passed on the unmodified copy and fails or errors with the fault.",
  "ui_policy": "The network-bound Playwright UI tests (tests/test_dash_ui.py, tests/test_val_ui.py) are excluded from fault runs, except for faults marked ui_tests_included. The fault runner's own tests (tests/test_val_faults.py) are always excluded.",
  "baseline": {
-  "n_tests": 447,
-  "n_tests_with_ui": 491
+  "n_tests": 453,
+  "n_tests_with_ui": 497
  },
  "n_faults": 10,
  "n_caught": 10,
  "detection_rate": 1.0,
  "uncaught": [],
  "golden_definition": "A golden-file test (name ends in _is_current / _are_current) re-derives a committed output and compares it byte for byte; a behavioural test checks a stated property.",
- "n_caught_behavioral": 5,
- "behavioral_detection_rate": 0.5,
- "golden_only": [
-  "F01",
-  "F05",
-  "F07",
-  "F08",
-  "F09"
- ],
- "duration_s": 152.7,
+ "n_caught_behavioral": 10,
+ "behavioral_detection_rate": 1.0,
+ "golden_only": [],
+ "duration_s": 155.6,
  "faults": [
   {
    "id": "F01",
@@ -36,19 +30,22 @@
    "new": "\"term_index\": c[\"term_index\"] * -1.0",
    "ui_tests_included": false,
    "caught": true,
-   "n_caught_by": 2,
+   "n_caught_by": 3,
    "caught_by": [
     "tests/test_anl_inference.py::test_committed_regression_is_current",
+    "tests/test_anl_inference.py::test_model_frame_passes_predictors_through_unchanged",
     "tests/test_anl_recovery.py::test_committed_recovery_is_current"
    ],
    "caught_by_golden": [
     "tests/test_anl_inference.py::test_committed_regression_is_current",
     "tests/test_anl_recovery.py::test_committed_recovery_is_current"
    ],
-   "caught_by_behavioral": [],
-   "golden_only": true,
-   "n_tests_run": 447,
-   "duration_s": 10.3
+   "caught_by_behavioral": [
+    "tests/test_anl_inference.py::test_model_frame_passes_predictors_through_unchanged"
+   ],
+   "golden_only": false,
+   "n_tests_run": 453,
+   "duration_s": 10.7
   },
   {
    "id": "F02",
@@ -84,8 +81,8 @@
     "tests/test_anl_clean.py::test_missing_policy_kept_as_na_not_imputed[seed7]"
    ],
    "golden_only": false,
-   "n_tests_run": 447,
-   "duration_s": 10.4
+   "n_tests_run": 453,
+   "duration_s": 10.6
   },
   {
    "id": "F03",
@@ -109,8 +106,8 @@
     "tests/test_data_generate.py::test_different_seed_gives_different_data"
    ],
    "golden_only": false,
-   "n_tests_run": 447,
-   "duration_s": 10.4
+   "n_tests_run": 453,
+   "duration_s": 10.6
   },
   {
    "id": "F04",
@@ -136,8 +133,8 @@
     "tests/test_anl_eval.py::test_heldout_report_is_current_and_rules_are_frozen"
    ],
    "golden_only": false,
-   "n_tests_run": 447,
-   "duration_s": 10.3
+   "n_tests_run": 453,
+   "duration_s": 10.5
   },
   {
    "id": "F05",
@@ -149,19 +146,24 @@
    "new": "df[\"term\"].map(lambda t: TERMS.index(t) + 1)",
    "ui_tests_included": false,
    "caught": true,
-   "n_caught_by": 2,
+   "n_caught_by": 4,
    "caught_by": [
     "tests/test_anl_clean.py::test_committed_clean_data_and_log_are_current",
+    "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[committed]",
+    "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[seed7]",
     "tests/test_anl_recovery.py::test_committed_recovery_is_current"
    ],
    "caught_by_golden": [
     "tests/test_anl_clean.py::test_committed_clean_data_and_log_are_current",
     "tests/test_anl_recovery.py::test_committed_recovery_is_current"
    ],
-   "caught_by_behavioral": [],
-   "golden_only": true,
-   "n_tests_run": 447,
-   "duration_s": 10.4
+   "caught_by_behavioral": [
+    "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[committed]",
+    "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[seed7]"
+   ],
+   "golden_only": false,
+   "n_tests_run": 453,
+   "duration_s": 10.6
   },
   {
    "id": "F06",
@@ -184,8 +186,8 @@
     "tests/test_anl_eval.py::test_human_agreement_kappa_reported"
    ],
    "golden_only": false,
-   "n_tests_run": 447,
-   "duration_s": 10.4
+   "n_tests_run": 453,
+   "duration_s": 10.5
   },
   {
    "id": "F07",
@@ -197,17 +199,20 @@
    "new": "est = (a.sum() - b.sum()) / len(intro)",
    "ui_tests_included": false,
    "caught": true,
-   "n_caught_by": 1,
+   "n_caught_by": 2,
    "caught_by": [
-    "tests/test_anl_descriptives.py::test_committed_descriptive_results_are_current"
+    "tests/test_anl_descriptives.py::test_committed_descriptive_results_are_current",
+    "tests/test_anl_descriptives.py::test_intro_gap_is_computed_over_intro_rows_only"
    ],
    "caught_by_golden": [
     "tests/test_anl_descriptives.py::test_committed_descriptive_results_are_current"
    ],
-   "caught_by_behavioral": [],
-   "golden_only": true,
-   "n_tests_run": 447,
-   "duration_s": 10.4
+   "caught_by_behavioral": [
+    "tests/test_anl_descriptives.py::test_intro_gap_is_computed_over_intro_rows_only"
+   ],
+   "golden_only": false,
+   "n_tests_run": 453,
+   "duration_s": 10.6
   },
   {
    "id": "F08",
@@ -219,17 +224,20 @@
    "new": "t[\"gap\"] = t[\"z_policy\"] - t[\"z_stance\"]",
    "ui_tests_included": false,
    "caught": true,
-   "n_caught_by": 1,
+   "n_caught_by": 2,
    "caught_by": [
-    "tests/test_anl_rhetoric.py::test_committed_rhetoric_results_are_current"
+    "tests/test_anl_rhetoric.py::test_committed_rhetoric_results_are_current",
+    "tests/test_anl_rhetoric.py::test_gap_sign_on_a_constructed_example"
    ],
    "caught_by_golden": [
     "tests/test_anl_rhetoric.py::test_committed_rhetoric_results_are_current"
    ],
-   "caught_by_behavioral": [],
-   "golden_only": true,
-   "n_tests_run": 447,
-   "duration_s": 10.3
+   "caught_by_behavioral": [
+    "tests/test_anl_rhetoric.py::test_gap_sign_on_a_constructed_example"
+   ],
+   "golden_only": false,
+   "n_tests_run": 453,
+   "duration_s": 10.6
   },
   {
    "id": "F09",
@@ -241,17 +249,20 @@
    "new": "[\"inst_id\", \"name\", \"state\", \"control\", \"carnegie\", \"cs_enrollment\"]",
    "ui_tests_included": true,
    "caught": true,
-   "n_caught_by": 1,
+   "n_caught_by": 2,
    "caught_by": [
+    "tests/test_dash_data.py::test_export_keeps_every_institution_field_the_dashboard_reads",
     "tests/test_dash_data.py::test_site_data_is_current"
    ],
    "caught_by_golden": [
     "tests/test_dash_data.py::test_site_data_is_current"
    ],
-   "caught_by_behavioral": [],
-   "golden_only": true,
-   "n_tests_run": 491,
-   "duration_s": 24.5
+   "caught_by_behavioral": [
+    "tests/test_dash_data.py::test_export_keeps_every_institution_field_the_dashboard_reads"
+   ],
+   "golden_only": false,
+   "n_tests_run": 497,
+   "duration_s": 24.9
   },
   {
    "id": "F10",
@@ -272,8 +283,8 @@
     "tests/test_runfile.py::test_home_directory_scrubbed_from_run_file"
    ],
    "golden_only": false,
-   "n_tests_run": 447,
-   "duration_s": 10.3
+   "n_tests_run": 453,
+   "duration_s": 10.6
   }
  ]
 }

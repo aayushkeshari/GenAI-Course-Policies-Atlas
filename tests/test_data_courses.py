@@ -4,6 +4,7 @@ Effect tests read the generated CSVs the way an analyst would: lower-case `level
 rows, and drop rows with a missing policy. Several seeds are checked so an effect never depends on one
 lucky draw. Each seed's data is deterministic, so these tests are not flaky.
 """
+import math
 import statistics
 
 import pytest
@@ -175,6 +176,46 @@ def test_restrictive_policies_use_exams_and_oral_defenses(seed):
     pooled = [share({0, 1}), share({2}), share({3, 4})]
     assert pooled[0] > pooled[1] > pooled[2], pooled
     assert share({0}) > 0.5 and share({4}) < 0.2
+
+
+def cochran_armitage(rows, outcome):
+    """Cochran-Armitage trend test of a binary outcome across policy 0..4 (scores 0..4).
+    Returns (z, two-sided p). z < 0 means the outcome becomes less common as policy rises."""
+    n = [sum(1 for r in rows if r["policy"] == p) for p in range(5)]
+    x = [sum(1 for r in rows if r["policy"] == p and outcome(r)) for p in range(5)]
+    big_n, pbar = sum(n), sum(x) / sum(n)
+    t = sum(p * (x[p] - n[p] * pbar) for p in range(5))
+    var = pbar * (1 - pbar) * (sum(n[p] * p * p for p in range(5)) - sum(n[p] * p for p in range(5)) ** 2 / big_n)
+    z = t / math.sqrt(var)
+    return z, math.erfc(abs(z) / math.sqrt(2))
+
+
+def test_cochran_armitage_matches_known_values():
+    """Helper check (no requirement): no trend gives z = 0, and a perfectly increasing outcome gives a
+    large positive z with p < 1e-6."""
+    flat = [{"policy": p, "y": k % 2 == 0} for p in range(5) for k in range(20)]
+    assert cochran_armitage(flat, lambda r: r["y"])[0] == pytest.approx(0.0)
+    rising = [{"policy": p, "y": k < 4 * p} for p in range(5) for k in range(20)]
+    z, p = cochran_armitage(rising, lambda r: r["y"])
+    assert z > 0 and p < 1e-6
+
+
+@pytest.mark.req("DATA-16")
+@pytest.mark.kind("property")
+def test_assessment_trends_across_policy_are_significant_on_most_seeds():
+    """HUMAN: a Cochran-Armitage trend test across policy 0..4 in the generated data is significant
+    (p < 0.05) in the planted direction on at least 4 of 5 seeds, for both halves of DATA-16: in-class
+    exams/oral defenses fall as policy rises, and process logs/AI critiques rise."""
+    exam = lambda r: r["assessment_adaptation"] in ("in_class_exams", "oral_defense")
+    logs = lambda r: r["assessment_adaptation"] in ("process_logs", "ai_critique")
+    hits_exam = hits_logs = 0
+    for seed in SEEDS:
+        rows = clean(seed)
+        z, p = cochran_armitage(rows, exam)
+        hits_exam += z < 0 and p < 0.05
+        z, p = cochran_armitage(rows, logs)
+        hits_logs += z > 0 and p < 0.05
+    assert hits_exam >= 4 and hits_logs >= 4, (hits_exam, hits_logs)
 
 
 @pytest.mark.req("DATA-16")

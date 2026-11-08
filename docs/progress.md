@@ -264,3 +264,21 @@ not backdated. Each step has its own commit, listed below.
 **Open questions**
 - DATA-10 null: at seed 2 the observed public−private gap is −0.21, about 2.5 SE, entirely from sampling noise in institution effects. At seed 2026 it is +0.08. This is the false-positive trap the null is meant to set. P2 should model institution clustering, or a naive t-test on rows may flag it.
 - Real-university list: Aayush to spot-check `data/reference/real_universities.txt`.
+
+## 2026-11-08T05:09:55-05:00 — [P1] DATA-16 trend test (Cochran–Armitage)
+
+**What changed**
+- `tests/test_data_courses.py`: added a stdlib Cochran–Armitage trend test across policy 0..4, with a helper check against known cases.
+- New DATA-16 property test: the trend must be significant (p < 0.05) in the planted direction on at least 4 of 5 seeds, for both falling in-class exams/oral defenses and rising process logs/AI critiques.
+- Observed: all 5 seeds, |z| between 17.0 and 18.5, p < 1e-63.
+
+**Tests run**
+- `make test`: 238 passed.
+
+**Decisions**
+- HUMAN: the pooled-group rewrite of the DATA-16 order test is a fair fix. The strict per-level version was flaky, not stronger.
+- HUMAN: add a significance-based trend test, because the generator-settings check alone only proves the config.
+- AGENT: Cochran–Armitage rather than a logistic slope: stdlib only, and the outcome is binary across ordered levels.
+
+**Open questions**
+- None.

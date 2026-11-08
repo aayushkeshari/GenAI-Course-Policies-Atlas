@@ -13,6 +13,8 @@
 - RQ3 Is the tone positive, neutral, or negative, and is it shifting over time?
 - RQ4 Do publications frame AI as a collaborator?
 - RQ5 How do software engineering courses differ from other CS courses?
+- RQ6 Do policies separate using AI to *learn* (explanations, debugging help) from using AI to *produce graded work*
+  (writing code that gets submitted)? This is the line students and TAs actually deal with in intro courses.
 
 ## Phases
 | Phase | Spec | Output |

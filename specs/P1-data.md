@@ -14,7 +14,8 @@ effects, and P2 must recover them.
 - **DATA-04** `data/raw/courses.csv` has ~2,000 course-term rows. Columns: course_id, inst_id, code, title,
   level (intro/intermediate/upper/graduate), is_se (bool), term (F23…F26),
   policy (0 prohibited, 1 limited use, 2 permitted with disclosure, 3 encouraged, 4 integrated/required),
-  disclosure_required, assessment_adaptation (none/in_class_exams/oral_defense/process_logs/ai_critique), tools_named.
+  disclosure_required, assessment_adaptation (none/in_class_exams/oral_defense/process_logs/ai_critique), tools_named,
+  allowed_uses (multi-label, semicolon-separated: explanation;debugging;code_generation;testing;writing; empty when policy = 0).
 - **DATA-05** Hidden labels and planted effects go only in `data/raw/ground_truth.json`.
   Analysis code must never read this file (enforced by a test that greps src/analysis/).
 
@@ -24,6 +25,8 @@ effects, and P2 must recover them.
 - **DATA-08** Permissiveness rises with each term.
 - **DATA-09** R1 departments have a more positive statement stance.
 - **DATA-10** Planted null: control (public/private) has no effect on policy. This checks for false positives.
+- **DATA-15** Learning vs producing: intro courses that allow AI mostly allow explanation and debugging, rarely
+  code_generation. SE courses are the most likely to allow code_generation and testing.
 - **DATA-11** Statement labels (stance −2..+2, mentions_collaboration, mentions_integrity, mentions_careers)
   are correlated with the planted effects in documented ways.
 

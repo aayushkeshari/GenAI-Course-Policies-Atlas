@@ -1,0 +1,28 @@
+{
+ "base_rate": 0.140741,
+ "direction_correct": 13,
+ "hits": [
+  "I002",
+  "I003",
+  "I008",
+  "I033",
+  "I038",
+  "I046",
+  "I063",
+  "I079",
+  "I088",
+  "I118",
+  "I123",
+  "I137",
+  "I146"
+ ],
+ "kind": "recovery (reads ground truth)",
+ "n_flagged_eligible": 19,
+ "n_flagged_total": 22,
+ "n_listed": 14,
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "precision": 0.928571,
+ "recall": 0.684211,
+ "requirement": "ANL-13",
+ "synthetic": true
+}

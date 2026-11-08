@@ -557,3 +557,27 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T06:12:50-05:00 — [P2] Step 6: ANL-13 rhetoric vs practice, with DATA-17 recovery
+
+**What changed**
+- `src/analysis/rhetoric.py` → `results/rhetoric.json`:
+  - Per institution (135 with statements): mean coded stance, mean known policy, both z-standardized.
+  - Gap = z(stance) − z(policy). Top-decile |gap| list (k = 14) with direction labels.
+  - Pearson r with a bootstrap CI over institutions (2,000 resamples, seed 4005).
+- `src/evaluation/rhetoric_eval.py` → `results/rhetoric_recovery.json` (reads the truth): precision and recall of the list against the DATA-17 flags, plus direction agreement.
+- Both registered in `make analysis`.
+
+**Results (seed 2026)**
+- **Precision 0.93** (13/14 listed are planted mismatches; base rate 0.14). **Recall 0.68** (13/19 eligible flagged; with k = 14 the most possible is 0.74). The direction is correct for 13/13.
+- Overall stance–policy correlation r = −0.08 [−0.28, 0.13]. The generator couples stance to policy for most institutions, but the 22 planted mismatches sit at opposite extremes and cancel that out in a plain correlation. This will be stated in methods.md.
+
+**Tests run**
+- `make test`: 351 passed.
+
+**Decisions**
+- AGENT: "mean course permissiveness" is the raw mean of known policies, not adjusted for course mix (level/SE), as the spec literally says. Noted as a limitation.
+- AGENT: k = ceil(10% of institutions with statements). Recall is reported against flagged institutions that could appear (19 of 22 have statements).
+
+**Open questions**
+- None.

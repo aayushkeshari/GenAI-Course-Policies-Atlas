@@ -3,7 +3,7 @@
 
 PY ?= .venv/bin/python
 
-.PHONY: setup data analysis test report tokens timeline site serve clean
+.PHONY: setup data analysis test faults report tokens timeline site serve clean
 
 setup:  ## create the venv, install pinned deps, and install Chromium for the dashboard UI tests (DASH-07)
 	python3.11 -m venv .venv && $(PY) -m pip install -q -r requirements.txt
@@ -21,6 +21,9 @@ analysis:  ## P2: clean, code, analyze -> results/ (src/analysis never reads gro
 test:  ## run pytest; tests/conftest.py writes results/tests/run-<ts>.json (INST-07) and pytest-cov writes results/tests/coverage/latest.json, archived per run in results/tests/coverage/ (VAL-03)
 	$(PY) -m pytest --cov=src --cov-report=json:results/tests/coverage/latest.json; s=$$?; \
 	$(PY) -m src.validation.runs attach-coverage || s=1; exit $$s
+
+faults:  ## P4 (VAL-04): inject deliberate bugs into a temp copy of the repo, run the suite, write results/faults.json
+	$(PY) -m src.validation.faults
 
 report:  ## P3/P4: build dashboard data into site/data/ and validation explorer data into site/validation/data/
 	$(PY) -m src.report.build_site_data

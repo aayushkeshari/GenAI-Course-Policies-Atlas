@@ -1,0 +1,205 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "faults.schema.json",
+ "title": "VAL-04 fault injection: which tests catch each deliberate bug",
+ "type": "object",
+ "required": [
+  "synthetic",
+  "note",
+  "requirement",
+  "generated",
+  "git_commit",
+  "method",
+  "ui_policy",
+  "baseline",
+  "n_faults",
+  "n_caught",
+  "detection_rate",
+  "uncaught",
+  "golden_definition",
+  "n_caught_behavioral",
+  "behavioral_detection_rate",
+  "golden_only",
+  "duration_s",
+  "faults"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "synthetic": {
+   "const": true
+  },
+  "note": {
+   "type": "string",
+   "pattern": "SYNTHETIC"
+  },
+  "requirement": {
+   "const": "VAL-04"
+  },
+  "generated": {
+   "type": "string"
+  },
+  "git_commit": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "method": {
+   "type": "string"
+  },
+  "ui_policy": {
+   "type": "string"
+  },
+  "baseline": {
+   "type": "object",
+   "required": [
+    "n_tests",
+    "n_tests_with_ui"
+   ],
+   "properties": {
+    "n_tests": {
+     "type": "integer"
+    },
+    "n_tests_with_ui": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    }
+   }
+  },
+  "n_faults": {
+   "type": "integer",
+   "minimum": 8
+  },
+  "n_caught": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "detection_rate": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "uncaught": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "golden_definition": {
+   "type": "string"
+  },
+  "n_caught_behavioral": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "behavioral_detection_rate": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "golden_only": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "duration_s": {
+   "type": "number"
+  },
+  "faults": {
+   "type": "array",
+   "minItems": 8,
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "title",
+     "category",
+     "description",
+     "file",
+     "old",
+     "new",
+     "ui_tests_included",
+     "caught",
+     "n_caught_by",
+     "caught_by",
+     "caught_by_golden",
+     "caught_by_behavioral",
+     "golden_only",
+     "n_tests_run",
+     "duration_s"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^F\\d{2}$"
+     },
+     "title": {
+      "type": "string"
+     },
+     "category": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "file": {
+      "type": "string"
+     },
+     "old": {
+      "type": "string",
+      "minLength": 1
+     },
+     "new": {
+      "type": "string"
+     },
+     "ui_tests_included": {
+      "type": "boolean"
+     },
+     "caught": {
+      "type": "boolean"
+     },
+     "n_caught_by": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "caught_by": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^tests/"
+      }
+     },
+     "caught_by_golden": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^tests/"
+      }
+     },
+     "caught_by_behavioral": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "pattern": "^tests/"
+      }
+     },
+     "golden_only": {
+      "type": "boolean"
+     },
+     "n_tests_run": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "duration_s": {
+      "type": "number",
+      "minimum": 0
+     }
+    }
+   }
+  }
+ }
+}

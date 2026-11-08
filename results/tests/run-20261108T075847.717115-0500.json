@@ -1,0 +1,79 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:58:47.717-05:00",
+ "finished": "2026-11-08T07:58:48.276-05:00",
+ "duration_s": 0.56,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "7eb931f963823b1266cbde887b8021fe199dcc3a",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_faults.py",
+  "-q",
+  "-k",
+  "not committed and not published"
+ ],
+ "summary": {
+  "passed": 4
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_faults.py::test_runner_records_caught_and_uncaught_faults_without_touching_the_repo",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 38,
+   "body_sha256": "3236e46f66752c985eb85d22c46f1472d7ea08dbce0d88d9e693f76a184827c6",
+   "status": "passed",
+   "duration_s": 0.37527,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_a_fault_must_match_exactly_once",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 58,
+   "body_sha256": "2cb7fd157d4424b2834ff836ebbc23426b0123185c28145a45fd0d14087475fc",
+   "status": "passed",
+   "duration_s": 0.002034,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_baseline_must_be_clean",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 75,
+   "body_sha256": "57349f5657a4722bce277f9cdd1840bebf5a4086588c59c542f4735ab059bcb0",
+   "status": "passed",
+   "duration_s": 0.129047,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_make_faults_target",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 124,
+   "body_sha256": "c9ea62350979affba47e2a5fad4d1c804178bfd29654d93e463335dac1bed65e",
+   "status": "passed",
+   "duration_s": 0.009779,
+   "failure_message": ""
+  }
+ ]
+}

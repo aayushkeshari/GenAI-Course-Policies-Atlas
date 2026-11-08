@@ -1,0 +1,107 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:02:12.078-05:00",
+ "finished": "2026-11-08T08:02:12.551-05:00",
+ "duration_s": 0.474,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "7eb931f963823b1266cbde887b8021fe199dcc3a",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_faults.py",
+  "-q",
+  "-k",
+  "golden or records"
+ ],
+ "summary": {
+  "passed": 6
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_faults.py::test_runner_records_caught_and_uncaught_faults_without_touching_the_repo",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 38,
+   "body_sha256": "3236e46f66752c985eb85d22c46f1472d7ea08dbce0d88d9e693f76a184827c6",
+   "status": "passed",
+   "duration_s": 0.395768,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_inference.py::test_committed_regression_is_current-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000199,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_clean.py::test_committed_clean_data_and_log_are_current-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000113,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_x.py::test_thing_is_current[seed7]-True]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.00011,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_anl_eval.py::test_cohen_kappa_known_values-False]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.0001,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_golden_file_tests_are_classified_by_name[tests/test_x.py::test_is_currently_wrong-False]",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 139,
+   "body_sha256": "6afcb8dc2fa2cbd115249ecdf1f6d29116c818640ed44826b24a129cd72b33a1",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  }
+ ]
+}

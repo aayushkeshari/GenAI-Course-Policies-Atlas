@@ -13,7 +13,7 @@ Outputs (all JSON is sorted, compact and synthetic-labelled):
   history.json        every run up to the snapshot, plus one status letter per run for each test (VAL-02)
   traceability.json   spec requirement -> tests -> status (VAL-03)
   coverage.json       per-module line coverage of src/ for the snapshot run (VAL-03)
-  faults.json         copy of results/faults.json from `make faults` (VAL-04)
+  faults.json         results/faults.json from `make faults`, with caught_by node IDs redacted like tests.json (VAL-04)
   claims.json         dashboard findings -> supporting tests (VAL-06)
   review-log.md       copy of docs/review-log.md (VAL-07)
   recovery/*.json     the truth-derived results, copied byte for byte. They are shown ONLY on the explorer's
@@ -27,6 +27,8 @@ import shutil
 import sys
 from pathlib import Path
 
+import jsonschema
+
 from src.validation.redact import scrub
 from src.validation.runs import load_run, run_files
 from src.validation.specs import requirements
@@ -38,6 +40,7 @@ SPECS = ROOT / "specs"
 REVIEW_LOG = ROOT / "docs" / "review-log.md"
 CLAIMS = Path(__file__).resolve().parent / "claims.json"
 OUT = ROOT / "site" / "validation" / "data"
+SCHEMAS = Path(__file__).resolve().parent / "schemas"
 
 RECOVERY_FILES = ["recovery.json", "rhetoric_recovery.json", "coder_dev_eval.json"]
 NOTE = ("SYNTHETIC DATA: the study's institutions, courses and statements are invented. "
@@ -168,8 +171,11 @@ def build(run: str | None = None, runs_dir: Path = RUNS, results: Path = RESULTS
     inputs = {}
     faults = results / "faults.json"
     if faults.exists():
-        shutil.copyfile(faults, out / "faults.json")
-        written.append("faults.json")
+        report = json.loads(faults.read_text(encoding="utf-8"))
+        jsonschema.validate(report, json.loads((SCHEMAS / "faults.schema.json").read_text(encoding="utf-8")))
+        for f in report["faults"]:
+            f["caught_by"] = [scrub(n) for n in f["caught_by"]]
+        put("faults.json", report)
         inputs["results/faults.json"] = _sha(faults)
     if Path(claims_path).exists():
         put("claims.json", {"synthetic": True, **claims(claims_path, tests)})

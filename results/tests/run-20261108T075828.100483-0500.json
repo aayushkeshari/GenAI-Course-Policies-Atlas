@@ -1,0 +1,80 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:58:28.100-05:00",
+ "finished": "2026-11-08T07:58:28.689-05:00",
+ "duration_s": 0.589,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "7eb931f963823b1266cbde887b8021fe199dcc3a",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_faults.py",
+  "-q",
+  "-k",
+  "not committed and not published"
+ ],
+ "summary": {
+  "failed": 1,
+  "passed": 3
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_faults.py::test_runner_records_caught_and_uncaught_faults_without_touching_the_repo",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 38,
+   "body_sha256": "5d2a4ab3c50ec7b4cff902e45acffaac158e064498c83a22fa6bf04eec8c108a",
+   "status": "failed",
+   "duration_s": 0.368551,
+   "failure_message": "tmp_path = PosixPath('/private/var/folders/4l/t8q42vzx2093hy69qlxp_xwh0000gn/T/pytest-of-aayushkeshari/pytest-68/test_runner_records_caught_and0')\n\n    @pytest.mark.req(\"VAL-04\")\n    @pytest.mark.kind(\"fault\")\n    def test_runner_records_caught_and_uncaught_faults_without_touching_the_repo(tmp_path):\n        \"\"\"On a tiny repo with two faults, the runner reports one caught (by exactly the test that checks it) and\n        one uncaught, with detection rate 0.5 and the uncaught fault listed. The source repo is byte-identical\n        afterwards (faults are applied only to a temp copy) and only the report file is written.\"\"\"\n        repo = tiny_repo(tmp_path / \"repo\")\n        before = tree_hash(repo)\n        out = tmp_path / \"faults.json\"\n        report = F.run(repo=repo, out=out, faults=TINY_FAULTS, log=lambda *_: None)\n        assert tree_hash(repo) == before\n        assert json.loads(out.read_text()) == report\n        by_id = {f[\"id\"]: f for f in report[\"faults\"]}\n>       assert by_id[\"T1\"][\"caught\"] and by_id[\"T1\"][\"caught_by\"] == [\"tests/test_mod.py::test_add\"]\nE       assert (False)\n\ntests/test_val_faults.py:51: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_a_fault_must_match_exactly_once",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 57,
+   "body_sha256": "2cb7fd157d4424b2834ff836ebbc23426b0123185c28145a45fd0d14087475fc",
+   "status": "passed",
+   "duration_s": 0.001959,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_baseline_must_be_clean",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "fault",
+   "file": "tests/test_val_faults.py",
+   "line": 74,
+   "body_sha256": "57349f5657a4722bce277f9cdd1840bebf5a4086588c59c542f4735ab059bcb0",
+   "status": "passed",
+   "duration_s": 0.128854,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_faults.py::test_make_faults_target",
+   "req_ids": [
+    "VAL-04"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_faults.py",
+   "line": 123,
+   "body_sha256": "c9ea62350979affba47e2a5fad4d1c804178bfd29654d93e463335dac1bed65e",
+   "status": "passed",
+   "duration_s": 0.009568,
+   "failure_message": ""
+  }
+ ]
+}

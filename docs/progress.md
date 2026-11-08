@@ -900,3 +900,45 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None blocking. Aayush may want to review the P3 privacy-test change. It strengthens the check, but it is a change to an existing test.
+
+## 2026-11-08T08:09:30-05:00 — [P4] Step 3: fault injection (`make faults`, VAL-04)
+
+**What changed**
+- New `src/validation/faults.py`, run by `make faults`.
+  - It copies the repo to a temp directory, leaving out .venv, .git, logs and raw_logs. Every fault must match its file exactly once; this is checked on the copy before any run.
+  - It needs a clean baseline run, then applies 10 faults one at a time and runs the suite on each.
+  - "Caught by" means the test passed on the baseline and fails or errors with the fault. The report goes to `results/faults.json`, which has a new schema at `src/report/schemas/faults.schema.json`. The builder validates the report and publishes it with caught_by node IDs redacted.
+- The 10 faults:
+  - F01: flip the regression sign
+  - F02: skip dedupe
+  - F03: ignore the seed
+  - F04: break the S-2-ban keyword rule
+  - F05: off-by-one term_index
+  - F06: kappa without chance correction
+  - F07: wrong denominator
+  - F08: flip the rhetoric gap
+  - F09: site data drops census_region
+  - F10: home-path redaction no-op
+- UI tests (`test_dash_ui.py`, `test_val_ui.py`) are excluded except for F09, as Aayush decided. The runner's own tests (`test_val_faults.py`) are always excluded, because they would run the runner recursively and check the report while it's being rewritten.
+- Bug found by the runner's own test: a same-size edit made within one second reused a stale `.pyc`, so the fault silently didn't run. F08 is exactly that kind of edit. Fault runs now set PYTHONDONTWRITEBYTECODE=1, and the tiny-repo test proves this works.
+- Each catching test is classified as golden-file (`*_is_current` / `*_are_current`: re-derive a committed output and compare it byte for byte) or behavioral. The report gives both rates.
+- **Result:** detection rate **10/10**, with no uncaught faults. Only **5/10** were caught by a behavioral test. F01, F05, F07, F08 and F09 are caught only by golden-file tests: no test checks the regression's sign, term_index starting at 0, the gap's denominator, the gap's sign, or the export's field list directly.
+- Bootstrap note: after the golden fields were added, the earlier report no longer matched its schema, so the fault baseline couldn't pass. For one bootstrap run I derived those fields from its caught_by, then ran `make faults` again. The committed file is that genuine run.
+- New `tests/test_val_faults.py` (11 tests) covers:
+  - a tiny-repo run: one fault caught, one not, the repo byte-identical afterwards, and no stale bytecode
+  - the match-exactly-once rule
+  - a non-clean baseline aborting the run
+  - the committed report being current and consistent, and its published copy being redacted
+  - golden-file classification
+  - the Makefile target
+
+**Tests run**
+- `make faults`: 10/10 caught, 5/10 behavioral, about 2.5 min.
+- `make test`: 470 passed.
+
+**Decisions**
+- HUMAN: UI tests are skipped in fault runs except for F09, and the page says so.
+- AGENT: the 10 faults and their exact sites; excluding the runner's self-tests; the golden/behavioral split; adding no new tests just to raise the behavioral rate.
+
+**Open questions**
+- For Aayush: should behavioral tests be added for F01, F05, F07, F08 and F09, for example a regression sign check on planted data, term_index == 0 for F23, a hand-computed gap denominator, a gap sign check on a constructed institution, and a field list check on the export? Not done, because it wasn't asked for.

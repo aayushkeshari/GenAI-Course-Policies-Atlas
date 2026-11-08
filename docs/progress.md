@@ -359,3 +359,27 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - From Aayush's review-log note: decisions logged as "HUMAN" in progress.md were drafted with Claude chat. P5 provenance should tell "decided by Aayush" apart from "written by Aayush". This adds to the PROV-02 open question.
+
+## 2026-11-08T05:43:44-05:00 — [P2] Step 0: deps, test path, analysis target, ANL-03 spec wording
+
+**What changed**
+- `requirements.txt`: full pinned tree from `pip freeze`. Adds pandas 3.1.1, numpy 2.4.6, scipy 1.17.1, statsmodels 0.15.0 and jsonschema 4.26.0, plus their dependencies (formulaic, patsy, narwhals, attrs, referencing, rpds-py, etc.).
+- `pytest.ini`: `pythonpath = .`, so tests can `import src.analysis...`.
+- `Makefile`: `analysis` runs `python -m src.analysis.run`, then `python -m src.evaluation.run`. Both runners are empty step lists for now.
+- `src/__init__.py`, `src/evaluation/__init__.py` (states that only this package and tests may read the truth).
+- `specs/P2-analysis.md`: ANL-03 now cites the split in docs/data-dictionary.md, requires that coder rules are tuned on the dev half only and that a test fails if the coder reads held-out labels, and says only src/evaluation/ and tests may read ground truth. Edited at Aayush's direction.
+
+**Tests run**
+- `make test`: 244 passed. `make analysis` runs (no steps yet).
+
+**Decisions**
+- HUMAN: ANL-03 cites the data-dictionary split; tune on dev only; a leakage test is required.
+- HUMAN: src/evaluation/ is the only non-test code allowed to read ground truth.
+- HUMAN: clustered SEs grouped by inst_id are the main method. Verified that OrderedModel.fit accepts cov_type="cluster": the null is non-significant on 5/5 seeds when clustered, while naive p < 0.05 on seeds 2 and 4.
+- HUMAN: the kappa test shows SKIPPED ("awaiting human coding (ANL-04)") until Aayush fills in the sample.
+- HUMAN: chi-square reports a naive p labelled as naive, with the cluster-bootstrap CI for Cramér's V as the main inference.
+- HUMAN: ±25% coefficient-ratio check, plus coverage (the clustered 95% CI contains the planted value on at least 4 of 5 seeds).
+- HUMAN: stop when the ANL-04 sample is ready.
+
+**Open questions**
+- None.

@@ -9,7 +9,9 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
   so every coding decision can be traced to a rule.
 - **ANL-03** Coder vs ground truth: per-label precision/recall/F1 and a stance confusion matrix.
   Target macro-F1 ≥ 0.80. If it falls short, report the actual number honestly. Do not tune against the test set:
-  split statements into a dev half (for tuning rules) and a held-out half (for reporting).
+  split statements into a dev half (for tuning rules) and a held-out half (for reporting), using the dev/held-out
+  split defined in `docs/data-dictionary.md`. Coder rules may only be tuned on the dev half; a test fails if the
+  coder code reads held-out labels. Only `src/evaluation/` (and tests) may read ground truth.
 - **ANL-04** Human agreement (HUMAN task): generate `data/reference/hand_code_sample.csv` with 30 held-out
   statements and blank label columns. Aayush fills it in. Report Cohen's kappa for human vs coder and human vs truth.
 - **ANL-05** Descriptives with 95% bootstrap CIs (2,000 resamples, fixed seed): policy distribution by level,

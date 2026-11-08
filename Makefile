@@ -13,8 +13,9 @@ SEED ?= 2026
 data:  ## P1: generate synthetic data + ground truth into data/raw/ (deterministic for a given SEED)
 	$(PY) src/data/generate.py --seed $(SEED) --out data/raw
 
-analysis:  ## P2: clean, code, analyze -> results/
-	@echo "analysis: not implemented yet (P2)"
+analysis:  ## P2: clean, code, analyze -> results/ (src/analysis never reads ground truth), then evaluate (src/evaluation)
+	$(PY) -m src.analysis.run
+	$(PY) -m src.evaluation.run
 
 test:  ## run pytest; tests/conftest.py writes results/tests/run-<ts>.json (INST-07)
 	$(PY) -m pytest

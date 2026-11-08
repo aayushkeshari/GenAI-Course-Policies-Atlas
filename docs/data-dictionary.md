@@ -34,10 +34,18 @@ always produces byte-identical files.
 | `inst_id` | string | foreign key to institutions.csv; 0–4 statements per institution |
 | `pub_type` | string | `policy_page`, `news`, `strategic_plan`, `syllabus_template`, `faq` |
 | `pub_date` | string | `YYYY-MM`, from 2023-01 to 2026-10 |
-| `text` | string | 2–5 sentences assembled from phrase banks. The opening sentence reflects the hidden stance; other sentences reflect the hidden mention labels, plus neutral filler |
+| `text` | string | 2–5 sentences assembled from phrase banks, in random order. Exactly one sentence carries the hidden stance; one sentence per true mention label; the rest are neutral filler |
 
 The stance (−2..+2) and the `mentions_integrity`, `mentions_collaboration` and `mentions_careers` labels are
 **not** columns. P2 has to code them from `text`. The true values are only in `ground_truth.json`.
+
+**How the text is built.** Each stance level and each label has 9 phrasings, and there are 18 neutral fillers. The text contains deliberate hard cases:
+- **Negations** carry stance. "AI use is not prohibited" is permissive; "No form of AI assistance is acceptable" is prohibitive.
+- **Hedges** soften stance ("generally", "may", "probably").
+- **AI mentions without a stance** appear in filler sentences, e.g. "Generative AI tools are changing quickly…".
+- **Keyword traps** use a label word in an unrelated sense, e.g. "data integrity", or "prepared in collaboration with the campus library". These do not make the label true.
+
+**Dev/held-out split (for ANL-03).** The split is public and by institution. A statement is **held-out** if the numeric part of its `inst_id` is odd (I001, I003, …), and **dev** otherwise. A third of the phrasings in every bank are **reserved**: they appear only in held-out statements. So a coder tuned on the dev half is scored on wording it has never seen.
 
 ## courses.csv
 
@@ -67,10 +75,10 @@ The stance (−2..+2) and the `mentions_integrity`, `mentions_collaboration` and
 | Key | Contents |
 |---|---|
 | `synthetic`, `note`, `seed`, `generator_version` | provenance; `synthetic` is always `true` |
-| `parameters` | the exact generator parameters: `policy_model`, `stance_model`, `label_model`, `use_model`, `tool_model`, `assessment_weights`, `disclosure_prob`, `institutions` (incl. `rhetoric_gap`), `catalog`, `statement_count_mix`, `terms`, `mess` |
+| `parameters` | the exact generator parameters: `policy_model`, `stance_model`, `label_model`, `use_model`, `tool_model`, `assessment_weights`, `disclosure_prob`, `institutions` (incl. `rhetoric_gap`), `catalog`, `statement_count_mix`, `statement_split`, `phrase_banks` (every phrasing with its hard-case tag and reserved flag), `terms`, `mess` |
 | `planted_effects` | a plain-language statement of each planted effect (DATA-06..11, 15–17) with its parameter values |
 | `institutions` | per `inst_id`: `inst_effect` (shift on course policy), `stance_latent`, `rhetoric_gap` (null or the mismatch kind) |
-| `statements` | per `stmt_id`: `stance` (−2..+2), `mentions_integrity`, `mentions_collaboration`, `mentions_careers` |
+| `statements` | per `stmt_id`: `stance` (−2..+2), `mentions_integrity`, `mentions_collaboration`, `mentions_careers`, plus `split` (dev/heldout), `reserved_phrasings` (count) and `hard_cases` (tags present) |
 | `courses` | per `course_id`: `course_effect` |
 | `course_rows` | per course-term: `latent_score` and the true `policy` (before any value was blanked) |
 | `mess` | `missing_policy` (with the blanked true values), `recased_level`, `duplicate_rows` |

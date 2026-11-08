@@ -31,6 +31,7 @@ Outputs go to `results/*.json`. Every number on the dashboard must come from the
   ANL-11, ANL-12) must account for clustering by `inst_id`. Use cluster-robust (sandwich) SEs, a mixed model
   with an institution random effect, or a cluster bootstrap that resamples institutions. `docs/methods.md`
   states which method was used for each result. A test checks that the DATA-10 null stays non-significant
-  under the clustered method, since naive row-level tests can flag sampling noise (seed 2: −0.21 gap).
+  under the clustered method, since naive row-level tests can flag sampling noise in institution effects
+  as a real effect.
 - **ANL-10** `docs/methods.md` describes the approach in plain language, including the limits of
   synthetic data and keyword coding.

@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 REAL_UNIVERSITIES = ROOT / "data" / "reference" / "real_universities.txt"
 DEFAULT_OUT = ROOT / "data" / "raw"
-GENERATOR_VERSION = 1
+GENERATOR_VERSION = 2  # 2: larger phrase banks, hard cases, reserved held-out phrasings
 
 # ---------------------------------------------------------------------------------------------
 # Institutions (DATA-02)
@@ -154,44 +154,122 @@ LABEL_MODEL = {
     "mentions_collaboration": {"base": 0.35, "per_stance": 0.12},
     "mentions_careers": {"base": 0.25, "per_stance": 0.10, "r1_bonus": 0.15},
 }
+# Phrase banks. Every entry is S(text, tag, heldout). tag marks the hard cases:
+#   plain        an ordinary paraphrase
+#   negation     the stance is expressed through a negation ("AI use is not prohibited" -> permissive)
+#   hedge        the stance is softened ("generally", "may", "probably")
+#   ai_no_stance mentions AI but takes no stance (neutral filler only)
+#   keyword_trap uses a label keyword in an unrelated sense ("data integrity"), so the label stays false
+# heldout=True phrasings appear ONLY in held-out statements (see STATEMENT_SPLIT), so ANL-03's held-out
+# score measures generalization to unseen wording, not memorization of the dev half.
+def S(text: str, tag: str = "plain", heldout: bool = False) -> dict:
+    return {"text": text, "tag": tag, "heldout": heldout}
+
+
+HARD_CASE_TAGS = ["negation", "hedge", "ai_no_stance", "keyword_trap"]
+STATEMENT_SPLIT = {
+    "unit": "institution",
+    "rule": "A statement is held-out if the numeric part of its inst_id is odd (I001, I003, ...), dev otherwise.",
+}
+
 STANCE_SENTENCES = {
-    -2: ["The department prohibits the use of generative AI tools on any graded work.",
-         "Use of AI code generators or chatbots on coursework is not permitted in computer science courses.",
-         "Students may not use generative AI systems to complete assignments, projects, or exams."],
-    -1: ["The department urges caution with generative AI, and its use is limited to what an instructor explicitly allows.",
-         "Generative AI tools raise serious concerns, and students should assume they are not allowed unless told otherwise.",
-         "The faculty view AI assistants with caution and restrict them in most courses."],
-    0: ["Each instructor sets the policy on generative AI tools for their own course.",
-        "The department has not adopted a single rule on AI tools; course syllabi state what is allowed.",
-        "Expectations for using AI assistants vary by course and are described in each syllabus."],
-    1: ["The department supports thoughtful use of generative AI tools when students disclose how they used them.",
-        "Students are welcome to use AI assistants in many courses, provided they follow the course guidelines.",
-        "Generative AI can support learning, and the faculty are adopting it in a growing number of courses."],
-    2: ["The department embraces generative AI as a core part of how computing is taught and practiced.",
-        "We are integrating AI coding assistants throughout the curriculum and expect students to use them well.",
-        "Generative AI is transforming software development, and our courses are built to put it to work."],
+    -2: [S("The department prohibits the use of generative AI tools on any graded work."),
+         S("Use of AI code generators or chatbots on coursework is not permitted in computer science courses."),
+         S("Students may not use generative AI systems to complete assignments, projects, or exams."),
+         S("AI assistants are banned from all programming assignments and exams in the major."),
+         S("No form of AI assistance is acceptable on graded coursework.", "negation"),
+         S("Work produced with the help of an AI model will receive no credit."),
+         S("Generative models have no place in how our students complete their coursework.", "negation", True),
+         S("Relying on a chatbot for any part of an assignment is forbidden.", heldout=True),
+         S("Under no circumstances should students submit work that an AI system helped produce.", "negation", True)],
+    -1: [S("The department urges caution with generative AI, and its use is limited to what an instructor explicitly allows."),
+         S("Generative AI tools raise serious concerns, and students should assume they are not allowed unless told otherwise."),
+         S("The faculty view AI assistants with caution and restrict them in most courses."),
+         S("AI assistants are not permitted by default; any use needs an instructor's approval.", "negation"),
+         S("Students should generally avoid AI tools unless an instructor indicates otherwise.", "hedge"),
+         S("Limited use of AI for looking up concepts may be acceptable, but writing code with it usually is not.", "hedge"),
+         S("We are wary of chatbots in the classroom and allow them only in narrow, instructor-approved ways.", heldout=True),
+         S("Outside a few clearly marked exercises, AI help is off-limits for now.", heldout=True),
+         S("It is probably best for students to steer clear of AI tools unless a course explicitly invites them.", "hedge", True)],
+    0: [S("Each instructor sets the policy on generative AI tools for their own course."),
+        S("The department has not adopted a single rule on AI tools; course syllabi state what is allowed.", "negation"),
+        S("Expectations for using AI assistants vary by course and are described in each syllabus."),
+        S("Whether AI tools may be used is a decision left to individual faculty members."),
+        S("The department neither endorses nor bans generative AI; course policies differ.", "negation"),
+        S("Students should check each course's syllabus, since rules on AI assistance differ between classes."),
+        S("There is no department-wide position on AI; what applies depends on the class.", "negation", True),
+        S("AI rules are set course by course, and the department does not override them.", heldout=True),
+        S("Faculty decide for themselves how, or whether, chatbots fit their teaching.", heldout=True)],
+    1: [S("The department supports thoughtful use of generative AI tools when students disclose how they used them."),
+        S("Students are welcome to use AI assistants in many courses, provided they follow the course guidelines."),
+        S("Generative AI can support learning, and the faculty are adopting it in a growing number of courses."),
+        S("AI use is not prohibited; students may use these tools as long as they cite them.", "negation"),
+        S("In most courses, students may use AI tools for some tasks, subject to instructor guidance.", "hedge"),
+        S("Responsible use of AI assistants is allowed and, where appropriate, encouraged."),
+        S("We are not against AI tools; used openly, they can help students learn.", "negation", True),
+        S("Chatbots are fair game in many classes, as long as students are upfront about it.", heldout=True),
+        S("Students can likely use AI help in most assignments if they note where it was used.", "hedge", True)],
+    2: [S("The department embraces generative AI as a core part of how computing is taught and practiced."),
+        S("We are integrating AI coding assistants throughout the curriculum and expect students to use them well."),
+        S("Generative AI is transforming software development, and our courses are built to put it to work."),
+        S("We do not see AI as a threat to learning; it is a tool every student is expected to master.", "negation"),
+        S("Every computing course now includes assignments designed around AI assistants."),
+        S("Working with AI tools is a required part of our programming courses."),
+        S("Far from banning chatbots, our curriculum makes them central to how students build software.", "negation", True),
+        S("AI pair programming is woven into nearly every course we teach.", heldout=True),
+        S("Students here learn to program alongside AI from their very first course.", heldout=True)],
 }
 LABEL_SENTENCES = {
     "mentions_integrity": [
-        "Submitting AI-generated work as one's own is a violation of the academic integrity policy.",
-        "Undisclosed use of AI tools will be handled under the honor code.",
-        "Students remain responsible for the originality of their work and must not misrepresent AI output as their own."],
+        S("Submitting AI-generated work as one's own is a violation of the academic integrity policy."),
+        S("Undisclosed use of AI tools will be handled under the honor code."),
+        S("Students remain responsible for the originality of their work and must not misrepresent AI output as their own."),
+        S("Presenting a chatbot's answer as personal work counts as academic dishonesty."),
+        S("Suspected misuse of AI will be referred to the office of student conduct."),
+        S("Plagiarism rules apply to text and code produced by AI systems."),
+        S("Passing off machine-written code as your own is treated like any other form of cheating.", heldout=True),
+        S("Cases where AI output is turned in without credit go through the misconduct process.", heldout=True),
+        S("Honesty about where each line of code came from is expected of every student.", heldout=True)],
     "mentions_collaboration": [
-        "Students are encouraged to treat AI tools as collaborators and to discuss their use openly with peers and instructors.",
-        "Faculty and students are working together to explore how AI assistants can support teamwork.",
-        "Several courses pair students with AI assistants in collaborative problem-solving exercises."],
+        S("Students are encouraged to treat AI tools as collaborators and to discuss their use openly with peers and instructors."),
+        S("Faculty and students are working together to explore how AI assistants can support teamwork."),
+        S("Several courses pair students with AI assistants in collaborative problem-solving exercises."),
+        S("AI tools can act as a teammate in group projects, alongside human partners."),
+        S("Instructors and students are co-designing course activities that use AI assistants."),
+        S("Group assignments may ask teams to decide together how an AI assistant contributes."),
+        S("Think of the assistant as one more member of your project group.", heldout=True),
+        S("Students and staff are jointly piloting new ways to work with AI in labs.", heldout=True),
+        S("Pair programming exercises now include an AI partner alongside a classmate.", heldout=True)],
     "mentions_careers": [
-        "Employers increasingly expect graduates to work effectively with AI-assisted development tools.",
-        "Preparing students for an industry reshaped by AI is a priority for the department.",
-        "Fluency with AI tools is becoming an important skill for careers in software."],
+        S("Employers increasingly expect graduates to work effectively with AI-assisted development tools."),
+        S("Preparing students for an industry reshaped by AI is a priority for the department."),
+        S("Fluency with AI tools is becoming an important skill for careers in software."),
+        S("Internship partners report that AI-assisted coding is now part of everyday engineering work."),
+        S("Graduates will enter a job market where working with AI is a baseline expectation."),
+        S("Our advisory board of industry leaders recommended more practice with AI tools."),
+        S("Recruiters tell us they look for candidates who know how to direct AI coding tools.", heldout=True),
+        S("Being productive with AI is quickly becoming part of what a software job requires.", heldout=True),
+        S("Alumni working in tech say AI assistants changed their day-to-day work.", heldout=True)],
 }
 NEUTRAL_SENTENCES = [
-    "This guidance applies to undergraduate and graduate courses offered by the department.",
-    "The guidance will be reviewed at the end of each academic year.",
-    "Questions about this guidance can be directed to the director of undergraduate studies.",
-    "A faculty working group prepared this statement after consulting students and staff.",
-    "Further details appear on the department's teaching resources page.",
-    "Course staff will explain how this guidance applies during the first week of classes.",
+    S("This guidance applies to undergraduate and graduate courses offered by the department."),
+    S("The guidance will be reviewed at the end of each academic year."),
+    S("Questions about this guidance can be directed to the director of undergraduate studies."),
+    S("A faculty working group prepared this statement after consulting students and staff."),
+    S("Further details appear on the department's teaching resources page."),
+    S("Course staff will explain how this guidance applies during the first week of classes."),
+    S("This page replaces earlier guidance issued by the department.", heldout=True),
+    S("Updates will be announced on the department's mailing list.", heldout=True),
+    S("Generative AI tools are changing quickly, and this page will be updated as they evolve.", "ai_no_stance"),
+    S("Many students already have access to AI assistants through campus software licenses.", "ai_no_stance"),
+    S("The department is collecting data on how AI tools are used in its courses.", "ai_no_stance"),
+    S("A survey of AI use among computing students is planned for next year.", "ai_no_stance"),
+    S("Large language models such as chat assistants generate text and code from prompts.", "ai_no_stance", True),
+    S("A campus-wide committee on artificial intelligence is reviewing these questions.", "ai_no_stance", True),
+    S("Course pages explain how to protect data integrity when submitting files.", "keyword_trap"),
+    S("This page was prepared in collaboration with the campus library.", "keyword_trap"),
+    S("The department's teaching collaborative meets monthly to review the curriculum.", "keyword_trap", True),
+    S("Lab machines run regular integrity checks on installed software.", "keyword_trap", True),
 ]
 STATEMENT_COLUMNS = ["stmt_id", "inst_id", "pub_type", "pub_date", "text"]
 
@@ -214,8 +292,19 @@ def label_probability(label: str, stance: int, carnegie: str) -> float:
     return _clip(p, 0.02, 0.98)
 
 
+def statement_split(inst_id: str) -> str:
+    """Public dev/held-out rule for ANL-03 (also in docs/data-dictionary.md): split by institution parity."""
+    return "heldout" if int(inst_id[1:]) % 2 else "dev"
+
+
+def _pick(rng: random.Random, bank: list[dict], split: str, k: int = 1) -> list[dict]:
+    """k distinct entries from bank; reserved (heldout=True) phrasings only for held-out statements."""
+    pool = [e for e in bank if split == "heldout" or not e["heldout"]]
+    return rng.sample(pool, k)
+
+
 def make_statements(rng: random.Random, institutions: list[dict], hidden: dict):
-    """Statement rows plus their hidden labels {stmt_id: {stance, mentions_*}}."""
+    """Statement rows plus hidden truth per stmt_id: stance, mentions_*, split, reserved_phrasings, hard_cases."""
     months = _months()
     counts = [k for k, n_inst in sorted(STATEMENT_COUNT_MIX.items()) for _ in range(n_inst)]
     assert len(counts) == len(institutions)
@@ -223,26 +312,31 @@ def make_statements(rng: random.Random, institutions: list[dict], hidden: dict):
     drafts = []
     for inst, n in zip(institutions, counts):
         h = hidden[inst["inst_id"]]
+        split = statement_split(inst["inst_id"])
         for _ in range(n):
             stance = int(_clip(round(h["stance_latent"] + rng.gauss(0, STANCE_MODEL["statement_sd"])), -2, 2))
-            labels = {"stance": stance}
+            truth = {"stance": stance}
             for label in sorted(LABEL_MODEL):
-                labels[label] = rng.random() < label_probability(label, stance, inst["carnegie"])
-            body = [rng.choice(LABEL_SENTENCES[l]) for l in sorted(LABEL_SENTENCES) if labels[l]]
-            n_sentences = max(rng.randint(2, 5), 1 + len(body))
-            body += rng.sample(NEUTRAL_SENTENCES, n_sentences - 1 - len(body))
-            rng.shuffle(body)
-            text = " ".join([rng.choice(STANCE_SENTENCES[stance])] + body)
+                truth[label] = rng.random() < label_probability(label, stance, inst["carnegie"])
+            parts = _pick(rng, STANCE_SENTENCES[stance], split)
+            parts += [_pick(rng, LABEL_SENTENCES[l], split)[0] for l in sorted(LABEL_SENTENCES) if truth[l]]
+            n_sentences = max(rng.randint(2, 5), len(parts))
+            parts += _pick(rng, NEUTRAL_SENTENCES, split, n_sentences - len(parts))
+            rng.shuffle(parts)  # the stance sentence can land anywhere
+            truth.update({"split": split,
+                          "reserved_phrasings": sum(e["heldout"] for e in parts),
+                          "hard_cases": sorted({e["tag"] for e in parts} & set(HARD_CASE_TAGS))})
             drafts.append(({"inst_id": inst["inst_id"],
                             "pub_type": rng.choices(PUB_TYPES, weights=PUB_TYPE_WEIGHTS)[0],
-                            "pub_date": rng.choice(months), "text": text}, labels))
+                            "pub_date": rng.choice(months),
+                            "text": " ".join(e["text"] for e in parts)}, truth))
     drafts.sort(key=lambda d: (d[0]["inst_id"], d[0]["pub_date"]))  # stable: ties keep draw order
-    rows, labels_by_id = [], {}
-    for k, (row, labels) in enumerate(drafts, 1):
+    rows, truth_by_id = [], {}
+    for k, (row, truth) in enumerate(drafts, 1):
         sid = f"S{k:04d}"
         rows.append({"stmt_id": sid, **row})
-        labels_by_id[sid] = labels
-    return rows, labels_by_id
+        truth_by_id[sid] = truth
+    return rows, truth_by_id
 
 
 # ---------------------------------------------------------------------------------------------
@@ -519,6 +613,9 @@ def build(seed: int) -> dict:
             "stance_model": STANCE_MODEL,
             "label_model": LABEL_MODEL,
             "statement_count_mix": STATEMENT_COUNT_MIX,
+            "statement_split": STATEMENT_SPLIT,
+            "phrase_banks": {"stance": {str(k): v for k, v in STANCE_SENTENCES.items()},
+                             "labels": LABEL_SENTENCES, "neutral": NEUTRAL_SENTENCES},
             "terms": TERMS,
             "policy_model": POLICY_MODEL,
             "disclosure_prob": DISCLOSURE_PROB,

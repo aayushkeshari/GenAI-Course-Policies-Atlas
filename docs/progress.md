@@ -297,3 +297,34 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T05:12:31-05:00 — [P1] Statement text as a real coding test: larger banks, hard cases, reserved held-out phrasings
+
+**What changed**
+- `src/data/generate.py` (generator_version 2):
+  - Every stance level and every label now has 9 phrasings, and there are 18 neutral fillers.
+  - Each phrasing is tagged `plain`, `negation`, `hedge`, `ai_no_stance` or `keyword_trap`.
+  - Sentence order is fully shuffled, so the stance sentence can appear anywhere.
+  - A public dev/held-out split by institution parity (odd inst_id → held-out).
+  - 3 of every 9 phrasings are reserved for held-out statements only.
+  - ground_truth.json now records the split, the reserved-phrasing count and the hard-case tags per statement, plus the full phrase banks.
+- Regenerated `data/raw/`. The statements changed, and so did the courses, because the random stream shifted.
+- Seed 2026:
+  - 168 dev and 180 held-out statements. 71% of held-out statements contain a reserved phrasing; dev contains none.
+  - Hard cases: ai_no_stance 115, negation 83, keyword_trap 76, hedge 41 statements.
+  - 2,075 course rows: 21 duplicates, 164 missing policies, 205 re-cased levels.
+- `tests/test_data_statements.py`: the bank-assembly test now handles any sentence position and checks exactly one stance sentence. New DATA-03 tests check bank variety, hard cases (banks and data, including that keyword traps leave the label false), and reserved phrasings only in the held-out half (checked on the text itself).
+- `docs/data-dictionary.md`: documents how the text is built, the hard cases, the split rule, and the new ground-truth fields.
+- `specs/P2-analysis.md`: removed the seed-2 "−0.21" figure from ANL-14. It is −0.12 after regeneration, and a specific number would go stale.
+
+**Tests run**
+- `make test`: 244 passed. All planted-effect tests still pass on the regenerated data.
+
+**Decisions**
+- HUMAN: make text coding a real test with 8+ variants, paraphrases, negations, hedges, AI-without-stance sentences, and phrasings reserved for the held-out half.
+- AGENT: the dev/held-out split is by institution parity. ANL-03 does not define the split, and the generator must know it to reserve phrasings. Splitting by institution also stops the same institution's statements from appearing in both halves. The rule is public in the data dictionary.
+- AGENT: keyword traps are only for integrity and collaboration. A "careers" trap sentence would itself arguably mention careers, which would make the label ambiguous.
+- AGENT: public−private gaps after regeneration are +0.02, −0.00, −0.12, +0.04, +0.10 across seeds 2026, 1–4.
+
+**Open questions**
+- ANL-03 should name the split rule, e.g. "use the dev/held-out split defined in docs/data-dictionary.md". Aayush to decide during P2 planning.

@@ -61,3 +61,28 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 - AGENT: the hook itself stays stdlib-only and runs under the system `python3`, not the venv.
 
 **Open questions**: none.
+
+## 2026-11-08T04:25:33-05:00 — [P0] Step 4: log_event.py hook with redaction (INST-02/03/04/08/09)
+(Done before step 3, so settings.json never points at a missing script and each commit works if checked out.)
+
+**What changed**
+- Added `.claude/hooks/log_event.py`, stdlib only. It appends one redacted JSON line per event to `logs/events.jsonl` with the fields `{ts, event, session_id, phase, payload}`.
+  - Stop uses `last_assistant_message`. If that's missing, it falls back to the last assistant text in the transcript. It redacts first and then cuts to 1,000 chars, so a key at the boundary can't leak as a fragment.
+  - PreCompact and SessionEnd copy the transcript verbatim to `raw_logs/transcripts/<session_id>.jsonl`. The session_id is sanitized first.
+  - Every error goes to `logs/hook_errors.log`, redacted.
+  - stdout is pointed at /dev/null, and the script exits through `os._exit(0)`.
+- Added `tests/hookutil.py`, `tests/test_log_event.py` and `tests/test_redaction.py`.
+
+**Tests run**
+- `.venv/bin/python -m pytest -q`: 70 passed.
+- One earlier failure was a wrong test, not a hook bug. The test glued a token straight onto word characters (`xxxsk-ant…`), and the `\b` boundary is deliberate. I fixed the test input and added a "task-management-system" lookalike test.
+- Manual smoke test under /usr/bin/python3 3.9.6 and Homebrew 3.14 passed.
+
+**Decisions**
+- AGENT: ts uses millisecond precision for ordering in P6.
+- AGENT: unknown events are logged with an empty payload rather than dropped.
+- AGENT: token patterns need 16+ chars after the prefix and a word boundary in front.
+  - Known limitation: a key glued to the preceding word chars (e.g. `foosk-…`) is not redacted.
+  - Home paths inside URLs (`example.com/Users/x`) are deliberately left alone.
+
+**Open questions**: none.

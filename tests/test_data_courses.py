@@ -161,15 +161,31 @@ def test_se_courses_most_likely_to_allow_generation_and_testing(seed, use):
 @pytest.mark.req("DATA-16")
 @pytest.mark.parametrize("seed", SEEDS)
 def test_restrictive_policies_use_exams_and_oral_defenses(seed):
-    """The share of rows using in_class_exams or oral_defense falls as policy rises, from over 50% at
-    policy 0 to under 20% at policy 4."""
+    """In the data, the share of rows using in_class_exams or oral_defense falls strictly from restrictive
+    (policy 0-1) to middle (2) to permissive (3-4) courses, and is over 50% at policy 0 and under 20% at
+    policy 4. Single adjacent levels are not compared: the planted 3->4 step is only 0.05 and ~100 rows
+    sit at policy 4, so sampling noise can flip it (seed 4 did). The planted weights are checked per level
+    in test_planted_exam_share_decreases_at_every_policy_level."""
     rows = clean(seed)
-    shares = []
-    for p in range(5):
-        sel = [r["assessment_adaptation"] in ("in_class_exams", "oral_defense") for r in rows if r["policy"] == p]
-        shares.append(sum(sel) / len(sel))
-    assert all(a > b for a, b in zip(shares, shares[1:])), shares
-    assert shares[0] > 0.5 and shares[4] < 0.2
+
+    def share(levels):
+        sel = [r["assessment_adaptation"] in ("in_class_exams", "oral_defense") for r in rows if r["policy"] in levels]
+        return sum(sel) / len(sel)
+
+    pooled = [share({0, 1}), share({2}), share({3, 4})]
+    assert pooled[0] > pooled[1] > pooled[2], pooled
+    assert share({0}) > 0.5 and share({4}) < 0.2
+
+
+@pytest.mark.req("DATA-16")
+def test_planted_exam_share_decreases_at_every_policy_level():
+    """The generator's assessment weights give in_class_exams + oral_defense a strictly lower probability
+    at each higher policy level, and process_logs + ai_critique a strictly higher one."""
+    w = gen_module().ASSESSMENT_WEIGHTS
+    exam = [w[p][1] + w[p][2] for p in range(5)]
+    logs = [w[p][3] + w[p][4] for p in range(5)]
+    assert all(a > b for a, b in zip(exam, exam[1:]))
+    assert all(a < b for a, b in zip(logs, logs[1:]))
 
 
 @pytest.mark.req("DATA-16")

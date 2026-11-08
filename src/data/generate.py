@@ -400,6 +400,73 @@ def make_courses(rng: random.Random, institutions: list[dict], hidden: dict):
 
 
 # ---------------------------------------------------------------------------------------------
+# Realistic mess (DATA-12). Applied to courses.csv only (HUMAN: duplicates in courses only).
+# ---------------------------------------------------------------------------------------------
+MESS = {
+    "missing_policy_share": 0.08,   # MCAR: a uniform sample of rows, independent of every column
+    # HUMAN: a missing policy blanks every policy-derived field; assessment_adaptation is kept.
+    "missing_policy_blanks": ["policy", "disclosure_required", "tools_named", "allowed_uses"],
+    "recased_level_share": 0.10,
+    "recased_level_styles": ["title", "upper"],
+    "duplicate_share": 0.01,        # exact copies of rows, inserted at random positions
+}
+
+
+def add_mess(rng: random.Random, rows: list[dict]):
+    """Return (messy rows, record of every change). Input rows are not modified."""
+    rows = [dict(r) for r in rows]
+    n = len(rows)
+    missing = sorted(rng.sample(range(n), round(MESS["missing_policy_share"] * n)))
+    missing_record = []
+    for i in missing:
+        r = rows[i]
+        missing_record.append({"course_id": r["course_id"], "term": r["term"],
+                               **{k: r[k] for k in MESS["missing_policy_blanks"]}})
+        for k in MESS["missing_policy_blanks"]:
+            r[k] = None
+    recased = sorted(rng.sample(range(n), round(MESS["recased_level_share"] * n)))
+    recased_record = []
+    for i in recased:
+        style = rng.choice(MESS["recased_level_styles"])
+        rows[i]["level"] = rows[i]["level"].title() if style == "title" else rows[i]["level"].upper()
+        recased_record.append({"course_id": rows[i]["course_id"], "term": rows[i]["term"],
+                               "level_shown": rows[i]["level"]})
+    dup_sources = sorted(rng.sample(range(n), round(MESS["duplicate_share"] * n)))
+    dup_record = []
+    for i in dup_sources:
+        dup_record.append({"course_id": rows[i]["course_id"], "term": rows[i]["term"]})
+    copies = [dict(rows[i]) for i in dup_sources]
+    for c in copies:
+        rows.insert(rng.randrange(len(rows) + 1), c)
+    return rows, {"missing_policy": missing_record, "recased_level": recased_record,
+                  "duplicate_rows": dup_record}
+
+
+# The planted truth, in words, for P2/P4. Parameter names refer to ground_truth["parameters"].
+PLANTED_EFFECTS = {
+    "DATA-06": "Intro courses are more restrictive than upper-level courses: policy_model.level_effect "
+               "intro -0.7 vs upper +0.5 (difference 1.2 on the latent scale).",
+    "DATA-07": "SE courses are more permissive than non-SE courses at the same level: policy_model.se_effect +0.6.",
+    "DATA-08": "Permissiveness rises each term: policy_model.term_effect_per_step +0.2 per term, F23 (0) to F26 (6).",
+    "DATA-09": "R1 departments have a more positive statement stance: stance_model.carnegie_effect R1 +0.7, "
+               "R2 +0.25, others 0.",
+    "DATA-10": "Planted null: policy_model.control_effect is 0.0 for public and private. inst_effect and the "
+               "rhetoric-gap flags are drawn independently of control.",
+    "DATA-11": "Statement labels: stance_latent = intercept + carnegie_effect + policy_coupling (1.2) * "
+               "inst_effect + noise, so stance tracks the institution's course policies (except rhetoric-gap "
+               "institutions). label_model: integrity more likely at negative stance (-0.15 per stance point), "
+               "collaboration (+0.12) and careers (+0.10, +0.15 at R1) more likely at positive stance.",
+    "DATA-15": "Allowed uses: use_model.base gives intro low code_generation (0.10) and testing (0.12); SE courses "
+               "the highest code_generation and testing (0.75 each); probabilities scale up with policy.",
+    "DATA-16": "Assessment: assessment_weights by policy. in_class_exams + oral_defense fall from 0.70 at policy 0 "
+               "to 0.10 at policy 4; process_logs + ai_critique rise from 0.05 to 0.65.",
+    "DATA-17": "Rhetoric gap: rhetoric_gap_share 0.15 of institutions (institutions[*].rhetoric_gap). "
+               "enthusiastic_rhetoric_restrictive_courses: inst_effect -1.0, stance_latent +1.5. "
+               "cautious_rhetoric_permissive_courses: inst_effect +1.0, stance_latent -1.5.",
+}
+
+
+# ---------------------------------------------------------------------------------------------
 # Output
 # ---------------------------------------------------------------------------------------------
 def _round_floats(obj, ndigits=4):
@@ -439,7 +506,8 @@ def build(seed: int) -> dict:
     institutions = make_institutions(rng, load_real_names())
     hidden = make_institution_hidden(rng, institutions)
     statements, statement_labels = make_statements(rng, institutions, hidden)
-    courses, course_latent = make_courses(rng, institutions, hidden)
+    clean_courses, course_latent = make_courses(rng, institutions, hidden)
+    courses, mess = add_mess(rng, clean_courses)
     ground_truth = {
         "synthetic": True,
         "note": "SYNTHETIC DATA. Hidden labels and planted effects. Analysis code must never read this file.",
@@ -459,10 +527,15 @@ def build(seed: int) -> dict:
             "assessment_weights": dict(zip(map(str, ASSESSMENT_WEIGHTS), ASSESSMENT_WEIGHTS.values())),
             "catalog": {"courses_per_inst": COURSES_PER_INST, "later_level_weights": LATER_LEVEL_WEIGHTS,
                         "p_se": P_SE, "p_offered": P_OFFERED},
+            "mess": MESS,
         },
+        "planted_effects": PLANTED_EFFECTS,
         "institutions": hidden,
         "statements": statement_labels,
-        "course_rows": course_latent,
+        "courses": {r["course_id"]: {"course_effect": r["course_effect"]} for r in course_latent},
+        "course_rows": [{"course_id": l["course_id"], "term": l["term"], "latent_score": l["latent_score"],
+                         "policy": c["policy"]} for l, c in zip(course_latent, clean_courses)],
+        "mess": mess,
     }
     return {"institutions": institutions, "statements": statements, "courses": courses,
             "ground_truth": ground_truth}

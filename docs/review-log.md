@@ -81,3 +81,53 @@ The data is messy in the ways the spec asked for, and the planted effects are do
 
 **My take** 
 The clustering result is the clearest win. It shows a naive analysis would have reported effects that don't exist. The leakage catch matters just as much, because it's the kind of problem that's invisible unless someone asks where the rules came from.
+
+## 2026-11-08: P3 dashboard
+
+**Review**
+- Every displayed number (400+) and all 451 chart values are tested against their source JSON,
+  and Playwright loads each view at 1280px and 375px in light and dark mode with no console errors.
+- Clustered vs naive results are shown side by side in three places: the regression, Cramér's V,
+  and the chi-square p-values.
+- One test catch was real: a hand-typed "precision is 1.0" in the coder note now comes from the JSON.
+- Coder negation error ("Far from banning…" coded −2) surfaced in the drilldown. "Far from" never
+  appears in the dev half, so it was documented in methods.md and on the drilldown instead of
+  being fixed against held-out data.
+
+## 2026-11-08: P4 validation explorer
+
+**Review**
+- Fault detection 10/10, but only 5/10 by behavior-specific tests; the other 5 were caught only
+  by golden-file comparison. Asked for behavior tests on those five (sign, term index,
+  denominator, rhetoric gap direction, dropped site field).
+- Run files deduplicated by content hash (~490 KB → ~170 KB per run), decided before git
+  history grew; every run is still kept.
+- Claude found that Python's bytecode cache had silently skipped some fault injections;
+  fixed, with a test.
+- Accepted one P3 test change: the privacy check now scans decoded JSON, which is stricter.
+- Decided PROV-02 categories for P5: human-typed / drafted with Claude chat / automated / shared.
+
+## 2026-11-08: P3 dashboard
+
+**Review**
+- Every displayed number (400+) and all 451 chart values are tested against their source JSON,
+  and Playwright loads each view at 1280px and 375px in light and dark mode with no console errors.
+- Clustered vs naive results are shown side by side in three places: the regression, Cramér's V,
+  and the chi-square p-values.
+- One test catch was real: a hand-typed "precision is 1.0" in the coder note now comes from the JSON.
+- Coder negation error ("Far from banning…" coded −2) surfaced in the drilldown. "Far from" never
+  appears in the dev half, so it was documented in methods.md and on the drilldown instead of
+  being fixed against held-out data.
+
+## 2026-11-08: P4 validation explorer
+
+**Review**
+- Fault detection 10/10, but only 5/10 by behavior-specific tests; the other 5 were caught only
+  by golden-file comparison. Asked for behavior tests on those five (sign, term index,
+  denominator, rhetoric gap direction, dropped site field).
+- Run files deduplicated by content hash (~490 KB → ~170 KB per run), decided before git
+  history grew; every run is still kept.
+- Claude found that Python's bytecode cache had silently skipped some fault injections;
+  fixed, with a test.
+- Accepted one P3 test change: the privacy check now scans decoded JSON, which is stricter.
+- Decided PROV-02 categories for P5: human-typed / drafted with Claude chat / automated / shared.

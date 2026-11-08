@@ -246,6 +246,160 @@ def make_statements(rng: random.Random, institutions: list[dict], hidden: dict):
 
 
 # ---------------------------------------------------------------------------------------------
+# Courses (DATA-04, DATA-06, DATA-07, DATA-08, DATA-10, DATA-15, DATA-16)
+# ---------------------------------------------------------------------------------------------
+TERMS = ["F23", "S24", "F24", "S25", "F25", "S26", "F26"]  # HUMAN: fall + spring, 7 terms
+LEVELS = ["intro", "intermediate", "upper", "graduate"]
+COURSES_PER_INST = (2, 4)            # uniform; the first course at every institution is intro
+LATER_LEVEL_WEIGHTS = {"intermediate": 0.35, "upper": 0.40, "graduate": 0.25}  # no graduate at Baccalaureate
+P_SE = 0.40                          # P(is_se) for non-intro courses
+P_OFFERED = 0.635                    # P(a course runs in a given term); ~450 courses x 7 terms -> ~2,000 rows
+LEVEL_CODE = {"intro": 1, "intermediate": 2, "upper": 4, "graduate": 6}
+TITLES = {
+    ("intro", False): ["Introduction to Programming", "Introduction to Computer Science",
+                       "Programming Fundamentals", "Computational Thinking"],
+    ("intermediate", False): ["Data Structures", "Computer Organization", "Discrete Structures", "Algorithms"],
+    ("intermediate", True): ["Software Design", "Software Construction", "Object-Oriented Development"],
+    ("upper", False): ["Operating Systems", "Database Systems", "Computer Networks", "Compilers",
+                       "Machine Learning", "Computer Graphics"],
+    ("upper", True): ["Software Engineering", "Software Engineering Capstone", "Software Testing",
+                      "Agile Development", "DevOps and Continuous Delivery"],
+    ("graduate", False): ["Advanced Algorithms", "Distributed Systems", "Theory of Computation",
+                          "Advanced Machine Learning"],
+    ("graduate", True): ["Advanced Software Engineering", "Software Architecture",
+                         "Empirical Software Engineering"],
+}
+
+# Policy (0..4) = clip(nearest integer, halves up, of the latent score), where
+#   score = intercept + level_effect[level] + se_effect * is_se + term_effect_per_step * term_index
+#           + control_effect[control] + inst_effect + course_effect + row_noise
+# term_index is 0 for F23 .. 6 for F26. control_effect is 0 for both: the planted null (DATA-10).
+POLICY_MODEL = {
+    "intercept": 1.0,
+    "level_effect": {"intro": -0.7, "intermediate": 0.0, "upper": 0.5, "graduate": 0.6},
+    "se_effect": 0.6,
+    "term_effect_per_step": 0.2,
+    "control_effect": {"public": 0.0, "private": 0.0},
+    "course_effect_sd": 0.4,
+    "row_noise_sd": 0.4,
+}
+DISCLOSURE_PROB = {0: 0.0, 1: 0.4, 2: 1.0, 3: 0.7, 4: 0.6}  # P(disclosure_required | policy)
+
+USES = ["explanation", "debugging", "code_generation", "testing", "writing"]
+# P(use allowed | policy >= 1) = clip(base[group][use] * (policy_scale_intercept + policy_scale_slope * policy)).
+# group is "se" for any SE course, else the level. DATA-15: intro favours explanation/debugging and
+# rarely code_generation; SE courses are the most likely to allow code_generation and testing.
+USE_MODEL = {
+    "base": {
+        "intro":        {"explanation": 0.85, "debugging": 0.70, "code_generation": 0.10, "testing": 0.12, "writing": 0.30},
+        "intermediate": {"explanation": 0.80, "debugging": 0.70, "code_generation": 0.30, "testing": 0.30, "writing": 0.35},
+        "upper":        {"explanation": 0.75, "debugging": 0.70, "code_generation": 0.45, "testing": 0.40, "writing": 0.40},
+        "graduate":     {"explanation": 0.70, "debugging": 0.65, "code_generation": 0.50, "testing": 0.40, "writing": 0.50},
+        "se":           {"explanation": 0.75, "debugging": 0.75, "code_generation": 0.75, "testing": 0.75, "writing": 0.45},
+    },
+    "policy_scale_intercept": 0.7,
+    "policy_scale_slope": 0.15,
+    "fallback_use": "explanation",   # used when no use is drawn, so policy >= 1 always lists one
+}
+TOOLS = ["chat assistant", "IDE autocomplete", "agentic coding tool"]
+# P(tool named | policy >= 1) = base + per_policy * policy (+ se_bonus for SE courses)
+TOOL_MODEL = {
+    "chat assistant": {"base": 0.80, "per_policy": 0.0},
+    "IDE autocomplete": {"base": 0.25, "per_policy": 0.10},
+    "agentic coding tool": {"base": 0.05, "per_policy": 0.12, "se_bonus": 0.15},
+    "fallback_tool": "chat assistant",
+}
+ASSESSMENTS = ["none", "in_class_exams", "oral_defense", "process_logs", "ai_critique"]
+# P(assessment_adaptation | policy), DATA-16: restrictive policies lean on in-class exams and oral
+# defenses; process logs and AI critiques appear mostly at policy >= 2.
+ASSESSMENT_WEIGHTS = {
+    0: [0.25, 0.45, 0.25, 0.03, 0.02],
+    1: [0.30, 0.35, 0.25, 0.05, 0.05],
+    2: [0.35, 0.15, 0.12, 0.20, 0.18],
+    3: [0.30, 0.08, 0.07, 0.27, 0.28],
+    4: [0.25, 0.05, 0.05, 0.30, 0.35],
+}
+COURSE_COLUMNS = ["course_id", "inst_id", "code", "title", "level", "is_se", "term", "policy",
+                  "disclosure_required", "assessment_adaptation", "tools_named", "allowed_uses"]
+
+
+def _round_half_up(x: float) -> int:
+    return math.floor(x + 0.5)
+
+
+def make_catalog(rng: random.Random, institutions: list[dict]) -> list[dict]:
+    """One entry per course (not per term): course_id, inst_id, code, title, level, is_se, course_effect."""
+    catalog = []
+    for inst in institutions:
+        n = rng.randint(*COURSES_PER_INST)
+        used_titles, used_codes = set(), set()
+        for k in range(n):
+            if k == 0:
+                level = "intro"
+            else:
+                weights = dict(LATER_LEVEL_WEIGHTS)
+                if inst["carnegie"] == "Baccalaureate":
+                    weights.pop("graduate")
+                level = rng.choices(list(weights), weights=list(weights.values()))[0]
+            is_se = level != "intro" and rng.random() < P_SE
+            title = rng.choice([t for t in TITLES[(level, is_se)] if t not in used_titles])
+            while True:
+                code = f"CS {LEVEL_CODE[level]}{rng.randrange(10, 100)}"
+                if code not in used_codes:
+                    break
+            used_titles.add(title)
+            used_codes.add(code)
+            catalog.append({"inst_id": inst["inst_id"], "code": code, "title": title, "level": level,
+                            "is_se": is_se, "course_effect": rng.gauss(0, POLICY_MODEL["course_effect_sd"])})
+    for k, c in enumerate(catalog, 1):
+        c["course_id"] = f"C{k:04d}"
+    return catalog
+
+
+def _policy_fields(rng: random.Random, policy: int, level: str, is_se: bool) -> dict:
+    """disclosure_required, tools_named, allowed_uses for a known policy (all empty-ish at policy 0)."""
+    disclosure = rng.random() < DISCLOSURE_PROB[policy]
+    if policy == 0:
+        return {"disclosure_required": disclosure, "tools_named": "", "allowed_uses": ""}
+    base = USE_MODEL["base"]["se" if is_se else level]
+    scale = USE_MODEL["policy_scale_intercept"] + USE_MODEL["policy_scale_slope"] * policy
+    uses = [u for u in USES if rng.random() < _clip(base[u] * scale, 0.0, 0.98)]
+    tools = []
+    for tool in TOOLS:
+        m = TOOL_MODEL[tool]
+        p = m["base"] + m["per_policy"] * policy + (m.get("se_bonus", 0.0) if is_se else 0.0)
+        if rng.random() < _clip(p, 0.0, 0.98):
+            tools.append(tool)
+    return {"disclosure_required": disclosure,
+            "tools_named": ";".join(tools or [TOOL_MODEL["fallback_tool"]]),
+            "allowed_uses": ";".join(uses or [USE_MODEL["fallback_use"]])}
+
+
+def make_courses(rng: random.Random, institutions: list[dict], hidden: dict):
+    """Clean course-term rows (before any mess) plus the hidden latent score for each row."""
+    control = {r["inst_id"]: r["control"] for r in institutions}
+    m = POLICY_MODEL
+    rows, latent = [], []
+    for c in make_catalog(rng, institutions):
+        offered = [t for t in TERMS if rng.random() < P_OFFERED] or [rng.choice(TERMS)]
+        for term in offered:
+            score = (m["intercept"] + m["level_effect"][c["level"]] + m["se_effect"] * c["is_se"]
+                     + m["term_effect_per_step"] * TERMS.index(term)
+                     + m["control_effect"][control[c["inst_id"]]]
+                     + hidden[c["inst_id"]]["inst_effect"] + c["course_effect"]
+                     + rng.gauss(0, m["row_noise_sd"]))
+            policy = int(_clip(_round_half_up(score), 0, 4))
+            row = {k: c[k] for k in ["course_id", "inst_id", "code", "title", "level", "is_se"]}
+            row.update({"term": term, "policy": policy})
+            row.update(_policy_fields(rng, policy, c["level"], c["is_se"]))
+            row["assessment_adaptation"] = rng.choices(ASSESSMENTS, weights=ASSESSMENT_WEIGHTS[policy])[0]
+            rows.append(row)
+            latent.append({"course_id": c["course_id"], "term": term, "latent_score": score,
+                           "course_effect": c["course_effect"]})
+    return rows, latent
+
+
+# ---------------------------------------------------------------------------------------------
 # Output
 # ---------------------------------------------------------------------------------------------
 def _round_floats(obj, ndigits=4):
@@ -285,6 +439,7 @@ def build(seed: int) -> dict:
     institutions = make_institutions(rng, load_real_names())
     hidden = make_institution_hidden(rng, institutions)
     statements, statement_labels = make_statements(rng, institutions, hidden)
+    courses, course_latent = make_courses(rng, institutions, hidden)
     ground_truth = {
         "synthetic": True,
         "note": "SYNTHETIC DATA. Hidden labels and planted effects. Analysis code must never read this file.",
@@ -296,11 +451,21 @@ def build(seed: int) -> dict:
             "stance_model": STANCE_MODEL,
             "label_model": LABEL_MODEL,
             "statement_count_mix": STATEMENT_COUNT_MIX,
+            "terms": TERMS,
+            "policy_model": POLICY_MODEL,
+            "disclosure_prob": DISCLOSURE_PROB,
+            "use_model": USE_MODEL,
+            "tool_model": TOOL_MODEL,
+            "assessment_weights": dict(zip(map(str, ASSESSMENT_WEIGHTS), ASSESSMENT_WEIGHTS.values())),
+            "catalog": {"courses_per_inst": COURSES_PER_INST, "later_level_weights": LATER_LEVEL_WEIGHTS,
+                        "p_se": P_SE, "p_offered": P_OFFERED},
         },
         "institutions": hidden,
         "statements": statement_labels,
+        "course_rows": course_latent,
     }
-    return {"institutions": institutions, "statements": statements, "ground_truth": ground_truth}
+    return {"institutions": institutions, "statements": statements, "courses": courses,
+            "ground_truth": ground_truth}
 
 
 def generate(seed: int, out: Path = DEFAULT_OUT) -> dict:
@@ -309,6 +474,7 @@ def generate(seed: int, out: Path = DEFAULT_OUT) -> dict:
     tables = build(seed)
     write_csv(out / "institutions.csv", INSTITUTION_COLUMNS, tables["institutions"])
     write_csv(out / "statements.csv", STATEMENT_COLUMNS, tables["statements"])
+    write_csv(out / "courses.csv", COURSE_COLUMNS, tables["courses"])
     write_json(out / "ground_truth.json", tables["ground_truth"])
     return tables
 

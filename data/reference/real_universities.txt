@@ -1,0 +1,162 @@
+# Real US universities and colleges with computer science programs (one per line).
+# Written from memory by the agent (HUMAN decision, 2026-11-08). Used only to check that the
+# synthetic institution names are fictional (DATA-02). Lines starting with # are comments.
+Massachusetts Institute of Technology
+Stanford University
+Carnegie Mellon University
+University of California, Berkeley
+Cornell University
+Princeton University
+Harvard University
+California Institute of Technology
+University of Illinois Urbana-Champaign
+Georgia Institute of Technology
+University of Washington
+University of Texas at Austin
+University of Michigan
+Columbia University
+University of California, Los Angeles
+University of California, San Diego
+University of Wisconsin-Madison
+University of Maryland, College Park
+University of Pennsylvania
+Yale University
+Brown University
+Duke University
+Johns Hopkins University
+New York University
+Northwestern University
+Purdue University
+University of Southern California
+University of Massachusetts Amherst
+Rice University
+University of Chicago
+University of Virginia
+University of North Carolina at Chapel Hill
+Ohio State University
+Pennsylvania State University
+Rutgers University
+Stony Brook University
+University of Minnesota
+University of California, Irvine
+University of California, Santa Barbara
+University of California, Davis
+University of California, Santa Cruz
+University of California, Riverside
+University of Colorado Boulder
+University of Utah
+University of Arizona
+Arizona State University
+University of Florida
+Virginia Tech
+Texas A&M University
+Rensselaer Polytechnic Institute
+Northeastern University
+Boston University
+Dartmouth College
+Vanderbilt University
+Washington University in St. Louis
+Emory University
+University of Rochester
+Michigan State University
+Indiana University Bloomington
+University of Iowa
+Iowa State University
+University of Pittsburgh
+North Carolina State University
+University of Notre Dame
+Tufts University
+Case Western Reserve University
+Georgetown University
+George Mason University
+George Washington University
+University of Delaware
+University of Connecticut
+Syracuse University
+Drexel University
+Lehigh University
+Worcester Polytechnic Institute
+Stevens Institute of Technology
+University at Buffalo
+Binghamton University
+University of Central Florida
+Florida State University
+University of South Florida
+University of Miami
+Clemson University
+University of South Carolina
+University of Georgia
+Auburn University
+University of Alabama
+University of Tennessee, Knoxville
+University of Kentucky
+Louisiana State University
+Tulane University
+University of Oklahoma
+Oklahoma State University
+University of Kansas
+Kansas State University
+University of Missouri
+University of Nebraska-Lincoln
+University of Illinois Chicago
+Illinois Institute of Technology
+Loyola University Chicago
+University of Cincinnati
+Miami University
+Wayne State University
+Western Michigan University
+Oregon State University
+University of Oregon
+Portland State University
+Washington State University
+Boise State University
+University of Nevada, Reno
+University of Nevada, Las Vegas
+University of New Mexico
+New Mexico State University
+Colorado State University
+Colorado School of Mines
+Brigham Young University
+Utah State University
+University of Houston
+University of Texas at Dallas
+University of North Texas
+Texas Tech University
+Baylor University
+Southern Methodist University
+University of Texas at Arlington
+San Jose State University
+San Diego State University
+California Polytechnic State University
+Santa Clara University
+Harvey Mudd College
+Pomona College
+Williams College
+Amherst College
+Swarthmore College
+Carleton College
+Middlebury College
+Grinnell College
+Bucknell University
+Villanova University
+Temple University
+University of Vermont
+University of New Hampshire
+Brandeis University
+Wake Forest University
+University of Hawaii at Manoa
+West Virginia University
+Virginia Commonwealth University
+College of William & Mary
+James Madison University
+Howard University
+Georgia State University
+Mississippi State University
+University of Arkansas
+Montana State University
+Marquette University
+DePaul University
+Rochester Institute of Technology
+Oakwood University
+Elmhurst University
+Stonehill College

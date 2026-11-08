@@ -1,0 +1,35 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:52:28.400-05:00",
+ "finished": "2026-11-08T07:52:28.443-05:00",
+ "duration_s": 0.044,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "e9860d97322894cf30201461a935357fc0671898",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+  "-q"
+ ],
+ "summary": {
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "failed",
+   "duration_s": 0.001113,
+   "failure_message": "manifest = {'files': ['coverage.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/recovery.json', 'recovery/rhetor...s/rhetoric_recovery.json': '7fa0a7dd4aff6179a7bc68afb74baa4a7cc6321328be38284994155225ba571d', ...}, 'n_runs': 60, ...}\n\n    @pytest.mark.req(\"VAL-03\")\n    def test_coverage_is_per_module_for_the_snapshot_run(manifest):\n        \"\"\"coverage.json is the archived pytest-cov summary of the snapshot run: one row per src/ module, with\n        statement, missing and percent figures that add up to the totals.\"\"\"\n        cov = j(\"coverage.json\")\n        assert cov[\"run\"] == manifest[\"run\"]\n        modules = {m[\"module\"] for m in cov[\"modules\"]}\n>       assert {str(p.relative_to(ROOT)) for p in (ROOT / \"src\").rglob(\"*.py\")} <= modules\nE       AssertionError: assert {'src/__init_...ives.py', ...} <= {'src/__init_...ives.py', ...}\nE         \nE         Extra items in the left set:\nE         'src/validation/redact.py'\n\ntests/test_val_data.py:109: AssertionError"
+  }
+ ]
+}

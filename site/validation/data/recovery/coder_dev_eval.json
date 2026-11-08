@@ -1,0 +1,106 @@
+{
+ "errors": [],
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "requirement": "ANL-03",
+ "scores": {
+  "labels": {
+   "mentions_careers": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 42
+   },
+   "mentions_collaboration": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 67
+   },
+   "mentions_integrity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 95
+   }
+  },
+  "macro_f1": 1.0,
+  "n": 168,
+  "stance": {
+   "accuracy": 1.0,
+   "confusion_matrix": {
+    "rows_true_cols_coded": {
+     "-1": {
+      "-1": 28,
+      "-2": 0,
+      "0": 0,
+      "1": 0,
+      "2": 0
+     },
+     "-2": {
+      "-1": 0,
+      "-2": 12,
+      "0": 0,
+      "1": 0,
+      "2": 0
+     },
+     "0": {
+      "-1": 0,
+      "-2": 0,
+      "0": 70,
+      "1": 0,
+      "2": 0
+     },
+     "1": {
+      "-1": 0,
+      "-2": 0,
+      "0": 0,
+      "1": 50,
+      "2": 0
+     },
+     "2": {
+      "-1": 0,
+      "-2": 0,
+      "0": 0,
+      "1": 0,
+      "2": 8
+     }
+    }
+   },
+   "macro_f1": 1.0,
+   "per_class": {
+    "-1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 28
+    },
+    "-2": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 12
+    },
+    "0": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 70
+    },
+    "1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 50
+    },
+    "2": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 8
+    }
+   }
+  }
+ },
+ "split": "dev",
+ "synthetic": true
+}

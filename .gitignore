@@ -4,3 +4,5 @@
 __pycache__/
 .pytest_cache/
 raw_logs/
+results/tests/coverage/latest.json
+.coverage

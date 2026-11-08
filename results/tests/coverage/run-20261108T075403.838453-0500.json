@@ -1,0 +1,162 @@
+{
+ "run": "run-20261108T075403.838453-0500.json",
+ "coverage_timestamp": "2026-11-08T07:54:24.933803",
+ "coverage_version": "7.17.2",
+ "modules": [
+  {
+   "module": "src/__init__.py",
+   "statements": 0,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/analysis/__init__.py",
+   "statements": 0,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/analysis/clean.py",
+   "statements": 30,
+   "missing": 5,
+   "percent": 83.33
+  },
+  {
+   "module": "src/analysis/code_text.py",
+   "statements": 56,
+   "missing": 1,
+   "percent": 98.21
+  },
+  {
+   "module": "src/analysis/common.py",
+   "statements": 42,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/analysis/descriptives.py",
+   "statements": 88,
+   "missing": 1,
+   "percent": 98.86
+  },
+  {
+   "module": "src/analysis/inference.py",
+   "statements": 83,
+   "missing": 21,
+   "percent": 74.7
+  },
+  {
+   "module": "src/analysis/rhetoric.py",
+   "statements": 42,
+   "missing": 1,
+   "percent": 97.62
+  },
+  {
+   "module": "src/analysis/run.py",
+   "statements": 8,
+   "missing": 8,
+   "percent": 0.0
+  },
+  {
+   "module": "src/analysis/stats.py",
+   "statements": 74,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/data/generate.py",
+   "statements": 270,
+   "missing": 1,
+   "percent": 99.63
+  },
+  {
+   "module": "src/evaluation/__init__.py",
+   "statements": 0,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/evaluation/coder_eval.py",
+   "statements": 94,
+   "missing": 15,
+   "percent": 84.04
+  },
+  {
+   "module": "src/evaluation/hand_sample.py",
+   "statements": 65,
+   "missing": 8,
+   "percent": 87.69
+  },
+  {
+   "module": "src/evaluation/recovery.py",
+   "statements": 61,
+   "missing": 2,
+   "percent": 96.72
+  },
+  {
+   "module": "src/evaluation/rhetoric_eval.py",
+   "statements": 20,
+   "missing": 2,
+   "percent": 90.0
+  },
+  {
+   "module": "src/evaluation/run.py",
+   "statements": 8,
+   "missing": 8,
+   "percent": 0.0
+  },
+  {
+   "module": "src/evaluation/truth.py",
+   "statements": 17,
+   "missing": 1,
+   "percent": 94.12
+  },
+  {
+   "module": "src/report/__init__.py",
+   "statements": 0,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/report/build_site_data.py",
+   "statements": 69,
+   "missing": 5,
+   "percent": 92.75
+  },
+  {
+   "module": "src/report/build_validation_data.py",
+   "statements": 122,
+   "missing": 18,
+   "percent": 85.25
+  },
+  {
+   "module": "src/validation/__init__.py",
+   "statements": 0,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/validation/redact.py",
+   "statements": 8,
+   "missing": 0,
+   "percent": 100.0
+  },
+  {
+   "module": "src/validation/runs.py",
+   "statements": 55,
+   "missing": 8,
+   "percent": 85.45
+  },
+  {
+   "module": "src/validation/specs.py",
+   "statements": 24,
+   "missing": 0,
+   "percent": 100.0
+  }
+ ],
+ "totals": {
+  "statements": 1236,
+  "missing": 105,
+  "percent": 91.5
+ }
+}

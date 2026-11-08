@@ -40,6 +40,7 @@ def test_make_test_runs_pytest():
 @pytest.mark.req("VAL-03")
 def test_make_test_writes_per_module_coverage():
     """`make test` measures coverage of src/ with pytest-cov and writes it as JSON to
-    results/coverage.json, which the validation explorer reads."""
+    results/tests/coverage/latest.json, then archives a per-module summary for that run in
+    results/tests/coverage/<run file> (read by the validation explorer)."""
     cmd = make_n("test").stdout
-    assert "--cov=src" in cmd and "--cov-report=json:results/coverage.json" in cmd
+    assert "--cov=src" in cmd and "--cov-report=json:results/tests/coverage/latest.json" in cmd

@@ -1,0 +1,214 @@
+{
+ "coverage": {
+  "all_met": true,
+  "covered_counts": {
+   "graduate": 4,
+   "intermediate": 4,
+   "is_se": 5,
+   "private": 5,
+   "upper": 5
+  },
+  "min_covered": 4,
+  "per_seed": [
+   {
+    "covered": {
+     "graduate": true,
+     "intermediate": true,
+     "is_se": true,
+     "private": true,
+     "upper": true
+    },
+    "private_p_clustered": 0.640793,
+    "private_p_naive": 0.207204,
+    "seed": 2026
+   },
+   {
+    "covered": {
+     "graduate": true,
+     "intermediate": true,
+     "is_se": true,
+     "private": true,
+     "upper": true
+    },
+    "private_p_clustered": 0.826596,
+    "private_p_naive": 0.53418,
+    "seed": 1
+   },
+   {
+    "covered": {
+     "graduate": true,
+     "intermediate": true,
+     "is_se": true,
+     "private": true,
+     "upper": true
+    },
+    "private_p_clustered": 0.152684,
+    "private_p_naive": 0.000244,
+    "seed": 2
+   },
+   {
+    "covered": {
+     "graduate": true,
+     "intermediate": true,
+     "is_se": true,
+     "private": true,
+     "upper": true
+    },
+    "private_p_clustered": 0.578806,
+    "private_p_naive": 0.144838,
+    "seed": 3
+   },
+   {
+    "covered": {
+     "graduate": false,
+     "intermediate": false,
+     "is_se": true,
+     "private": true,
+     "upper": true
+    },
+    "private_p_clustered": 0.347821,
+    "private_p_naive": 0.012841,
+    "seed": 4
+   }
+  ],
+  "seeds": [
+   2026,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "directions": {
+  "DATA-06": {
+   "claim": "intro courses more restrictive than upper-level",
+   "evidence": {
+    "ci_clustered": [
+     2.261014,
+     3.014198
+    ],
+    "coef_upper_vs_intro": 2.637606,
+    "mean_policy_intro": 0.985714,
+    "mean_policy_upper": 2.390597
+   },
+   "recovered": true
+  },
+  "DATA-07": {
+   "claim": "SE more permissive than non-SE at the same level (regression controls for level)",
+   "evidence": {
+    "ci_clustered": [
+     1.003393,
+     1.7722
+    ],
+    "coef_is_se": 1.387796
+   },
+   "recovered": true
+  },
+  "DATA-08": {
+   "claim": "permissiveness rises each term",
+   "evidence": {
+    "ci_clustered": [
+     0.440509,
+     0.538889
+    ],
+    "coef_term_index": 0.489699,
+    "mean_policy_by_term": [
+     1.177358,
+     1.311538,
+     1.70229,
+     1.746032,
+     2.045936,
+     2.103806,
+     2.44086
+    ]
+   },
+   "recovered": true
+  },
+  "DATA-09": {
+   "claim": "R1 departments have a more positive (coded) statement stance",
+   "evidence": {
+    "mean_coded_stance_by_carnegie": {
+     "Baccalaureate": 0.0,
+     "Masters": -0.148148,
+     "R1": 0.409091,
+     "R2": 0.125
+    }
+   },
+   "recovered": true
+  }
+ },
+ "kind": "recovery (reads ground truth)",
+ "magnitude": {
+  "ratios": [
+   {
+    "ci": [
+     2.143827,
+     3.783365
+    ],
+    "estimate": 2.963596,
+    "planted": 3.5,
+    "ratio": "intermediate / term_index",
+    "relative_error": -0.153258,
+    "within_tolerance": true
+   },
+   {
+    "ci": [
+     4.63274,
+     6.139617
+    ],
+    "estimate": 5.386178,
+    "planted": 6.0,
+    "ratio": "upper / term_index",
+    "relative_error": -0.102304,
+    "within_tolerance": true
+   },
+   {
+    "ci": [
+     4.639582,
+     6.772155
+    ],
+    "estimate": 5.705869,
+    "planted": 6.5,
+    "ratio": "graduate / term_index",
+    "relative_error": -0.122174,
+    "within_tolerance": true
+   },
+   {
+    "ci": [
+     2.056489,
+     3.611469
+    ],
+    "estimate": 2.833979,
+    "planted": 3.0,
+    "ratio": "is_se / term_index",
+    "relative_error": -0.05534,
+    "within_tolerance": true
+   },
+   {
+    "ci": [
+     -0.730435,
+     1.188404
+    ],
+    "estimate": 0.228985,
+    "planted": 0.0,
+    "ratio": "private / term_index",
+    "relative_error": null,
+    "within_tolerance": true
+   }
+  ],
+  "tolerance": 0.25
+ },
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "null": {
+  "DATA-10": {
+   "alpha": 0.05,
+   "claim": "control (public/private) has no effect on policy (planted null)",
+   "coef_private": 0.112134,
+   "p_clustered": 0.640793,
+   "p_naive": 0.207204,
+   "recovered": true
+  }
+ },
+ "requirement": "ANL-08",
+ "synthetic": true
+}

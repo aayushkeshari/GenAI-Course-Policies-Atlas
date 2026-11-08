@@ -395,14 +395,30 @@ def test_cdn_libraries_pinned_and_no_build_step():
     assert not re.search(r"^\s*(import|export)\s", js, re.M) and "require(" not in js
 
 
+def _json_strings(obj):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            yield k
+            yield from _json_strings(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _json_strings(v)
+    elif isinstance(obj, str):
+        yield obj
+
+
 @pytest.mark.req("DASH-01")
 def test_no_secrets_home_paths_or_emails_under_site():
-    """No file under site/ contains an email address, an absolute home path, or a credential-looking string."""
+    """No file under site/ contains an email address, an absolute home path, or a credential-looking string.
+    JSON files are checked on their decoded keys and string values, so a JSON escape can neither hide a match
+    (an email written as \\u0040) nor fake one (an escaped newline before a decorator reading as "n@pytest...")."""
     pats = [re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), re.compile(r"/Users/|/home/\w|C:\\\\Users"),
             re.compile(r"(?i)(api[_-]?key|secret|password|token)\s*[:=]\s*['\"][^'\"]{8,}"), re.compile(r"sk-[A-Za-z0-9]{20,}")]
     for f in SITE.rglob("*"):
         if f.is_file():
             text = f.read_text(encoding="utf-8")
+            if f.suffix == ".json":
+                text = "\n".join(_json_strings(json.loads(text)))
             text = re.sub(r"https://cdn\.jsdelivr\.net/npm/[\w.-]+@\d+\.\d+\.\d+", "", text)  # npm pins use @
             for pat in pats:
                 assert not pat.search(text), (f.relative_to(ROOT), pat.pattern)

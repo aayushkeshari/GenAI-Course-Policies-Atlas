@@ -44,3 +44,52 @@ def load_run(path: Path) -> dict:
             t["body_sha256"] = hashlib.sha256(canonical_body(t["docstring"], t["source"])).hexdigest()
     run["file"] = path.name
     return run
+
+
+# ---- coverage summaries, one per `make test` run (VAL-03) -------------------------------------------
+
+def coverage_summary(cov: dict) -> dict:
+    """Per-module line coverage from a pytest-cov JSON report (format 3), without line lists."""
+    modules = [{"module": name, "statements": f["summary"]["num_statements"],
+                "missing": f["summary"]["missing_lines"],
+                "percent": round(f["summary"]["percent_covered"], 2)}
+               for name, f in sorted(cov["files"].items())]
+    t = cov["totals"]
+    return {"coverage_timestamp": cov["meta"]["timestamp"], "coverage_version": cov["meta"]["version"],
+            "modules": modules,
+            "totals": {"statements": t["num_statements"], "missing": t["missing_lines"],
+                       "percent": round(t["percent_covered"], 2)}}
+
+
+def attach_coverage(coverage_json: Path, runs_dir: Path = RUNS) -> Path:
+    """Archive the coverage summary of the newest run as results/tests/coverage/<run file name>.
+
+    The report must have been written during that run (between its start and 2 minutes after its end),
+    otherwise it belongs to another run and nothing is written (ValueError).
+    """
+    from datetime import datetime, timedelta
+    newest = run_files(runs_dir)[-1]
+    run = json.loads(newest.read_text(encoding="utf-8"))
+    summary = coverage_summary(json.loads(Path(coverage_json).read_text(encoding="utf-8")))
+    started = datetime.fromisoformat(run["started"]).replace(tzinfo=None)
+    finished = datetime.fromisoformat(run["finished"]).replace(tzinfo=None)
+    stamp = datetime.fromisoformat(summary["coverage_timestamp"])
+    if not started <= stamp <= finished + timedelta(minutes=2):
+        raise ValueError(f"coverage report ({stamp}) was not written during {newest.name}")
+    out = Path(runs_dir) / "coverage" / newest.name
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(json.dumps({"run": newest.name, **summary}, indent=1) + "\n", encoding="utf-8")
+    return out
+
+
+def main(argv=None) -> None:
+    import sys
+    argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] != ["attach-coverage"]:
+        raise SystemExit("usage: python -m src.validation.runs attach-coverage [results/tests/coverage/latest.json]")
+    cov = Path(argv[1]) if len(argv) > 1 else RUNS / "coverage" / "latest.json"
+    print(attach_coverage(cov).relative_to(RUNS.parents[1]))
+
+
+if __name__ == "__main__":
+    main()

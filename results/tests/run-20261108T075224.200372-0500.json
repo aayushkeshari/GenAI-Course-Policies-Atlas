@@ -1,0 +1,378 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T07:52:24.200-05:00",
+ "finished": "2026-11-08T07:52:24.856-05:00",
+ "duration_s": 0.656,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "e9860d97322894cf30201461a935357fc0671898",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_data.py",
+  "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 22,
+  "failed": 3
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_data.py::test_validation_data_is_current",
+   "req_ids": [
+    "VAL-02",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_val_data.py",
+   "line": 29,
+   "body_sha256": "63ae7ed52ada199eeaa186475351fd168bd9d5f7fc5746af8acf8c74f057be38",
+   "status": "passed",
+   "duration_s": 0.260314,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_tests_json_is_the_snapshot_run_with_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 42,
+   "body_sha256": "f91e9fe24dc61e5d3f873ae9dbd52172844bdc704e59bfcfbfbf6dc8edbfeb08",
+   "status": "passed",
+   "duration_s": 0.040546,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_history_has_every_run_and_matches_each_run_file",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 60,
+   "body_sha256": "c3801c42ff46da7fa997fca98d2ab1cf57f21a1487e91375a690914d17d5eed4",
+   "status": "passed",
+   "duration_s": 0.012155,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_traceability_covers_every_requirement_with_correct_status",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 75,
+   "body_sha256": "c6ef8621d8a4dbed1a9cec36d96532830b4a28b9f8568dc83b0d57b52a0a98fb",
+   "status": "passed",
+   "duration_s": 0.003935,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses0-untested]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000143,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses1-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000118,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses2-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses3-partial]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses4-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.00011,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses5-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses6-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 9.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses7-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "failed",
+   "duration_s": 0.000824,
+   "failure_message": "manifest = {'files': ['coverage.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/recovery.json', 'recovery/rhetor...s/rhetoric_recovery.json': '7fa0a7dd4aff6179a7bc68afb74baa4a7cc6321328be38284994155225ba571d', ...}, 'n_runs': 60, ...}\n\n    @pytest.mark.req(\"VAL-03\")\n    def test_coverage_is_per_module_for_the_snapshot_run(manifest):\n        \"\"\"coverage.json is the archived pytest-cov summary of the snapshot run: one row per src/ module, with\n        statement, missing and percent figures that add up to the totals.\"\"\"\n        cov = j(\"coverage.json\")\n        assert cov[\"run\"] == manifest[\"run\"]\n        modules = {m[\"module\"] for m in cov[\"modules\"]}\n>       assert {str(p.relative_to(ROOT)) for p in (ROOT / \"src\").rglob(\"*.py\")} <= modules\nE       AssertionError: assert {'src/__init_...ives.py', ...} <= {'src/__init_...ives.py', ...}\nE         \nE         Extra items in the left set:\nE         'src/validation/redact.py'\n\ntests/test_val_data.py:109: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_attach_coverage_refuses_a_report_from_another_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 116,
+   "body_sha256": "178cfa8d7bf71ce5dcb591d01ee75253223321c44728b2e59522defd0abfeea9",
+   "status": "passed",
+   "duration_s": 0.000891,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_snapshot_is_a_make_test_run_and_unknown_runs_fail",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 135,
+   "body_sha256": "d9714e2cc4d005d11d53e3d80f8f56ca7a5e1bf076735d31e91fd70d1f8afd85",
+   "status": "passed",
+   "duration_s": 0.000641,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_review_log_is_copied_verbatim",
+   "req_ids": [
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 147,
+   "body_sha256": "50c11b428dfacbe8c6945362a14e17f8c4cc23e762ca90f6bca300815d1cb853",
+   "status": "passed",
+   "duration_s": 0.000106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_truth_derived_results_only_in_the_validation_recovery_view",
+   "req_ids": [
+    "DASH-01",
+    "VAL-05"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 153,
+   "body_sha256": "1e2f4f3b4855423fd462277e212c7b73cb3207a52aeb74fe647cc616e693360c",
+   "status": "passed",
+   "duration_s": 0.002402,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_no_private_data_in_the_validation_site",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 173,
+   "body_sha256": "5160722236691b80f6c61ac2904ae47e71cecb0a434b0562ebee8f38e0e852f0",
+   "status": "failed",
+   "duration_s": 0.055601,
+   "failure_message": "@pytest.mark.req(\"VAL-05\")\n    def test_no_private_data_in_the_validation_site():\n        \"\"\"No string under site/validation/ (decoded JSON keys/values, or raw text for other files) contains the\n        home directory, a /Users/ or /home/ path, an email address, or a credential-like string. Test sources,\n        failure messages and the review log are published, so this is checked on the output.\"\"\"\n        bans = [re.compile(re.escape(str(Path.home()))), re.compile(r\"/Users/|/home/\\w|C:\\\\Users\"),\n                re.compile(r\"[\\w.+-]+@[\\w-]+\\.[A-Za-z]{2,}\"), re.compile(r\"sk-[A-Za-z0-9]{20,}\"),\n                re.compile(r\"(?i)(api[_-]?key|secret|password|token)\\s*[:=]\\s*['\\\"](?!‹redacted)[^'\\\"]{8,}\")]\n        for p in (SITE / \"validation\").rglob(\"*\"):\n            if p.is_file():\n                text = p.read_text(encoding=\"utf-8\")\n                if p.suffix == \".json\":\n                    text = \"\\n\".join(_strings(json.loads(text)))\n                for pat in bans:\n                    m = pat.search(text)\n>                   assert not m, (p.name, m and m.group())\nE                   AssertionError: ('traceability.json', '/Users/')\nE                   assert not <re.Match object; span=(11152, 11159), match='/Users/'>\n\ntests/test_val_data.py:188: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[cd '/Users/alice' && ls-cd '\\u2039redacted-path\\u203a' && ls]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "738d3b998c3139221fd546de97332bcc32794243c2c7f99ab09f3d388534f164",
+   "status": "passed",
+   "duration_s": 0.000149,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[see a@b.org now-see \\u2039redacted-email\\u203a now]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "738d3b998c3139221fd546de97332bcc32794243c2c7f99ab09f3d388534f164",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[api_key = \"abcdefghij\"-api_key = \"\\u2039redacted-secret\\u203a\"]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "738d3b998c3139221fd546de97332bcc32794243c2c7f99ab09f3d388534f164",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[sk-AAAAAAAAAAAAAAAAAAAAAAAA-\\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "738d3b998c3139221fd546de97332bcc32794243c2c7f99ab09f3d388534f164",
+   "status": "passed",
+   "duration_s": 0.000123,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[\\n@pytest.mark.req('X')-\\n@pytest.mark.req('X')]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "738d3b998c3139221fd546de97332bcc32794243c2c7f99ab09f3d388534f164",
+   "status": "passed",
+   "duration_s": 0.000121,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_every_data_file_is_labelled_synthetic",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 218,
+   "body_sha256": "29598ded797b97966ff0b40c15cbd6ec4fdf75ad1d57526abf94c20a224c9b54",
+   "status": "passed",
+   "duration_s": 0.002873,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 410,
+   "body_sha256": "db4dfd9940643927cf17e1cd8a19695d57c2406bc72b4361a76a08ff92ea1461",
+   "status": "failed",
+   "duration_s": 0.130165,
+   "failure_message": "@pytest.mark.req(\"DASH-01\")\n    def test_no_secrets_home_paths_or_emails_under_site():\n        \"\"\"No file under site/ contains an email address, an absolute home path, or a credential-looking string.\n        JSON files are checked on their decoded keys and string values, so a JSON escape can neither hide a match\n        (an email written as \\\\u0040) nor fake one (an escaped newline before a decorator reading as \"n@pytest...\").\"\"\"\n        pats = [re.compile(r\"[\\w.+-]+@[\\w-]+\\.[\\w.]+\"), re.compile(r\"/Users/|/home/\\w|C:\\\\\\\\Users\"),\n                re.compile(r\"(?i)(api[_-]?key|secret|password|token)\\s*[:=]\\s*['\\\"][^'\\\"]{8,}\"), re.compile(r\"sk-[A-Za-z0-9]{20,}\")]\n        for f in SITE.rglob(\"*\"):\n            if f.is_file():\n                text = f.read_text(encoding=\"utf-8\")\n                if f.suffix == \".json\":\n                    text = \"\\n\".join(_json_strings(json.loads(text)))\n                text = re.sub(r\"https://cdn\\.jsdelivr\\.net/npm/[\\w.-]+@\\d+\\.\\d+\\.\\d+\", \"\", text)  # npm pins use @\n                for pat in pats:\n>                   assert not pat.search(text), (f.relative_to(ROOT), pat.pattern)\nE                   AssertionError: (PosixPath('site/validation/data/traceability.json'), '/Users/|/home/\\\\w|C:\\\\\\\\\\\\\\\\Users')\nE                   assert not <re.Match object; span=(11152, 11159), match='/Users/'>\nE                    +  where <re.Match object; span=(11152, 11159), match='/Users/'> = <built-in method search of re.Pattern object at 0x10a38b880>(\"counts\\nfailing\\npassing\\nuntested\\ncurrent_phase\\nP4:writing-code\\nnote\\nSYNTHETIC DATA: the study's institutions, c...s\\nuntested\\ntests\\ntext\\ndocs/evaluation.md and the reflection are rendered as a page, unedited by Claude.\\nsynthetic\")\nE                    +    where <built-in method search of re.Pattern object at 0x10a38b880> = re.compile('/Users/|/home/\\\\w|C:\\\\\\\\\\\\\\\\Users').search\n\ntests/test_dash_ui.py:424: AssertionError"
+  }
+ ]
+}

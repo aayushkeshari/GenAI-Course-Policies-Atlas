@@ -860,3 +860,43 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T07:55:56-05:00 — [P4] Step 2: validation explorer data (site/validation/data/)
+
+**What changed**
+- New `src/report/build_validation_data.py`, run by `make report` after the dashboard build. It writes these files:
+  - `manifest.json`
+  - `tests.json`
+  - `history.json`: one status letter per run per test
+  - `traceability.json`: 75 requirements, each with a rolled-up status (passing, partial, failing or untested) and a phase_started flag
+  - `coverage.json`
+  - `review-log.md` (verbatim)
+  - `recovery/{recovery,rhetoric_recovery,coder_dev_eval}.json` (byte copies)
+- The snapshot is one `make test` run, so freshness is testable. `make test` now archives a per-module coverage summary for its own run in `results/tests/coverage/<run file>`, using `src.validation.runs attach-coverage`, which checks timestamps. The builder takes the newest run that has such a summary.
+  - `test_validation_data_is_current` rebuilds from the run named in the manifest, so later runs don't make the data stale.
+  - After a code change, `make test && make report` must run twice before the snapshot is an all-green run.
+- The full pytest-cov report moved from `results/coverage.json` to `results/tests/coverage/latest.json`, which is git-ignored. Putting it at the top level of results/ in step 1 broke `test_every_results_file_has_a_schema_and_vice_versa`. Step 1's own run passed only because the file didn't exist yet.
+- New `src/validation/redact.py`. Published test text (node IDs, sources, docstrings, messages, requirement text) contains deliberate fake fixtures: `/Users/alice`, fake tokens, and paths inside parametrize IDs. These become visible `‹redacted-path|email|secret›` placeholders, and tests.json carries a redaction note. One spec line, INST-09's `/Users/<name>` example, shows as a placeholder.
+- **Test changed (P3):** `test_no_secrets_home_paths_or_emails_under_site` now checks decoded JSON strings instead of escaped JSON text. On raw text, the escaped newline before a decorator (`\n@pytest.mark…`) matched the email pattern as `n@pytest.mark.req`, which was a false positive. Decoding is strictly stronger: a `\u0040` escape can no longer hide a real email. The patterns are unchanged.
+- New `tests/test_val_data.py` (19 tests) covers:
+  - freshness and reproducibility
+  - fidelity of tests.json to the run file and its bodies
+  - history matching each run file
+  - traceability rows and the rollup rule
+  - per-module coverage, and attach-coverage refusing a report from another run
+  - snapshot selection
+  - the verbatim review log
+  - truth-derived files appearing only under the validation recovery directory, with the dashboard never referencing validation data
+  - no private strings anywhere under site/validation/
+  - redaction placeholders
+  - synthetic labels and manifest hashes
+
+**Tests run**
+- `make test`: 457 passed (after two report/test cycles).
+
+**Decisions**
+- HUMAN: show the three truth-derived files in a separate validation-only view. Keep the dashboard and site/data truth-free.
+- AGENT: per-run coverage archive and snapshot-by-run for reproducibility; redaction with visible placeholders; the decoded-JSON fix to the P3 privacy test.
+
+**Open questions**
+- None blocking. Aayush may want to review the P3 privacy-test change. It strengthens the check, but it is a change to an existing test.

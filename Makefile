@@ -18,11 +18,13 @@ analysis:  ## P2: clean, code, analyze -> results/ (src/analysis never reads gro
 	$(PY) -m src.analysis.run
 	$(PY) -m src.evaluation.run
 
-test:  ## run pytest; tests/conftest.py writes results/tests/run-<ts>.json (INST-07) and pytest-cov writes results/coverage.json (VAL-03)
-	$(PY) -m pytest --cov=src --cov-report=json:results/coverage.json
+test:  ## run pytest; tests/conftest.py writes results/tests/run-<ts>.json (INST-07) and pytest-cov writes results/tests/coverage/latest.json, archived per run in results/tests/coverage/ (VAL-03)
+	$(PY) -m pytest --cov=src --cov-report=json:results/tests/coverage/latest.json; s=$$?; \
+	$(PY) -m src.validation.runs attach-coverage || s=1; exit $$s
 
-report:  ## P3/P4: build dashboard data into site/data/ (validation explorer data comes in P4)
+report:  ## P3/P4: build dashboard data into site/data/ and validation explorer data into site/validation/data/
 	$(PY) -m src.report.build_site_data
+	$(PY) -m src.report.build_validation_data
 
 tokens:  ## P6: token usage report
 	@echo "tokens: not implemented yet (P6)"

@@ -817,3 +817,21 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T07:40:09-05:00 — [P3] Checkpoint before /clear: DASH-01..08 implemented and tested
+
+**What changed**
+- No code changes since `3b82ea8`. HANDOFF rewritten for P3 review and P4 planning.
+
+**Tests run**
+- `make test`: 425 passed (2026-11-08T07:39).
+
+**Decisions**
+- None new. All P3 decisions are recorded in the step entries above.
+
+**Open questions**
+- Carried to HANDOFF:
+  - Aayush's P3 review and P3 review-log entry
+  - moving .phase to P4
+  - pushing `3b82ea8` and this checkpoint
+  - PROV-02 prompt-source question (P5)

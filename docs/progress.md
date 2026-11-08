@@ -760,3 +760,38 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Observed while checking: the drilldown's default institution (top-decile gap −4.55) has one statement that the coder labels −2 via `S-2-ban`. The statement says "Far from banning chatbots…", which is a negation miss. Some top-decile "gaps" are therefore coder errors. The rhetoric-gap recall of 0.68 already reflects this. Nothing to change in P3; worth a line in the P2/P4 discussion.
+
+## 2026-11-08T07:16:32-05:00 — [P3] Step 6: DASH-07 browser tests (plus DASH-02..06, 08), `make serve`
+
+**What changed**
+- New `tests/test_dash_ui.py`, 17 tests. Each serves site/ over HTTP and drives headless Chromium with Playwright.
+  - DASH-07: every view loads with no console or page errors in light/dark mode at 1280px and 375px. All 13 canvases have a chart with data and visible pixels. No horizontal scroll.
+  - DASH-07: all 400+ `[data-src]` numbers (every view, every data table open) match results/*.json. They are formatted by an independent Python re-implementation of JS `toFixed` (Decimal, ties away from zero).
+  - DASH-07: all 451 plotted chart values equal the value at their JSON pointer.
+  - DASH-07: tables, KPI tiles, takeaways and notes have no digits left once the sourced spans are removed, apart from a short list of fixed labels.
+  - DASH-02: the banner is in the viewport on every view at both widths.
+  - DASH-03: each required view has the right shape (e.g. 5×4 heatmap, one scatter dot per institution, clustered and naive CIs per coefficient).
+  - DASH-04: explorer search and filters match a direct filter of statements.json, and cards show labels and rule IDs.
+  - DASH-05: one-sentence takeaway, working table toggle and existing source links for all 11 panels.
+  - DASH-06: arrow/Home/End tab keys, Enter on table toggles, and the theme cycle redraws charts without errors. Dark tokens cover every light token in both dark scopes.
+  - DASH-08: a real mouse click on a top-decile scatter dot opens that institution, with its course policies and statements. The picker and the deep link work.
+  - DASH-01: CDN URLs are pinned to x.y.z on allowed hosts, there is no build tooling, and there are no emails, home paths or secrets under site/.
+- `site/dashboard/app.js`: the coder note hand-typed "precision is 1.0". It now shows the sourced value, and only when every theme's precision is 1 in every set.
+- `make serve` (a P7 stub) now runs a minimal `python -m http.server` on 127.0.0.1:$(PORT), default 8000, so the dashboard can be viewed now.
+
+**Tests run**
+- `make test`: 424 passed.
+- Failures in the new tests along the way, all fixed in the test, with nothing weakened:
+  - The chart-value count had a guessed bound (> 500). The true count is 451, derived per chart in a comment and asserted exactly.
+  - The keyboard test read aria-selected before the hashchange handler ran. It now waits for the attribute.
+  - The no-unsourced-digits regex now allows the label "F1"/"F1s".
+- The no-unsourced-digits test also found a real issue (the hand-typed "1.0"), fixed in app.js as above.
+
+**Decisions**
+- HUMAN: the UI tests fail rather than skip without Chromium.
+- AGENT: the UI tests load Chart.js from the pinned CDN, so `make test` needs network access.
+- AGENT: `make serve` was filled in early, at Aayush's request to run it. P7 owns the rest of the site and may extend it.
+
+**Open questions**
+- Aayush: review the dashboard (`make serve`, then http://127.0.0.1:8000/dashboard/).
+- The P2 review-log entry is still missing from docs/review-log.md.

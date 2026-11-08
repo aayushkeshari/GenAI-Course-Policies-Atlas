@@ -1,0 +1,266 @@
+{
+ "schema": "test-run/1",
+ "started": "2026-11-08T07:11:31.206-05:00",
+ "finished": "2026-11-08T07:12:14.597-05:00",
+ "duration_s": 43.391,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "0a3fda21ce926fd0eca5fdea6f87544acdcd62c0",
+ "git_dirty": true,
+ "current_phase": "P3:writing-code",
+ "args": [
+  "-q",
+  "tests/test_dash_ui.py"
+ ],
+ "summary": {
+  "passed": 15,
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 35.89992,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.68784,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.68151,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.679659,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_displayed_number_matches_results_json",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 145,
+   "docstring": "Every number in text, KPI tiles and data tables is a [data-src] span; its text equals the value at that JSON\npointer in results/<file>.json (row files: site/data/), formatted by an independent re-implementation of the\npage's formatter. Covers every view, with every data table open.",
+   "source": "@pytest.mark.req(\"DASH-07\")\ndef test_every_displayed_number_matches_results_json(page):\n    \"\"\"Every number in text, KPI tiles and data tables is a [data-src] span; its text equals the value at that JSON\n    pointer in results/<file>.json (row files: site/data/), formatted by an independent re-implementation of the\n    page's formatter. Covers every view, with every data table open.\"\"\"\n    spans = page.ev(\"[...document.querySelectorAll('[data-src]')].map(e => [e.dataset.src, e.dataset.fmt, e.textContent])\")\n    assert len(spans) > 400\n    bad = [(src, f, text, fmt(resolve(src), f)) for src, f, text in spans if text != fmt(resolve(src), f)]\n    assert bad == []\n    files = {s.split(\"#\")[0] for s, _, _ in spans}\n    assert {\"descriptives.json\", \"allowed_uses.json\", \"assessment.json\", \"association.json\", \"regression.json\",\n            \"rhetoric.json\", \"coder_eval.json\", \"kappa.json\", \"statements.json\", \"courses.json\", \"institutions.json\"} <= files\n",
+   "status": "passed",
+   "duration_s": 0.987325,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_chart_value_matches_its_source",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 159,
+   "docstring": "Every value plotted in every chart has a JSON pointer (dataset.srcs, same shape as the data) and equals the\nvalue at that pointer in results/*.json. No chart plots an unsourced number.",
+   "source": "@pytest.mark.req(\"DASH-07\")\ndef test_every_chart_value_matches_its_source(page):\n    \"\"\"Every value plotted in every chart has a JSON pointer (dataset.srcs, same shape as the data) and equals the\n    value at that pointer in results/*.json. No chart plots an unsourced number.\"\"\"\n    charts = page.ev(\"\"\"Object.entries(window.__dash.charts).map(([id, ch]) => [id, ch.data.datasets.map(d =>\n        ({ label: d.label, data: d.data.map(x => (x && typeof x === 'object' && !Array.isArray(x)) ?\n            Object.fromEntries(Object.entries(x).filter(([k, v]) => typeof v === 'number')) : x), srcs: d.srcs }))])\"\"\")\n    assert len(charts) == 13\n    checked = 0\n    for cid, datasets in charts:\n        for ds in datasets:\n            assert ds[\"srcs\"] is not None and len(ds[\"srcs\"]) == len(ds[\"data\"]), f\"{cid}/{ds['label']}: missing srcs\"\n            for value, src in zip(ds[\"data\"], ds[\"srcs\"]):\n                if isinstance(value, list):\n                    pairs = list(zip(value, src))\n                elif isinstance(value, dict):\n                    assert set(value) == set(src), (cid, value, src)\n                    pairs = [(value[k], src[k]) for k in value]\n                else:\n                    pairs = [(value, src)]\n                for v, s in pairs:\n                    assert v == pytest.approx(resolve(s), abs=1e-12), (cid, ds[\"label\"], s)\n                    checked += 1\n    # scatter 135 x 2 + level 20 + SE 10 + term 21 + region 8 + heatmap 20 + assessment 25 + stance 5 + themes 3\n    # + coefficients 9 + 2 x 18 CI ends + F1 16 + kappa 8\n    assert checked == 451\n",
+   "status": "passed",
+   "duration_s": 0.010575,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_tables_and_tiles_show_no_unsourced_numbers",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 187,
+   "docstring": "Inside data tables, KPI tiles, takeaways and panel notes, removing the [data-src] spans leaves no digits\nexcept fixed labels (policy/stance scale names, CI level, term and year names, the commit id). So no number\nis hand-typed into the page.",
+   "source": "@pytest.mark.req(\"DASH-07\")\ndef test_tables_and_tiles_show_no_unsourced_numbers(page):\n    \"\"\"Inside data tables, KPI tiles, takeaways and panel notes, removing the [data-src] spans leaves no digits\n    except fixed labels (policy/stance scale names, CI level, term and year names, the commit id). So no number\n    is hand-typed into the page.\"\"\"\n    leftovers = page.ev(\"\"\"[...document.querySelectorAll('td.n, .kpi .value, .kpi .sub, .takeaway, .panel-note')].map(e => {\n        const c = e.cloneNode(true); c.querySelectorAll('[data-src], code').forEach(s => s.remove()); return c.textContent; })\"\"\")\n    allowed = re.compile(r\"95%|[FS]2[3-6]|20\\d\\d|\\b[0-4] (?:prohibited|=)|\\(0–4\\)|−2 to \\+2|0 = |≥ 1|policy [0-4]|policy 0|1\\.0|\"\n                         r\"[−+]?[0-2] (?:Prohibitive|Cautious|Neutral|Supportive|Enthusiastic)\")\n    bad = [t for t in leftovers if re.search(r\"\\d\", allowed.sub(\"\", t))]\n    assert bad == []\n",
+   "status": "failed",
+   "duration_s": 0.003598,
+   "failure_message": "page = <test_dash_ui.Page object at 0x1093d2950>\n\n    @pytest.mark.req(\"DASH-07\")\n    def test_tables_and_tiles_show_no_unsourced_numbers(page):\n        \"\"\"Inside data tables, KPI tiles, takeaways and panel notes, removing the [data-src] spans leaves no digits\n        except fixed labels (policy/stance scale names, CI level, term and year names, the commit id). So no number\n        is hand-typed into the page.\"\"\"\n        leftovers = page.ev(\"\"\"[...document.querySelectorAll('td.n, .kpi .value, .kpi .sub, .takeaway, .panel-note')].map(e => {\n            const c = e.cloneNode(true); c.querySelectorAll('[data-src], code').forEach(s => s.remove()); return c.textContent; })\"\"\")\n        allowed = re.compile(r\"95%|[FS]2[3-6]|20\\d\\d|\\b[0-4] (?:prohibited|=)|\\(0–4\\)|−2 to \\+2|0 = |≥ 1|policy [0-4]|policy 0|1\\.0|\"\n                             r\"[−+]?[0-2] (?:Prohibitive|Cautious|Neutral|Supportive|Enthusiastic)\")\n        bad = [t for t in leftovers if re.search(r\"\\d\", allowed.sub(\"\", t))]\n>       assert bad == []\nE       AssertionError: assert ['The coder r...es present).'] == []\nE         \nE         Left contains 2 more items, first extra item: 'The coder reaches macro-F1  on held-out statements (target ), but falls to  on phrasings it never saw while its rules were written.'\nE         Use -v to get more diff\n\ntests/test_dash_ui.py:197: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_synthetic_banner_visible_on_every_view",
+   "req_ids": [
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 201,
+   "docstring": "On every view, at desktop and phone widths, the 'Synthetic data — illustrative only' banner is in the\nviewport when the view opens, and the loaded data files are all flagged synthetic.",
+   "source": "@pytest.mark.req(\"DASH-02\")\ndef test_synthetic_banner_visible_on_every_view(browser, server):\n    \"\"\"On every view, at desktop and phone widths, the 'Synthetic data — illustrative only' banner is in the\n    viewport when the view opens, and the loaded data files are all flagged synthetic.\"\"\"\n    for width in (1280, 375):\n        p = Page(browser, server, width=width)\n        for v in VIEWS:\n            p.view(v)\n            p.ev(\"window.scrollTo(0, 0)\")\n            box = p.page.locator(\"#synthetic-banner\").bounding_box()\n            assert box and box[\"height\"] > 0 and box[\"y\"] < 900, (v, width)\n            assert \"Synthetic data — illustrative only\" in p.page.locator(\"#synthetic-banner\").inner_text()\n        p.page.close()\n    for f in DATA.glob(\"*.json\"):\n        assert load(f)[\"synthetic\"] is True\n",
+   "status": "passed",
+   "duration_s": 1.414254,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_each_chart_has_takeaway_table_toggle_and_source_link",
+   "req_ids": [
+    "DASH-05"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 219,
+   "docstring": "Every chart panel has exactly one one-sentence takeaway, a data-table toggle that shows and hides a table\n(aria-expanded follows), and source links that point at JSON files that exist in site/data/.",
+   "source": "@pytest.mark.req(\"DASH-05\")\ndef test_each_chart_has_takeaway_table_toggle_and_source_link(browser, server):\n    \"\"\"Every chart panel has exactly one one-sentence takeaway, a data-table toggle that shows and hides a table\n    (aria-expanded follows), and source links that point at JSON files that exist in site/data/.\"\"\"\n    p = Page(browser, server)\n    panels = 0\n    for v in CHART_VIEWS:\n        p.view(v)\n        for el in p.page.locator(f\"#view-{v} .panel\").all():\n            panels += 1\n            take = el.locator(\".takeaway\")\n            assert take.count() == 1\n            text = take.inner_text().strip()\n            sentences = [s for s in re.split(r\"(?<=[.!?])\\s+(?=[A-Z])\", text) if s]\n            # the scatter adds one instruction sentence (\"Select a dot ...\")\n            assert len([s for s in sentences if not s.startswith(\"Select a dot\")]) == 1, text\n            btn, wrap = el.locator(\".table-toggle\"), el.locator(\".table-wrap\")\n            assert wrap.is_hidden() and btn.get_attribute(\"aria-expanded\") == \"false\"\n            btn.click()\n            assert wrap.is_visible() and btn.get_attribute(\"aria-expanded\") == \"true\"\n            assert wrap.locator(\"table tbody tr\").count() > 0\n            btn.click()\n            assert wrap.is_hidden()\n            links = [a.get_attribute(\"href\") for a in el.locator(\".panel-foot a\").all()]\n            assert links and all((DATA / Path(h).name).exists() and h.startswith(\"../data/\") for h in links)\n    assert panels == 11\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 1.278317,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_statement_explorer_search_and_filters",
+   "req_ids": [
+    "DASH-04"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 249,
+   "docstring": "Text search and the stance, theme, type and year filters return exactly the statements a direct filter of\nstatements.json returns, and each card shows the coded labels and rule IDs next to the text.",
+   "source": "@pytest.mark.req(\"DASH-04\")\ndef test_statement_explorer_search_and_filters(browser, server):\n    \"\"\"Text search and the stance, theme, type and year filters return exactly the statements a direct filter of\n    statements.json returns, and each card shows the coded labels and rule IDs next to the text.\"\"\"\n    S = load(DATA / \"statements.json\")[\"statements\"]\n    p = Page(browser, server)\n    p.view(\"explorer\")\n\n    def matches():\n        return int(p.page.locator('[data-derived=\"matches\"]').inner_text())\n\n    assert matches() == len(S)\n    p.page.fill(\"#f-q\", \"honor code\")\n    assert matches() == sum(\"honor code\" in s[\"text\"].lower() for s in S) > 0\n    assert p.page.locator(\"#explorer-list mark\").count() > 0\n    p.page.click(\"#f-reset\")\n    p.page.select_option(\"#f-stance\", \"-2\")\n    p.page.select_option(\"#f-theme\", \"mentions_integrity\")\n    assert matches() == sum(s[\"coded_stance\"] == -2 and s[\"coded_mentions_integrity\"] for s in S)\n    p.page.select_option(\"#f-theme\", \"none\")\n    p.page.select_option(\"#f-stance\", \"\")\n    assert matches() == sum(not any(s[f\"coded_{t}\"] for t in [\"mentions_integrity\", \"mentions_collaboration\", \"mentions_careers\"]) for s in S)\n    p.page.click(\"#f-reset\")\n    p.page.select_option(\"#f-type\", \"faq\")\n    p.page.select_option(\"#f-year\", \"2025\")\n    expect = [s for s in S if s[\"pub_type\"] == \"faq\" and s[\"year\"] == \"2025\"]\n    assert matches() == len(expect)\n    first = p.page.locator(\"#explorer-list .stmt\").first\n    s0 = expect[0]\n    assert first.get_attribute(\"data-stmt\") == s0[\"stmt_id\"]\n    assert s0[\"text\"] in first.locator(\".text\").inner_text()\n    assert s0[\"coded_stance_rule\"] in first.inner_text()\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.333312,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_clicking_a_scatter_dot_opens_that_institution",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 286,
+   "docstring": "Clicking a highlighted (top-decile) dot in the rhetoric-vs-practice scatter opens the drilldown for that\ninstitution, which shows its course-term policies from courses.json and its statements.",
+   "source": "@pytest.mark.req(\"DASH-08\")\ndef test_clicking_a_scatter_dot_opens_that_institution(browser, server):\n    \"\"\"Clicking a highlighted (top-decile) dot in the rhetoric-vs-practice scatter opens the drilldown for that\n    institution, which shows its course-term policies from courses.json and its statements.\"\"\"\n    p = Page(browser, server)\n    p.view(\"statements\")\n    target = p.ev(\"\"\"(() => { const ch = window.__dash.charts['c-scatter'], el = ch.getDatasetMeta(1).data[0];\n        const r = ch.canvas.getBoundingClientRect(); return { x: r.left + el.x, y: r.top + el.y, id: ch.data.datasets[1].data[0].inst_id }; })()\"\"\")\n    p.page.locator(\"#c-scatter\").scroll_into_view_if_needed()\n    target.update(p.ev(\"\"\"(() => { const ch = window.__dash.charts['c-scatter'], el = ch.getDatasetMeta(1).data[0];\n        const r = ch.canvas.getBoundingClientRect(); return { x: r.left + el.x, y: r.top + el.y }; })()\"\"\"))\n    p.page.mouse.click(target[\"x\"], target[\"y\"])\n    p.page.wait_for_function(\"!document.getElementById('view-drilldown').hidden\")\n    assert f\"inst={target['id']}\" in p.ev(\"location.hash\")\n    inst = next(i for i in load(DATA / \"institutions.json\")[\"institutions\"] if i[\"inst_id\"] == target[\"id\"])\n    assert p.page.locator(\"#inst-name\").inner_text() == inst[\"name\"]\n    courses = [c for c in load(DATA / \"courses.json\")[\"courses\"] if c[\"inst_id\"] == target[\"id\"]]\n    shown = p.page.locator(\"#inst-detail td.pol .num\").count()\n    assert shown == sum(c[\"policy\"] is not None for c in courses) > 0\n    stmts = [s for s in load(DATA / \"statements.json\")[\"statements\"] if s[\"inst_id\"] == target[\"id\"]]\n    assert p.page.locator(\"#inst-detail .stmt\").count() == len(stmts)\n    assert \"top decile\" in p.page.locator(\"#inst-detail .inst-head\").inner_text()\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.285176,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_drilldown_picker_and_deep_link",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 312,
+   "docstring": "The institution picker lists every institution; choosing one updates the URL, and loading that URL directly\nopens the same institution.",
+   "source": "@pytest.mark.req(\"DASH-08\")\ndef test_drilldown_picker_and_deep_link(browser, server):\n    \"\"\"The institution picker lists every institution; choosing one updates the URL, and loading that URL directly\n    opens the same institution.\"\"\"\n    insts = load(DATA / \"institutions.json\")[\"institutions\"]\n    p = Page(browser, server)\n    p.view(\"drilldown\")\n    assert p.page.locator(\"#inst-pick option\").count() == len(insts)\n    p.page.select_option(\"#inst-pick\", \"I010\")\n    p.page.wait_for_function(\"location.hash.includes('inst=I010')\")\n    name = next(i[\"name\"] for i in insts if i[\"inst_id\"] == \"I010\")\n    assert p.page.locator(\"#inst-name\").inner_text() == name\n    p.page.close()\n    q = Page(browser, server + \"#view=drilldown&inst=I010\")\n    assert q.page.locator(\"#inst-name\").inner_text() == name and q.errors == []\n    q.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.380699,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_keyboard_navigation_and_theme_toggle",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 331,
+   "docstring": "Tabs are reachable by keyboard: arrow keys move between views and focus follows; table toggles are buttons\nthat Enter activates. The theme toggle cycles auto -> light -> dark and redraws the charts without errors.",
+   "source": "@pytest.mark.req(\"DASH-06\")\ndef test_keyboard_navigation_and_theme_toggle(browser, server):\n    \"\"\"Tabs are reachable by keyboard: arrow keys move between views and focus follows; table toggles are buttons\n    that Enter activates. The theme toggle cycles auto -> light -> dark and redraws the charts without errors.\"\"\"\n    p = Page(browser, server)\n    p.page.focus(\"#tab-summary\")\n    p.page.keyboard.press(\"ArrowRight\")\n    p.page.wait_for_function(\"location.hash === '#view=policy'\")\n    assert p.ev(\"document.activeElement.id\") == \"tab-policy\"\n    assert p.ev(\"document.getElementById('tab-policy').getAttribute('aria-selected')\") == \"true\"\n    p.page.keyboard.press(\"End\")\n    p.page.wait_for_function(\"location.hash === '#view=drilldown'\")\n    p.page.keyboard.press(\"Home\")\n    p.page.wait_for_function(\"location.hash === '#view=summary'\")\n    p.view(\"policy\")\n    p.page.locator(\"#view-policy .table-toggle\").first.focus()\n    p.page.keyboard.press(\"Enter\")\n    assert p.page.locator(\"#view-policy .table-wrap\").first.is_visible()\n    bg = lambda: p.ev(\"getComputedStyle(document.body).backgroundColor\")\n    light = bg()\n    p.page.click(\"#theme-toggle\")  # auto -> light\n    assert p.ev(\"document.documentElement.dataset.theme\") == \"light\"\n    p.page.click(\"#theme-toggle\")  # light -> dark\n    assert p.ev(\"document.documentElement.dataset.theme\") == \"dark\" and bg() != light\n    assert p.ev(\"Object.keys(window.__dash.charts).length\") >= 5\n    p.page.click(\"#theme-toggle\")  # dark -> auto\n    assert p.ev(\"document.documentElement.dataset.theme\") is None\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.353899,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_palettes_are_defined_for_both_themes",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 362,
+   "docstring": "Every color token is redefined for dark mode, both under the OS media query (guarded so a forced light\ntheme wins) and under the explicit dark toggle; the categorical slots are the fixed-order reference palette.",
+   "source": "@pytest.mark.req(\"DASH-06\")\ndef test_palettes_are_defined_for_both_themes():\n    \"\"\"Every color token is redefined for dark mode, both under the OS media query (guarded so a forced light\n    theme wins) and under the explicit dark toggle; the categorical slots are the fixed-order reference palette.\"\"\"\n    css = (SITE / \"dashboard\" / \"style.css\").read_text(encoding=\"utf-8\")\n    root = re.search(r\":root \\{(.*?)\\n\\}\", css, re.S).group(1)\n    tokens = set(re.findall(r\"(--[\\w-]+):\", root))\n    media = re.search(r':root:not\\(\\[data-theme=\"light\"\\]\\) \\{(.*?)\\n  \\}', css, re.S).group(1)\n    toggle = re.search(r':root\\[data-theme=\"dark\"\\] \\{(.*?)\\n\\}', css, re.S).group(1)\n    for block in (media, toggle):\n        assert tokens <= set(re.findall(r\"(--[\\w-]+):\", block))\n    assert re.findall(r\"--s\\d: (#\\w+)\", root) == [\"#2a78d6\", \"#eb6834\", \"#1baf7a\", \"#eda100\", \"#e87ba4\"]\n",
+   "status": "passed",
+   "duration_s": 0.000401,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_cdn_libraries_pinned_and_no_build_step",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 377,
+   "docstring": "Every external script or stylesheet in the dashboard is loaded from an allowed CDN with an exact x.y.z\nversion, and the dashboard is plain HTML/CSS/JS (no package.json, bundler config or module imports).",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_cdn_libraries_pinned_and_no_build_step():\n    \"\"\"Every external script or stylesheet in the dashboard is loaded from an allowed CDN with an exact x.y.z\n    version, and the dashboard is plain HTML/CSS/JS (no package.json, bundler config or module imports).\"\"\"\n    html = (SITE / \"dashboard\" / \"index.html\").read_text(encoding=\"utf-8\")\n    urls = re.findall(r'(?:src|href)=\"(https?://[^\"]+)\"', html)\n    assert urls\n    for u in urls:\n        assert re.match(r\"https://(cdnjs\\.cloudflare\\.com|cdn\\.jsdelivr\\.net/npm)/\", u), u\n        assert re.search(r\"[/@]\\d+\\.\\d+\\.\\d+/\", u), f\"not pinned to an exact version: {u}\"\n    assert not any((SITE / n).exists() for n in [\"package.json\", \"vite.config.js\", \"webpack.config.js\"])\n    js = (SITE / \"dashboard\" / \"app.js\").read_text(encoding=\"utf-8\")\n    assert not re.search(r\"^\\s*(import|export)\\s\", js, re.M) and \"require(\" not in js\n",
+   "status": "passed",
+   "duration_s": 0.000629,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 392,
+   "docstring": "No file under site/ contains an email address, an absolute home path, or a credential-looking string.",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_no_secrets_home_paths_or_emails_under_site():\n    \"\"\"No file under site/ contains an email address, an absolute home path, or a credential-looking string.\"\"\"\n    pats = [re.compile(r\"[\\w.+-]+@[\\w-]+\\.[\\w.]+\"), re.compile(r\"/Users/|/home/\\w|C:\\\\\\\\Users\"),\n            re.compile(r\"(?i)(api[_-]?key|secret|password|token)\\s*[:=]\\s*['\\\"][^'\\\"]{8,}\"), re.compile(r\"sk-[A-Za-z0-9]{20,}\")]\n    for f in SITE.rglob(\"*\"):\n        if f.is_file():\n            text = f.read_text(encoding=\"utf-8\")\n            text = re.sub(r\"https://cdn\\.jsdelivr\\.net/npm/[\\w.-]+@\\d+\\.\\d+\\.\\d+\", \"\", text)  # npm pins use @\n            for pat in pats:\n                assert not pat.search(text), (f.relative_to(ROOT), pat.pattern)\n",
+   "status": "passed",
+   "duration_s": 0.297203,
+   "failure_message": ""
+  }
+ ]
+}

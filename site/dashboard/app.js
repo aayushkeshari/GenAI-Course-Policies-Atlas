@@ -517,7 +517,10 @@ function buildCoder() {
       `but falls to ${num("coder_eval.json#/heldout_with_reserved_phrasings/macro_f1", "f3")} on phrasings it never saw while its rules were written.`,
     canvases: [{ id: "c-f1" }], sources: ["coder_eval"],
     note: `Held-out n = ${num("coder_eval.json#/heldout/n", "int")} statements; rules frozen at commit <code>${esc(D.coder_eval.rules_frozen_commit)}</code>. ` +
-      `Theme precision is 1.0 throughout: the coder misses mentions rather than inventing them. Macro-F1 = ${esc(D.coder_eval.macro_f1_definition)}.`,
+      (THEMES.every(([t]) => ["heldout", "heldout_with_reserved_phrasings", "heldout_without_reserved_phrasings"].every(set => D.coder_eval[set].labels[t].precision === 1))
+        ? `Theme precision is ${num("coder_eval.json#/heldout/labels/mentions_integrity/precision", "f2")} for every theme and set: the coder misses mentions rather than inventing them. `
+        : "") +
+      `Macro-F1 = ${esc(D.coder_eval.macro_f1_definition)}.`,
     table: tableHTML("F1 by label and statement set", ["Label", ...sets.map(s => s[1])],
       [...cats.map(([c, cl]) => [cl, ...sets.map(([s]) => num(p(s, c), "f3"))]),
        ["Macro-F1", ...sets.map(([s]) => num(`coder_eval.json#/${s}/macro_f1`, "f3"))],

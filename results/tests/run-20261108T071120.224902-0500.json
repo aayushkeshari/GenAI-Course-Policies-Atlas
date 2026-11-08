@@ -1,0 +1,117 @@
+{
+ "schema": "test-run/1",
+ "started": "2026-11-08T07:11:20.224-05:00",
+ "finished": "2026-11-08T07:11:24.852-05:00",
+ "duration_s": 4.628,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "0a3fda21ce926fd0eca5fdea6f87544acdcd62c0",
+ "git_dirty": true,
+ "current_phase": "P3:writing-code",
+ "args": [
+  "-q",
+  "tests/test_dash_ui.py",
+  "-x"
+ ],
+ "summary": {
+  "passed": 5,
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 1.273541,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.691005,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.689615,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 114,
+   "docstring": "Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\non a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\npage never scrolls sideways (DASH-06).",
+   "source": "@pytest.mark.req(\"DASH-07\")\n@pytest.mark.req(\"DASH-06\")\n@pytest.mark.parametrize(\"scheme,width\", [(\"light\", 1280), (\"dark\", 1280), (\"light\", 375), (\"dark\", 375)])\ndef test_every_view_loads_without_errors_and_every_chart_is_drawn(browser, server, scheme, width):\n    \"\"\"Each view loads in light and dark mode at 1280px and 375px with no console or page errors. Every canvas\n    on a chart view has a registered Chart.js chart with at least one data point and visible pixels, and the\n    page never scrolls sideways (DASH-06).\"\"\"\n    p = Page(browser, server, scheme, width)\n    canvases = 0\n    for v in VIEWS:\n        p.view(v)\n        assert p.ev(\"document.documentElement.scrollWidth\") <= width, f\"{v}: horizontal scroll at {width}px\"\n        info = p.ev(f\"\"\"[...document.querySelectorAll('#view-{v} canvas')].map(c => {{\n            const ch = window.__dash.charts[c.id];\n            const px = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;\n            let ink = 0; for (let i = 3; i < px.length; i += 4) if (px[i] > 0) ink++;\n            return {{ id: c.id, chart: !!ch, points: ch ? ch.data.datasets.reduce((n, d) => n + d.data.length, 0) : 0,\n                     ink, w: c.width, h: c.height }};\n        }})\"\"\")\n        if v in CHART_VIEWS:\n            assert info, f\"{v}: no canvas\"\n        for c in info:\n            assert c[\"chart\"] and c[\"points\"] > 0, c\n            assert c[\"w\"] > 0 and c[\"h\"] > 0 and c[\"ink\"] > 0.01 * c[\"w\"] * c[\"h\"], f\"{v}/{c['id']} looks blank: {c}\"\n        canvases += len(info)\n    assert canvases == 13\n    assert p.errors == []\n    p.page.close()\n",
+   "status": "passed",
+   "duration_s": 0.686659,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_displayed_number_matches_results_json",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 145,
+   "docstring": "Every number in text, KPI tiles and data tables is a [data-src] span; its text equals the value at that JSON\npointer in results/<file>.json (row files: site/data/), formatted by an independent re-implementation of the\npage's formatter. Covers every view, with every data table open.",
+   "source": "@pytest.mark.req(\"DASH-07\")\ndef test_every_displayed_number_matches_results_json(page):\n    \"\"\"Every number in text, KPI tiles and data tables is a [data-src] span; its text equals the value at that JSON\n    pointer in results/<file>.json (row files: site/data/), formatted by an independent re-implementation of the\n    page's formatter. Covers every view, with every data table open.\"\"\"\n    spans = page.ev(\"[...document.querySelectorAll('[data-src]')].map(e => [e.dataset.src, e.dataset.fmt, e.textContent])\")\n    assert len(spans) > 400\n    bad = [(src, f, text, fmt(resolve(src), f)) for src, f, text in spans if text != fmt(resolve(src), f)]\n    assert bad == []\n    files = {s.split(\"#\")[0] for s, _, _ in spans}\n    assert {\"descriptives.json\", \"allowed_uses.json\", \"assessment.json\", \"association.json\", \"regression.json\",\n            \"rhetoric.json\", \"coder_eval.json\", \"kappa.json\", \"statements.json\", \"courses.json\", \"institutions.json\"} <= files\n",
+   "status": "passed",
+   "duration_s": 1.032553,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_chart_value_matches_its_source",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 159,
+   "docstring": "Every value plotted in every chart has a JSON pointer (dataset.srcs, same shape as the data) and equals the\nvalue at that pointer in results/*.json. No chart plots an unsourced number.",
+   "source": "@pytest.mark.req(\"DASH-07\")\ndef test_every_chart_value_matches_its_source(page):\n    \"\"\"Every value plotted in every chart has a JSON pointer (dataset.srcs, same shape as the data) and equals the\n    value at that pointer in results/*.json. No chart plots an unsourced number.\"\"\"\n    charts = page.ev(\"\"\"Object.entries(window.__dash.charts).map(([id, ch]) => [id, ch.data.datasets.map(d =>\n        ({ label: d.label, data: d.data.map(x => (x && typeof x === 'object' && !Array.isArray(x)) ?\n            Object.fromEntries(Object.entries(x).filter(([k, v]) => typeof v === 'number')) : x), srcs: d.srcs }))])\"\"\")\n    assert len(charts) == 13\n    checked = 0\n    for cid, datasets in charts:\n        for ds in datasets:\n            assert ds[\"srcs\"] is not None and len(ds[\"srcs\"]) == len(ds[\"data\"]), f\"{cid}/{ds['label']}: missing srcs\"\n            for value, src in zip(ds[\"data\"], ds[\"srcs\"]):\n                if isinstance(value, list):\n                    pairs = list(zip(value, src))\n                elif isinstance(value, dict):\n                    assert set(value) == set(src), (cid, value, src)\n                    pairs = [(value[k], src[k]) for k in value]\n                else:\n                    pairs = [(value, src)]\n                for v, s in pairs:\n                    assert v == pytest.approx(resolve(s), abs=1e-12), (cid, ds[\"label\"], s)\n                    checked += 1\n    assert checked > 500\n",
+   "status": "failed",
+   "duration_s": 0.151447,
+   "failure_message": "page = <test_dash_ui.Page object at 0x10b2435d0>\n\n    @pytest.mark.req(\"DASH-07\")\n    def test_every_chart_value_matches_its_source(page):\n        \"\"\"Every value plotted in every chart has a JSON pointer (dataset.srcs, same shape as the data) and equals the\n        value at that pointer in results/*.json. No chart plots an unsourced number.\"\"\"\n        charts = page.ev(\"\"\"Object.entries(window.__dash.charts).map(([id, ch]) => [id, ch.data.datasets.map(d =>\n            ({ label: d.label, data: d.data.map(x => (x && typeof x === 'object' && !Array.isArray(x)) ?\n                Object.fromEntries(Object.entries(x).filter(([k, v]) => typeof v === 'number')) : x), srcs: d.srcs }))])\"\"\")\n        assert len(charts) == 13\n        checked = 0\n        for cid, datasets in charts:\n            for ds in datasets:\n                assert ds[\"srcs\"] is not None and len(ds[\"srcs\"]) == len(ds[\"data\"]), f\"{cid}/{ds['label']}: missing srcs\"\n                for value, src in zip(ds[\"data\"], ds[\"srcs\"]):\n                    if isinstance(value, list):\n                        pairs = list(zip(value, src))\n                    elif isinstance(value, dict):\n                        assert set(value) == set(src), (cid, value, src)\n                        pairs = [(value[k], src[k]) for k in value]\n                    else:\n                        pairs = [(value, src)]\n                    for v, s in pairs:\n                        assert v == pytest.approx(resolve(s), abs=1e-12), (cid, ds[\"label\"], s)\n                        checked += 1\n>       assert checked > 500\nE       assert 451 > 500\n\ntests/test_dash_ui.py:182: AssertionError"
+  }
+ ]
+}

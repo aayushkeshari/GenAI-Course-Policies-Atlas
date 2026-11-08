@@ -33,8 +33,10 @@ timeline:  ## P5: contribution timeline
 site:  ## P7: assemble site/
 	@echo "site: not implemented yet (P7)"
 
-serve:  ## P7: serve site/ locally
-	@echo "serve: not implemented yet (P7)"
+PORT ?= 8000
+
+serve:  ## serve site/ locally at http://127.0.0.1:$(PORT)/ (minimal version added in P3 to view the dashboard; P7 may extend it)
+	$(PY) -m http.server $(PORT) --bind 127.0.0.1 --directory site
 
 clean:  ## remove caches only; never touches logs/, raw_logs/, or results/tests/ (VAL-02 keeps every run)
 	rm -rf .pytest_cache .coverage htmlcov

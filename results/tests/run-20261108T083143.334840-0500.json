@@ -1,0 +1,434 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:31:43.334-05:00",
+ "finished": "2026-11-08T08:31:44.044-05:00",
+ "duration_s": 0.709,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "6195a7d17e4f4417d107d389d8d3fa1bd9fe6b62",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "tests/test_val_data.py",
+  "tests/test_val_claims.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "failed": 3,
+  "passed": 26
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_val_data.py::test_validation_data_is_current",
+   "req_ids": [
+    "VAL-02",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_val_data.py",
+   "line": 29,
+   "body_sha256": "63ae7ed52ada199eeaa186475351fd168bd9d5f7fc5746af8acf8c74f057be38",
+   "status": "failed",
+   "duration_s": 0.421733,
+   "failure_message": "tmp_path = PosixPath('/private/var/folders/4l/t8q42vzx2093hy69qlxp_xwh0000gn/T/pytest-of-aayushkeshari/pytest-136/test_validation_data_is_curren0')\nmanifest = {'files': ['claims.json', 'coverage.json', 'faults.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/re... 'results/recovery.json': '13b130cb46fd2378ddf8367f01507e3c95700df06fa92522bf8d2b1a857d4343', ...}, 'n_runs': 100, ...}\n\n    @pytest.mark.req(\"VAL-02\", \"VAL-03\")\n    @pytest.mark.kind(\"integration\")\n    def test_validation_data_is_current(tmp_path, manifest):\n        \"\"\"Rebuilding from the run named in manifest.json reproduces every file in site/validation/data/ byte for byte.\n        So the committed explorer data is exactly what `make report` derives from committed inputs (run files,\n        bodies, coverage summary, specs, review log, claims, faults and recovery results).\"\"\"\n        written = V.build(run=manifest[\"run\"], out=tmp_path)\n        committed = sorted(str(p.relative_to(OUT)) for p in OUT.rglob(\"*\") if p.is_file())\n        assert committed == written\n        for name in written:\n>           assert (OUT / name).read_bytes() == (tmp_path / name).read_bytes(), name\nE           AssertionError: manifest.json\nE           assert b'{\"files\":[\"...etic\":true}\\n' == b'{\"files\":[\"...etic\":true}\\n'\nE             \nE             At index 292 diff: b'7' != b'2'\nE             Use -v to get more diff\n\ntests/test_val_data.py:39: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_tests_json_is_the_snapshot_run_with_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 42,
+   "body_sha256": "f91e9fe24dc61e5d3f873ae9dbd52172844bdc704e59bfcfbfbf6dc8edbfeb08",
+   "status": "passed",
+   "duration_s": 0.046169,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_history_has_every_run_and_matches_each_run_file",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 60,
+   "body_sha256": "c3801c42ff46da7fa997fca98d2ab1cf57f21a1487e91375a690914d17d5eed4",
+   "status": "passed",
+   "duration_s": 0.01421,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_traceability_covers_every_requirement_with_correct_status",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 75,
+   "body_sha256": "b370e2c574dc078a2bc1ca9695a39bc144525beaae2e2a1b073499cf658546a0",
+   "status": "passed",
+   "duration_s": 0.005333,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses0-untested]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.00016,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses1-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000127,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses2-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000107,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses3-partial]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000115,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses4-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000107,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses5-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 9.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses6-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses7-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "passed",
+   "duration_s": 0.00076,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_attach_coverage_refuses_a_report_from_another_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 116,
+   "body_sha256": "178cfa8d7bf71ce5dcb591d01ee75253223321c44728b2e59522defd0abfeea9",
+   "status": "passed",
+   "duration_s": 0.001068,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_snapshot_is_a_make_test_run_and_unknown_runs_fail",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 135,
+   "body_sha256": "d9714e2cc4d005d11d53e3d80f8f56ca7a5e1bf076735d31e91fd70d1f8afd85",
+   "status": "passed",
+   "duration_s": 0.000971,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_review_log_is_copied_verbatim",
+   "req_ids": [
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 147,
+   "body_sha256": "50c11b428dfacbe8c6945362a14e17f8c4cc23e762ca90f6bca300815d1cb853",
+   "status": "failed",
+   "duration_s": 0.000423,
+   "failure_message": "@pytest.mark.req(\"VAL-07\")\n    def test_review_log_is_copied_verbatim():\n        \"\"\"The explorer's review log is docs/review-log.md byte for byte (Aayush's manual reviews, unedited).\"\"\"\n>       assert (OUT / \"review-log.md\").read_bytes() == (ROOT / \"docs\" / \"review-log.md\").read_bytes()\nE       AssertionError: assert b'## 2026-11-...d / shared.\\n' == b'## 2026-11-...ted / shared.'\nE         \nE         Use -v to get more diff\n\ntests/test_val_data.py:150: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_truth_derived_results_only_in_the_validation_recovery_view",
+   "req_ids": [
+    "DASH-01",
+    "VAL-05"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 153,
+   "body_sha256": "1e2f4f3b4855423fd462277e212c7b73cb3207a52aeb74fe647cc616e693360c",
+   "status": "passed",
+   "duration_s": 0.002575,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_no_private_data_in_the_validation_site",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 173,
+   "body_sha256": "859ca290054e707aaa8216b55fe27b662f52f6a07657356e663a9f857c3b3e22",
+   "status": "passed",
+   "duration_s": 0.090939,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[cd '/Users/alice' && ls-cd '\\u2039redacted-path\\u203a' && ls]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000162,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[see a@b.org now-see \\u2039redacted-email\\u203a now]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000127,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[api_key = \"abcdefghij\"-api_key = \\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000124,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[sk-AAAAAAAAAAAAAAAAAAAAAAAA-\\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000127,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[\\n@pytest.mark.req('X')-\\n@pytest.mark.req('X')]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000126,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_every_data_file_is_labelled_synthetic",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 218,
+   "body_sha256": "29598ded797b97966ff0b40c15cbd6ec4fdf75ad1d57526abf94c20a224c9b54",
+   "status": "failed",
+   "duration_s": 0.003429,
+   "failure_message": "manifest = {'files': ['claims.json', 'coverage.json', 'faults.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/re... 'results/recovery.json': '13b130cb46fd2378ddf8367f01507e3c95700df06fa92522bf8d2b1a857d4343', ...}, 'n_runs': 100, ...}\n\n    @pytest.mark.req(\"VAL-05\")\n    def test_every_data_file_is_labelled_synthetic(manifest):\n        \"\"\"Every JSON file the explorer loads carries synthetic: true, and the manifest's input hashes match\n        the files on disk.\"\"\"\n        for p in OUT.rglob(\"*.json\"):\n            assert json.loads(p.read_text())[\"synthetic\"] is True, p.name\n        for rel, sha in manifest[\"inputs\"].items():\n>           assert hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == sha, rel\nE           AssertionError: docs/review-log.md\nE           assert '2224c6184851...d52d8fd805adc' == '790752ce4468...7d6bab8f5d123'\nE             \nE             - 790752ce4468b0cad7bfba88b13e02355fc8c0c23bdf78469807d6bab8f5d123\nE             + 2224c6184851a33ca3fed39819c6acbc2d9521b59e7937a5de2d52d8fd805adc\n\ntests/test_val_data.py:225: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_every_dashboard_finding_has_exactly_one_claim",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 16,
+   "body_sha256": "b9823d0fe7f920f9aa6d0acf8828e71d4ada5942c54356e8f0bcdf29e4618cf1",
+   "status": "passed",
+   "duration_s": 0.000238,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_every_claim_has_computation_tests_that_exist",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 30,
+   "body_sha256": "a3124c35b7ee77fbc74bb57c46f9428695558f09e2b7e3758b8f05d3e83509cd",
+   "status": "passed",
+   "duration_s": 0.000153,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_published_claim_status_is_the_rollup_of_its_tests",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 40,
+   "body_sha256": "b7196aaef71f8f4c818db1b4450eae1ab92c3f4062130ebc5b7db7c1dcc28ff8",
+   "status": "passed",
+   "duration_s": 0.0001,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_claims_with_conditional_wording_match_the_data",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 50,
+   "body_sha256": "7eac0dce91e9262b3a5b9b0f8404681484498ff2f6d262fc75002ac56df40751",
+   "status": "passed",
+   "duration_s": 0.000262,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_claims.py::test_dashboard_links_every_finding_to_its_claim",
+   "req_ids": [
+    "VAL-06"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_claims.py",
+   "line": 62,
+   "body_sha256": "661312fa5812d331aef6e3b28f36e976eacc70bb03bd1758d004e506a5d2f343",
+   "status": "passed",
+   "duration_s": 7.6e-05,
+   "failure_message": ""
+  }
+ ]
+}

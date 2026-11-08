@@ -629,3 +629,22 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T06:17:53-05:00 — [P2] Step 9: ANL-10 methods.md; P2 complete
+
+**What changed**
+- `docs/methods.md`: plain-language methods. Covers the synthetic-data warning, cleaning, coding with the dev/held-out design and Aayush's check, why clustering matters, a per-result table of inference methods (ANL-14), the analyses, the recovery checks, and limits (synthetic data, keyword coding, methods). It deliberately quotes no result numbers, so it cannot drift from results/.
+- `tests/test_anl_methods.py`: the synthetic notice, coverage of every ANL requirement, a limits section, an inference method named for each inferential results file, and no hard-coded decimals.
+- Verified end to end: a full `make analysis` from scratch reproduces every committed file in data/clean/ and results/ byte for byte.
+
+**Tests run**
+- `make test`: 395 passed. One methods test failed first: the doc said "cluster-bootstrap CI" in one row and the test expects "cluster bootstrap". Fixed the doc wording for consistency.
+
+**Decisions**
+- AGENT: methods.md carries no numbers; the dashboard and readers take numbers from results/*.json.
+
+**Open questions**
+- Aayush:
+  - review the two tests changed after failing (step 4 clustering-width retarget; step 2 removal of 4 ungrounded rules)
+  - review this phase and write a P2 review-log entry
+  - decide whether to move .phase to P3

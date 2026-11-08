@@ -1027,3 +1027,24 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - See HANDOFF: P4 review-log entry, behavioral tests for the five golden-only faults, PROV-02.
+
+## 2026-11-08T08:37:24-05:00 — [P4] Behavioral tests for the five golden-only faults
+
+**What changed**
+- Aayush's P4 review asked for behavioral tests for F01, F05, F07, F08 and F09. The tests that caught these faults before compared committed results byte for byte; they didn't check the specific behavior. Each new test runs the code itself:
+  - F01 (ANL-07): `test_model_frame_passes_predictors_through_unchanged`. In the design matrix, term_index is the cleaned term_index (0..6) and every other predictor is a 0/1 indicator.
+  - F05 (ANL-01): `test_term_index_is_zero_based_position_in_terms`, on both the committed and the seed-7 clean data. F23 is 0 and F26 is 6.
+  - F07 (ANL-11): `test_intro_gap_is_computed_over_intro_rows_only`. It recomputes `allowed_uses()` and compares the result with a hand count over intro rows with policy >= 1.
+  - F08 (ANL-13): `test_gap_sign_on_a_constructed_example`. Three hand-built institutions give a gap of positive, zero and negative.
+  - F09 (DASH-01/08): `test_export_keeps_every_institution_field_the_dashboard_reads`. A fresh build's institutions.json has every `inst.<field>` that app.js reads (the drilldown shows census_region) and every clean column. Under F09, the drilldown would have shown "undefined" with no test failing.
+- Checked on a temp copy that each new test fails under its fault: 5/5.
+
+**Tests run**
+- Targeted: 6 passed. `make test`: 508 passed (twice, after `make report`).
+
+**Decisions**
+- HUMAN: add behavioral tests for the five golden-only faults.
+- AGENT: what each test checks, and the fixtures used (a constructed example for F08, recomputation for F07).
+
+**Open questions**
+- None. `make faults` is rerun in the next commit.

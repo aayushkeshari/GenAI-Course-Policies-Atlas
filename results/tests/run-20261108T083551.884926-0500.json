@@ -1,0 +1,112 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-08T08:35:51.884-05:00",
+ "finished": "2026-11-08T08:35:52.747-05:00",
+ "duration_s": 0.863,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "f4920b7daa799712b7e614aa3d302a7161214ee1",
+ "git_dirty": true,
+ "current_phase": "P4:writing-code",
+ "args": [
+  "-q",
+  "-p",
+  "no:cacheprovider",
+  "tests/test_anl_inference.py::test_model_frame_passes_predictors_through_unchanged",
+  "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms",
+  "tests/test_anl_descriptives.py::test_intro_gap_is_computed_over_intro_rows_only",
+  "tests/test_anl_rhetoric.py::test_gap_sign_on_a_constructed_example",
+  "tests/test_dash_data.py::test_export_keeps_every_institution_field_the_dashboard_reads"
+ ],
+ "summary": {
+  "passed": 6
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_anl_inference.py::test_model_frame_passes_predictors_through_unchanged",
+   "req_ids": [
+    "ANL-07"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_inference.py",
+   "line": 120,
+   "body_sha256": "62560bd28748d78ad7c23efda562dda79f09fe4ccc343aacb2781cadf7948293",
+   "status": "passed",
+   "duration_s": 0.007838,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[committed]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 78,
+   "body_sha256": "8f0c3f2cf735c846567e1b306af45fb671c1aa94adbbb5e7b7671ba1bf0308ed",
+   "status": "passed",
+   "duration_s": 0.020734,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_clean.py::test_term_index_is_zero_based_position_in_terms[seed7]",
+   "req_ids": [
+    "ANL-01"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_clean.py",
+   "line": 78,
+   "body_sha256": "8f0c3f2cf735c846567e1b306af45fb671c1aa94adbbb5e7b7671ba1bf0308ed",
+   "status": "passed",
+   "duration_s": 0.045039,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_descriptives.py::test_intro_gap_is_computed_over_intro_rows_only",
+   "req_ids": [
+    "ANL-11"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_descriptives.py",
+   "line": 200,
+   "body_sha256": "1801defc98b2e09abab97089cae302e9da19516ab9bfb32ecbcae838dd3c2517",
+   "status": "passed",
+   "duration_s": 0.026496,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_rhetoric.py::test_gap_sign_on_a_constructed_example",
+   "req_ids": [
+    "ANL-13"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_rhetoric.py",
+   "line": 75,
+   "body_sha256": "d1fd627d7c557823ebcebcf33acef6cc07ab2d2382db5cff3d21785431c7ab36",
+   "status": "passed",
+   "duration_s": 0.004087,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_export_keeps_every_institution_field_the_dashboard_reads",
+   "req_ids": [
+    "DASH-01",
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 123,
+   "body_sha256": "4d765460e22d1eb66a7a00f3899da7c5cf90f5746af1c34e401908931d5a1f5e",
+   "status": "passed",
+   "duration_s": 0.099266,
+   "failure_message": ""
+  }
+ ]
+}

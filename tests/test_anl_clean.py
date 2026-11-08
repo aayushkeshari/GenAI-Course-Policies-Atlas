@@ -73,3 +73,15 @@ def test_committed_clean_data_and_log_are_current(tmp_path):
         assert (CLEAN / f"{name}.csv").read_bytes() == (tmp_path / f"{name}.csv").read_bytes(), name
     saved = json.loads((RESULTS / "clean_log.json").read_text(encoding="utf-8"))
     assert saved["tables"] == _jsonable(log["tables"])  # same numbers, rounded as the writer rounds
+
+
+@pytest.mark.req("ANL-01")
+def test_term_index_is_zero_based_position_in_terms(cleaned):
+    """Behavioural check (fault F05): term_index is each term's position in TERMS, starting at 0 for F23 and
+    ending at 6 for F26, so one regression unit is exactly one term from the start of the panel."""
+    from src.analysis.common import TERMS
+    _, out, _, _ = cleaned
+    df = read_clean("courses", out)
+    assert (df["term_index"] == df["term"].map({t: i for i, t in enumerate(TERMS)})).all()
+    assert df.loc[df["term"] == "F23", "term_index"].unique().tolist() == [0]
+    assert df["term_index"].min() == 0 and df["term_index"].max() == len(TERMS) - 1

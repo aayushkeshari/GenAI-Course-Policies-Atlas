@@ -118,3 +118,18 @@ def test_course_rows_match_clean_data():
     clean = pd.read_csv(ROOT / "data/clean/courses.csv", dtype=str, keep_default_na=False)
     assert len(rows) == len(clean)
     assert sum(r["policy"] is None for r in rows) == (clean["policy"] == "").sum() > 0
+
+
+@pytest.mark.req("DASH-01", "DASH-08")
+def test_export_keeps_every_institution_field_the_dashboard_reads(tmp_path):
+    """Behavioural check (fault F09): a fresh build's institutions.json has, on every row, each field that
+    site/dashboard/app.js reads from an institution (inst.<field>, e.g. census_region in the drilldown header)
+    and every column of data/clean/institutions.csv (none of them is hidden truth)."""
+    import re
+    B.build(out=tmp_path)
+    rows = json.loads((tmp_path / "institutions.json").read_text())["institutions"]
+    used = set(re.findall(r"\binst\.(\w+)", (ROOT / "site" / "dashboard" / "app.js").read_text()))
+    clean_cols = set(pd.read_csv(ROOT / "data/clean/institutions.csv", nrows=0).columns)
+    assert "census_region" in used
+    for r in rows:
+        assert used <= set(r) and clean_cols <= set(r), (used | clean_cols) - set(r)

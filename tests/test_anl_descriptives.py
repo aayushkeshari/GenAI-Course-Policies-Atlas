@@ -195,3 +195,19 @@ def test_committed_descriptive_results_are_current(tmp_path):
     D.main([str(CLEAN), str(tmp_path)])
     for n in ["descriptives", "allowed_uses", "assessment"]:
         assert (RESULTS / f"{n}.json").read_bytes() == (tmp_path / f"{n}.json").read_bytes(), n
+
+
+@pytest.mark.req("ANL-11")
+def test_intro_gap_is_computed_over_intro_rows_only():
+    """Behavioural check (fault F07): recomputing allowed_uses() from data/clean/ gives an intro gap equal to a
+    hand count over intro course-terms with policy >= 1: share allowing the learning use minus share allowing
+    code generation, both with the intro rows as denominator."""
+    c = pd.read_csv(CLEAN / "courses.csv", dtype=str, keep_default_na=False)
+    intro = c[(c["policy"] != "") & (c["level"] == "intro")]
+    intro = intro[intro["policy"].astype(int) >= 1]
+    uses = intro["allowed_uses"].str.split(";")
+    share = {u: uses.apply(lambda xs, u=u: u in xs).sum() / len(intro) for u in ["explanation", "debugging", "code_generation"]}
+    gaps = {g["minuend"]: g for g in D.allowed_uses(CLEAN)["intro_learning_vs_generation_gap"]}
+    for learn in ["explanation", "debugging"]:
+        assert gaps[learn]["n_rows"] == len(intro)
+        assert gaps[learn]["estimate"] == pytest.approx(share[learn] - share["code_generation"], abs=1e-12)

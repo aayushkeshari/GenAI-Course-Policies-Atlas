@@ -70,3 +70,18 @@ def test_committed_rhetoric_results_are_current(tmp_path):
     saved = json.loads((RESULTS / "rhetoric_recovery.json").read_text(encoding="utf-8"))
     fresh = _jsonable(rhetoric_eval.recovery(tmp_path))
     assert {k: saved[k] for k in fresh} == fresh
+
+
+@pytest.mark.req("ANL-13")
+def test_gap_sign_on_a_constructed_example(tmp_path):
+    """Behavioural check (fault F08): on three hand-built institutions, the one whose statements are most
+    permissive but whose courses are most restrictive gets a positive gap (rhetoric ahead of practice), the
+    reverse case gets a negative gap, and the middle one gets zero."""
+    (tmp_path / "statements_coded.csv").write_text(
+        "stmt_id,inst_id,stance\nS1,A,2\nS2,B,0\nS3,C,-2\n")
+    (tmp_path / "courses.csv").write_text(
+        "course_id,inst_id,is_se,term_index,policy\nc1,A,false,0,0\nc2,B,false,0,2\nc3,C,false,0,4\n")
+    t = RH.institution_table(tmp_path).set_index("inst_id")
+    assert t.loc["A", "gap"] > 0 > t.loc["C", "gap"]
+    assert t.loc["B", "gap"] == pytest.approx(0)
+    assert t.loc["A", "gap"] == pytest.approx(t.loc["A", "z_stance"] - t.loc["A", "z_policy"])

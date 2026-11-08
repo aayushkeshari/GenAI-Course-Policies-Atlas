@@ -115,3 +115,19 @@ def test_ratio_ci_delta_method():
     r = INF.ratio_ci(R(), "x")
     assert r["estimate"] == pytest.approx(4.0)
     assert r["se"] == pytest.approx(np.sqrt(0.04 / 0.25 + 4 * 0.0025 / 0.0625))
+
+
+@pytest.mark.req("ANL-07")
+def test_model_frame_passes_predictors_through_unchanged():
+    """Behavioural check (fault F01): the design matrix encodes each predictor as stated, not transformed.
+    term_index is the cleaned term_index itself (0 = F23, so it rises with time and its coefficient keeps
+    its sign), and every other predictor is a 0/1 indicator of its category."""
+    y, X, groups, _ = INF.model_frame(CLEAN)
+    c = read_clean("courses", CLEAN)
+    c = c[c["policy"].notna()].reset_index(drop=True)
+    assert list(X["term_index"]) == list(c["term_index"].astype(float))
+    assert X["term_index"].min() == 0 and X["term_index"].max() == 6
+    for col in INF.PREDICTORS:
+        if col != "term_index":
+            assert set(X[col].unique()) <= {0.0, 1.0}, col
+    assert list(X["is_se"]) == list(c["is_se"].astype(float))

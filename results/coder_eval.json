@@ -1,0 +1,406 @@
+{
+ "dev": {
+  "labels": {
+   "mentions_careers": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 42
+   },
+   "mentions_collaboration": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 67
+   },
+   "mentions_integrity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 95
+   }
+  },
+  "macro_f1": 1.0,
+  "n": 168,
+  "stance": {
+   "accuracy": 1.0,
+   "confusion_matrix": {
+    "rows_true_cols_coded": {
+     "-1": {
+      "-1": 28,
+      "-2": 0,
+      "0": 0,
+      "1": 0,
+      "2": 0
+     },
+     "-2": {
+      "-1": 0,
+      "-2": 12,
+      "0": 0,
+      "1": 0,
+      "2": 0
+     },
+     "0": {
+      "-1": 0,
+      "-2": 0,
+      "0": 70,
+      "1": 0,
+      "2": 0
+     },
+     "1": {
+      "-1": 0,
+      "-2": 0,
+      "0": 0,
+      "1": 50,
+      "2": 0
+     },
+     "2": {
+      "-1": 0,
+      "-2": 0,
+      "0": 0,
+      "1": 0,
+      "2": 8
+     }
+    }
+   },
+   "macro_f1": 1.0,
+   "per_class": {
+    "-1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 28
+    },
+    "-2": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 12
+    },
+    "0": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 70
+    },
+    "1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 50
+    },
+    "2": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 8
+    }
+   }
+  }
+ },
+ "heldout": {
+  "labels": {
+   "mentions_careers": {
+    "f1": 0.844037,
+    "precision": 1.0,
+    "recall": 0.730159,
+    "support": 63
+   },
+   "mentions_collaboration": {
+    "f1": 0.918519,
+    "precision": 1.0,
+    "recall": 0.849315,
+    "support": 73
+   },
+   "mentions_integrity": {
+    "f1": 0.812121,
+    "precision": 1.0,
+    "recall": 0.683673,
+    "support": 98
+   }
+  },
+  "macro_f1": 0.828981,
+  "n": 180,
+  "stance": {
+   "accuracy": 0.761111,
+   "confusion_matrix": {
+    "rows_true_cols_coded": {
+     "-1": {
+      "-1": 23,
+      "-2": 0,
+      "0": 14,
+      "1": 0,
+      "2": 0
+     },
+     "-2": {
+      "-1": 0,
+      "-2": 6,
+      "0": 5,
+      "1": 0,
+      "2": 0
+     },
+     "0": {
+      "-1": 0,
+      "-2": 0,
+      "0": 66,
+      "1": 0,
+      "2": 0
+     },
+     "1": {
+      "-1": 0,
+      "-2": 0,
+      "0": 16,
+      "1": 32,
+      "2": 0
+     },
+     "2": {
+      "-1": 0,
+      "-2": 1,
+      "0": 7,
+      "1": 0,
+      "2": 10
+     }
+    }
+   },
+   "macro_f1": 0.741248,
+   "per_class": {
+    "-1": {
+     "f1": 0.766667,
+     "precision": 1.0,
+     "recall": 0.621622,
+     "support": 37
+    },
+    "-2": {
+     "f1": 0.666667,
+     "precision": 0.857143,
+     "recall": 0.545455,
+     "support": 11
+    },
+    "0": {
+     "f1": 0.758621,
+     "precision": 0.611111,
+     "recall": 1.0,
+     "support": 66
+    },
+    "1": {
+     "f1": 0.8,
+     "precision": 1.0,
+     "recall": 0.666667,
+     "support": 48
+    },
+    "2": {
+     "f1": 0.714286,
+     "precision": 1.0,
+     "recall": 0.555556,
+     "support": 18
+    }
+   }
+  }
+ },
+ "heldout_with_reserved_phrasings": {
+  "labels": {
+   "mentions_careers": {
+    "f1": 0.773333,
+    "precision": 1.0,
+    "recall": 0.630435,
+    "support": 46
+   },
+   "mentions_collaboration": {
+    "f1": 0.88172,
+    "precision": 1.0,
+    "recall": 0.788462,
+    "support": 52
+   },
+   "mentions_integrity": {
+    "f1": 0.686869,
+    "precision": 1.0,
+    "recall": 0.523077,
+    "support": 65
+   }
+  },
+  "macro_f1": 0.754814,
+  "n": 127,
+  "stance": {
+   "accuracy": 0.700787,
+   "confusion_matrix": {
+    "rows_true_cols_coded": {
+     "-1": {
+      "-1": 14,
+      "-2": 0,
+      "0": 14,
+      "1": 0,
+      "2": 0
+     },
+     "-2": {
+      "-1": 0,
+      "-2": 3,
+      "0": 3,
+      "1": 0,
+      "2": 0
+     },
+     "0": {
+      "-1": 0,
+      "-2": 0,
+      "0": 48,
+      "1": 0,
+      "2": 0
+     },
+     "1": {
+      "-1": 0,
+      "-2": 0,
+      "0": 16,
+      "1": 18,
+      "2": 0
+     },
+     "2": {
+      "-1": 0,
+      "-2": 1,
+      "0": 4,
+      "1": 0,
+      "2": 6
+     }
+    }
+   },
+   "macro_f1": 0.677332,
+   "per_class": {
+    "-1": {
+     "f1": 0.666667,
+     "precision": 1.0,
+     "recall": 0.5,
+     "support": 28
+    },
+    "-2": {
+     "f1": 0.6,
+     "precision": 0.75,
+     "recall": 0.5,
+     "support": 6
+    },
+    "0": {
+     "f1": 0.721805,
+     "precision": 0.564706,
+     "recall": 1.0,
+     "support": 48
+    },
+    "1": {
+     "f1": 0.692308,
+     "precision": 1.0,
+     "recall": 0.529412,
+     "support": 34
+    },
+    "2": {
+     "f1": 0.705882,
+     "precision": 1.0,
+     "recall": 0.545455,
+     "support": 11
+    }
+   }
+  }
+ },
+ "heldout_without_reserved_phrasings": {
+  "labels": {
+   "mentions_careers": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 17
+   },
+   "mentions_collaboration": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 21
+   },
+   "mentions_integrity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 33
+   }
+  },
+  "macro_f1": 0.967766,
+  "n": 53,
+  "stance": {
+   "accuracy": 0.90566,
+   "confusion_matrix": {
+    "rows_true_cols_coded": {
+     "-1": {
+      "-1": 9,
+      "-2": 0,
+      "0": 0,
+      "1": 0,
+      "2": 0
+     },
+     "-2": {
+      "-1": 0,
+      "-2": 3,
+      "0": 2,
+      "1": 0,
+      "2": 0
+     },
+     "0": {
+      "-1": 0,
+      "-2": 0,
+      "0": 18,
+      "1": 0,
+      "2": 0
+     },
+     "1": {
+      "-1": 0,
+      "-2": 0,
+      "0": 0,
+      "1": 14,
+      "2": 0
+     },
+     "2": {
+      "-1": 0,
+      "-2": 0,
+      "0": 3,
+      "1": 0,
+      "2": 4
+     }
+    }
+   },
+   "macro_f1": 0.871064,
+   "per_class": {
+    "-1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 9
+    },
+    "-2": {
+     "f1": 0.75,
+     "precision": 1.0,
+     "recall": 0.6,
+     "support": 5
+    },
+    "0": {
+     "f1": 0.878049,
+     "precision": 0.782609,
+     "recall": 1.0,
+     "support": 18
+    },
+    "1": {
+     "f1": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 14
+    },
+    "2": {
+     "f1": 0.727273,
+     "precision": 1.0,
+     "recall": 0.571429,
+     "support": 7
+    }
+   }
+  }
+ },
+ "macro_f1_definition": "mean of the three theme F1s (positive class) and the stance macro-F1 (mean F1 over stance classes present)",
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "requirement": "ANL-03",
+ "rules_frozen_commit": "32f3cd2",
+ "rules_sha256": "d38c5b9c2140fee7e09282622959b08b736411897d3dcfdeb859ab47718047b5",
+ "synthetic": true,
+ "target_macro_f1": 0.8,
+ "target_met": true
+}

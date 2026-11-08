@@ -88,8 +88,54 @@ def dev_report(clean_dir: Path = CLEAN) -> dict:
     return {"scores": score(truth, coded.reset_index()), "errors": errors}
 
 
+TARGET_MACRO_F1 = 0.80
+
+
+def frozen_commit() -> str:
+    """Last commit that touched the coder or codebook (the freeze point for the held-out report)."""
+    import subprocess
+    out = subprocess.run(["git", "log", "-1", "--format=%h", "--", *[str(f.relative_to(ROOT)) for f in RULE_FILES]],
+                         cwd=ROOT, capture_output=True, text=True)
+    return out.stdout.strip() or "uncommitted"
+
+
+def heldout_report(clean_dir: Path = CLEAN) -> dict:
+    """Final ANL-03 report: held-out scores (overall, and split by whether a statement contains phrasings
+    reserved for the held-out half), dev scores for comparison, and the frozen-rules fingerprint.
+    Whether a held-out statement contains reserved phrasings is read from the truth file here, after the
+    rules are frozen; it is reporting metadata, never used by the coder."""
+    statements = read_clean("statements", clean_dir)
+    inst = dict(zip(statements["stmt_id"], statements["inst_id"]))
+    coded = code_statements(statements)
+    held = load_truth("heldout", inst)
+    reserved = load_reserved_flags(held)
+    with_res = {k: v for k, v in held.items() if reserved[k]}
+    without = {k: v for k, v in held.items() if not reserved[k]}
+    heldout = score(held, coded)
+    return {"heldout": heldout,
+            "heldout_with_reserved_phrasings": score(with_res, coded),
+            "heldout_without_reserved_phrasings": score(without, coded),
+            "dev": score(load_truth("dev", inst), coded),
+            "target_macro_f1": TARGET_MACRO_F1,
+            "target_met": heldout["macro_f1"] >= TARGET_MACRO_F1,
+            "rules_sha256": rules_sha256(),
+            "rules_frozen_commit": frozen_commit(),
+            "macro_f1_definition": "mean of the three theme F1s (positive class) and the stance macro-F1 "
+                                   "(mean F1 over stance classes present)"}
+
+
+def load_reserved_flags(held: dict) -> dict[str, bool]:
+    from src.evaluation.truth import load_statement_meta
+    meta = load_statement_meta(sorted(held))
+    return {sid: meta[sid]["reserved_phrasings"] > 0 for sid in held}
+
+
 def main(argv=None) -> None:
     argv = sys.argv[1:] if argv is None else argv
+    if not argv or argv[0] == "heldout":
+        rep = heldout_report()
+        write_json(RESULTS / "coder_eval.json", {"requirement": "ANL-03", **rep})
+        print(f"held-out macro-F1 {rep['heldout']['macro_f1']:.3f} (target {TARGET_MACRO_F1}, met: {rep['target_met']})")
     if argv and argv[0] == "dev":
         rep = dev_report()
         write_json(RESULTS / "coder_dev_eval.json", {"requirement": "ANL-03", "split": "dev", **rep})

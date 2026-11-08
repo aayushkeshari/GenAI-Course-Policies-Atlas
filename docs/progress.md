@@ -430,3 +430,33 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T05:50:09-05:00 — [P2] Step 3: ANL-03 held-out evaluation (frozen rules) and ANL-04 hand-coding sample
+
+**What changed**
+- Rules frozen at `32f3cd2` (the last commit touching code_text.py or codebook.md). The held-out evaluation was then run once and not followed by any tuning.
+- `src/evaluation/coder_eval.py`: `heldout_report()` → `results/coder_eval.json`. It contains held-out scores, the held-out set split by reserved vs non-reserved wording, dev scores, the 0.80 target, `target_met`, and the rules SHA-256 and freeze commit.
+- `src/evaluation/hand_sample.py`:
+  - Writes `data/reference/hand_code_sample.csv`: 30 held-out statements chosen by the public split with seed 4005, label columns blank. It never overwrites a sample once any cell is coded.
+  - Cohen's kappa (human vs coder, human vs truth), written to `results/kappa.json` only when every cell is coded.
+- `src/evaluation/run.py`: `make analysis` now runs the held-out evaluation and the sample/kappa step.
+- `tests/test_anl_eval.py`: score() on a toy case, a freeze guard (rules fingerprint must match), the report is current, the honest `target_met`, sample validity and no-overwrite, kappa known values, the kappa pipeline on a truth-filled copy, and the kappa result test.
+
+**Results (seed 2026, held-out n = 180)**
+- **Held-out macro-F1 0.829** (target 0.80, met).
+  - Stance: accuracy 0.761, macro-F1 0.741.
+  - Theme F1: integrity 0.81, collaboration 0.92, careers 0.84.
+- Without reserved wording (n = 53): 0.968. With reserved wording (n = 127): 0.755. The gap is the generalization cost of dev-grounded rules.
+- Stance errors are mostly unknown wording defaulting to 0: −1→0: 14, +1→0: 16, +2→0: 7, −2→0: 5. In one case the `ban\w*` stem misread a negated "banning" sentence (+2→−2).
+- Dev: 1.000, by construction.
+
+**Tests run**
+- `make test`: 322 passed, 1 skipped. The skip is `test_human_agreement_kappa_reported`, recorded in the run file as `skipped` with "awaiting human coding (ANL-04)".
+
+**Decisions**
+- HUMAN: the kappa test is SKIPPED with that exact reason until the sample is coded.
+- AGENT: kappa is unweighted Cohen's kappa per code (stance treated as 5 categories). Weighted kappa is not used.
+- AGENT: the reserved-wording flag used for the subset scores is read from the truth file by src/evaluation, after the freeze, for reporting only.
+
+**Open questions**
+- Aayush: hand-code the 30 statements (ANL-04). Steps 4–9 of the P2 plan are not started.

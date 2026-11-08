@@ -22,3 +22,9 @@ def load_truth(split: str, statements_inst: dict[str, str], path: Path = TRUTH_F
     wanted = {sid for sid, iid in statements_inst.items() if split_of(iid) == split}
     allstmts = json.loads(Path(path).read_text(encoding="utf-8"))["statements"]
     return {sid: {k: allstmts[sid][k] for k in LABEL_KEYS} for sid in sorted(wanted)}
+
+
+def load_statement_meta(stmt_ids: list[str], path: Path = TRUTH_FILE) -> dict[str, dict]:
+    """Reporting metadata (split, reserved_phrasings, hard_cases) for the given statements. Not labels."""
+    allstmts = json.loads(Path(path).read_text(encoding="utf-8"))["statements"]
+    return {sid: {k: allstmts[sid][k] for k in ("split", "reserved_phrasings", "hard_cases")} for sid in stmt_ids}

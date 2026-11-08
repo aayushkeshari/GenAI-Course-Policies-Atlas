@@ -86,3 +86,20 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
   - Home paths inside URLs (`example.com/Users/x`) are deliberately left alone.
 
 **Open questions**: none.
+
+## 2026-11-08T04:25:33-05:00 — [P0] Step 3: register hooks in .claude/settings.json (INST-01)
+
+**What changed**
+- Added `.claude/settings.json`. It registers UserPromptSubmit, Stop, PreCompact, SessionStart and SessionEnd, each calling `python3 "$CLAUDE_PROJECT_DIR/.claude/hooks/log_event.py"`. The path is quoted because the project path contains spaces.
+- No matchers are set, because these events match everything when no matcher is given.
+- SessionEnd has `timeout: 10`.
+- Added `tests/test_settings.py`. Besides checking the structure, it runs the exact registered command string through `/bin/sh` from a temp project dir whose path contains spaces.
+
+**Tests run**
+- `.venv/bin/python -m pytest -q`: 70 passed.
+
+**Decisions**
+- AGENT: use bare `python3` from PATH, not the venv, since the hook is stdlib only and works on 3.9+.
+
+**Open questions**
+- The hooks did not start firing in this session (no `logs/` yet). The manual check must run in a fresh session.

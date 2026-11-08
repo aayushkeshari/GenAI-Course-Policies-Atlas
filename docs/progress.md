@@ -143,3 +143,22 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 - AGENT: the plugin also registers its markers, so it works in projects without our pytest.ini.
 
 **Open questions**: none.
+
+## 2026-11-08T04:27:56-05:00 — [P0] Steps 7–8: remaining tests (INST-05; INST-01/06/07 done earlier)
+
+**What changed**
+- Step 7 (hook tests, INST-02/03/04/08/09) shipped with the hook in the step-4 commit, so there is no separate commit for it.
+- Added `tests/test_docs.py` (INST-05). It checks three things:
+  - The "Hooks docs confirmed" section names each event together with the stdin field the hook reads.
+  - The section records the common fields and the `$CLAUDE_PROJECT_DIR` quoting rule.
+  - The section comes before the log_event.py entry in the log.
+- The INST-01, INST-06 and INST-07 tests were added in steps 3, 5 and 6.
+
+**Tests run**
+- `make test`: 95 passed.
+- Every one of INST-01 through INST-09 has at least one `@pytest.mark.req` test.
+
+**Decisions**
+- HUMAN: INST-05 is checked by a test on the progress.md section, plus Aayush's manual review entry.
+
+**Open questions**: none.

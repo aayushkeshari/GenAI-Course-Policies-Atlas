@@ -9,7 +9,7 @@ Purpose: from the first real task onward, capture everything P5 (provenance) and
   - UserPromptSubmit: payload.prompt = full prompt text
   - Stop: payload.response_excerpt = the last assistant text in transcript_path (first 1,000 chars)
   - PreCompact: payload.trigger (manual/auto)
-  - SessionStart: payload.source (startup/resume/clear/compact)
+  - SessionStart: payload.source (startup/resume/clear/compact/fork)
   - SessionEnd: payload.reason
 - **INST-03** The hook never blocks Claude Code. It always exits 0, writes nothing to stdout on
   UserPromptSubmit (stdout there is injected into context), and logs its own errors to `logs/hook_errors.log`.
@@ -20,6 +20,10 @@ Purpose: from the first real task onward, capture everything P5 (provenance) and
 - **INST-06** Makefile targets (stubs are fine for now): `data analysis test report tokens timeline site serve clean`.
 - **INST-07** `make test` runs pytest and writes a machine-readable run file to `results/tests/` (format in P4).
 - **INST-08** Tests for log_event.py feed it sample JSON for each event type and check the output lines.
+- **INST-09** Before anything is written to `logs/`, `log_event.py` redacts every string in the record:
+  emails become `[EMAIL]`; API keys/tokens (`sk-…`, `ghp_…`, `github_pat_…`, `Bearer <token>`) become
+  `[REDACTED_TOKEN]`; absolute home paths (`/Users/<name>`, `/home/<name>`) become `~`. This also applies to
+  `hook_errors.log`. It has its own tests.
 
 Manual check (Aayush): send 3 prompts, run `/compact`, run `/clear`. Then confirm events.jsonl
 contains all of it in the right order with phase tags.

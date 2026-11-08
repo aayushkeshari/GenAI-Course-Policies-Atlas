@@ -120,3 +120,26 @@ Reliability: [V] means verbatim from the page. [S] means it came from a model-ex
 - AGENT: `clean` never deletes logs/, raw_logs/ or results/, and a test enforces this.
 
 **Open questions**: none.
+
+## 2026-11-08T04:27:30-05:00 — [P0] Step 6: run-file plugin (INST-07, VAL-01 format)
+
+**What changed**
+- Added `tests/conftest.py`, a plugin that writes `results/tests/run-<YYYYMMDDTHHMMSS.ffffff±zzzz>.json` for every pytest run.
+  - Each test entry records nodeid, req_ids, phase, kind, status, duration_s, failure_message, docstring, source, file and line.
+  - The run as a whole records the schema version, start and end times, exit status, Python version, git commit and dirty flag, the current `.phase`, the args, a status summary and collection errors.
+- Added `-p pytester` to pytest.ini.
+- Added `tests/test_runfile.py`. It copies the conftest source into an isolated pytester project and runs it in a subprocess, covering pass, fail, skip, setup error, xfail, collection error, home-path scrubbing and one file per run.
+
+**Tests run**
+- `make test`: 88 passed.
+- The real run file covers INST-01/02/03/04/06/07/08/09. INST-05 is still missing; step 8 adds it.
+
+**Decisions**
+- HUMAN: phase comes from the first req ID's area prefix.
+- HUMAN: kind comes from `@pytest.mark.kind`, default `unit`.
+- AGENT: status values are passed/failed/skipped/error/xfailed/xpassed.
+- AGENT: the home dir is replaced with `~` in the run file, since P4/P7 may publish it.
+- AGENT: run files are committed to git, because VAL-02 keeps every run and P4 needs the history.
+- AGENT: the plugin also registers its markers, so it works in projects without our pytest.ini.
+
+**Open questions**: none.

@@ -20,8 +20,8 @@ analysis:  ## P2: clean, code, analyze -> results/ (src/analysis never reads gro
 test:  ## run pytest; tests/conftest.py writes results/tests/run-<ts>.json (INST-07)
 	$(PY) -m pytest
 
-report:  ## P3/P4: build dashboard + validation explorer data
-	@echo "report: not implemented yet (P3/P4)"
+report:  ## P3/P4: build dashboard data into site/data/ (validation explorer data comes in P4)
+	$(PY) -m src.report.build_site_data
 
 tokens:  ## P6: token usage report
 	@echo "tokens: not implemented yet (P6)"

@@ -685,3 +685,35 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-08T07:01:56-05:00 — [P3] Step 1: `make report` builds site/data/ (DASH-01)
+
+**What changed**
+- New `src/report/build_site_data.py` (+ `src/report/__init__.py`); `make report` runs it.
+  - It validates 8 results files against their schemas and copies them byte for byte: descriptives, allowed_uses, assessment, association, regression, rhetoric, coder_eval and kappa.
+  - It also exports trimmed raw rows from data/clean/ (labelled "raw synthetic rows, not results"):
+    - institutions.json
+    - courses.json (missing policy stays null)
+    - statements.json (the coder's labels and rule IDs, prefixed `coded_`)
+- Not copied: recovery, rhetoric_recovery and coder_dev_eval, which are truth-derived and not needed by DASH-03.
+- site/data/ is committed. Total is about 1 MB, most of it courses.json at 640 KB.
+- New tests/test_dash_data.py with 7 tests:
+  - site/data/ is current
+  - copies are exact and schema-valid
+  - a schema-invalid file stops the build
+  - no ground-truth fields leak, and the module never reads data/raw/ or imports src.evaluation
+  - statement labels equal the coder's output
+  - row files are labelled synthetic
+  - course rows match the clean data
+
+**Tests run**
+- `make test`: 407 passed.
+- One new test failed first: the truth-leak test banned `stance` and `mentions_*` keys in every file. In kappa.json and coder_eval.json those are the names of aggregate scores, not hidden labels. The bare-label check now applies to the row files only. Entity-level truth fields stay banned everywhere.
+
+**Decisions**
+- HUMAN: export trimmed statements, courses and institutions as raw synthetic rows. Exclude every ground-truth field, with a test. `make report` builds the data and `make site` will call it in P7.
+- AGENT: the coder's labels are exported under `coded_*` names so they can never be confused with the truth's bare `stance`/`mentions_*` names.
+- AGENT: truth-derived recovery files are left out of site/data/. P4 (validation explorer) can decide separately.
+
+**Open questions**
+- None blocking.

@@ -1,0 +1,24 @@
+{
+ "aayush_vs_coder": {
+  "mentions_careers": 0.461538,
+  "mentions_collaboration": 1.0,
+  "mentions_integrity": 0.5,
+  "stance": 0.649123
+ },
+ "aayush_vs_truth": {
+  "mentions_careers": 1.0,
+  "mentions_collaboration": 1.0,
+  "mentions_integrity": 1.0,
+  "stance": 0.894366
+ },
+ "coder_by": "Aayush",
+ "comparison_labels": {
+  "aayush_vs_coder": "Aayush vs coder",
+  "aayush_vs_truth": "Aayush vs truth"
+ },
+ "kappa": "unweighted Cohen's kappa per code",
+ "n": 30,
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "requirement": "ANL-04",
+ "synthetic": true
+}

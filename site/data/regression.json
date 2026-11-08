@@ -1,0 +1,277 @@
+{
+ "coefficients": [
+  {
+   "ci_cluster_bootstrap": [
+    1.042703,
+    1.859837
+   ],
+   "ci_clustered": [
+    1.056219,
+    1.846321
+   ],
+   "ci_naive": [
+    1.199308,
+    1.703232
+   ],
+   "coef": 1.45127,
+   "p_clustered": 0.0,
+   "p_naive": 0.0,
+   "se_cluster_bootstrap": 0.208456,
+   "se_clustered": 0.20156,
+   "se_naive": 0.128554,
+   "term": "intermediate"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    2.260331,
+    3.014881
+   ],
+   "ci_clustered": [
+    2.261014,
+    3.014198
+   ],
+   "ci_naive": [
+    2.369713,
+    2.905498
+   ],
+   "coef": 2.637606,
+   "p_clustered": 0.0,
+   "p_naive": 0.0,
+   "se_cluster_bootstrap": 0.192491,
+   "se_clustered": 0.192142,
+   "se_naive": 0.136682,
+   "term": "upper"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    2.275132,
+    3.313184
+   ],
+   "ci_clustered": [
+    2.286648,
+    3.301668
+   ],
+   "ci_naive": [
+    2.468013,
+    3.120303
+   ],
+   "coef": 2.794158,
+   "p_clustered": 0.0,
+   "p_naive": 0.0,
+   "se_cluster_bootstrap": 0.264814,
+   "se_clustered": 0.258938,
+   "se_naive": 0.166403,
+   "term": "graduate"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    0.978568,
+    1.797024
+   ],
+   "ci_clustered": [
+    1.003393,
+    1.7722
+   ],
+   "ci_naive": [
+    1.1647,
+    1.610892
+   ],
+   "coef": 1.387796,
+   "p_clustered": 0.0,
+   "p_naive": 0.0,
+   "se_cluster_bootstrap": 0.208794,
+   "se_clustered": 0.196128,
+   "se_naive": 0.113827,
+   "term": "is_se"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    0.442546,
+    0.536852
+   ],
+   "ci_clustered": [
+    0.440509,
+    0.538889
+   ],
+   "ci_naive": [
+    0.442526,
+    0.536872
+   ],
+   "coef": 0.489699,
+   "p_clustered": 0.0,
+   "p_naive": 0.0,
+   "se_cluster_bootstrap": 0.024058,
+   "se_clustered": 0.025097,
+   "se_naive": 0.024069,
+   "term": "term_index"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    -0.388022,
+    0.612289
+   ],
+   "ci_clustered": [
+    -0.358896,
+    0.583163
+   ],
+   "ci_naive": [
+    -0.062115,
+    0.286382
+   ],
+   "coef": 0.112134,
+   "p_clustered": 0.640793,
+   "p_naive": 0.207204,
+   "se_cluster_bootstrap": 0.255186,
+   "se_clustered": 0.240326,
+   "se_naive": 0.088904,
+   "term": "private"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    -0.556007,
+    0.647581
+   ],
+   "ci_clustered": [
+    -0.573404,
+    0.664978
+   ],
+   "ci_naive": [
+    -0.192369,
+    0.283943
+   ],
+   "coef": 0.045787,
+   "p_clustered": 0.884763,
+   "p_naive": 0.706309,
+   "se_cluster_bootstrap": 0.307043,
+   "se_clustered": 0.31592,
+   "se_naive": 0.12151,
+   "term": "R2"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    -0.714512,
+    0.760778
+   ],
+   "ci_clustered": [
+    -0.662637,
+    0.708903
+   ],
+   "ci_naive": [
+    -0.229401,
+    0.275667
+   ],
+   "coef": 0.023133,
+   "p_clustered": 0.947286,
+   "p_naive": 0.857515,
+   "se_cluster_bootstrap": 0.376356,
+   "se_clustered": 0.349889,
+   "se_naive": 0.128846,
+   "term": "Masters"
+  },
+  {
+   "ci_cluster_bootstrap": [
+    -0.990785,
+    0.284386
+   ],
+   "ci_clustered": [
+    -0.996205,
+    0.289806
+   ],
+   "ci_naive": [
+    -0.611907,
+    -0.094492
+   ],
+   "coef": -0.3532,
+   "p_clustered": 0.28166,
+   "p_naive": 0.007454,
+   "se_cluster_bootstrap": 0.325305,
+   "se_clustered": 0.32807,
+   "se_naive": 0.131996,
+   "term": "Baccalaureate"
+  }
+ ],
+ "converged": true,
+ "inference": {
+  "also_reported": [
+   "naive SEs (rows treated as independent)",
+   "cluster bootstrap SEs (cross-check): 500 institution resamples, seed 4005, 500 fitted"
+  ],
+  "main": "cluster-robust (sandwich) SEs grouped by inst_id"
+ },
+ "model": "ordinal logistic regression (statsmodels OrderedModel, logit link): policy ~ level + is_se + term_index + control + carnegie",
+ "n_clusters": 150,
+ "n_excluded_missing_policy": 164,
+ "n_used": 1890,
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "ratios_to_term_effect": {
+  "description": "coefficient / term_index coefficient: each effect in units of one term of the time trend; 95% CI by the delta method on the clustered covariance",
+  "ratios": [
+   {
+    "ci": [
+     2.143827,
+     3.783365
+    ],
+    "denominator": "term_index",
+    "estimate": 2.963596,
+    "numerator": "intermediate",
+    "se": 0.418257
+   },
+   {
+    "ci": [
+     4.63274,
+     6.139617
+    ],
+    "denominator": "term_index",
+    "estimate": 5.386178,
+    "numerator": "upper",
+    "se": 0.384414
+   },
+   {
+    "ci": [
+     4.639582,
+     6.772155
+    ],
+    "denominator": "term_index",
+    "estimate": 5.705869,
+    "numerator": "graduate",
+    "se": 0.544034
+   },
+   {
+    "ci": [
+     2.056489,
+     3.611469
+    ],
+    "denominator": "term_index",
+    "estimate": 2.833979,
+    "numerator": "is_se",
+    "se": 0.396686
+   },
+   {
+    "ci": [
+     -0.730435,
+     1.188404
+    ],
+    "denominator": "term_index",
+    "estimate": 0.228985,
+    "numerator": "private",
+    "se": 0.489509
+   }
+  ]
+ },
+ "reference_categories": {
+  "carnegie": "R1",
+  "control": "public",
+  "level": "intro"
+ },
+ "requirement": [
+  "ANL-07",
+  "ANL-14"
+ ],
+ "synthetic": true,
+ "thresholds": [
+  0.416832,
+  0.850302,
+  0.788452,
+  0.813495
+ ]
+}

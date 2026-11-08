@@ -1,0 +1,366 @@
+{
+ "bootstrap": {
+  "ci_level": 0.95,
+  "cluster": "inst_id",
+  "method": "cluster bootstrap (percentile)",
+  "resamples": 2000,
+  "seed": 4005
+ },
+ "denominator": "course-term rows with known policy >= 1 (allowed_uses is empty at policy 0 by design)",
+ "intro_learning_vs_generation_gap": [
+  {
+   "ci_high": 0.792143,
+   "ci_low": 0.693001,
+   "estimate": 0.740909,
+   "group": "intro",
+   "minuend": "explanation",
+   "n_rows": 440,
+   "subtrahend": "code_generation"
+  },
+  {
+   "ci_high": 0.618605,
+   "ci_low": 0.513253,
+   "estimate": 0.565909,
+   "group": "intro",
+   "minuend": "debugging",
+   "n_rows": 440,
+   "subtrahend": "code_generation"
+  }
+ ],
+ "n_rows": 1650,
+ "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "requirement": "ANL-11",
+ "synthetic": true,
+ "uses": [
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.865265,
+   "ci_low": 0.789716,
+   "estimate": 0.827273,
+   "group": "intro",
+   "n_clusters": 135,
+   "n_rows": 440,
+   "outcome": "explanation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.840297,
+   "ci_low": 0.767966,
+   "estimate": 0.805226,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 421,
+   "outcome": "explanation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.842521,
+   "ci_low": 0.764596,
+   "estimate": 0.804788,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 543,
+   "outcome": "explanation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.870195,
+   "ci_low": 0.771083,
+   "estimate": 0.821138,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 246,
+   "outcome": "explanation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.696288,
+   "ci_low": 0.607563,
+   "estimate": 0.652273,
+   "group": "intro",
+   "n_clusters": 135,
+   "n_rows": 440,
+   "outcome": "debugging"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.751775,
+   "ci_low": 0.669787,
+   "estimate": 0.712589,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 421,
+   "outcome": "debugging"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.812391,
+   "ci_low": 0.740575,
+   "estimate": 0.777164,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 543,
+   "outcome": "debugging"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.828332,
+   "ci_low": 0.737989,
+   "estimate": 0.784553,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 246,
+   "outcome": "debugging"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.115387,
+   "ci_low": 0.060399,
+   "estimate": 0.086364,
+   "group": "intro",
+   "n_clusters": 135,
+   "n_rows": 440,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.552144,
+   "ci_low": 0.439089,
+   "estimate": 0.496437,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 421,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.702387,
+   "ci_low": 0.599634,
+   "estimate": 0.651934,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 543,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.754635,
+   "ci_low": 0.6166,
+   "estimate": 0.686992,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 246,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.094205,
+   "ci_low": 0.044642,
+   "estimate": 0.068182,
+   "group": "intro",
+   "n_clusters": 135,
+   "n_rows": 440,
+   "outcome": "testing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.526437,
+   "ci_low": 0.406891,
+   "estimate": 0.465558,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 421,
+   "outcome": "testing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.68526,
+   "ci_low": 0.592951,
+   "estimate": 0.640884,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 543,
+   "outcome": "testing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.71937,
+   "ci_low": 0.572071,
+   "estimate": 0.646341,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 246,
+   "outcome": "testing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.323083,
+   "ci_low": 0.233985,
+   "estimate": 0.277273,
+   "group": "intro",
+   "n_clusters": 135,
+   "n_rows": 440,
+   "outcome": "writing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.451535,
+   "ci_low": 0.344828,
+   "estimate": 0.39905,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 421,
+   "outcome": "writing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.507355,
+   "ci_low": 0.428571,
+   "estimate": 0.467772,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 543,
+   "outcome": "writing"
+  },
+  {
+   "by": "level",
+   "category": "True",
+   "ci_high": 0.590738,
+   "ci_low": 0.46215,
+   "estimate": 0.52439,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 246,
+   "outcome": "writing"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.840993,
+   "ci_low": 0.794305,
+   "estimate": 0.818515,
+   "group": "non-SE",
+   "n_clusters": 146,
+   "n_rows": 1091,
+   "outcome": "explanation"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.838957,
+   "ci_low": 0.76829,
+   "estimate": 0.80322,
+   "group": "SE",
+   "n_clusters": 101,
+   "n_rows": 559,
+   "outcome": "explanation"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.7156,
+   "ci_low": 0.661319,
+   "estimate": 0.689276,
+   "group": "non-SE",
+   "n_clusters": 146,
+   "n_rows": 1091,
+   "outcome": "debugging"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.836068,
+   "ci_low": 0.773309,
+   "estimate": 0.805009,
+   "group": "SE",
+   "n_clusters": 101,
+   "n_rows": 559,
+   "outcome": "debugging"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.316149,
+   "ci_low": 0.25599,
+   "estimate": 0.286893,
+   "group": "non-SE",
+   "n_clusters": 146,
+   "n_rows": 1091,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.854488,
+   "ci_low": 0.77931,
+   "estimate": 0.817531,
+   "group": "SE",
+   "n_clusters": 101,
+   "n_rows": 559,
+   "outcome": "code_generation"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.279933,
+   "ci_low": 0.229627,
+   "estimate": 0.255729,
+   "group": "non-SE",
+   "n_clusters": 146,
+   "n_rows": 1091,
+   "outcome": "testing"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.849807,
+   "ci_low": 0.774301,
+   "estimate": 0.812165,
+   "group": "SE",
+   "n_clusters": 101,
+   "n_rows": 559,
+   "outcome": "testing"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.406427,
+   "ci_low": 0.342758,
+   "estimate": 0.373969,
+   "group": "non-SE",
+   "n_clusters": 146,
+   "n_rows": 1091,
+   "outcome": "writing"
+  },
+  {
+   "by": "is_se_label",
+   "category": "True",
+   "ci_high": 0.521249,
+   "ci_low": 0.42833,
+   "estimate": 0.474061,
+   "group": "SE",
+   "n_clusters": 101,
+   "n_rows": 559,
+   "outcome": "writing"
+  }
+ ]
+}

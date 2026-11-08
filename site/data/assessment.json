@@ -1,0 +1,639 @@
+{
+ "association": [
+  {
+   "chi2": 590.470956,
+   "col": "policy",
+   "col_levels": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "cramers_v": 0.279472,
+   "cramers_v_ci": [
+    0.262265,
+    0.302314
+   ],
+   "cramers_v_ci_method": "cluster bootstrap over inst_id (main inference)",
+   "dof": 16,
+   "n": 1890,
+   "n_clusters": 150,
+   "p_value_naive": 0.0,
+   "p_value_note": "naive: treats course-term rows as independent; not the main inference (ANL-14)",
+   "row": "assessment_adaptation",
+   "row_levels": [
+    "ai_critique",
+    "in_class_exams",
+    "none",
+    "oral_defense",
+    "process_logs"
+   ],
+   "table": [
+    [
+     3,
+     24,
+     113,
+     99,
+     45
+    ],
+    [
+     126,
+     179,
+     84,
+     33,
+     6
+    ],
+    [
+     46,
+     163,
+     211,
+     117,
+     36
+    ],
+    [
+     62,
+     146,
+     76,
+     23,
+     6
+    ],
+    [
+     3,
+     18,
+     126,
+     111,
+     34
+    ]
+   ]
+  },
+  {
+   "chi2": 182.810136,
+   "col": "level",
+   "col_levels": [
+    "graduate",
+    "intermediate",
+    "intro",
+    "upper"
+   ],
+   "cramers_v": 0.172242,
+   "cramers_v_ci": [
+    0.152791,
+    0.201131
+   ],
+   "cramers_v_ci_method": "cluster bootstrap over inst_id (main inference)",
+   "dof": 12,
+   "n": 2054,
+   "n_clusters": 150,
+   "p_value_naive": 0.0,
+   "p_value_note": "naive: treats course-term rows as independent; not the main inference (ANL-14)",
+   "row": "assessment_adaptation",
+   "row_levels": [
+    "ai_critique",
+    "in_class_exams",
+    "none",
+    "oral_defense",
+    "process_logs"
+   ],
+   "table": [
+    [
+     60,
+     81,
+     47,
+     120
+    ],
+    [
+     41,
+     105,
+     230,
+     94
+    ],
+    [
+     90,
+     151,
+     182,
+     191
+    ],
+    [
+     26,
+     82,
+     162,
+     74
+    ],
+    [
+     54,
+     72,
+     61,
+     131
+    ]
+   ]
+  }
+ ],
+ "bootstrap": {
+  "ci_level": 0.95,
+  "cluster": "inst_id",
+  "method": "cluster bootstrap (percentile)",
+  "resamples": 2000,
+  "seed": 4005
+ },
+ "note": "By policy: known-policy rows only. By level: all rows (assessment_adaptation is never missing).",
+ "requirement": "ANL-12",
+ "shares": [
+  {
+   "by": "policy",
+   "category": "none",
+   "ci_high": 0.234043,
+   "ci_low": 0.146018,
+   "estimate": 0.191667,
+   "group": "0",
+   "n_clusters": 92,
+   "n_rows": 240,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "in_class_exams",
+   "ci_high": 0.58802,
+   "ci_low": 0.454945,
+   "estimate": 0.525,
+   "group": "0",
+   "n_clusters": 92,
+   "n_rows": 240,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "oral_defense",
+   "ci_high": 0.316022,
+   "ci_low": 0.204435,
+   "estimate": 0.258333,
+   "group": "0",
+   "n_clusters": 92,
+   "n_rows": 240,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "process_logs",
+   "ci_high": 0.029667,
+   "ci_low": 0.0,
+   "estimate": 0.0125,
+   "group": "0",
+   "n_clusters": 92,
+   "n_rows": 240,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "ai_critique",
+   "ci_high": 0.028001,
+   "ci_low": 0.0,
+   "estimate": 0.0125,
+   "group": "0",
+   "n_clusters": 92,
+   "n_rows": 240,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "none",
+   "ci_high": 0.346154,
+   "ci_low": 0.271453,
+   "estimate": 0.307547,
+   "group": "1",
+   "n_clusters": 141,
+   "n_rows": 530,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "in_class_exams",
+   "ci_high": 0.376184,
+   "ci_low": 0.299162,
+   "estimate": 0.337736,
+   "group": "1",
+   "n_clusters": 141,
+   "n_rows": 530,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "oral_defense",
+   "ci_high": 0.317943,
+   "ci_low": 0.237468,
+   "estimate": 0.275472,
+   "group": "1",
+   "n_clusters": 141,
+   "n_rows": 530,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "process_logs",
+   "ci_high": 0.04845,
+   "ci_low": 0.019644,
+   "estimate": 0.033962,
+   "group": "1",
+   "n_clusters": 141,
+   "n_rows": 530,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "ai_critique",
+   "ci_high": 0.0625,
+   "ci_low": 0.029644,
+   "estimate": 0.045283,
+   "group": "1",
+   "n_clusters": 141,
+   "n_rows": 530,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "none",
+   "ci_high": 0.384758,
+   "ci_low": 0.308239,
+   "estimate": 0.345902,
+   "group": "2",
+   "n_clusters": 144,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "in_class_exams",
+   "ci_high": 0.165154,
+   "ci_low": 0.109776,
+   "estimate": 0.137705,
+   "group": "2",
+   "n_clusters": 144,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "oral_defense",
+   "ci_high": 0.150264,
+   "ci_low": 0.101022,
+   "estimate": 0.12459,
+   "group": "2",
+   "n_clusters": 144,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "process_logs",
+   "ci_high": 0.242574,
+   "ci_low": 0.172818,
+   "estimate": 0.206557,
+   "group": "2",
+   "n_clusters": 144,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "ai_critique",
+   "ci_high": 0.213774,
+   "ci_low": 0.15765,
+   "estimate": 0.185246,
+   "group": "2",
+   "n_clusters": 144,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "none",
+   "ci_high": 0.350986,
+   "ci_low": 0.260464,
+   "estimate": 0.305483,
+   "group": "3",
+   "n_clusters": 117,
+   "n_rows": 383,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "in_class_exams",
+   "ci_high": 0.117362,
+   "ci_low": 0.058981,
+   "estimate": 0.086162,
+   "group": "3",
+   "n_clusters": 117,
+   "n_rows": 383,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "oral_defense",
+   "ci_high": 0.088458,
+   "ci_low": 0.03448,
+   "estimate": 0.060052,
+   "group": "3",
+   "n_clusters": 117,
+   "n_rows": 383,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "process_logs",
+   "ci_high": 0.339961,
+   "ci_low": 0.238663,
+   "estimate": 0.289817,
+   "group": "3",
+   "n_clusters": 117,
+   "n_rows": 383,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "ai_critique",
+   "ci_high": 0.308059,
+   "ci_low": 0.211111,
+   "estimate": 0.258486,
+   "group": "3",
+   "n_clusters": 117,
+   "n_rows": 383,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "none",
+   "ci_high": 0.356525,
+   "ci_low": 0.20876,
+   "estimate": 0.283465,
+   "group": "4",
+   "n_clusters": 50,
+   "n_rows": 127,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "in_class_exams",
+   "ci_high": 0.088889,
+   "ci_low": 0.01626,
+   "estimate": 0.047244,
+   "group": "4",
+   "n_clusters": 50,
+   "n_rows": 127,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "oral_defense",
+   "ci_high": 0.088505,
+   "ci_low": 0.015149,
+   "estimate": 0.047244,
+   "group": "4",
+   "n_clusters": 50,
+   "n_rows": 127,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "process_logs",
+   "ci_high": 0.337758,
+   "ci_low": 0.201549,
+   "estimate": 0.267717,
+   "group": "4",
+   "n_clusters": 50,
+   "n_rows": 127,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "policy",
+   "category": "ai_critique",
+   "ci_high": 0.413802,
+   "ci_low": 0.294118,
+   "estimate": 0.354331,
+   "group": "4",
+   "n_clusters": 50,
+   "n_rows": 127,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "none",
+   "ci_high": 0.296788,
+   "ci_low": 0.237606,
+   "estimate": 0.266862,
+   "group": "intro",
+   "n_clusters": 150,
+   "n_rows": 682,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "in_class_exams",
+   "ci_high": 0.376862,
+   "ci_low": 0.297931,
+   "estimate": 0.337243,
+   "group": "intro",
+   "n_clusters": 150,
+   "n_rows": 682,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "oral_defense",
+   "ci_high": 0.272058,
+   "ci_low": 0.208586,
+   "estimate": 0.237537,
+   "group": "intro",
+   "n_clusters": 150,
+   "n_rows": 682,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "process_logs",
+   "ci_high": 0.11442,
+   "ci_low": 0.064935,
+   "estimate": 0.089443,
+   "group": "intro",
+   "n_clusters": 150,
+   "n_rows": 682,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "ai_critique",
+   "ci_high": 0.087667,
+   "ci_low": 0.051546,
+   "estimate": 0.068915,
+   "group": "intro",
+   "n_clusters": 150,
+   "n_rows": 682,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "none",
+   "ci_high": 0.343822,
+   "ci_low": 0.271713,
+   "estimate": 0.307536,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 491,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "in_class_exams",
+   "ci_high": 0.256534,
+   "ci_low": 0.172486,
+   "estimate": 0.213849,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 491,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "oral_defense",
+   "ci_high": 0.203623,
+   "ci_low": 0.135081,
+   "estimate": 0.167006,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 491,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "process_logs",
+   "ci_high": 0.187364,
+   "ci_low": 0.105906,
+   "estimate": 0.14664,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 491,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "ai_critique",
+   "ci_high": 0.206214,
+   "ci_low": 0.129202,
+   "estimate": 0.164969,
+   "group": "intermediate",
+   "n_clusters": 83,
+   "n_rows": 491,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "none",
+   "ci_high": 0.354138,
+   "ci_low": 0.271359,
+   "estimate": 0.313115,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "in_class_exams",
+   "ci_high": 0.186796,
+   "ci_low": 0.123162,
+   "estimate": 0.154098,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "oral_defense",
+   "ci_high": 0.149139,
+   "ci_low": 0.095599,
+   "estimate": 0.121311,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "process_logs",
+   "ci_high": 0.251831,
+   "ci_low": 0.179079,
+   "estimate": 0.214754,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "ai_critique",
+   "ci_high": 0.226209,
+   "ci_low": 0.169546,
+   "estimate": 0.196721,
+   "group": "upper",
+   "n_clusters": 100,
+   "n_rows": 610,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "none",
+   "ci_high": 0.386207,
+   "ci_low": 0.280763,
+   "estimate": 0.332103,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 271,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "in_class_exams",
+   "ci_high": 0.193419,
+   "ci_low": 0.109285,
+   "estimate": 0.151292,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 271,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "oral_defense",
+   "ci_high": 0.13248,
+   "ci_low": 0.061404,
+   "estimate": 0.095941,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 271,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "process_logs",
+   "ci_high": 0.250829,
+   "ci_low": 0.146337,
+   "estimate": 0.199262,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 271,
+   "outcome": "assessment_adaptation"
+  },
+  {
+   "by": "level",
+   "category": "ai_critique",
+   "ci_high": 0.273469,
+   "ci_low": 0.174342,
+   "estimate": 0.221402,
+   "group": "graduate",
+   "n_clusters": 52,
+   "n_rows": 271,
+   "outcome": "assessment_adaptation"
+  }
+ ],
+ "synthetic": true
+}

@@ -1,0 +1,294 @@
+{
+ "schema": "test-run/1",
+ "started": "2026-11-08T07:01:28.433-05:00",
+ "finished": "2026-11-08T07:01:28.948-05:00",
+ "duration_s": 0.515,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "897ffd4182180f0bdd38bcc5ee023de66ed32f4f",
+ "git_dirty": true,
+ "current_phase": "P3:writing-code",
+ "args": [
+  "-q",
+  "tests/test_dash_data.py",
+  "tests/test_makefile.py"
+ ],
+ "summary": {
+  "passed": 17,
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_data.py::test_site_data_is_current",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 32,
+   "docstring": "site/data/ equals a fresh `make report` build byte for byte, so the committed site never shows stale numbers.",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_site_data_is_current(tmp_path):\n    \"\"\"site/data/ equals a fresh `make report` build byte for byte, so the committed site never shows stale numbers.\"\"\"\n    written = B.build(out=tmp_path)\n    assert sorted(p.name for p in SITE_DATA.glob(\"*.json\")) == sorted(written)\n    for name in written:\n        assert (SITE_DATA / name).read_bytes() == (tmp_path / name).read_bytes(), name\n",
+   "status": "passed",
+   "duration_s": 0.097792,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_results_are_copied_unchanged_and_schema_valid",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 41,
+   "docstring": "Every dashboard results file in site/data/ is an exact copy of results/<name>.json, and the build validates\neach against its schema before copying (a schema-invalid file stops the build).",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_results_are_copied_unchanged_and_schema_valid():\n    \"\"\"Every dashboard results file in site/data/ is an exact copy of results/<name>.json, and the build validates\n    each against its schema before copying (a schema-invalid file stops the build).\"\"\"\n    for name in B.DASHBOARD_RESULTS:\n        assert (SITE_DATA / f\"{name}.json\").read_bytes() == (ROOT / \"results\" / f\"{name}.json\").read_bytes()\n        assert (B.SCHEMAS / f\"{name}.schema.json\").exists()\n",
+   "status": "passed",
+   "duration_s": 0.000366,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_schema_invalid_results_stop_the_build",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 50,
+   "docstring": "If a results file breaks its schema (here: synthetic flag removed), build() raises instead of copying it.",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_schema_invalid_results_stop_the_build(tmp_path):\n    \"\"\"If a results file breaks its schema (here: synthetic flag removed), build() raises instead of copying it.\"\"\"\n    import jsonschema\n    res = tmp_path / \"results\"\n    res.mkdir()\n    for name in B.DASHBOARD_RESULTS:\n        (res / f\"{name}.json\").write_bytes((ROOT / \"results\" / f\"{name}.json\").read_bytes())\n    bad = json.loads((res / \"kappa.json\").read_text())\n    del bad[\"synthetic\"]\n    (res / \"kappa.json\").write_text(json.dumps(bad))\n    with pytest.raises(jsonschema.ValidationError):\n        B.build(results=res, out=tmp_path / \"out\")\n",
+   "status": "passed",
+   "duration_s": 0.077154,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_no_ground_truth_reaches_the_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 65,
+   "docstring": "No file in site/data/ contains a ground-truth field name (hidden labels, latent scores, planted\nparameters, split flags), the truth-derived recovery files are not copied, and the build module never\nreads data/raw/ or imports src.evaluation.",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_no_ground_truth_reaches_the_site():\n    \"\"\"No file in site/data/ contains a ground-truth field name (hidden labels, latent scores, planted\n    parameters, split flags), the truth-derived recovery files are not copied, and the build module never\n    reads data/raw/ or imports src.evaluation.\"\"\"\n    for p in SITE_DATA.glob(\"*.json\"):\n        leaked = set(all_keys(json.loads(p.read_text(encoding=\"utf-8\")))) & TRUTH_KEYS\n        assert not leaked, f\"{p.name}: {leaked}\"\n    for name in [\"recovery.json\", \"rhetoric_recovery.json\", \"coder_dev_eval.json\", \"ground_truth.json\"]:\n        assert not (SITE_DATA / name).exists()\n    src = Path(B.__file__).read_text(encoding=\"utf-8\")\n    assert \"ground_truth\" not in src.replace(\"Never reads data/raw/ or the hidden truth\", \"\")\n    assert \"data\\\" / \\\"raw\" not in src and \"data/raw\\\"\" not in src\n    imports = [n for n in ast.walk(ast.parse(src)) if isinstance(n, (ast.Import, ast.ImportFrom))]\n    names = [a.name for n in imports for a in n.names] + [n.module or \"\" for n in imports if isinstance(n, ast.ImportFrom)]\n    assert not any(x.startswith(\"src.evaluation\") for x in names)\n",
+   "status": "failed",
+   "duration_s": 0.000685,
+   "failure_message": "@pytest.mark.req(\"DASH-01\")\n    def test_no_ground_truth_reaches_the_site():\n        \"\"\"No file in site/data/ contains a ground-truth field name (hidden labels, latent scores, planted\n        parameters, split flags), the truth-derived recovery files are not copied, and the build module never\n        reads data/raw/ or imports src.evaluation.\"\"\"\n        for p in SITE_DATA.glob(\"*.json\"):\n            leaked = set(all_keys(json.loads(p.read_text(encoding=\"utf-8\")))) & TRUTH_KEYS\n>           assert not leaked, f\"{p.name}: {leaked}\"\nE           AssertionError: kappa.json: {'mentions_careers', 'stance', 'mentions_collaboration', 'mentions_integrity'}\nE           assert not {'mentions_careers', 'mentions_collaboration', 'mentions_integrity', 'stance'}\n\ntests/test_dash_data.py:72: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_statement_labels_are_the_coders_not_the_truth",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 83,
+   "docstring": "Each exported statement's coded_* labels equal data/clean/statements_coded.csv, and its text and metadata\nequal data/clean/statements.csv.",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_statement_labels_are_the_coders_not_the_truth():\n    \"\"\"Each exported statement's coded_* labels equal data/clean/statements_coded.csv, and its text and metadata\n    equal data/clean/statements.csv.\"\"\"\n    rows = {r[\"stmt_id\"]: r for r in json.loads((SITE_DATA / \"statements.json\").read_text())[\"statements\"]}\n    coded = pd.read_csv(ROOT / \"data/clean/statements_coded.csv\", dtype=str, keep_default_na=False)\n    raw = pd.read_csv(ROOT / \"data/clean/statements.csv\", dtype=str, keep_default_na=False)\n    assert set(rows) == set(coded[\"stmt_id\"]) == set(raw[\"stmt_id\"])\n    for c in coded.to_dict(\"records\"):\n        r = rows[c[\"stmt_id\"]]\n        assert r[\"coded_stance\"] == int(c[\"stance\"]) and r[\"coded_stance_rule\"] == c[\"stance_rule\"]\n        for t in B.THEMES:\n            assert r[f\"coded_{t}\"] == (c[t] == \"true\")\n    for s in raw.to_dict(\"records\"):\n        assert {k: rows[s[\"stmt_id\"]][k] for k in s} == s\n",
+   "status": "passed",
+   "duration_s": 0.00349,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_row_files_are_labelled_synthetic_raw_rows",
+   "req_ids": [
+    "DASH-01",
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 100,
+   "docstring": "Each exported row file says it is synthetic, says it is raw rows rather than results, and its n matches.",
+   "source": "@pytest.mark.req(\"DASH-01\")\n@pytest.mark.req(\"DASH-02\")\ndef test_row_files_are_labelled_synthetic_raw_rows():\n    \"\"\"Each exported row file says it is synthetic, says it is raw rows rather than results, and its n matches.\"\"\"\n    for name in ROW_FILES:\n        d = json.loads((SITE_DATA / name).read_text())\n        assert d[\"synthetic\"] is True and \"SYNTHETIC\" in d[\"note\"] and \"raw synthetic rows\" in d[\"note\"]\n        key = name.removesuffix(\".json\")\n        assert d[\"n\"] == len(d[key]) > 0\n",
+   "status": "passed",
+   "duration_s": 0.002926,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_course_rows_match_clean_data",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 111,
+   "docstring": "courses.json has one row per cleaned course-term; a missing policy stays null (not imputed).",
+   "source": "@pytest.mark.req(\"DASH-01\")\ndef test_course_rows_match_clean_data():\n    \"\"\"courses.json has one row per cleaned course-term; a missing policy stays null (not imputed).\"\"\"\n    rows = json.loads((SITE_DATA / \"courses.json\").read_text())[\"courses\"]\n    clean = pd.read_csv(ROOT / \"data/clean/courses.csv\", dtype=str, keep_default_na=False)\n    assert len(rows) == len(clean)\n    assert sum(r[\"policy\"] is None for r in rows) == (clean[\"policy\"] == \"\").sum() > 0\n",
+   "status": "passed",
+   "duration_s": 0.003572,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[data]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.012817,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[analysis]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008778,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[test]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008221,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[report]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008592,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[tokens]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008925,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[timeline]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008885,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[site]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.008567,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[serve]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.007513,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[clean]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "docstring": "Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\nreport 'No rule to make target'.",
+   "source": "@pytest.mark.req(\"INST-06\")\n@pytest.mark.parametrize(\"target\", TARGETS)\ndef test_target_exists(target):\n    \"\"\"Every target named in INST-06 is defined. `make -n` (dry run) succeeds and doesn't\n    report 'No rule to make target'.\"\"\"\n    proc = make_n(target)\n    assert proc.returncode == 0, proc.stderr\n",
+   "status": "passed",
+   "duration_s": 0.007584,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_clean_never_touches_logs_or_run_history",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 25,
+   "docstring": "`make clean` doesn't delete logs/, raw_logs/, or results/: hooks own the logs, and\nVAL-02 keeps every run file.",
+   "source": "@pytest.mark.req(\"INST-06\")\ndef test_clean_never_touches_logs_or_run_history():\n    \"\"\"`make clean` doesn't delete logs/, raw_logs/, or results/: hooks own the logs, and\n    VAL-02 keeps every run file.\"\"\"\n    cmds = make_n(\"clean\").stdout\n    for protected in (\"logs\", \"raw_logs\", \"results\"):\n        assert protected not in cmds\n",
+   "status": "passed",
+   "duration_s": 0.008105,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_runs_pytest",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 34,
+   "docstring": "`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.",
+   "source": "@pytest.mark.req(\"INST-07\")\ndef test_make_test_runs_pytest():\n    \"\"\"`make test` invokes pytest, so the run-file plugin in tests/conftest.py fires.\"\"\"\n    assert \"-m pytest\" in make_n(\"test\").stdout\n",
+   "status": "passed",
+   "duration_s": 0.008174,
+   "failure_message": ""
+  }
+ ]
+}

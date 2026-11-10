@@ -1,7 +1,7 @@
 """PROV-03/04/05: the contribution timeline page (site/timeline/), tested in a real headless browser.
 
 The page is served from site/ over HTTP and uses no CDN libraries. Without Playwright's Chromium these tests fail
-(they do not skip): run `make setup`. Expected values are computed here in Python from site/data/timeline.json,
+(they do not skip): run `make setup`. Expected values are computed here in Python from site/timeline/data/timeline.json,
 independently of app.js.
 """
 import functools

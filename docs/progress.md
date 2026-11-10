@@ -1165,3 +1165,19 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - A fourth PROV-02 category? Accept the two dashboard test changes? Both are listed in HANDOFF.
+
+## 2026-11-10T14:46:28-05:00 — [P5] Follow-up: move timeline.json to site/timeline/data/, revert dashboard test exemptions
+
+**What changed**
+- Spec change Aayush asked for: PROV-01 now writes `site/timeline/data/timeline.json`. Updated the builder, schema title, Makefile help, page fetch path and footer link, the tests, and the lines-changed exclusions (adds site/timeline/data/).
+- Reverted tests/test_dash_data.py and tests/test_dash_ui.py to their pre-P5 versions (13994b7). site/data/ again holds only dashboard files, and the old site/data/timeline.json is deleted.
+
+**Tests**
+- `make report`, then `make test`: 571 passed, then `make report`.
+
+**Decisions**
+- HUMAN: keep three PROV-02 prompt categories.
+- HUMAN: timeline data lives in site/timeline/data/, so the dashboard tests need no exemptions.
+
+**Open questions**
+- None.

@@ -1,9 +1,9 @@
-// Contribution timeline (P5). Static: reads ../data/timeline.json (built by `make timeline`), no build step, no libraries.
+// Contribution timeline (P5). Static: reads data/timeline.json (built by `make timeline`), no build step, no libraries.
 // Every count on the page is computed from that file; nothing is typed in by hand.
 "use strict";
 
 window.__tl = { ready: false, errors: [] };
-const DATA_URL = "../data/timeline.json";
+const DATA_URL = "data/timeline.json";
 let D = null;
 let BY_ID = {};
 

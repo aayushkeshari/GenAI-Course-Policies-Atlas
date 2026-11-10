@@ -1,4 +1,4 @@
-"""PROV-01..06: build site/data/timeline.json from logs/events.jsonl, git log, docs/progress.md and docs/review-log.md.
+"""PROV-01..06: build site/timeline/data/timeline.json from logs/events.jsonl, git log, docs/progress.md and docs/review-log.md.
 
 Run with `make timeline`. Reads only; never writes logs/ or raw_logs/ (hooks own them).
 
@@ -24,7 +24,7 @@ import jsonschema
 from src.validation.redact import scrub
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "site" / "data" / "timeline.json"
+OUT = ROOT / "site" / "timeline" / "data" / "timeline.json"
 SCHEMA = Path(__file__).with_name("timeline.schema.json")
 NARRATIVE = "docs/timeline-narrative.md"
 
@@ -42,7 +42,7 @@ AUTOMATED_PREFIXES = (  # tags Claude Code wraps around machine-sent prompts (AG
 )
 
 # Files excluded from "lines changed": hook-owned logs and generated outputs (rebuilt by make targets).
-GENERATED_PREFIXES = ("logs/", "raw_logs/", "data/", "results/", "site/data/", "site/validation/data/")
+GENERATED_PREFIXES = ("logs/", "raw_logs/", "data/", "results/", "site/data/", "site/validation/data/", "site/timeline/data/")
 
 # REJECTED: tags were added to CLAUDE.md's logging rules at this time; earlier rejections were not recorded.
 REJECTED_RECORDED_SINCE = "2026-11-10T14:27:58-05:00"

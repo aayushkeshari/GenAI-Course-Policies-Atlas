@@ -1,7 +1,7 @@
 """PROV-01/02/04/05/06: the timeline data built by `make timeline` (src/provenance/build_timeline.py).
 
 Most tests build from a small fixture project (tests/provutil.py) so the expected values are known exactly;
-a few check the real, committed site/data/timeline.json.
+a few check the real, committed site/timeline/data/timeline.json.
 """
 import json
 import re
@@ -115,7 +115,7 @@ def test_lines_changed_skip_generated_paths(fx):
 
 @pytest.mark.req("PROV-01")
 def test_committed_timeline_matches_a_fresh_build():
-    """site/data/timeline.json is current with the repo, apart from history added since it was built: every
+    """site/timeline/data/timeline.json is current with the repo, apart from history added since it was built: every
     committed item appears unchanged in a fresh build, and the fresh build adds only items newer than the
     committed file's last item. So nothing published is stale or invented."""
     committed = json.loads(TIMELINE.read_text(encoding="utf-8"))

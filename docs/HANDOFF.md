@@ -7,11 +7,12 @@ Next task (exact, actionable):
   2. Answer the open questions below. Then Aayush writes the P5 review-log entry and sets .phase to P6:planning.
   3. P6: read specs/P6-tokens.md only and propose a plan.
 Files touched in P5: specs/P5-provenance.md (PROV-01/02/05 wording), CLAUDE.md (REJECTED: rule), Makefile (timeline),
-  src/provenance/{__init__,build_timeline}.py, src/provenance/timeline.schema.json, site/data/timeline.json, site/timeline/{index.html,style.css,app.js},
-  tests/{provutil,test_prov_data,test_prov_ui}.py, tests/test_dash_data.py + tests/test_dash_ui.py (exclude timeline.json by name), docs/{progress,HANDOFF}.md
+  src/provenance/{__init__,build_timeline}.py, src/provenance/timeline.schema.json, site/timeline/data/timeline.json, site/timeline/{index.html,style.css,app.js},
+  tests/{provutil,test_prov_data,test_prov_ui}.py, docs/{progress,HANDOFF}.md. (Dashboard tests untouched: timeline.json moved out of site/data/.)
 Test status (command + result): `make test`: 571 passed (2026-11-10T14:40). `make faults` was not rerun in P5 (no analysis code changed).
 Decisions (HUMAN/AGENT):
-  HUMAN: three prompt categories, human-typed ("Typed by me" prefix) / automated / shared. Actor is HUMAN | CLAUDE | shared.
+  HUMAN: keep three prompt categories (confirmed 2026-11-10). timeline.json lives in site/timeline/data/ (spec change); dashboard test exemptions reverted.
+  HUMAN: categories are human-typed ("Typed by me" prefix) / automated / shared. Actor is HUMAN | CLAUDE | shared.
   HUMAN: approvals = HUMAN decision tags in progress.md. Rejected plans = `- REJECTED:` bullets, "not recorded" before 2026-11-10. Narrative goes in docs/timeline-narrative.md.
   AGENT: spec edits in commits with neither agent:/human: prefix (the 3 early claude-chat: commits) are shared. Spec edits in agent: commits are HUMAN.
   AGENT: a commit's phase = phase named in its subject, else the last earlier hook event's .phase, else "unknown". Review entries are timed by the commit that added the heading.
@@ -23,8 +24,6 @@ Key facts for P6/P7:
   - After any code change: `make test && make report` twice so the explorer snapshot is all-green.
   - GitHub Pages is not enabled. P7 (PUB-02) deploys to https://aayushkeshari.github.io/genai-cs-policy/.
 Open questions for Aayush:
-  - PROV-02: your message said "four categories" but listed three. Three are implemented. Is a fourth intended (e.g. "drafted with Claude chat", and with what marker)? It's a one-line rule plus a spec line.
-  - Accept the two dashboard test changes? test_site_data_is_current and the DASH synthetic-flag check now skip site/data/timeline.json by name, since PROV-01 puts real history in site/data/.
   - Currently 0 prompts are human-typed: no logged prompt starts with "Typed by me", so all 43 are "shared".
   - Carried from P2: possible error in the committed P2 review-log entry (stance 0.76 vs macro-F1 0.741 / accuracy 0.761). Aayush chose to leave it.
 Gotchas for the next session:

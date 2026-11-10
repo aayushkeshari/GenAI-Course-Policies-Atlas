@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-TIMELINE = SITE / "data" / "timeline.json"
+TIMELINE = SITE / "timeline" / "data" / "timeline.json"
 
 S1, S2 = "aaaaaaaa-1111", "bbbbbbbb-2222"
 FAKE_HOME = "/Users/someone"  # fixture string: must be redacted, never published

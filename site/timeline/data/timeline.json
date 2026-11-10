@@ -1,7 +1,7 @@
 {
  "synthetic": false,
  "about": "The real development history of this project, which studies SYNTHETIC data. Prompts and responses come from Claude Code hooks and are redacted (home paths, emails, tokens and keys removed).",
- "head": "73ec9f81e2f99428457956bdb63f386c9a3d0f2a",
+ "head": "49b9b0a257036f0d75c390136ae237cced89ea7a",
  "phases": [
   "P0",
   "P1",
@@ -3167,7 +3167,7 @@
    "text": "1. PROV-02: four categories — human-typed (prompt starts with \"Typed by me\" / automated (subagent reports, scheduled tasks, cross-session messages) / shared if unclear. Update the spec to match. 2. Count HUMAN decision tags in progress.md as approvals. Show rejected plans as \"not recorded\" for history so far, and add a REJECTED: tag to CLAUDE.md's logging rules going forward. 3. Yes, update PROV-01 to HUMAN | CLAUDE | shared. 4. docs/timeline-narrative.md is fine. Approved. Set phase to P5:writing-code. While building, run only the tests for what you're changing; run the full suite before each commit. Commit after each step, keep going through step 4, push, then give me the timeline URL (make serve) and the per-actor counts.",
    "stage": "planning",
    "session": "748a356f",
-   "reply": null
+   "reply": "ev106"
   },
   {
    "id": "prog1103",
@@ -3230,12 +3230,65 @@
    "type": "progress",
    "summary": "Step 3: timeline page, Q&A view, contribution summary (PROV-03/04/05)",
    "source": "docs/progress.md:1131"
+  },
+  {
+   "id": "git-49b9b0a",
+   "ts": "2026-11-10T14:42:19-05:00",
+   "t": 1794339739000,
+   "actor": "CLAUDE",
+   "phase": "P5",
+   "type": "commit",
+   "summary": "agent: P5 step 4 — rebuild timeline and explorer data, HANDOFF; PROV-01..06 passing",
+   "source": "git 49b9b0a",
+   "sha": "49b9b0a257036f0d75c390136ae237cced89ea7a",
+   "files": 11,
+   "added": 42,
+   "removed": 37
+  },
+  {
+   "id": "prog1154",
+   "ts": "2026-11-10T14:42:19-05:00",
+   "t": 1794339739000,
+   "actor": "CLAUDE",
+   "phase": "P5",
+   "type": "progress",
+   "summary": "Step 4: rebuild, traceability check, HANDOFF, push",
+   "source": "docs/progress.md:1154"
+  },
+  {
+   "id": "ev106",
+   "ts": "2026-11-10T14:42:32.310-05:00",
+   "t": 1794339752310,
+   "actor": "CLAUDE",
+   "phase": "P5",
+   "type": "response",
+   "summary": "P5 is built and pushed: the timeline view, the prompts-and-responses view, and the contribution summary. The final full run passed all 571 tests, and the valid…",
+   "source": "logs/events.jsonl:106",
+   "text": "P5 is built and pushed: the timeline view, the prompts-and-responses view, and the contribution summary. The final full run passed all 571 tests, and the validation explorer now shows PROV-01 to PROV-06 as passing. There are four commits; the step 2 work (pairing prompts with responses, and the counts) went in with step 1.\n\n**Timeline URL:** run `make serve`, then open http://127.0.0.1:8000/timeline/\n\n**Per-actor counts** (from the committed `site/data/timeline.json`, built just before the last commit):\n\n| Measure | HUMAN | CLAUDE | shared |\n|---|---|---|---|\n| Prompts | 43 | — | — |\n| Responses | — | 47 | — |\n| Approvals (HUMAN decision tags) | 48 | — | — |\n| Rejected plans | 0 since 2026-11-10; earlier not recorded | — | — |\n| Spec edits (one per file per commit) | 18 | 0 | 8 |\n| Review-log entries | 5 | 0 | 0 |\n| Commits | 8 | 51 | 2 |\n| Lines added / removed | 530 / 34 | 17,280 / 464 | 27 / 5 |\n\n- **Prompt categories:** 0 human-typed, 0 automated, 43 shared. No logged prompt starts",
+   "stage": "writing-code",
+   "session": "748a356f",
+   "reply_to": "ev105"
+  },
+  {
+   "id": "ev107",
+   "ts": "2026-11-10T14:45:04.139-05:00",
+   "t": 1794339904139,
+   "actor": "HUMAN",
+   "phase": "P5",
+   "type": "prompt",
+   "summary": "1. Keep three categories.",
+   "source": "logs/events.jsonl:107",
+   "category": "shared",
+   "text": "\n\n<pasted_content id=\"f9ec\">\n1. Keep three categories.\n2. Make the spec change: move timeline.json to site/timeline/data/ and revert the two dashboard test exemptions.\n3. Noted on the narrative.\nRun the full suite once, commit, push. Then go straight into P6: amend TOK-05 to 1 run per condition (state the small sample in the report) and build TOK-01..04 and TOK-08 without stopping. Stop only when you need me to run the experiment, and tell me exactly what to do.\n</pasted_content id=\"f9ec\">\n",
+   "stage": "writing-code",
+   "session": "748a356f",
+   "reply": null
   }
  ],
  "summary": {
   "per_actor": {
    "HUMAN": {
-    "prompts": 43,
+    "prompts": 44,
     "responses": 0,
     "spec_edits": 18,
     "reviews": 5,
@@ -3247,12 +3300,12 @@
    },
    "CLAUDE": {
     "prompts": 0,
-    "responses": 47,
+    "responses": 48,
     "spec_edits": 0,
     "reviews": 0,
-    "commits": 51,
-    "lines_added": 17280,
-    "lines_removed": 464,
+    "commits": 52,
+    "lines_added": 17322,
+    "lines_removed": 501,
     "approvals": null,
     "rejected_plans": null
    },
@@ -3271,16 +3324,16 @@
   "prompt_categories": {
    "human-typed": 0,
    "automated": 0,
-   "shared": 43
+   "shared": 44
   },
   "agent_decisions": 78,
-  "qa_pairs": 41,
+  "qa_pairs": 42,
   "unanswered_prompts": 2,
   "rules": {
    "approvals": "Count of HUMAN decision tags in docs/progress.md.",
    "rejected_plans": "Count of bullets starting with REJECTED: in docs/progress.md. Rejections before 2026-11-10 were not recorded.",
    "rejected_recorded_since": "2026-11-10T14:27:58-05:00",
-   "lines_changed": "Lines added/removed by each actor's commits (agent: → CLAUDE, human: → HUMAN, other → shared), excluding generated or hook-owned paths: logs/, raw_logs/, data/, results/, site/data/, site/validation/data/",
+   "lines_changed": "Lines added/removed by each actor's commits (agent: → CLAUDE, human: → HUMAN, other → shared), excluding generated or hook-owned paths: logs/, raw_logs/, data/, results/, site/data/, site/validation/data/, site/timeline/data/",
    "human_typed_marker": "Typed by me",
    "automated_prefixes": [
     "<task-notification",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "site/data/timeline.json (PROV-01)",
+  "title": "site/timeline/data/timeline.json (PROV-01)",
   "type": "object",
   "required": ["synthetic", "about", "phases", "actors", "types", "categories", "items", "summary", "narrative"],
   "properties": {

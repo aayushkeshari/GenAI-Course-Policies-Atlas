@@ -187,3 +187,65 @@ def test_make_tokens_runs_the_builder():
     """`make tokens` runs src.tokens.build_tokens (no longer the P6 stub)."""
     out = subprocess.run(["make", "-n", "tokens"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
     assert "-m src.tokens.build_tokens" in out and "not implemented" not in out
+
+
+# ---------- subagents and TOK-05 run validity ----------
+@pytest.mark.req("TOK-02", "TOK-08")
+def test_subagent_transcripts_are_parsed_and_joined_to_the_parent_session(tmp_path):
+    """Rows from raw_logs/transcripts/subagents/<session>/agent-*.jsonl are included (sidechain = true) and take the
+    phase of the parent session's prompt, because subagent entries carry the parent's sessionId."""
+    from tokutil import asst
+    tdir, ev = make_fixture(tmp_path)
+    sub = tdir / "subagents" / S2
+    sub.mkdir(parents=True)
+    e = asst("2026-01-01T14:11:30Z", S2, "sub1", 9, 90, 900, 9000)
+    e["isSidechain"] = True
+    (sub / "agent-z.jsonl").write_text(json.dumps(e) + "\n")
+    d = K.build(transcripts=tdir, events_path=ev, out=None)
+    r = {x["message_id"]: x for x in d["rows"]}["sub1"]
+    assert r["sidechain"] is True and (r["phase"], r["join"], r["prompt_line"]) == ("P2", "prompt", 7)
+    assert d["sources"]["subagent_transcripts"] == 1 and d["metrics"]["totals"]["messages"] == 8
+
+
+def _ev(ts, event, session, payload):
+    return {"ts": ts, "event": event, "session_id": session, "phase": "P6:writing-code", "payload": payload}
+
+
+@pytest.mark.req("TOK-05")
+def test_runs_count_only_when_they_follow_the_protocol(tmp_path):
+    """A run counts for A only in a never-compacted session; for C only with a /compact after the previous prompt;
+    for B only in a session that started with /clear where nothing but slash commands came first. Runs typed
+    without the compact/clear are excluded with a reason, and their tokens are not labelled with the condition."""
+    evs = [
+        _ev("2026-01-01T10:00:00-05:00", "SessionStart", "L", {"source": "startup"}),
+        _ev("2026-01-01T10:01:00-05:00", "UserPromptSubmit", "L", {"prompt": "earlier work"}),
+        _ev("2026-01-01T10:02:00-05:00", "UserPromptSubmit", "L", {"prompt": "TOK-05 run A: task"}),       # valid A
+        _ev("2026-01-01T10:03:00-05:00", "UserPromptSubmit", "L", {"prompt": "TOK-05 run C: task"}),       # no compact
+        _ev("2026-01-01T10:04:00-05:00", "UserPromptSubmit", "L", {"prompt": "TOK-05 run B: task"}),       # no clear
+        _ev("2026-01-01T10:05:00-05:00", "PreCompact", "L", {"trigger": "manual"}),
+        _ev("2026-01-01T10:06:00-05:00", "UserPromptSubmit", "L", {"prompt": "Typed by me. TOK-05 run C: task"}),  # valid C
+        _ev("2026-01-01T10:07:00-05:00", "UserPromptSubmit", "L", {"prompt": "TOK-05 run A: again"}),      # compacted
+        _ev("2026-01-01T10:08:00-05:00", "SessionEnd", "L", {"reason": "clear"}),
+        _ev("2026-01-01T10:08:01-05:00", "SessionStart", "N", {"source": "clear"}),
+        _ev("2026-01-01T10:09:00-05:00", "UserPromptSubmit", "N", {"prompt": "/resume"}),
+        _ev("2026-01-01T10:10:00-05:00", "UserPromptSubmit", "N", {"prompt": "TOK-05 run B: task"}),       # valid B
+    ]
+    for i, e in enumerate(evs, 1):
+        e["line"], e["t"] = i, K.epoch_ms(e["ts"])
+    runs = K.experiment_runs(evs)
+    assert {k: (v["condition"], v["valid"]) for k, v in runs.items()} == {
+        3: ("A", True), 4: ("C", False), 5: ("B", False), 7: ("C", True), 8: ("A", False), 12: ("B", True)}
+    assert runs[4]["reason"] == "no /compact between the previous prompt and the run"
+    assert runs[5]["reason"] == "the session did not start with /clear"
+    assert runs[8]["reason"] == "the session was compacted earlier"
+
+
+@pytest.mark.req("TOK-05")
+def test_condition_status_distinguishes_missing_transcripts_from_missing_runs(fx):
+    """A condition with rows is 'measured'; with a valid run but no rows yet (its transcript not copied) it is
+    'awaiting transcript'; with no valid run it is 'not run'."""
+    c = fx["data"]["experiment"]["conditions"]
+    assert (c["B"]["status"], c["A"]["status"], c["C"]["status"]) == ("measured", "not run", "not run")
+    evs = K.read_events(fx["ev"])
+    d = K.experiment([], evs)
+    assert d["conditions"]["B"]["status"] == "awaiting transcript" and d["conditions"]["B"]["runs"] == 1

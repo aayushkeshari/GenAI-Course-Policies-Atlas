@@ -137,6 +137,38 @@ def copy_transcript(root, data):
         shutil.copyfile(src, dest_dir / f"{session}.jsonl")
     except Exception:
         log_error(root, f"could not copy transcript {src}\n{traceback.format_exc()}")
+    copy_subagents(root, Path(src).with_suffix("") / "subagents", session)
+
+
+def copy_subagents(root, sub_dir, session):
+    """INST-04 (amended): also copy the session's subagent transcripts (<transcript>/subagents/agent-*.jsonl and
+    their .meta.json) to raw_logs/transcripts/subagents/<session>/. Nothing is created when there are none."""
+    try:
+        files = sorted(f for f in Path(sub_dir).iterdir()
+                       if f.is_file() and (f.suffix == ".jsonl" or f.name.endswith(".meta.json"))) \
+            if Path(sub_dir).is_dir() else []
+        if not files:
+            return 0
+        dest = root / "raw_logs" / "transcripts" / "subagents" / session
+        dest.mkdir(parents=True, exist_ok=True)
+        for f in files:
+            shutil.copyfile(f, dest / re.sub(r"[^A-Za-z0-9_.-]", "_", f.name))
+        return len(files)
+    except Exception:
+        log_error(root, f"could not copy subagent transcripts from {sub_dir}\n{traceback.format_exc()}")
+        return 0
+
+
+def backfill_subagents(root):
+    """One-off: copy every subagent transcript of this project still on disk (Claude Code keeps them under
+    <config dir>/projects/<project path with non-alphanumerics as '-'>/<session>/subagents/)."""
+    config = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude")
+    proj = config / "projects" / re.sub(r"[^A-Za-z0-9]", "-", str(root))
+    total = 0
+    if proj.is_dir():
+        for sess in sorted(d for d in proj.iterdir() if d.is_dir()):
+            total += copy_subagents(root, sess / "subagents", re.sub(r"[^A-Za-z0-9_-]", "_", sess.name))
+    return total
 
 
 def main():
@@ -170,6 +202,9 @@ if __name__ == "__main__":
     # Belt and braces for INST-03: nothing this process does can reach stdout.
     sys.stdout = open(os.devnull, "w")
     try:
-        main()
+        if sys.argv[1:] == ["--backfill-subagents"]:  # run by hand, never by Claude Code's hook config
+            sys.stderr.write(f"copied {backfill_subagents(project_dir())} subagent files\n")
+        else:
+            main()
     finally:
         os._exit(0)

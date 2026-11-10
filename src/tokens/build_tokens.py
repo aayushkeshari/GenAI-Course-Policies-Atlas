@@ -26,6 +26,10 @@ ROOT = Path(__file__).resolve().parents[2]
 TRANSCRIPTS = ROOT / "raw_logs" / "transcripts"
 EVENTS = ROOT / "logs" / "events.jsonl"
 OUT = ROOT / "results" / "tokens.json"
+SITE_OUT = ROOT / "site" / "tokens" / "data" / "tokens.json"
+USAGE_LIMITS = ROOT / "docs" / "usage-limits.md"
+LEARNED = ROOT / "docs" / "tokens-learned.md"
+LIMIT_COLUMNS = ["when", "plan", "what", "phase", "notes"]
 SCHEMA = ROOT / "src" / "report" / "schemas" / "tokens.schema.json"
 
 FIELDS = {  # row key -> transcript usage key (TOK-01)
@@ -77,10 +81,15 @@ def parse_transcript(path: Path) -> list[dict]:
     return list(rows.values())
 
 
+def transcript_files(transcripts: Path) -> list[Path]:
+    """Session transcripts plus the subagent transcripts the hook copies to subagents/<session>/ (INST-04)."""
+    return sorted(transcripts.glob("*.jsonl")) + sorted(transcripts.glob("subagents/*/*.jsonl"))
+
+
 def parse_all(transcripts: Path) -> list[dict]:
     """All transcripts, deduplicated across files by message id (a resumed session can repeat earlier messages)."""
     seen, rows = set(), []
-    for path in sorted(transcripts.glob("*.jsonl")):
+    for path in transcript_files(transcripts):
         for r in parse_transcript(path):
             if r["message_id"] not in seen:
                 seen.add(r["message_id"])
@@ -100,6 +109,43 @@ def read_events(path: Path) -> list[dict]:
 
 
 # ---------- TOK-02: phase/activity join ----------
+def experiment_runs(events: list[dict]) -> dict[int, dict]:
+    """TOK-05: every prompt carrying the marker, keyed by its events.jsonl line, with whether it followed the
+    protocol. Slash commands (prompts starting with '/', e.g. /resume) don't count as conversation.
+      A: no PreCompact earlier in the session (a long session, never compacted or cleared since it started).
+      B: the session started with SessionStart source=clear and only slash commands came before the run.
+      C: a PreCompact in the same session after the session's previous non-slash prompt.
+    Runs that don't qualify are kept out of the comparison and listed with the reason; nothing is relabelled."""
+    runs = {}
+    by_session = defaultdict(list)
+    for e in sorted(events, key=lambda e: (e["t"], e["line"])):
+        by_session[e["session_id"]].append(e)
+    for sess in by_session.values():
+        for i, e in enumerate(sess):
+            if e["event"] != "UserPromptSubmit":
+                continue
+            m = EXPERIMENT.search(e["payload"].get("prompt", ""))
+            if not m:
+                continue
+            before = sess[:i]
+            talk = [x for x in before if x["event"] == "UserPromptSubmit" and not x["payload"].get("prompt", "").lstrip().startswith("/")]
+            compacts = [x for x in before if x["event"] == "PreCompact"]
+            cond = m.group(1)
+            if cond == "A":
+                ok, why = (not compacts), "the session was compacted earlier"
+            elif cond == "B":
+                started_clear = bool(before) and before[0]["event"] == "SessionStart" and (before[0]["payload"] or {}).get("source") == "clear"
+                ok = started_clear and not talk
+                why = "the session did not start with /clear" if not started_clear else "other prompts came between /clear and the run"
+            else:
+                last_talk = talk[-1]["t"] if talk else None
+                ok = any(last_talk is None or c["t"] > last_talk for c in compacts)
+                why = "no /compact between the previous prompt and the run"
+            runs[e["line"]] = {"condition": cond, "event_line": e["line"], "ts": e["ts"], "valid": ok,
+                               "reason": None if ok else why}
+    return runs
+
+
 def join_phase(rows: list[dict], events: list[dict]) -> None:
     """Each row takes phase/activity from the nearest preceding UserPromptSubmit in its own session
     (join = "prompt"). Rows before a session's first logged prompt (work done before the hooks were installed)
@@ -113,6 +159,7 @@ def join_phase(rows: list[dict], events: list[dict]) -> None:
     for e in sorted(events, key=lambda e: e["t"]):
         first_event.setdefault(e["session_id"], e)
     all_t = [p["t"] for p in prompts]
+    runs = experiment_runs(events)
     for r in rows:
         ps = by_session.get(r["session_id"], [])
         i = bisect_right([p["t"] for p in ps], r["t"])
@@ -126,8 +173,8 @@ def join_phase(rows: list[dict], events: list[dict]) -> None:
         r["phase"], r["activity"] = split_phase(src["phase"]) if src else ("unknown", "unknown")
         r["join"] = how
         r["prompt_line"] = src["line"] if src and src["event"] == "UserPromptSubmit" else None
-        m = EXPERIMENT.search(src["payload"].get("prompt", "")) if how == "prompt" else None
-        r["experiment"] = m.group(1) if m else None
+        run = runs.get(r["prompt_line"]) if how == "prompt" else None
+        r["experiment"] = run["condition"] if run and run["valid"] else None
         r["context"] = r["input"] + r["cache_creation"] + r["cache_read"]
 
 
@@ -206,16 +253,22 @@ def prompt_stats(pp: list[dict]) -> dict:
     return {"all": stats(pp), "by_phase": {k: stats(v) for k, v in sorted(by_phase.items())}}
 
 
-def experiment(rows: list[dict]) -> dict:
-    """TOK-05: rows answering prompts that contain the marker 'TOK-05 run A|B|C'. n = 1 per condition."""
+def experiment(rows: list[dict], events: list[dict]) -> dict:
+    """TOK-05: rows answering valid marker prompts ('TOK-05 run A|B|C'), per condition. n = 1 per condition.
+    status: 'measured' (rows found), 'awaiting transcript' (valid run logged, but its transcript isn't in
+    raw_logs/ yet: the hook copies at PreCompact/SessionEnd), or 'not run' (no valid run logged)."""
+    runs = experiment_runs(events)
     out = {}
     for c, label in CONDITIONS.items():
         rs = [r for r in rows if r["experiment"] == c]
+        valid = [x for x in runs.values() if x["condition"] == c and x["valid"]]
         t = tally(rs)
-        out[c] = {"label": label, "runs": len({r["prompt_line"] for r in rs}), **t,
+        out[c] = {"label": label, "runs": len(valid), **t,
+                  "status": "measured" if rs else "awaiting transcript" if valid else "not run",
                   "first_context": rs[0]["context"] if rs else None,
                   "peak_context": max((r["context"] for r in rs), default=None)}
     return {"conditions": out, "marker": EXPERIMENT.pattern,
+            "excluded": [x for x in runs.values() if not x["valid"]],
             "caveat": "One run per condition (n = 1). Differences are anecdotal, not evidence: task wording, "
                       "Claude's choices and cache timing alone can move these numbers."}
 
@@ -243,10 +296,11 @@ def build(transcripts: Path = TRANSCRIPTS, events_path: Path = EVENTS, out: Path
             "join_counts": {k: sum(1 for r in rows if r["join"] == k) for k in ("prompt", "session-start", "any-session", "none")},
             "activities_logged": sorted({r["activity"] for r in rows}),
         },
-        "experiment": experiment(rows),
-        "sources": {"transcripts": len(list(transcripts.glob("*.jsonl"))), "events": len(events),
-                    "not_covered": "Subagent transcripts are stored outside raw_logs/ and are not copied by the hook, "
-                                   "so subagent tokens are not counted."},
+        "experiment": experiment(rows, events),
+        "sources": {"transcripts": len(list(transcripts.glob("*.jsonl"))),
+                    "subagent_transcripts": len(list(transcripts.glob("subagents/*/*.jsonl"))), "events": len(events),
+                    "not_covered": "A session's tokens appear only after the hook copies its transcript (at /compact "
+                                   "or when the session ends), so the current session is usually missing."},
     }
     jsonschema.validate(data, json.loads(SCHEMA.read_text(encoding="utf-8")))
     if out is not None:
@@ -255,7 +309,44 @@ def build(transcripts: Path = TRANSCRIPTS, events_path: Path = EVENTS, out: Path
     return data
 
 
+# ---------- TOK-06/07: page bundle ----------
+def read_usage_limits(path: Path) -> list[dict]:
+    """Rows of the hand-kept table in docs/usage-limits.md (header and separator skipped; blank rows ignored)."""
+    if not path.exists():
+        return []
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip().startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if cells[0].lower() == "when" or set("".join(cells)) <= set("-: "):
+            continue
+        cells = (cells + [""] * len(LIMIT_COLUMNS))[:len(LIMIT_COLUMNS)]
+        if any(cells):
+            out.append(dict(zip(LIMIT_COLUMNS, cells)))
+    return out
+
+
+def site_bundle(data: dict, usage_limits: Path = USAGE_LIMITS, learned: Path = LEARNED) -> dict:
+    """What site/tokens/ loads: the metrics plus slim rows (no message ids), the usage-limit log and Aayush's
+    'what I learned' text, all passed through the site redaction."""
+    from src.validation.redact import scrub
+    keep = ["t", "ts", "session_id", "model", "sidechain", *COUNTS, "context", "phase", "activity", "join", "experiment"]
+    rows = [{k: (r[k][:8] if k == "session_id" else r[k]) for k in keep} for r in data["rows"]]
+    limits = [{k: scrub(v) for k, v in row.items()} for row in read_usage_limits(usage_limits)]
+    return {
+        "synthetic": False, "about": data["about"], "fields": data["fields"], "rows": rows,
+        "boundaries": [{**b, "session_id": b["session_id"][:8]} for b in data["boundaries"]],
+        "metrics": data["metrics"], "experiment": data["experiment"], "sources": data["sources"],
+        "usage_limits": limits,
+        "learned": scrub(learned.read_text(encoding="utf-8")) if learned.exists() else None,
+    }
+
+
 if __name__ == "__main__":
     d = build()
+    SITE_OUT.parent.mkdir(parents=True, exist_ok=True)
+    SITE_OUT.write_text(json.dumps(site_bundle(d), ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     t = d["metrics"]["totals"]
-    print(f"tokens: {t['messages']} assistant messages, {t['total']:,} tokens -> {OUT.relative_to(ROOT)}")
+    print(f"tokens: {t['messages']} assistant messages, {t['total']:,} tokens -> {OUT.relative_to(ROOT)}, "
+          f"{SITE_OUT.relative_to(ROOT)}")

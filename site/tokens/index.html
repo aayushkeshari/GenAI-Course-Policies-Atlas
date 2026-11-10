@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Usage</title>
+<meta name="description" content="How many tokens Claude Code used to build the synthetic-data GenAI policy study, by phase, prompt and context size.">
+<link rel="stylesheet" href="../dashboard/style.css">
+<link rel="stylesheet" href="style.css">
+<script>
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Token usage</h1>
+    <div class="top-actions">
+      <a href="../dashboard/" class="btn">Findings dashboard</a>
+      <a href="../timeline/" class="btn">Timeline</a>
+      <button id="theme-toggle" class="btn" type="button" aria-label="Color theme: follow system">Theme: auto</button>
+    </div>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — the study is illustrative only.</strong>
+    Its institutions, courses and statements are invented. This page is different: it shows the <em>real</em> token usage of
+    the Claude Code sessions that built the project, read from their transcripts.</p>
+</header>
+
+<main id="main">
+  <p id="load-error" class="error" role="alert" hidden></p>
+  <p id="run-line" class="fine"></p>
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <section class="panel" id="p-phase" aria-labelledby="h-phase">
+      <h2 id="h-phase">Tokens by phase</h2>
+      <p class="takeaway" id="t-phase"></p>
+      <div class="chart-svg" id="c-phase"></div>
+      <div class="panel-foot"><button class="btn tbl-toggle" type="button" aria-expanded="false" aria-controls="tbl-phase">Show table</button>
+        <a href="data/tokens.json">Data: tokens.json (metrics.by_phase)</a></div>
+      <div class="table-wrap" id="tbl-phase" hidden></div>
+    </section>
+    <section class="panel" id="p-activity" aria-labelledby="h-activity">
+      <h2 id="h-activity">Tokens by activity</h2>
+      <p class="takeaway" id="t-activity"></p>
+      <div class="chart-svg" id="c-activity"></div>
+      <p class="panel-note" id="n-activity"></p>
+      <div class="panel-foot"><button class="btn tbl-toggle" type="button" aria-expanded="false" aria-controls="tbl-activity">Show table</button>
+        <a href="data/tokens.json">Data: tokens.json (metrics.by_activity)</a></div>
+      <div class="table-wrap" id="tbl-activity" hidden></div>
+    </section>
+  </div>
+
+  <section class="panel wide" id="p-context" aria-labelledby="h-context">
+    <h2 id="h-context">Context size per message</h2>
+    <p class="takeaway" id="t-context"></p>
+    <div class="legend" id="l-context"></div>
+    <div class="chart-svg" id="c-context"></div>
+    <p class="panel-note">Context = uncached input + cache creation + cache read for each main-session message, in time order
+      (subagents have their own context and are left out). Vertical lines mark <code>/clear</code> and <code>/compact</code>.</p>
+    <div class="panel-foot"><button class="btn tbl-toggle" type="button" aria-expanded="false" aria-controls="tbl-context">Show drops at each boundary</button>
+      <a href="data/tokens.json">Data: tokens.json (rows, boundaries)</a></div>
+    <div class="table-wrap" id="tbl-context" hidden></div>
+  </section>
+
+  <section class="panel wide" id="p-prompt" aria-labelledby="h-prompt">
+    <h2 id="h-prompt">Tokens per prompt</h2>
+    <p class="takeaway" id="t-prompt"></p>
+    <div class="chart-svg" id="c-prompt"></div>
+    <p class="panel-note">Each bar is one logged prompt, in time order: the tokens of every assistant message until the session's next prompt.</p>
+    <div class="panel-foot"><button class="btn tbl-toggle" type="button" aria-expanded="false" aria-controls="tbl-prompt">Show table</button>
+      <a href="data/tokens.json">Data: tokens.json (metrics.per_prompt)</a></div>
+    <div class="table-wrap" id="tbl-prompt" hidden></div>
+  </section>
+
+  <section class="panel wide" id="p-exp" aria-labelledby="h-exp">
+    <h2 id="h-exp">Experiment: the same small task after no clear, /clear, or /compact</h2>
+    <p class="caveat" id="exp-caveat" role="note"></p>
+    <div class="table-wrap"><table id="exp-table"></table></div>
+    <div class="chart-svg" id="c-exp"></div>
+    <div id="exp-excluded"></div>
+  </section>
+
+  <div class="grid">
+    <section class="panel" id="p-limits" aria-labelledby="h-limits">
+      <h2 id="h-limits">Usage-limit events (Pro plan)</h2>
+      <div id="limits"></div>
+      <p class="panel-note">Logged by hand in <code>docs/usage-limits.md</code>.</p>
+    </section>
+    <section class="panel" id="p-learned" aria-labelledby="h-learned">
+      <h2 id="h-learned">What I learned</h2>
+      <div id="learned"></div>
+    </section>
+  </div>
+</main>
+<div id="tip" class="tip" role="status" hidden></div>
+<footer class="foot">
+  Built by <code>make tokens</code> from <code>raw_logs/transcripts/</code> (copied by the hook at /compact and session end)
+  and <code>logs/events.jsonl</code>. Data: <a href="data/tokens.json">tokens.json</a>.
+</footer>
+</body>
+</html>

@@ -1233,3 +1233,41 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Copy subagent transcripts in the hook (INST-04)?
+
+## 2026-11-10T15:05:56-05:00 — [P6] INST-04 subagent copies + backfill; TOK-06/07 page; experiment status (A only)
+
+**What changed**
+- The experiment has not been completed. Aayush said "experiment done", but logs/events.jsonl shows no `PreCompact` and no new session after run A (line 109). Lines 111 (run C) and 113 (run B) were sent in the same session without the compact or clear. This session's transcript also isn't in raw_logs/ yet, because the hook copies at PreCompact/SessionEnd, so even run A's tokens can't be measured. No comparison was written, because there is no data for one.
+- INST-04 change (approved by Aayush): the hook now also copies `<session>/subagents/*.jsonl` and `*.meta.json` to raw_logs/transcripts/subagents/<session>/. `log_event.py --backfill-subagents` copies any still on disk, and it found and copied 1 subagent transcript plus its meta file. specs/P0-instrumentation.md is updated.
+- Token parser: reads subagent transcripts too (4 more messages; they join to the parent session's prompts because subagent entries carry the parent's sessionId).
+- TOK-05 run validity rule:
+  - A counts only in a never-compacted session.
+  - B counts only in a session that started with /clear, with only slash commands before the run.
+  - C counts only with a /compact after the session's previous non-slash prompt.
+  - Invalid runs are excluded with a reason. Lines 111 and 113 are excluded this way, so there is no hand-made exclusion list.
+  - Each condition's status is "measured", "awaiting transcript" or "not run".
+- TOK-06: new docs/usage-limits.md (an empty table for Aayush to fill). `make tokens` parses it into the page data.
+- TOK-07: new site/tokens/ (index.html, style.css, app.js) with inline SVG and no libraries:
+  - KPI tiles
+  - tokens by phase and by activity
+  - context size per message, with /clear (dashed) and /compact (dotted) lines, which show the sawtooth
+  - tokens per prompt
+  - the experiment table with the n = 1 caveat and the excluded runs
+  - usage-limit events
+  - "What I learned" (docs/tokens-learned.md, with a placeholder until written)
+  - Every chart has a takeaway, hover/focus tooltips, a table toggle and a data link.
+- `make tokens` now also writes site/tokens/data/tokens.json (slim rows, no message ids).
+- Tests: two new INST-04 tests in tests/test_log_event.py, three in tests/test_tok_data.py (subagents, run validity, status), and the new tests/test_tok_ui.py (12 tests for TOK-03..07).
+
+**Tests**
+- tests/test_tok_ui.py, test_tok_data.py, test_prov_data.py: 67 passed. tests/test_log_event.py and test_tok_data.py: 56 passed.
+- `make test` result is in the next commit message.
+
+**Decisions**
+- HUMAN: copy subagent transcripts (INST-04) and backfill them.
+- AGENT: experiment runs are validated by the protocol rule above, not by excluding line numbers by hand.
+- AGENT: the context chart leaves out subagent messages, because they have their own context.
+- AGENT: the page charts are hand-written SVG with a single series each, so there is no categorical palette to validate. Boundary kinds are told apart by dash pattern and a text label, not colour.
+
+**Open questions**
+- Runs B and C still need doing, and run A's tokens need its session transcript copied. See HANDOFF.

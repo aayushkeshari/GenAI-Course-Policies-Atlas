@@ -255,3 +255,39 @@ def test_missing_transcript_on_copy_logs_error_but_keeps_event(project, tmp_path
                                 reason="logout")))
     assert events(project)[0]["payload"] == {"reason": "logout"}
     assert "could not copy transcript" in errors(project)
+
+
+@pytest.mark.req("INST-04")
+def test_subagent_transcripts_are_copied_with_the_session(project, tmp_path):
+    """INST-04 (amended): the session's subagent transcripts (<transcript>/subagents/*.jsonl and *.meta.json) are
+    copied verbatim to raw_logs/transcripts/subagents/<session_id>/ next to the session copy; other files are not."""
+    t = write_transcript(tmp_path / "t.jsonl", [{"n": 1}])
+    sub = tmp_path / "t" / "subagents"
+    sub.mkdir(parents=True)
+    write_transcript(sub / "agent-x.jsonl", [{"type": "assistant", "isSidechain": True}])
+    (sub / "agent-x.meta.json").write_text('{"agentType": "web-fetch"}')
+    (sub / "notes.txt").write_text("not a transcript")
+    ok(run_hook(project, sample("SessionEnd", transcript_path=str(t), reason="clear")))
+    dest = project / "raw_logs" / "transcripts" / "subagents" / "sess-1"
+    assert sorted(f.name for f in dest.iterdir()) == ["agent-x.jsonl", "agent-x.meta.json"]
+    assert (dest / "agent-x.jsonl").read_bytes() == (sub / "agent-x.jsonl").read_bytes()
+
+
+@pytest.mark.req("INST-04")
+def test_backfill_copies_subagent_transcripts_still_on_disk(project, tmp_path):
+    """`log_event.py --backfill-subagents` finds this project's folder under the Claude config dir (project path with
+    non-alphanumerics as '-'), copies every session's subagent transcripts, prints nothing to stdout, and exits 0."""
+    import os
+    import subprocess
+    import sys
+    from hookutil import HOOK
+    import re
+    config = tmp_path / "cfg"
+    sub = config / "projects" / re.sub(r"[^A-Za-z0-9]", "-", str(project)) / "sess-9" / "subagents"
+    sub.mkdir(parents=True)
+    write_transcript(sub / "agent-y.jsonl", [{"n": 1}])
+    env = {**os.environ, "CLAUDE_PROJECT_DIR": str(project), "CLAUDE_CONFIG_DIR": str(config)}
+    proc = subprocess.run([sys.executable, str(HOOK), "--backfill-subagents"], capture_output=True, text=True, env=env, timeout=30)
+    assert proc.returncode == 0 and proc.stdout == "" and "copied 1 subagent files" in proc.stderr
+    assert (project / "raw_logs" / "transcripts" / "subagents" / "sess-9" / "agent-y.jsonl").exists()
+    assert not (project / "logs").exists()  # backfill writes no events

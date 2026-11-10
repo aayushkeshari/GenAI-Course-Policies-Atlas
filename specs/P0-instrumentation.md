@@ -14,7 +14,9 @@ Purpose: from the first real task onward, capture everything P5 (provenance) and
 - **INST-03** The hook never blocks Claude Code. It always exits 0, writes nothing to stdout on
   UserPromptSubmit (stdout there is injected into context), and logs its own errors to `logs/hook_errors.log`.
 - **INST-04** On SessionEnd and PreCompact, copy the session transcript to `raw_logs/transcripts/`
-  (gitignored) so token data survives local cleanup of transcripts.
+  (gitignored) so token data survives local cleanup of transcripts. Also copy that session's subagent
+  transcripts (`<session>/subagents/*.jsonl` and `*.meta.json` next to the transcript) to
+  `raw_logs/transcripts/subagents/<session_id>/`. `log_event.py --backfill-subagents` copies any still on disk.
 - **INST-05** Before writing the hook, check the current Claude Code hooks docs for exact field names
   and record what you confirmed in docs/progress.md.
 - **INST-06** Makefile targets (stubs are fine for now): `data analysis test report tokens timeline site serve clean`.

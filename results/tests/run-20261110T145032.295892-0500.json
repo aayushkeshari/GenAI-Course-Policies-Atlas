@@ -1,0 +1,644 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T14:50:32.295-05:00",
+ "finished": "2026-11-10T14:50:32.776-05:00",
+ "duration_s": 0.48,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "4fa868436dbeda8ff8b8bd200db9c4424d63f8d6",
+ "git_dirty": true,
+ "current_phase": "P6:writing-code",
+ "args": [
+  "tests/test_tok_data.py",
+  "tests/test_anl_schemas.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 44
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_tok_data.py::test_field_names_were_recorded_from_a_real_transcript",
+   "req_ids": [
+    "TOK-01"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 30,
+   "body_sha256": "fcd47bca81792959de33753346d85f0181452401a3b171622487a82539bce49c",
+   "status": "passed",
+   "duration_s": 0.000187,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_parser_gives_one_row_per_assistant_message",
+   "req_ids": [
+    "TOK-02",
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 43,
+   "body_sha256": "de35188846c27536a0194e7772657069ff9bd8f7bcb72ca320a45a2c19534ec2",
+   "status": "passed",
+   "duration_s": 0.008835,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_repeated_message_with_different_usage_is_an_error",
+   "req_ids": [
+    "TOK-02",
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 56,
+   "body_sha256": "8d40f35879b5869f91440073cc071997438a8edeb45798e46df6a697a1d930b5",
+   "status": "passed",
+   "duration_s": 0.000438,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_phase_join_uses_the_nearest_earlier_prompt_in_the_same_session",
+   "req_ids": [
+    "TOK-02",
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 68,
+   "body_sha256": "361a0ee6c2d36c5b108e9d55ec06433fcd7986bbb10c215e250b5da4f3a52011",
+   "status": "passed",
+   "duration_s": 8.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_phase_join_fallbacks_are_flagged_never_blank",
+   "req_ids": [
+    "TOK-02",
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 80,
+   "body_sha256": "b7287ba9059aca04a69a75ed01f536d59a7df8eeff0b5544a713e2ef0ac3b330",
+   "status": "passed",
+   "duration_s": 8.4e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_clear_and_compact_boundaries_are_marked",
+   "req_ids": [
+    "TOK-03"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 92,
+   "body_sha256": "048fb1ff7687ccaf760c6af1f68657d8d46b569acbd335d60cc98544183f6361",
+   "status": "passed",
+   "duration_s": 8.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_totals_by_phase_and_activity",
+   "req_ids": [
+    "TOK-04"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 105,
+   "body_sha256": "8d6239673b2b8ae10ffac3e214cbd02e90a53b4cfbce512abe97fb91b854d167",
+   "status": "passed",
+   "duration_s": 9.1e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_tokens_per_prompt_and_cache_share",
+   "req_ids": [
+    "TOK-04"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 116,
+   "body_sha256": "5337362966949b371727b8f1e483b1ab2d1be5c7711846958edcf85cd8003532",
+   "status": "passed",
+   "duration_s": 9.3e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_experiment_rows_are_found_by_marker",
+   "req_ids": [
+    "TOK-05"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 127,
+   "body_sha256": "c4f02c8542a72fe60a7128f498db520968f3f842fd8aafbbf05fa37834c8c14d",
+   "status": "passed",
+   "duration_s": 7.5e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_spec_says_one_run_per_condition_and_a_small_sample",
+   "req_ids": [
+    "TOK-05"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 138,
+   "body_sha256": "153c9908846cef98684c42c992e7171521efb2750746fd77fe80d87b0020132b",
+   "status": "passed",
+   "duration_s": 9.2e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_real_totals_equal_the_sum_of_rows",
+   "req_ids": [
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 147,
+   "body_sha256": "78f4b0c6499ccbd801657304362521b40e806f51ea554c74aa8a7b16988dd620",
+   "status": "passed",
+   "duration_s": 0.000768,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_real_phase_join_has_no_gaps",
+   "req_ids": [
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 161,
+   "body_sha256": "65f7223d52d6acf22645dc5978d93013b83550ed513d7e1c4b84a0181f4adb63",
+   "status": "passed",
+   "duration_s": 0.000766,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_real_results_hold_no_text_or_paths",
+   "req_ids": [
+    "TOK-08"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 176,
+   "body_sha256": "161b410e90785ed93ee2428512ff9fe502c3a4998517af30a2fe9a68d9fd3968",
+   "status": "passed",
+   "duration_s": 0.000481,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_data.py::test_make_tokens_runs_the_builder",
+   "req_ids": [
+    "TOK-02"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_data.py",
+   "line": 185,
+   "body_sha256": "da11d82a9d7cadd19dd2c391a0dd793552573f9312ab039b00b81242976a98e4",
+   "status": "passed",
+   "duration_s": 0.01065,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_every_results_file_has_a_schema_and_vice_versa",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 22,
+   "body_sha256": "175d026698da809698e2cfeb4c37d9d36f72756c6a6a136404cae0c50cb0e172",
+   "status": "passed",
+   "duration_s": 0.00024,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.004257,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005539,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.00364,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.002724,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.010549,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.0389,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.009707,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005008,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.002409,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.006729,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005541,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.006046,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.001511,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[tokens]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.027183,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001804,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.002921,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.0007,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000368,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000732,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.002321,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.011039,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001454,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000301,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000978,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001334,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.006858,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000297,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[tokens]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.049139,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_malformed_values",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 52,
+   "body_sha256": "a9d6ac31513f725836191c812919e68ae79f0c70aaab0d5b9aa1561b46bc9150",
+   "status": "passed",
+   "duration_s": 0.00263,
+   "failure_message": ""
+  }
+ ]
+}

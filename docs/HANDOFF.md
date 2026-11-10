@@ -1,36 +1,40 @@
 # HANDOFF — overwritten at each /prep-clear
-Updated: 2026-11-10T14:41:00-05:00
-Current phase: P5 (contribution timeline) is implemented. PROV-01..06 are all passing in the explorer's traceability view, and everything is pushed. .phase is "P5:writing-code" (only Aayush changes it).
-Last completed task: P5 step 4. Rebuilt the timeline and explorer data, ran the full suite, pushed.
-Next task (exact, actionable):
-  1. Aayush reviews P5: page at http://127.0.0.1:8000/timeline/ after `make serve`. He may add docs/timeline-narrative.md, then `make timeline`.
-  2. Answer the open questions below. Then Aayush writes the P5 review-log entry and sets .phase to P6:planning.
-  3. P6: read specs/P6-tokens.md only and propose a plan.
-Files touched in P5: specs/P5-provenance.md (PROV-01/02/05 wording), CLAUDE.md (REJECTED: rule), Makefile (timeline),
-  src/provenance/{__init__,build_timeline}.py, src/provenance/timeline.schema.json, site/timeline/data/timeline.json, site/timeline/{index.html,style.css,app.js},
-  tests/{provutil,test_prov_data,test_prov_ui}.py, docs/{progress,HANDOFF}.md. (Dashboard tests untouched: timeline.json moved out of site/data/.)
-Test status (command + result): `make test`: 571 passed (2026-11-10T14:40). `make faults` was not rerun in P5 (no analysis code changed).
+Updated: 2026-11-10T15:05:00-05:00
+Current phase: P6 (token usage). TOK-01..04 and TOK-08 are built, and TOK-05 is amended to 1 run per condition and its analysis is built. P5 is done and pushed. .phase is "P6:writing-code".
+Last completed task: `make tokens` gives results/tokens.json (393 messages, 61.7M tokens, phase join without gaps). 587 tests pass. Pushed.
+NOW: Aayush is running the TOK-05 experiment (protocol below). If a prompt contains "TOK-05 run A", "TOK-05 run B" or "TOK-05 run C",
+  do exactly the task it states, in scratch/tok05/<X>/ only. Ask no questions and do no other work. scratch/ is gitignored.
+Next task, after the experiment (Aayush will say "experiment done"):
+  1. Check that raw_logs/transcripts/ has the B session (copied at its SessionEnd), then `make tokens`.
+  2. Check experiment.conditions A, B and C in results/tokens.json each have runs = 1 and messages > 0. If one is empty, report it and don't guess.
+  3. Add the comparison to the progress log, then plan TOK-06 (docs/usage-limits.md) and TOK-07 (site/tokens/ page with charts plus Aayush's "what I learned").
+     Load the dataviz skill before the charts. The page must state that n = 1 per condition and the comparison is anecdotal.
+TOK-05 protocol (the same task text in every run; only the letter changes):
+  A: in the current long session (no clear), send the task prompt with "TOK-05 run A".
+  C: type /compact, then send the task prompt with "TOK-05 run C".
+  B: type /clear, then /resume, then send the task prompt with "TOK-05 run B".
+  End: type /clear (this copies B's transcript), then /resume and say "experiment done".
+Files touched in P6: specs/P6-tokens.md (TOK-05), Makefile (tokens), src/tokens/{__init__,build_tokens}.py, src/report/schemas/tokens.schema.json,
+  results/tokens.json, tests/{tokutil,test_tok_data}.py, .gitignore (scratch/), docs/{progress,HANDOFF}.md
+Test status (command + result): `make test`: 587 passed (2026-11-10T15:0x). TOK-06/07 have no tests yet, so they show red in the explorer.
 Decisions (HUMAN/AGENT):
-  HUMAN: keep three prompt categories (confirmed 2026-11-10). timeline.json lives in site/timeline/data/ (spec change); dashboard test exemptions reverted.
-  HUMAN: categories are human-typed ("Typed by me" prefix) / automated / shared. Actor is HUMAN | CLAUDE | shared.
-  HUMAN: approvals = HUMAN decision tags in progress.md. Rejected plans = `- REJECTED:` bullets, "not recorded" before 2026-11-10. Narrative goes in docs/timeline-narrative.md.
-  AGENT: spec edits in commits with neither agent:/human: prefix (the 3 early claude-chat: commits) are shared. Spec edits in agent: commits are HUMAN.
-  AGENT: a commit's phase = phase named in its subject, else the last earlier hook event's .phase, else "unknown". Review entries are timed by the commit that added the heading.
-  AGENT: lines changed exclude logs/, raw_logs/, data/, results/, site/data/, site/validation/data/.
-  AGENT: make timeline is NOT part of make report (events.jsonl grows every prompt). P7's make site should call it.
-Key facts for P6/P7:
-  - timeline.json is real project history: "synthetic": false, with the banner saying so. The schema is in src/provenance/ (src/report/schemas/ is 1:1 with results/*.json per ANL-09).
-  - test_committed_timeline_matches_a_fresh_build allows newer items in a fresh build, but every committed item must be unchanged. If you change the builder, run `make timeline` before committing.
+  HUMAN: TOK-05 = 1 run per condition, with the small sample stated. P5 keeps three prompt categories. timeline.json lives in site/timeline/data/.
+  AGENT: a row = one unique message.id (entries repeat per content block: 896 entries, 393 ids). <synthetic> placeholders are skipped.
+  AGENT: join = nearest earlier prompt in the same session. Rows before a session's first logged prompt take the session's first event's phase ("session-start", 36 rows, pre-hook P0).
+    A session the hooks never saw uses the nearest prompt in any session ("any-session", none so far).
+  AGENT: experiment rows = rows joined to any prompt containing "TOK-05 run X". Follow-ups for the same run should repeat the marker.
+  AGENT: activity = the .phase suffix as logged. Only "planning" and "writing-code" have ever been logged. data/analysis/validation/docs appear only if .phase uses them.
+Key facts:
+  - raw_logs/ is gitignored, so token tests check the committed results/tokens.json. Fixture tests cover the parser.
+  - The hook copies transcripts only at PreCompact and SessionEnd. The current session is not in raw_logs until one of those fires.
+  - Subagent transcripts are not copied by the hook (1 so far, ~122k tokens). Open question for Aayush: change INST-04?
   - After any code change: `make test && make report` twice so the explorer snapshot is all-green.
   - GitHub Pages is not enabled. P7 (PUB-02) deploys to https://aayushkeshari.github.io/genai-cs-policy/.
 Open questions for Aayush:
-  - Currently 0 prompts are human-typed: no logged prompt starts with "Typed by me", so all 43 are "shared".
-  - Carried from P2: possible error in the committed P2 review-log entry (stance 0.76 vs macro-F1 0.741 / accuracy 0.761). Aayush chose to leave it.
+  - Copy subagent transcripts in the hook (INST-04 change)?
+  - Possible error in the committed P2 review-log entry (stance 0.76 vs macro-F1 0.741 / accuracy 0.761). Aayush chose to leave it.
 Gotchas for the next session:
-  - The project path has spaces, so quote paths. Use .venv/bin/python (3.11). pytest has pythonpath = . (import src.*).
-  - `make test` takes ~40 s including the UI tests, which need the network for the explorer's CDN libraries. `make faults` takes ~2.5 min.
-  - While building, run only the tests you're changing; run the full suite before each commit (Aayush's instruction).
-  - Do NOT edit src/analysis/code_text.py or docs/codebook.md: the rules are frozen (SHA-256 test).
-  - src/analysis/ and both src/report builders must never mention ground_truth or import src.evaluation (tested).
+  - The project path has spaces, so quote paths. Use .venv/bin/python (3.11). pytest has pythonpath = .
+  - Never `git reset --hard` or `git checkout .`: it would roll back logs/events.jsonl, which the hooks own.
   - When writing progress.md prose, put tag words in backticks (`HUMAN:`, `REJECTED:`) or they count as tags.
-  - tests/conftest.py must contain only the plugin. Never edit logs/ or raw_logs/; hooks own them.
+  - Do NOT edit src/analysis/code_text.py or docs/codebook.md (frozen, SHA-256 test). tests/conftest.py must contain only the plugin.

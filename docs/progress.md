@@ -1181,3 +1181,55 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None.
+
+## 2026-11-10T14:50:32-05:00 — [P6] TOK-01: usage fields in a real transcript
+
+**What changed**
+- Inspected raw_logs/transcripts/42568c50-bbe7-43a3-ac5d-9fa11089fcfa.jsonl (343 lines, Claude Code 2.1.319), then checked all 7 transcripts.
+- Entry types: `assistant`, `user`, `api-request`, `system`, `attachment`, `file-history-*` and others. Only `assistant` entries carry usage.
+- Usage lives at `message.usage` on each `assistant` entry. The four fields match the expectation:
+  - `input_tokens` (uncached input, typically 1–10)
+  - `output_tokens`
+  - `cache_creation_input_tokens` (also split in `cache_creation.ephemeral_1h_input_tokens` / `ephemeral_5m_input_tokens`)
+  - `cache_read_input_tokens`
+  - Also present: `output_tokens_details.thinking_tokens`, `server_tool_use`, `service_tier`, `iterations[]`.
+- Other fields used: `timestamp` (UTC, `Z`), `sessionId`, `message.model` (all `claude-opus-5-5`), `message.id`, `requestId`, `isSidechain`.
+- **Duplicates:** one API response is written as several `assistant` entries, one per content block (thinking, text, tool_use). They share `message.id` and repeat identical usage. Across all 7 transcripts: 896 entries but 393 unique ids, and repeats never differ. A row is therefore one unique `message.id`, and the parser raises an error if a repeat ever disagrees.
+- **Gap:** subagent transcripts are stored outside raw_logs/ (under the session's `subagents/` folder) and are not copied by the hook. So far there is 1 subagent (P0 web-fetch, 4 messages, ~122k tokens). The spec reads raw_logs only, so they are not counted, and results/tokens.json says so.
+
+**Tests**
+- None yet (recording step). See the next entry.
+
+**Decisions**
+- AGENT: count unique `message.id`, not entries. Skip `<synthetic>` placeholder messages.
+
+**Open questions**
+- Should the hook also copy subagent transcripts? That would be a P0 hook change (INST-04), which only Aayush can approve.
+
+## 2026-11-10T14:52:43-05:00 — [P6] TOK-02/03/04/08 parser and metrics; TOK-05 amended and analysis built
+
+**What changed**
+- Spec change Aayush asked for: TOK-05 is 1 run per condition, and the report must say plainly that n = 1 is anecdotal.
+- New src/tokens/build_tokens.py and src/report/schemas/tokens.schema.json. `make tokens` writes results/tokens.json (`synthetic: false`, since this is real usage). It contains:
+  - rows: one per unique assistant `message.id`, with ts, session, model, the four counts, context (input + cache creation + cache read), phase, activity, join method and experiment label
+  - clear/compact boundaries, and the context drop at each one
+  - totals by phase, activity and model
+  - tokens per prompt, with stats
+  - cache-read share
+  - TOK-05 per-condition tallies, found by the marker "TOK-05 run A/B/C"
+- First results: 393 messages and 61,727,540 tokens. 97.7% is cache read, 2.3% cache creation, 0.9% output, and 874 uncached input tokens. By phase: P0 3.1M, P1 6.6M, P2 16.8M, P3 10.7M, P4 24.5M. P5/P6 aren't in yet because this session's transcript isn't copied until it compacts or ends. Context drops at /clear are visible, e.g. 323,040 → 39,242.
+- New tests/tokutil.py (fixture transcripts and hook log) and tests/test_tok_data.py (parser, dedupe, join and fallbacks, boundaries, metrics, experiment marker, real-data totals and no join gaps, no text in results).
+- .gitignore: scratch/ (where the TOK-05 runs write).
+
+**Tests**
+- tests/test_tok_data.py and tests/test_anl_schemas.py: 44 passed.
+- `make test`: the first run had 4 failures, all stale-explorer-snapshot checks after the spec change. After `make report`, the second run passed 587, then `make report` again.
+
+**Decisions**
+- HUMAN: TOK-05 = 1 run per condition.
+- AGENT: the join uses the nearest earlier prompt in the same session. Pre-hook rows take the session's first event's phase, flagged "session-start" (36 rows). A row in a session with no hook events falls back to "any-session". The real data has no gaps.
+- AGENT: activity is the .phase suffix as logged. Only planning and writing-code have ever been used, and the spec's other activities appear only if .phase uses them.
+- AGENT: TOK-05 runs write to scratch/tok05/<X>/ (gitignored), so no revert is needed between runs. A git reset would also roll back logs/events.jsonl.
+
+**Open questions**
+- Copy subagent transcripts in the hook (INST-04)?

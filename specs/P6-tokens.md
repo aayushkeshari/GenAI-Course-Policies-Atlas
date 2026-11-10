@@ -10,7 +10,8 @@
   cache-read share.
 - **TOK-05** Experiment (Aayush picks a comparable small task, e.g. "add one chart"): run it in condition A,
   a long session with no clear; condition B, right after /clear + /resume; and condition C, right after /compact.
-  Repeat each at least twice. Report the comparison and state plainly that the sample is small.
+  Run each condition once (1 run per condition, per Aayush). Report the comparison and state plainly that the
+  sample is small: with n = 1 per condition the differences are anecdotal, not evidence.
 - **TOK-06** Usage-limit events on the Pro plan get logged by hand in docs/usage-limits.md and shown on the page.
 - **TOK-07** Page: charts for the above, plus a "what I learned" section that Aayush writes.
 - **TOK-08** Tests: parser on a fixture transcript; totals equal the sum of rows; the phase join has no gaps.

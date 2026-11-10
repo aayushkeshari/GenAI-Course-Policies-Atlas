@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "results/tokens.json (TOK-02..05): real token usage, not study data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["synthetic", "about", "fields", "rows", "boundaries", "metrics", "experiment", "sources"],
+  "$defs": {
+    "count": {"type": "integer", "minimum": 0},
+    "tally": {
+      "type": "object",
+      "required": ["input", "output", "cache_creation", "cache_read", "total", "messages", "cache_read_share"],
+      "properties": {
+        "input": {"$ref": "#/$defs/count"}, "output": {"$ref": "#/$defs/count"},
+        "cache_creation": {"$ref": "#/$defs/count"}, "cache_read": {"$ref": "#/$defs/count"},
+        "total": {"$ref": "#/$defs/count"}, "messages": {"$ref": "#/$defs/count"},
+        "cache_read_share": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
+    },
+    "tallies": {"type": "object", "additionalProperties": {"$ref": "#/$defs/tally"}}
+  },
+  "properties": {
+    "synthetic": {"const": false},
+    "about": {"type": "string", "minLength": 1},
+    "fields": {
+      "type": "object",
+      "properties": {
+        "input": {"const": "input_tokens"}, "output": {"const": "output_tokens"},
+        "cache_creation": {"const": "cache_creation_input_tokens"}, "cache_read": {"const": "cache_read_input_tokens"}
+      },
+      "required": ["input", "output", "cache_creation", "cache_read"],
+      "additionalProperties": false
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["message_id", "ts", "t", "session_id", "model", "sidechain", "input", "output", "cache_creation",
+                     "cache_read", "context", "phase", "activity", "join", "prompt_line", "experiment"],
+        "properties": {
+          "message_id": {"type": "string", "minLength": 1},
+          "ts": {"type": "string"}, "t": {"type": "integer"},
+          "session_id": {"type": "string", "minLength": 1},
+          "model": {"type": "string"}, "sidechain": {"type": "boolean"},
+          "input": {"$ref": "#/$defs/count"}, "output": {"$ref": "#/$defs/count"},
+          "cache_creation": {"$ref": "#/$defs/count"}, "cache_read": {"$ref": "#/$defs/count"},
+          "context": {"$ref": "#/$defs/count"},
+          "phase": {"type": "string", "pattern": "^(P\\d|unknown)$"},
+          "activity": {"type": "string"},
+          "join": {"enum": ["prompt", "session-start", "any-session", "none"]},
+          "prompt_line": {"type": ["integer", "null"]},
+          "experiment": {"enum": ["A", "B", "C", null]}
+        }
+      }
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ts", "t", "kind", "session_id", "phase", "event_line"],
+        "properties": {"kind": {"enum": ["clear", "compact"]}}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["totals", "by_phase", "by_activity", "by_model", "per_prompt", "per_prompt_stats", "boundary_drops",
+                   "join_counts", "activities_logged"],
+      "properties": {
+        "totals": {"$ref": "#/$defs/tally"},
+        "by_phase": {"$ref": "#/$defs/tallies"},
+        "by_activity": {"$ref": "#/$defs/tallies"},
+        "by_model": {"$ref": "#/$defs/tallies"},
+        "per_prompt": {"type": "array"},
+        "boundary_drops": {"type": "array"}
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "required": ["conditions", "marker", "caveat"],
+      "properties": {
+        "conditions": {"type": "object", "required": ["A", "B", "C"]},
+        "caveat": {"type": "string", "minLength": 20}
+      }
+    },
+    "sources": {"type": "object"}
+  }
+}

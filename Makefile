@@ -29,8 +29,8 @@ report:  ## P3/P4: build dashboard data into site/data/ and validation explorer 
 	$(PY) -m src.report.build_site_data
 	$(PY) -m src.report.build_validation_data
 
-tokens:  ## P6: token usage report
-	@echo "tokens: not implemented yet (P6)"
+tokens:  ## P6 (TOK-02..05): one row per assistant message from raw_logs/transcripts/ + phase join + metrics -> results/tokens.json
+	$(PY) -m src.tokens.build_tokens
 
 timeline:  ## P5 (PROV-01): merge hook events, git log, progress and review logs into site/timeline/data/timeline.json (redacted, PROV-06)
 	$(PY) -m src.provenance.build_timeline

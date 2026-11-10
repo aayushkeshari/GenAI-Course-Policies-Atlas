@@ -1,7 +1,7 @@
 {
  "synthetic": false,
  "about": "The real development history of this project, which studies SYNTHETIC data. Prompts and responses come from Claude Code hooks and are redacted (home paths, emails, tokens and keys removed).",
- "head": "559caa92566c9a4f9b80102af15bb3fddecdb935",
+ "head": "73ec9f81e2f99428457956bdb63f386c9a3d0f2a",
  "phases": [
   "P0",
   "P1",
@@ -3206,6 +3206,30 @@
    "file": "specs/P5-provenance.md",
    "added": 5,
    "removed": 3
+  },
+  {
+   "id": "git-73ec9f8",
+   "ts": "2026-11-10T14:40:21-05:00",
+   "t": 1794339621000,
+   "actor": "CLAUDE",
+   "phase": "P5",
+   "type": "commit",
+   "summary": "agent: P5 step 3 — contribution timeline page: timeline, Q&A, summary (PROV-03/04/05)",
+   "source": "git 73ec9f8",
+   "sha": "73ec9f81e2f99428457956bdb63f386c9a3d0f2a",
+   "files": 37,
+   "added": 841,
+   "removed": 4
+  },
+  {
+   "id": "prog1131",
+   "ts": "2026-11-10T14:40:21-05:00",
+   "t": 1794339621000,
+   "actor": "CLAUDE",
+   "phase": "P5",
+   "type": "progress",
+   "summary": "Step 3: timeline page, Q&A view, contribution summary (PROV-03/04/05)",
+   "source": "docs/progress.md:1131"
   }
  ],
  "summary": {
@@ -3226,9 +3250,9 @@
     "responses": 47,
     "spec_edits": 0,
     "reviews": 0,
-    "commits": 50,
-    "lines_added": 16439,
-    "lines_removed": 460,
+    "commits": 51,
+    "lines_added": 17280,
+    "lines_removed": 464,
     "approvals": null,
     "rejected_plans": null
    },
@@ -3249,7 +3273,7 @@
    "automated": 0,
    "shared": 43
   },
-  "agent_decisions": 75,
+  "agent_decisions": 78,
   "qa_pairs": 41,
   "unanswered_prompts": 2,
   "rules": {

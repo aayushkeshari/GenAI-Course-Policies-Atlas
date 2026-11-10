@@ -1150,3 +1150,18 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - None new. Carried: the fourth PROV-02 category, and acceptance of the two dashboard test changes from step 1.
+
+## 2026-11-10T14:42:19-05:00 — [P5] Step 4: rebuild, traceability check, HANDOFF, push
+
+**What changed**
+- Rebuilt site/data/timeline.json (242 items) and the explorer data. The traceability view shows PROV-01..06 all passing: 8, 22, 17, 9, 5 and 2 tests.
+- Rewrote docs/HANDOFF.md for the end of P5.
+
+**Tests**
+- `make test`: 571 passed, twice, with `make report` after each run.
+
+**Decisions**
+- None new.
+
+**Open questions**
+- A fourth PROV-02 category? Accept the two dashboard test changes? Both are listed in HANDOFF.

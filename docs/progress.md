@@ -1305,7 +1305,7 @@ not backdated. Each step has its own commit, listed below.
 
 **What changed**
 - docs/usage-limits.md: added the line "No usage-limit events hit during the project." The table stays empty, so the page shows no rows.
-- docs/tokens-learned.md: Aayush's "what I learned" text, copied exactly as he gave it.
+- docs/tokens-learned.md: Aayush's "what I learned" text, copied exactly as given.
 - site/tokens/app.js: the "What I learned" section now renders a lone `**bold**` line as a heading and a block of `- ` lines as a list. Both are still HTML-escaped. Before this change, the raw asterisks and dashes showed on the page.
 - tests/test_tok_ui.py: new TOK-07 test for the heading and list rendering, including escaping.
 
@@ -1318,3 +1318,32 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - tokens-learned.md says "97.6% of the project's 61.8M tokens". The current results/tokens.json reports 78.7M total, with a 97.8% cache-read share. I kept the text as given and flagged it to Aayush.
+
+## 2026-11-10T15:28:14-05:00 — [P7] Publish: landing page, Pages workflow, prepublish gate, README, evaluation page
+
+**What changed**
+- PUB-01: new site/index.html, the landing page. It has cards for the dashboard, validation explorer, timeline, tokens page, evaluation page and the GitHub repo, plus the synthetic banner. Each section page now has an "All pages" link back to it. The dashboard header gained a `.top-actions` wrapper, styled in dashboard/style.css.
+- PUB-02: new .github/workflows/pages.yml. On push to main (or a manual run), it uploads site/ with actions/upload-pages-artifact@v3 and deploys with actions/deploy-pages@v4. There is no build step: site/ is committed already built.
+- PUB-03: `make prepublish` runs `make site` and `make test`, then src/publish/prepublish.py, which has three checks:
+  - Redaction scan of every text file in site/, using the redact.py rules. JSON is scanned as decoded strings, and an email needs an alphabetic top-level domain.
+  - Offline link check: local targets must exist, links must not be root-absolute or leave site/, and external libraries must be https and pinned.
+  - #synthetic-banner with "Synthetic data" on every HTML page.
+- PUB-04: README.md rewritten (Aayush's title kept). It covers the project, the live URL and its pages, reproduction (`make setup`, `make all`, `make serve`, `make prepublish`), the Makefile targets, publishing and the one-time Pages setting, how the project was built, and the repo layout. New `make all` target. It skips `make tokens` when raw_logs/ is missing, so a fresh clone keeps the committed results/tokens.json.
+- PUB-05: `make site` copies docs/evaluation.md byte-for-byte to site/evaluation/evaluation.md. The new site/evaluation/ page renders it with marked 12.0.2 and DOMPurify 3.1.6, the same pins as the validation explorer.
+- tests/test_pub.py: 37 tests tagged PUB-01..05, including real-browser tests for the landing page (375 and 1280 px) and the evaluation page (rendering, sanitising, 404 error). There is also a git-history test showing no `agent:` commit has touched docs/evaluation.md.
+
+**Tests**
+- tests/test_pub.py: 37 passed.
+- `make prepublish`, first pass: 2 failed. One was the stale explorer snapshot (expected before `make report`). The other was `make report` refusing to build: "redaction made two node IDs identical". My parametrized test IDs contained the fake leak strings (/Users/…, /home/…), which redact to the same placeholder. Fixed with explicit leak-free IDs. No test was weakened.
+- Then `make prepublish` + `make report` twice: 643 passed, and "prepublish: OK (6 pages: redaction clean, links resolve, synthetic banner on every page)".
+- The first prepublish run had two redaction false positives in the real site. One was the jsdelivr pin `chartjs-chart-matrix@2.0.1`, which looked like an email. The other was a JSON-escaped `\n@pytest.mark` read as `n@pytest.mark`. Both were fixed in the scanner, not the site, and lookalike tests cover them.
+
+**Decisions**
+- HUMAN: Aayush asked to go straight from P6 into P7 and implement it in one step, so there was no separate plan-approval round this phase.
+- AGENT: every HTML page, including the landing and evaluation pages, must carry #synthetic-banner, not just the "data pages". This is stricter and needs no list of which pages count as data pages.
+- AGENT: the link check doesn't fetch external URLs. It checks only that they are https and pinned, so the gate stays offline and deterministic.
+- AGENT: CI deploys only and doesn't run tests, because the test suite needs local raw_logs/ and the hook logs. The gate is `make prepublish` before pushing.
+
+**Open questions**
+- Aayush must set Settings → Pages → Build and deployment → Source = "GitHub Actions" (see the reply). After that, confirm the first workflow run deploys.
+- docs/evaluation.md is still the empty template. Aayush writes it, then runs `make site` to copy it to the page.

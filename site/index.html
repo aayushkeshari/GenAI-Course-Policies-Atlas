@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenAI CS Policy</title>
+<meta name="description" content="A synthetic-data study of how US CS departments permit, encourage and talk about generative AI, built with Claude Code.">
+<link rel="stylesheet" href="dashboard/style.css">
+<script>
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<style>
+  .home { max-width: 1200px; margin: 0 auto; padding: 16px; }
+  .intro { max-width: 70ch; color: var(--ink-2); margin: 4px 0 20px; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px;
+           grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .card { display: block; height: 100%; box-sizing: border-box; background: var(--surface); border: 1px solid var(--ring);
+          border-radius: 8px; padding: 14px 16px; color: var(--ink); text-decoration: none; }
+  .card:hover, .card:focus-visible { border-color: var(--accent); }
+  .card h2 { margin: 0 0 6px; font-size: 1.05rem; color: var(--accent); }
+  .card p { margin: 0; color: var(--ink-2); font-size: 0.92rem; }
+  .card .goal { display: inline-block; margin-top: 10px; font-size: 0.78rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Generative AI in CS departments</h1>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — illustrative only.</strong>
+    Every institution, course and statement in the study is invented, and no number describes a real department.
+    The timeline and token pages are the exception: they show the real history of how Claude Code built the project.</p>
+</header>
+
+<main id="main" class="home">
+  <p class="intro">This project studies, with synthetic data, how US computer science departments permit, encourage and
+    talk about generative AI, with a focus on software engineering courses. Claude Code wrote the code from specs that
+    a human supervisor owned, and the logs of that work are published too.</p>
+  <ul class="cards" id="pages">
+    <li><a class="card" href="dashboard/"><h2>Findings dashboard</h2>
+      <p>Policies by course level, department rhetoric and tone over time, software engineering vs other courses, and
+        assessment changes.</p><span class="goal">G1 · data and analysis</span></a></li>
+    <li><a class="card" href="validation/"><h2>Validation explorer</h2>
+      <p>Test runs, requirement traceability, coverage, fault injection, and whether the analysis recovers the planted
+        effects.</p><span class="goal">G2 · correctness evidence</span></a></li>
+    <li><a class="card" href="timeline/"><h2>Contribution timeline</h2>
+      <p>A timestamped record of prompts, Claude's responses, commits, spec edits and reviews, split into human and
+        agent work.</p><span class="goal">G3 · who did what</span></a></li>
+    <li><a class="card" href="tokens/"><h2>Token usage</h2>
+      <p>Tokens by phase and prompt, context size across /clear and /compact, and the clear/compact experiment.</p>
+      <span class="goal">G4 · token usage</span></a></li>
+    <li><a class="card" href="evaluation/"><h2>Evaluation &amp; reflection</h2>
+      <p>The supervisor's own evaluation against the goals, and a reflection on agentic versus AI-assisted
+        development.</p><span class="goal">Written by Aayush</span></a></li>
+    <li><a class="card" href="https://github.com/aayushkeshari/genai-cs-policy" rel="noopener"><h2>GitHub repository</h2>
+      <p>Specs, code, tests, progress log and the hook-written event log. Run <code>make all</code> to reproduce.</p>
+      <span class="goal">G5 · published</span></a></li>
+  </ul>
+</main>
+<footer class="foot">
+  <p>Synthetic data — illustrative only. Institution names are fictional.</p>
+</footer>
+</body>
+</html>

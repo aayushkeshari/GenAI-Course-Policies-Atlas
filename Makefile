@@ -3,7 +3,7 @@
 
 PY ?= .venv/bin/python
 
-.PHONY: setup data analysis test faults report tokens timeline site serve clean
+.PHONY: setup data analysis test faults report tokens timeline site all prepublish serve clean
 
 setup:  ## create the venv, install pinned deps, and install Chromium for the dashboard UI tests (DASH-07)
 	python3.11 -m venv .venv && $(PY) -m pip install -q -r requirements.txt
@@ -35,8 +35,18 @@ tokens:  ## P6 (TOK-02..05): one row per assistant message from raw_logs/transcr
 timeline:  ## P5 (PROV-01): merge hook events, git log, progress and review logs into site/timeline/data/timeline.json (redacted, PROV-06)
 	$(PY) -m src.provenance.build_timeline
 
-site:  ## P7: assemble site/
-	@echo "site: not implemented yet (P7)"
+site:  ## P7 (PUB-05): copy docs/evaluation.md unedited into site/evaluation/ (the other pages are built by report, timeline, tokens)
+	mkdir -p site/evaluation
+	cp docs/evaluation.md site/evaluation/evaluation.md
+
+all:  ## P7 (PUB-04): reproduce everything: data, analysis, site data, timeline, tokens, site, then the tests
+	$(MAKE) data analysis report timeline
+	@if [ -d raw_logs/transcripts ]; then $(MAKE) tokens; else echo "tokens: skipped, raw_logs/ is local only (keeping the committed results/tokens.json)"; fi
+	$(MAKE) site test
+
+prepublish:  ## P7 (PUB-03): gate before publishing: tests pass, redaction scan, link check, synthetic banner on every page
+	$(MAKE) site test
+	$(PY) -m src.publish.prepublish
 
 PORT ?= 8000
 

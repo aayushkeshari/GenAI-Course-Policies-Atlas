@@ -1,0 +1,9 @@
+.top-actions a.btn { text-decoration: none; }
+.doc { max-width: 900px; margin: 0 auto; padding: 16px; }
+.prose { line-height: 1.55; }
+.prose h1 { font-size: 1.5rem; margin: 0.4em 0; }
+.prose h2 { font-size: 1.2rem; margin: 1.4em 0 0.4em; }
+.prose table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+.prose th, .prose td { border: 1px solid var(--grid); padding: 6px 8px; text-align: left; vertical-align: top; }
+.prose th { background: var(--surface); }
+.prose a { color: var(--accent); }

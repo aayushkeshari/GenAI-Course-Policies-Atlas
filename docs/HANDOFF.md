@@ -1,9 +1,12 @@
 # HANDOFF — overwritten at each /prep-clear
-Updated: 2026-11-10T15:13:55-05:00
-Current phase: P6. All TOK requirements are built and tested. The TOK-05 experiment is done: A, B and C are measured with 1 run each, and the comparison is in progress.md. .phase is "P6:writing-code".
-Last completed task: TOK-05 results written up (entry at 2026-11-10T15:13:55). 605 tests pass. Committed and pushed.
-TOK-05: A total 1.72M tokens, B 214k, C 253k (n = 1, anecdotal). Run B skipped /resume. This is noted as a deviation, and Aayush kept the run.
-Next task: Aayush writes docs/tokens-learned.md and logs any usage-limit events. Then `make tokens && make test && make report`, then close P6 / start P7 (PUB).
+Updated: 2026-11-10T15:28:14-05:00
+Current phase: P7 (publish). PUB-01..05 are built and tested, and `make prepublish` passes. .phase is "P7:writing-code". P6 is closed (docs written, TOK-05 measured).
+Last completed task: P7 implementation (progress entry 2026-11-10T15:28:14). 643 tests pass. Committed and pushed.
+Next task: Aayush sets Settings → Pages → Source = "GitHub Actions". Then confirm the "Deploy site to GitHub Pages" run succeeds and
+  https://aayushkeshari.github.io/genai-cs-policy/ loads (`gh run list --workflow pages.yml`). Aayush writes docs/evaluation.md + the reflection.
+  Then `make prepublish`, commit, push.
+P7 files: site/index.html, site/evaluation/{index.html,app.js,style.css,evaluation.md}, src/publish/{__init__,prepublish}.py,
+  .github/workflows/pages.yml, Makefile (site, all, prepublish), README.md, tests/test_pub.py, "All pages" link in the 4 section headers.
 Files touched in P6: specs/P6-tokens.md (TOK-05), specs/P0-instrumentation.md (INST-04), .claude/hooks/log_event.py, Makefile (tokens),
   src/tokens/{__init__,build_tokens}.py, src/report/schemas/tokens.schema.json, results/tokens.json, site/tokens/{index.html,style.css,app.js,data/tokens.json},
   docs/usage-limits.md, tests/{tokutil,test_tok_data,test_tok_ui,test_log_event}.py, .gitignore (scratch/), docs/{progress,HANDOFF}.md
@@ -20,7 +23,8 @@ Key facts:
   - The hook copies transcripts only at PreCompact and SessionEnd. The current session is not in raw_logs until one of those fires.
   - Subagent transcripts are copied to raw_logs/transcripts/subagents/<session>/ (INST-04, approved). The 1 existing one was backfilled.
   - After any code change: `make test && make report` twice so the explorer snapshot is all-green.
-  - GitHub Pages is not enabled. P7 (PUB-02) deploys to https://aayushkeshari.github.io/genai-cs-policy/.
+  - GitHub Pages: the workflow exists; it deploys only once Aayush sets Source = GitHub Actions. CI does not run tests (needs local logs); `make prepublish` is the gate.
+  - Never put leak-like strings (/Users/, emails) in pytest parametrize IDs: redaction collapses the node IDs and `make report` fails.
 Open questions for Aayush:
   - Write docs/tokens-learned.md (TOK-07 "what I learned"), and log any usage-limit events in docs/usage-limits.md.
   - Possible error in the committed P2 review-log entry (stance 0.76 vs macro-F1 0.741 / accuracy 0.761). Aayush chose to leave it.

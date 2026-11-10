@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluation &amp; Reflection</title>
+<meta name="description" content="The supervisor's evaluation of the synthetic-data GenAI policy project against its goals, and a reflection on agentic development.">
+<link rel="stylesheet" href="../dashboard/style.css">
+<link rel="stylesheet" href="style.css">
+<script>
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Evaluation &amp; reflection</h1>
+    <div class="top-actions">
+      <a href="../" class="btn">All pages</a>
+    </div>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — the study is illustrative only.</strong>
+    Its institutions, courses and statements are invented. The text below is written by Aayush and shown exactly as
+    written: Claude did not edit it.</p>
+</header>
+
+<main id="main" class="doc">
+  <p id="load-error" class="error" role="alert" hidden></p>
+  <article id="evaluation" class="prose" aria-live="polite"><p class="fine">Loading…</p></article>
+</main>
+<footer class="foot">
+  Rendered in the browser from <a href="evaluation.md">evaluation.md</a>, a byte-for-byte copy of
+  <code>docs/evaluation.md</code> made by <code>make site</code>.
+</footer>
+</body>
+</html>

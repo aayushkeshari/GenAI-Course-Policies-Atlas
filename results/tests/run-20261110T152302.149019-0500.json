@@ -1,0 +1,539 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T15:23:02.149-05:00",
+ "finished": "2026-11-10T15:23:03.920-05:00",
+ "duration_s": 1.771,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "d1f0d36bbf6cbc78f330985527e6c222abc3cad2",
+ "git_dirty": true,
+ "current_phase": "P7:writing-code",
+ "args": [
+  "-q",
+  "tests/test_pub.py"
+ ],
+ "summary": {
+  "passed": 37
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_pub.py::test_landing_page_links_every_page_and_the_repo",
+   "req_ids": [
+    "PUB-01"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 87,
+   "body_sha256": "d207b7d25585ffb7c4b75a8896ca43c45b205c0cf7ee633903e6f53e95a6027e",
+   "status": "passed",
+   "duration_s": 0.000667,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_every_page_links_back_to_the_landing_page",
+   "req_ids": [
+    "PUB-01"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 99,
+   "body_sha256": "3e75e50e6fe4d99afcaed6da8ec8ff00ead07dd9456b35216e6d7b78e56364a3",
+   "status": "passed",
+   "duration_s": 0.001754,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_landing_page_renders_and_navigates[375]",
+   "req_ids": [
+    "PUB-01"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 106,
+   "body_sha256": "76c37063092a0e57b8601581e06d8fc42633425d083628d5d0334dde8a36c37b",
+   "status": "passed",
+   "duration_s": 0.340406,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_landing_page_renders_and_navigates[1280]",
+   "req_ids": [
+    "PUB-01"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 106,
+   "body_sha256": "76c37063092a0e57b8601581e06d8fc42633425d083628d5d0334dde8a36c37b",
+   "status": "passed",
+   "duration_s": 0.114641,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_pages_workflow_deploys_site_on_push_to_main",
+   "req_ids": [
+    "PUB-02"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 127,
+   "body_sha256": "1a433b6e0790fcc8b0221b26abf06040778c8ce5a27426ab0b4320a9731f92d3",
+   "status": "passed",
+   "duration_s": 0.000397,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_site_uses_only_relative_links_so_it_works_under_the_pages_subpath",
+   "req_ids": [
+    "PUB-02"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 141,
+   "body_sha256": "9b56a6b2353c17f02431f4725304ce6f586037efa11f378d11fb4238aa1b3ad9",
+   "status": "passed",
+   "duration_s": 0.004224,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_prepublish_target_runs_tests_then_the_checks",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 151,
+   "body_sha256": "abb01975e39c380c3307ed32e3aed95d98e22fe4ba2ed5faa5dd23f85696a6a9",
+   "status": "passed",
+   "duration_s": 0.014343,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_committed_site_passes_every_check",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 160,
+   "body_sha256": "427afb88ebeb9a24be8b8ca2978813d3b13e6391e3f7fb3119da3e8484c0c46c",
+   "status": "passed",
+   "duration_s": 0.242097,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[html-/Users/someone/project/file.py]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.002039,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[html-/home/runner/x]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000643,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[html-a.person@example.org]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000587,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[html-api_key = \"abcdefghijkl\"]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000601,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[html-sk-AAAAAAAAAAAAAAAAAAAAAAAA]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.0006,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[json-/Users/someone/project/file.py]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000803,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[json-/home/runner/x]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000804,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[json-a.person@example.org]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000807,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[json-api_key = \"abcdefghijkl\"]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000794,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_catches_each_leak_class[json-sk-AAAAAAAAAAAAAAAAAAAAAAAA]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 167,
+   "body_sha256": "d8294ff7b2b9b54c55d6165ab3fa5e2924bbac62f886fcd15b8c3d3d21147dee",
+   "status": "passed",
+   "duration_s": 0.000798,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_redaction_scan_ignores_known_lookalikes",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 181,
+   "body_sha256": "875cc4baaa646180ba4f3e507264ae1b009e092a26a54f71bafa830b996edb72",
+   "status": "passed",
+   "duration_s": 0.000796,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<a href=\"missing/\">x</a>-does not exist]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.000572,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<link rel=\"stylesheet\" href=\"nope.css\">-does not exist]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.00054,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<a href=\"/dashboard/\">x</a>-root-absolute]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.000529,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<a href=\"../outside.html\">x</a>-outside site/]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.00056,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>-unpinned]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.000519,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_catches_bad_links[<script src=\"http://cdnjs.cloudflare.com/ajax/libs/x/1.2.3/x.js\"></script>-insecure]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 191,
+   "body_sha256": "91606e6a4d1b66c0028b29aeeca9de5b73688197111d54fc026dc88001b2dff4",
+   "status": "passed",
+   "duration_s": 0.000536,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_link_check_accepts_good_links",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 208,
+   "body_sha256": "1d6c065bfcb6ae13923557803ecfc98f15c053ff0e5ea37b69d91fe7283e84c7",
+   "status": "passed",
+   "duration_s": 0.000673,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_banner_check_catches_missing_or_wrong_banner[<html><body><p>no banner</p></body></html>-has no #synthetic-banner]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 217,
+   "body_sha256": "e2508879806d92d913d14bb8c0dfadb33967cfa9ecb4e10c11025f5804600950",
+   "status": "passed",
+   "duration_s": 0.000442,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_banner_check_catches_missing_or_wrong_banner[<html><body><p id=\"synthetic-banner\">Real data</p><p>Synthetic data</p></body></html>-does not say]",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 217,
+   "body_sha256": "e2508879806d92d913d14bb8c0dfadb33967cfa9ecb4e10c11025f5804600950",
+   "status": "passed",
+   "duration_s": 0.000466,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_prepublish_exit_status",
+   "req_ids": [
+    "PUB-03"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 229,
+   "body_sha256": "0e88decfdd145cfc9da88dd1d82f2871609f4f4db04bb660c7ff696d4abe7078",
+   "status": "passed",
+   "duration_s": 0.000923,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_readme_explains_project_reproduction_and_live_url",
+   "req_ids": [
+    "PUB-04"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 244,
+   "body_sha256": "d7910becd903b833be5b7c2e8f68de46339d1dbe22ba74ea823665a64ffbbbf0",
+   "status": "passed",
+   "duration_s": 0.000345,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_make_all_runs_the_whole_pipeline",
+   "req_ids": [
+    "PUB-04"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 257,
+   "body_sha256": "76d1e85c73a212e6b1e9df105140251a40639f920021f2ccebb8666097bbfffb",
+   "status": "passed",
+   "duration_s": 0.025941,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_make_all_skips_tokens_without_raw_logs",
+   "req_ids": [
+    "PUB-04"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 268,
+   "body_sha256": "0fa49ece545744283a261d46b673a265e22d4a50d52d632c8382d37e4597baa4",
+   "status": "passed",
+   "duration_s": 0.011389,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_published_evaluation_is_a_byte_copy_of_the_doc",
+   "req_ids": [
+    "PUB-05"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 284,
+   "body_sha256": "b9fb47b332a47602ea36faf83f40d34b4a7881dcb7047b8faea3a931e82fdf11",
+   "status": "passed",
+   "duration_s": 0.00017,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_no_agent_commit_ever_changed_the_evaluation",
+   "req_ids": [
+    "PUB-05"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 290,
+   "body_sha256": "70e70707b92ec3df7aba8a0720f8ed7588e2cefb9ccbc1bd46985cdf28d3285b",
+   "status": "passed",
+   "duration_s": 0.012623,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_evaluation_page_renders_the_markdown",
+   "req_ids": [
+    "PUB-05"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 299,
+   "body_sha256": "1eb5ed92160e117f75e65b1bbb9ec1cdcfb9d425810f6eeb569a69df34b714a7",
+   "status": "passed",
+   "duration_s": 0.154117,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_evaluation_page_sanitizes_and_reports_errors",
+   "req_ids": [
+    "PUB-05"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 317,
+   "body_sha256": "76045355d94cdc8640b2d5348736ce0ce2b186c968e704f58edde1c414910b3a",
+   "status": "passed",
+   "duration_s": 0.329345,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_pub.py::test_evaluation_page_libraries_are_pinned",
+   "req_ids": [
+    "PUB-05"
+   ],
+   "phase": "P7",
+   "kind": "unit",
+   "file": "tests/test_pub.py",
+   "line": 337,
+   "body_sha256": "d9cbd08653425138a21c631976d7f1eedb4d39b050244520f0954acc183df723",
+   "status": "passed",
+   "duration_s": 0.420657,
+   "failure_message": ""
+  }
+ ]
+}

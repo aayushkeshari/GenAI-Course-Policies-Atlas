@@ -73,6 +73,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 8px 16px 24px; }
   background: var(--surface); color: var(--ink); border: 1px solid var(--axis);
 }
 .btn:hover { border-color: var(--ink-2); }
+.top-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.top-actions a.btn { text-decoration: none; }
 .error { color: #d03b3b; font-weight: 600; }
 .fine { color: var(--ink-2); font-size: 0.88rem; }
 .scale { color: var(--ink-2); font-size: 0.88rem; }

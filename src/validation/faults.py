@@ -31,7 +31,9 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "results" / "faults.json"
 UI_TESTS = ["tests/test_dash_ui.py", "tests/test_val_ui.py"]
 SELF_TESTS = ["tests/test_val_faults.py"]  # they run this runner and check its committed report: never inside a fault run
-SKIP_COPY = {".venv", ".git", "logs", "raw_logs", ".pytest_cache", "__pycache__", ".idea", "node_modules"}
+# .git, logs/ and raw_logs/ are copied (about 34 MB): the P5-P7 tests read git history, the hook log and the
+# transcripts, and without them the baseline run is not clean. The copy is read-only for them; hooks never run there.
+SKIP_COPY = {".venv", ".pytest_cache", "__pycache__", ".idea", "node_modules", "scratch"}
 # A golden-file ("is current") test re-derives a committed output and compares it byte for byte. It catches any
 # change to the output, but says nothing about which property broke. Faults caught only by such tests are reported
 # separately, so the headline rate isn't mistaken for behavioural coverage.

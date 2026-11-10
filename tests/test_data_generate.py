@@ -23,8 +23,13 @@ def test_same_seed_gives_byte_identical_files(tmp_path):
 
 @pytest.mark.req("DATA-01")
 def test_different_seed_gives_different_data():
-    """A different seed changes the data, so the seed actually drives generation."""
-    assert _bytes(generated_dir(2026))["institutions.csv"] != _bytes(generated_dir(7))["institutions.csv"]
+    """A different seed changes the data, so the seed actually drives generation. Checked on the main random
+    stream (institution columns other than the name, plus courses and statements), not on the names: the
+    DATA-02 name shuffle has its own seed and would differ even if the main stream ignored the seed."""
+    a, b = load(2026), load(7)
+    strip = lambda rows: [{k: v for k, v in r.items() if k != "name"} for r in rows]
+    assert strip(a["institutions"]) != strip(b["institutions"])
+    assert a["courses"] != b["courses"] and a["statements"] != b["statements"]
 
 
 @pytest.mark.req("DATA-01")

@@ -1,0 +1,204 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T15:57:37.456-05:00",
+ "finished": "2026-11-10T15:57:37.878-05:00",
+ "duration_s": 0.422,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "c276c4d9248f015469403c49a2da88f15d3c5c7c",
+ "git_dirty": true,
+ "current_phase": "P7:writing-code",
+ "args": [
+  "-q",
+  "tests/test_data_generate.py"
+ ],
+ "summary": {
+  "passed": 13
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_data_generate.py::test_same_seed_gives_byte_identical_files",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 11,
+   "body_sha256": "250392eb22d3dc08f0b685834885493c79653e875532f104f33b7bd96d2ba558",
+   "status": "passed",
+   "duration_s": 0.060634,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_different_seed_gives_different_data",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 24,
+   "body_sha256": "70639ddc3b473d14283ed845edd91e4e0463a25490716713ac5b6ad8aee486ea",
+   "status": "passed",
+   "duration_s": 0.064514,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_cli_accepts_seed_flag",
+   "req_ids": [
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 35,
+   "body_sha256": "cb083a543955f9ece1e13b450ebfe836cb84d22955a11401ffac70185f14d37b",
+   "status": "passed",
+   "duration_s": 0.028254,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_reference_list_has_about_150_real_universities_with_states",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 42,
+   "body_sha256": "1c7f70359e705e4d458771967e3741c9f2a5fcd7647def517c40bd2b41ceb739",
+   "status": "passed",
+   "duration_s": 0.000149,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_every_name_is_from_the_real_list_with_no_duplicates[2026]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 54,
+   "body_sha256": "c18aa05452c9936bbcee3b018c90c71fe4d289b203dbe393548418a6ed37b3c0",
+   "status": "passed",
+   "duration_s": 0.005313,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_every_name_is_from_the_real_list_with_no_duplicates[1]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 54,
+   "body_sha256": "c18aa05452c9936bbcee3b018c90c71fe4d289b203dbe393548418a6ed37b3c0",
+   "status": "passed",
+   "duration_s": 0.040611,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_every_name_is_from_the_real_list_with_no_duplicates[2]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 54,
+   "body_sha256": "c18aa05452c9936bbcee3b018c90c71fe4d289b203dbe393548418a6ed37b3c0",
+   "status": "passed",
+   "duration_s": 0.037166,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_every_name_is_from_the_real_list_with_no_duplicates[3]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 54,
+   "body_sha256": "c18aa05452c9936bbcee3b018c90c71fe4d289b203dbe393548418a6ed37b3c0",
+   "status": "passed",
+   "duration_s": 0.047881,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_names_match_state_as_often_as_possible[2026]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 66,
+   "body_sha256": "725e8783e8b2deb375b15e52ad50e6d1f8e9753b0e4959268c19a83e935b2dea",
+   "status": "passed",
+   "duration_s": 0.004849,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_names_match_state_as_often_as_possible[7]",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 66,
+   "body_sha256": "725e8783e8b2deb375b15e52ad50e6d1f8e9753b0e4959268c19a83e935b2dea",
+   "status": "passed",
+   "duration_s": 0.004775,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_real_names_leave_every_other_column_and_table_unchanged",
+   "req_ids": [
+    "DATA-02",
+    "DATA-01"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 80,
+   "body_sha256": "17be4fcb5142833b467671c8a4427af9c2a83e9749b704c89c90b05dbe8801a9",
+   "status": "passed",
+   "duration_s": 0.025763,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_too_short_a_list_is_an_error",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 98,
+   "body_sha256": "54188ae60ab15d3c9b23dce02b63a9471e41d01be5dd1ef83a3203c81e134a2f",
+   "status": "passed",
+   "duration_s": 0.000145,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_data_generate.py::test_institution_columns",
+   "req_ids": [
+    "DATA-02"
+   ],
+   "phase": "P1",
+   "kind": "unit",
+   "file": "tests/test_data_generate.py",
+   "line": 106,
+   "body_sha256": "019f332f151675bcc2e086afb2106b9e809d353db0259fa7d4215bb2c6bdaada",
+   "status": "passed",
+   "duration_s": 0.005563,
+   "failure_message": ""
+  }
+ ]
+}

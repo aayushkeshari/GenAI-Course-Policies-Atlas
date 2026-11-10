@@ -1394,3 +1394,22 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - results/faults.json is from 2026-11-08 (commit ac34740, 453 tests). It has not been rerun since. `make faults` would refresh it.
+
+## 2026-11-10T16:04:31-05:00 — [P4/P7] Fault injection refreshed; runner copies git and logs; seed test hardened
+
+**What changed**
+- `make faults` (VAL-04) was last run on 2026-11-08 with 453 tests. Its baseline then failed in the temp copy. The P5–P7 tests read `.git`, `logs/` and `raw_logs/`, all of which `SKIP_COPY` left out, and `test_page_data_matches_the_results` needed `make tokens` after the tokens-learned.md edit. src/validation/faults.py now copies .git, logs/ and raw_logs/ (about 34 MB) and skips scratch/.
+- The first successful run caught 10/10 faults, but F03 ("ignore the seed") was caught only by a golden-file test. Cause: the DATA-02 real-name shuffle has its own seed, so institutions.csv still differed between seeds with the fault in place. tests/test_data_generate.py::test_different_seed_gives_different_data now compares the main-stream columns (all except name), plus courses and statements. This makes the test stricter, not weaker.
+- Final run: 10/10 caught, behavioural 10/10, golden-only none. Baseline 591 tests (635 with UI), commit c276c4d, 290 s.
+- docs/tokens-learned.md figures corrected at Aayush's request: 61.8M → 78.7M, 97.6% → 97.8%.
+
+**Tests**
+- tests/test_data_generate.py: 13 passed. `make test`: 646 passed. `make faults`: 10/10.
+
+**Decisions**
+- HUMAN: refresh the fault results, and correct the tokens-learned figures.
+- AGENT: copy .git, logs/ and raw_logs/ into the fault-run temp copy instead of excluding the P5–P7 tests from fault runs.
+- AGENT: harden the seed test rather than accept a golden-only catch for F03.
+
+**Open questions**
+- The three text blocks for docs/evaluation.md and docs/timeline-narrative.md were not included in Aayush's message. Waiting for them.

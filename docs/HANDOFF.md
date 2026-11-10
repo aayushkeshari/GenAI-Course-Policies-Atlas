@@ -1,7 +1,8 @@
 # HANDOFF — overwritten at each /prep-clear
-Updated: 2026-11-10T15:28:14-05:00
+Updated: 2026-11-10T15:38:00-05:00
 Current phase: P7 (publish). PUB-01..05 are built and tested, and `make prepublish` passes. .phase is "P7:writing-code". P6 is closed (docs written, TOK-05 measured).
-Last completed task: P7 implementation (progress entry 2026-11-10T15:28:14). 643 tests pass. Committed and pushed.
+Last completed task: DATA-02 spec change, real university names on synthetic institutions, with the new banner on every page (progress entry 2026-11-10T15:38:00). 646 tests pass. Committed and pushed.
+DATA-02 now: names from data/reference/real_universities.txt (`Name | ST`), assigned by a separate seeded shuffle and matched by state. CLAUDE.md still says names are fictional (Aayush's file).
 Next task: Aayush sets Settings → Pages → Source = "GitHub Actions". Then confirm the "Deploy site to GitHub Pages" run succeeds and
   https://aayushkeshari.github.io/genai-cs-policy/ loads (`gh run list --workflow pages.yml`). Aayush writes docs/evaluation.md + the reflection.
   Then `make prepublish`, commit, push.

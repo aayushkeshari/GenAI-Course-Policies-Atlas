@@ -1,4 +1,4 @@
-/* Findings dashboard (P3). SYNTHETIC DATA: every institution, course and statement is invented.
+/* Findings dashboard (P3). SYNTHETIC DATA: real university names are attached to invented policies and statements.
  *
  * Every number shown comes from site/data/*.json (copied from results/ by `make report`). Numbers in text and
  * tables are wrapped in <span data-src="file.json#/json/pointer" data-fmt="..."> and every chart dataset carries
@@ -197,7 +197,7 @@ function buildSummary() {
   const ho = "coder_eval.json#/heldout";
   const tiles = [  // [label, value, sub, claim id]
     ["Course-term rows", num(c + "/n_rows", "int"), `${num(c + "/n_known_policy", "int")} with a stated policy; ${num(c + "/n_excluded_missing_policy", "int")} blank and excluded`, "kpi-rows"],
-    ["Institutions", num("regression.json#/n_clusters", "int"), "fictional CS departments; the unit for every clustered interval", "kpi-institutions"],
+    ["Institutions", num("regression.json#/n_clusters", "int"), "CS departments (real names, invented data); the unit for every clustered interval", "kpi-institutions"],
     ["Official statements", num(s + "/n", "int"), `from ${num(s + "/n_institutions", "int")} institutions, coded by the rule-based coder`, "kpi-statements"],
     ["Mean course policy (0–4)", num(allMean + "/estimate", "f2"), `95% CI ${ciText(allMean, "f2")}; 2 = permitted with disclosure`, "kpi-mean-policy"],
     ["Coder macro-F1, held-out", num(ho + "/macro_f1", "f3"), `target ${num("coder_eval.json#/target_macro_f1", "f2")} · ${D.coder_eval.target_met ? "met" : "not met"}`, "kpi-macro-f1"],

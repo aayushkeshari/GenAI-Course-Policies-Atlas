@@ -1,151 +1,151 @@
 inst_id,name,state,census_region,control,carnegie,cs_enrollment
-I001,University of Thornstead,TN,South,public,Masters,609
-I002,Quarrystead Institute of Technology,TX,South,private,R2,488
-I003,Ravenholm University,WA,West,private,R2,924
-I004,Willowholm University,CT,Northeast,public,R1,1804
-I005,Junipermere State University,FL,South,public,R2,1218
-I006,Quarryford State University,OK,South,public,R2,799
-I007,Wrenridge College,AK,West,public,Baccalaureate,190
-I008,Ravenmoor State University,NC,South,public,R2,871
-I009,Silvershire College,OR,West,private,R2,568
-I010,Pinemoor University,KY,South,private,Masters,452
-I011,Wrenmoor Institute of Technology,NH,Northeast,private,Masters,517
-I012,Cedarvale University,IA,Midwest,public,R2,1073
-I013,Hazelmoor State University,LA,South,public,R2,692
-I014,Larchhaven University,KY,South,private,Masters,269
-I015,Coppervale University,MA,Northeast,public,R2,1476
-I016,Hazelwick College,OH,Midwest,private,R2,686
-I017,Laurelmoor University,MS,South,public,Masters,608
-I018,Maplewick College,NJ,Northeast,public,Baccalaureate,76
-I019,Brambleholm College,VA,South,public,Baccalaureate,70
-I020,University of Copperholm,SC,South,public,R1,980
-I021,University of Briarridge,LA,South,public,R2,805
-I022,Thorngate College,NM,West,private,Baccalaureate,179
-I023,Marshwick University,TX,South,public,Masters,525
-I024,Wrenmoor State University,CO,West,public,R1,1521
-I025,Ravenford University,PA,Northeast,public,Masters,204
-I026,University of Cedarhaven,CT,Northeast,public,R1,2513
-I027,Alderbrook University,FL,South,public,R2,474
-I028,Mapleridge College,MS,South,public,Baccalaureate,119
-I029,Silvergate State University,VA,South,public,Masters,228
-I030,University of Thornshire,OH,Midwest,public,R2,590
-I031,Maplestead University,NH,Northeast,public,Masters,431
-I032,Fernmere Institute of Technology,AR,South,private,R1,3000
-I033,Falconhaven College,NM,West,private,R1,1303
-I034,Falconford State University,FL,South,public,R2,942
-I035,University of Heronholm,SC,South,public,Masters,291
-I036,University of Cedarstead,MO,Midwest,public,Masters,500
-I037,Quarrymere College,AL,South,public,Baccalaureate,151
-I038,University of Quarryfield,TX,South,public,Masters,324
-I039,Ravenwick University,OR,West,private,R2,532
-I040,Cedarhaven University,MN,Midwest,private,R1,1487
-I041,University of Bramblemere,FL,South,public,R1,1627
-I042,Heronshire State University,RI,Northeast,public,Masters,307
-I043,Laurelstead State University,CT,Northeast,public,R2,759
-I044,Ravenshire State University,NY,Northeast,public,R1,1858
-I045,Thornwick University,MT,West,public,R2,1131
-I046,Willowshire University,VA,South,private,Masters,381
-I047,Hazelhaven College,UT,West,private,Baccalaureate,150
-I048,Heronwick College,ME,Northeast,private,R2,719
-I049,Heronmere College,NY,Northeast,public,Baccalaureate,80
-I050,University of Amberwick,OK,South,public,R2,1589
-I051,Coppermoor State University,MA,Northeast,public,R1,831
-I052,Juniperhaven State University,PA,Northeast,public,R2,467
-I053,University of Glenmere,NM,West,public,Masters,362
-I054,Larchshire College,OK,South,private,Masters,378
-I055,Hazelmoor College,ME,Northeast,private,R1,835
-I056,University of Falconmoor,VT,Northeast,public,Masters,541
-I057,Hazelgate College,TN,South,private,Baccalaureate,206
-I058,Glenvale Institute of Technology,NH,Northeast,private,R1,2270
-I059,Wrengate College,NC,South,private,Baccalaureate,85
-I060,Thornholm Institute of Technology,AL,South,private,R2,719
-I061,Ravenford College,UT,West,private,Baccalaureate,134
-I062,Pinewick State University,FL,South,public,R1,2434
-I063,Herongate Institute of Technology,VT,Northeast,private,Masters,342
-I064,Quarryfield College,ME,Northeast,private,Baccalaureate,91
-I065,Quarrymoor College,MD,South,private,Baccalaureate,129
-I066,University of Hazelford,OK,South,public,R2,772
-I067,Falconshire College,OH,Midwest,private,Masters,323
-I068,Thornbrook University,HI,West,public,R2,1054
-I069,Quarrydale College,FL,South,private,Baccalaureate,133
-I070,Willowshire College,TN,South,public,Baccalaureate,163
-I071,Fernmoor University,ND,Midwest,private,R1,1453
-I072,Bramblecrest State University,NJ,Northeast,public,R2,685
-I073,Juniperholm State University,NY,Northeast,public,R2,1087
-I074,Ravengate University,AL,South,private,Masters,469
-I075,Heronford College,MS,South,public,Baccalaureate,132
-I076,Willowstead College,CA,West,private,R2,1107
-I077,Glenstead University,AL,South,public,R1,3018
-I078,Larchfield College,AZ,West,public,Baccalaureate,83
-I079,Copperhaven State University,HI,West,public,Masters,322
-I080,Coppermoor College,MN,Midwest,public,Baccalaureate,128
-I081,Cedarford College,OK,South,public,Baccalaureate,71
-I082,Willowhaven State University,DE,South,public,Masters,280
-I083,Willowstead University,MS,South,public,Masters,575
-I084,University of Thorngate,FL,South,public,R1,1546
-I085,Hazelmoor Institute of Technology,CT,Northeast,private,Masters,348
-I086,Marshstead College,WA,West,private,R2,1097
-I087,Thorncrest University,IA,Midwest,public,R1,2124
-I088,Pineford University,AL,South,public,R1,1442
-I089,Cedardale College,WY,West,private,R1,4109
-I090,Heroncrest University,AK,West,public,Masters,303
-I091,University of Quarrydale,AZ,West,public,Masters,791
-I092,Glenshire State University,TN,South,public,Masters,405
-I093,Ironridge College,FL,South,private,R2,781
-I094,Copperbrook College,MS,South,private,R1,3717
-I095,Maplefield College,OR,West,private,R2,724
-I096,University of Laurelstead,NH,Northeast,public,R1,3501
-I097,Willowmoor College,TN,South,private,Masters,566
-I098,Ironholm College,CO,West,private,Baccalaureate,104
-I099,Quarrystead University,RI,Northeast,private,R2,843
-I100,Thorncrest Institute of Technology,MD,South,private,Masters,142
-I101,Fernhaven Institute of Technology,KS,Midwest,private,R1,2013
-I102,Wrenholm College,WA,West,public,Baccalaureate,95
-I103,Junipervale College,SD,Midwest,private,Baccalaureate,63
-I104,University of Copperwick,AK,West,public,Masters,312
-I105,Ravenbrook College,NM,West,public,Baccalaureate,104
-I106,Wrengate University,LA,South,private,R1,2405
-I107,University of Falconvale,NH,Northeast,public,R1,1184
-I108,Glenmoor College,ND,Midwest,private,Baccalaureate,141
-I109,Bramblehaven University,UT,West,private,R1,2110
-I110,Cedargate University,NH,Northeast,public,R2,713
-I111,Ironmere University,MN,Midwest,private,Masters,394
-I112,Fernstead University,VA,South,private,R2,973
-I113,University of Ferngate,MS,South,public,Masters,176
-I114,Wrenfield College,GA,South,private,R2,683
-I115,Silverholm University,OK,South,private,R2,952
-I116,Wrenvale University,FL,South,public,Masters,296
-I117,Thornhaven University,WI,Midwest,private,R1,3750
-I118,Thornshire University,IL,Midwest,public,Masters,205
-I119,Larchbrook College,GA,South,private,R2,388
-I120,Cedarmere University,PA,Northeast,private,R2,727
-I121,Larchridge College,AL,South,private,Baccalaureate,176
-I122,Briarholm State University,UT,West,public,R2,642
-I123,Pinecrest College,AR,South,public,Baccalaureate,106
-I124,Ravencrest State University,WV,South,public,Masters,402
-I125,Silverholm College,AL,South,private,Baccalaureate,131
-I126,Quarrystead State University,IN,Midwest,public,R2,1029
-I127,University of Silvermoor,RI,Northeast,public,R1,1668
-I128,Glengate University,KY,South,public,R1,907
-I129,Laurelbrook College,NC,South,private,Masters,350
-I130,Ravenhaven State University,KY,South,public,R1,2251
-I131,University of Larchwick,WI,Midwest,public,R2,438
-I132,Hazelmere College,SD,Midwest,public,Baccalaureate,98
-I133,Silverstead Institute of Technology,FL,South,private,Masters,434
-I134,Briarmoor College,AZ,West,private,Baccalaureate,160
-I135,Laurelhaven College,NJ,Northeast,public,Baccalaureate,110
-I136,Junipercrest College,MO,Midwest,private,R1,2016
-I137,Wrenstead College,WI,Midwest,public,Baccalaureate,157
-I138,Maplestead College,WY,West,public,Baccalaureate,85
-I139,Thornvale College,OH,Midwest,private,Baccalaureate,127
-I140,Heronridge Institute of Technology,CT,Northeast,private,R2,836
-I141,Wrenwick College,RI,Northeast,public,Baccalaureate,73
-I142,University of Quarrygate,NH,Northeast,public,R2,707
-I143,Amberbrook State University,KS,Midwest,public,R2,714
-I144,Falconmoor University,KS,Midwest,private,R1,1988
-I145,University of Thornvale,MO,Midwest,public,R2,748
-I146,University of Pinemere,TX,South,public,Masters,355
-I147,Coppervale College,WY,West,private,R2,976
-I148,Willowridge College,VT,Northeast,public,Baccalaureate,163
-I149,University of Willowridge,HI,West,public,R2,688
-I150,Silvervale University,ND,Midwest,public,R1,1460
+I001,Vanderbilt University,TN,South,public,Masters,609
+I002,University of Texas at Arlington,TX,South,private,R2,488
+I003,Washington State University,WA,West,private,R2,924
+I004,Yale University,CT,Northeast,public,R1,1804
+I005,University of South Florida,FL,South,public,R2,1218
+I006,University of Oklahoma,OK,South,public,R2,799
+I007,"University of Nevada, Reno",AK,West,public,Baccalaureate,190
+I008,North Carolina State University,NC,South,public,R2,871
+I009,Oregon State University,OR,West,private,R2,568
+I010,University of Kentucky,KY,South,private,Masters,452
+I011,Dartmouth College,NH,Northeast,private,Masters,517
+I012,University of Iowa,IA,Midwest,public,R2,1073
+I013,Tulane University,LA,South,public,R2,692
+I014,"University of California, Los Angeles",KY,South,private,Masters,269
+I015,Tufts University,MA,Northeast,public,R2,1476
+I016,University of Cincinnati,OH,Midwest,private,R2,686
+I017,Mississippi State University,MS,South,public,Masters,608
+I018,Rutgers University,NJ,Northeast,public,Baccalaureate,76
+I019,College of William & Mary,VA,South,public,Baccalaureate,70
+I020,University of South Carolina,SC,South,public,R1,980
+I021,Louisiana State University,LA,South,public,R2,805
+I022,University of New Mexico,NM,West,private,Baccalaureate,179
+I023,University of Texas at Dallas,TX,South,public,Masters,525
+I024,Colorado School of Mines,CO,West,public,R1,1521
+I025,Pennsylvania State University,PA,Northeast,public,Masters,204
+I026,University of Connecticut,CT,Northeast,public,R1,2513
+I027,University of Miami,FL,South,public,R2,474
+I028,Harvey Mudd College,MS,South,public,Baccalaureate,119
+I029,Virginia Commonwealth University,VA,South,public,Masters,228
+I030,Case Western Reserve University,OH,Midwest,public,R2,590
+I031,University of New Hampshire,NH,Northeast,public,Masters,431
+I032,University of Arkansas,AR,South,private,R1,3000
+I033,New Mexico State University,NM,West,private,R1,1303
+I034,Florida State University,FL,South,public,R2,942
+I035,Clemson University,SC,South,public,Masters,291
+I036,Washington University in St. Louis,MO,Midwest,public,Masters,500
+I037,Oakwood University,AL,South,public,Baccalaureate,151
+I038,University of Texas at Austin,TX,South,public,Masters,324
+I039,Portland State University,OR,West,private,R2,532
+I040,University of Minnesota,MN,Midwest,private,R1,1487
+I041,University of Central Florida,FL,South,public,R1,1627
+I042,Brown University,RI,Northeast,public,Masters,307
+I043,San Diego State University,CT,Northeast,public,R2,759
+I044,Cornell University,NY,Northeast,public,R1,1858
+I045,Montana State University,MT,West,public,R2,1131
+I046,George Mason University,VA,South,private,Masters,381
+I047,Utah State University,UT,West,private,Baccalaureate,150
+I048,Stanford University,ME,Northeast,private,R2,719
+I049,Rensselaer Polytechnic Institute,NY,Northeast,public,Baccalaureate,80
+I050,Oklahoma State University,OK,South,public,R2,1589
+I051,Williams College,MA,Northeast,public,R1,831
+I052,Bucknell University,PA,Northeast,public,R2,467
+I053,University of Pittsburgh,NM,West,public,Masters,362
+I054,University of Pennsylvania,OK,South,private,Masters,378
+I055,Temple University,ME,Northeast,private,R1,835
+I056,University of Vermont,VT,Northeast,public,Masters,541
+I057,"University of Tennessee, Knoxville",TN,South,private,Baccalaureate,206
+I058,"University of California, San Diego",NH,Northeast,private,R1,2270
+I059,Wake Forest University,NC,South,private,Baccalaureate,85
+I060,University of Alabama,AL,South,private,R2,719
+I061,Brigham Young University,UT,West,private,Baccalaureate,134
+I062,University of Florida,FL,South,public,R1,2434
+I063,Middlebury College,VT,Northeast,private,Masters,342
+I064,San Jose State University,ME,Northeast,private,Baccalaureate,91
+I065,Johns Hopkins University,MD,South,private,Baccalaureate,129
+I066,Harvard University,OK,South,public,R2,772
+I067,Ohio State University,OH,Midwest,private,Masters,323
+I068,University of Hawaii at Manoa,HI,West,public,R2,1054
+I069,New York University,FL,South,private,Baccalaureate,133
+I070,"University of California, Berkeley",TN,South,public,Baccalaureate,163
+I071,Massachusetts Institute of Technology,ND,Midwest,private,R1,1453
+I072,Stevens Institute of Technology,NJ,Northeast,public,R2,685
+I073,University at Buffalo,NY,Northeast,public,R2,1087
+I074,Auburn University,AL,South,private,Masters,469
+I075,Binghamton University,MS,South,public,Baccalaureate,132
+I076,"University of California, Santa Barbara",CA,West,private,R2,1107
+I077,University of Houston,AL,South,public,R1,3018
+I078,Arizona State University,AZ,West,public,Baccalaureate,83
+I079,University of Illinois Urbana-Champaign,HI,West,public,Masters,322
+I080,Carleton College,MN,Midwest,public,Baccalaureate,128
+I081,Pomona College,OK,South,public,Baccalaureate,71
+I082,University of Delaware,DE,South,public,Masters,280
+I083,Iowa State University,MS,South,public,Masters,575
+I084,University of Massachusetts Amherst,FL,South,public,R1,1546
+I085,Southern Methodist University,CT,Northeast,private,Masters,348
+I086,University of Washington,WA,West,private,R2,1097
+I087,Grinnell College,IA,Midwest,public,R1,2124
+I088,"University of California, Santa Cruz",AL,South,public,R1,1442
+I089,University of Michigan,WY,West,private,R1,4109
+I090,Columbia University,AK,West,public,Masters,303
+I091,University of Arizona,AZ,West,public,Masters,791
+I092,Northeastern University,TN,South,public,Masters,405
+I093,Boston University,FL,South,private,R2,781
+I094,University of Nebraska-Lincoln,MS,South,private,R1,3717
+I095,University of Oregon,OR,West,private,R2,724
+I096,Amherst College,NH,Northeast,public,R1,3501
+I097,University of North Texas,TN,South,private,Masters,566
+I098,Colorado State University,CO,West,private,Baccalaureate,104
+I099,University of Chicago,RI,Northeast,private,R2,843
+I100,"University of Maryland, College Park",MD,South,private,Masters,142
+I101,Kansas State University,KS,Midwest,private,R1,2013
+I102,Western Michigan University,WA,West,public,Baccalaureate,95
+I103,"University of Nevada, Las Vegas",SD,Midwest,private,Baccalaureate,63
+I104,Michigan State University,AK,West,public,Masters,312
+I105,Brandeis University,NM,West,public,Baccalaureate,104
+I106,Swarthmore College,LA,South,private,R1,2405
+I107,"University of California, Riverside",NH,Northeast,public,R1,1184
+I108,California Institute of Technology,ND,Midwest,private,Baccalaureate,141
+I109,University of Utah,UT,West,private,R1,2110
+I110,Georgia Institute of Technology,NH,Northeast,public,R2,713
+I111,University of Notre Dame,MN,Midwest,private,Masters,394
+I112,James Madison University,VA,South,private,R2,973
+I113,Santa Clara University,MS,South,public,Masters,176
+I114,Emory University,GA,South,private,R2,683
+I115,Drexel University,OK,South,private,R2,952
+I116,California Polytechnic State University,FL,South,public,Masters,296
+I117,University of Wisconsin-Madison,WI,Midwest,private,R1,3750
+I118,University of Illinois Chicago,IL,Midwest,public,Masters,205
+I119,Georgia State University,GA,South,private,R2,388
+I120,Lehigh University,PA,Northeast,private,R2,727
+I121,University of Georgia,AL,South,private,Baccalaureate,176
+I122,DePaul University,UT,West,public,R2,642
+I123,Rochester Institute of Technology,AR,South,public,Baccalaureate,106
+I124,West Virginia University,WV,South,public,Masters,402
+I125,Georgetown University,AL,South,private,Baccalaureate,131
+I126,Indiana University Bloomington,IN,Midwest,public,R2,1029
+I127,Texas A&M University,RI,Northeast,public,R1,1668
+I128,Elmhurst University,KY,South,public,R1,907
+I129,Duke University,NC,South,private,Masters,350
+I130,Northwestern University,KY,South,public,R1,2251
+I131,Marquette University,WI,Midwest,public,R2,438
+I132,"University of California, Davis",SD,Midwest,public,Baccalaureate,98
+I133,Stony Brook University,FL,South,private,Masters,434
+I134,University of North Carolina at Chapel Hill,AZ,West,private,Baccalaureate,160
+I135,Princeton University,NJ,Northeast,public,Baccalaureate,110
+I136,University of Missouri,MO,Midwest,private,R1,2016
+I137,University of Rochester,WI,Midwest,public,Baccalaureate,157
+I138,Texas Tech University,WY,West,public,Baccalaureate,85
+I139,Miami University,OH,Midwest,private,Baccalaureate,127
+I140,Worcester Polytechnic Institute,CT,Northeast,private,R2,836
+I141,Baylor University,RI,Northeast,public,Baccalaureate,73
+I142,Purdue University,NH,Northeast,public,R2,707
+I143,University of Kansas,KS,Midwest,public,R2,714
+I144,University of Southern California,KS,Midwest,private,R1,1988
+I145,Stonehill College,MO,Midwest,public,R2,748
+I146,Rice University,TX,South,public,Masters,355
+I147,Illinois Institute of Technology,WY,West,private,R2,976
+I148,"University of California, Irvine",VT,Northeast,public,Baccalaureate,163
+I149,Boise State University,HI,West,public,R2,688
+I150,Wayne State University,ND,Midwest,public,R1,1460

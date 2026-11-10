@@ -396,7 +396,7 @@
   }
  },
  "macro_f1_definition": "mean of the three theme F1s (positive class) and the stance macro-F1 (mean F1 over stance classes present)",
- "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "note": "SYNTHETIC DATA: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.",
  "requirement": "ANL-03",
  "rules_frozen_commit": "32f3cd2",
  "rules_sha256": "d38c5b9c2140fee7e09282622959b08b736411897d3dcfdeb859ab47718047b5",

@@ -20,7 +20,7 @@
  "n_flagged_eligible": 19,
  "n_flagged_total": 22,
  "n_listed": 14,
- "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "note": "SYNTHETIC DATA: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.",
  "precision": 0.928571,
  "recall": 0.684211,
  "requirement": "ANL-13",

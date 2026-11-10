@@ -1,7 +1,8 @@
 # Methods
 
-> **SYNTHETIC DATA.** Every institution, course, statement and number in this project is invented by
-> `src/data/generate.py`. The results describe the generator, not real US computer science departments.
+> **SYNTHETIC DATA.** Real university names are attached to invented policies and statements. Nothing here
+> describes what these schools actually do. Every course, statement and number is invented by
+> `src/data/generate.py`, and the results describe the generator, not real US computer science departments.
 > The data is synthetic so the analysis can be checked against a known truth.
 
 This page explains in plain language how the analysis works. The numbers themselves are in `results/*.json`,
@@ -9,7 +10,7 @@ and each of those files has a schema in `src/report/schemas/`. They aren't repea
 go out of date.
 
 ## 1. Data and cleaning (ANL-01)
-There are three tables: 150 fictional institutions, about 350 official statements, and about 2,000 course-term
+There are three tables: 150 institutions (real university names, invented data), about 350 official statements, and about 2,000 course-term
 rows covering fall 2023 to fall 2026 (see `docs/data-dictionary.md`). Cleaning:
 - drops exact duplicate rows
 - lowercases the `level` column

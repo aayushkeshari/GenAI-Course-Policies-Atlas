@@ -2,7 +2,9 @@
 
 Usage:  python src/data/generate.py --seed 2026 [--out data/raw]
 
-ALL DATA PRODUCED HERE IS SYNTHETIC. Institution names are fictional, built from word lists.
+ALL DATA PRODUCED HERE IS SYNTHETIC. Institution names are real US university names (DATA-02, HUMAN spec
+change 2026-11-10) attached to invented policies, courses and statements. Nothing here describes what these
+schools actually do.
 
 Determinism (DATA-01): standard library only, one random.Random(seed) consumed in a fixed order,
 CSV rows written in a fixed order with "\n" line endings, JSON written with sorted keys and
@@ -66,9 +68,43 @@ INSTITUTION_COLUMNS = ["inst_id", "name", "state", "census_region", "control", "
                        "cs_enrollment"]
 
 
+def load_real_universities(path: Path = REAL_UNIVERSITIES) -> list[tuple[str, str]]:
+    """(name, state) pairs from the reference list, one `Name | ST` per line."""
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.strip() and not line.lstrip().startswith("#"):
+            name, _, state = line.partition("|")
+            out.append((name.strip(), state.strip()))
+    return out
+
+
 def load_real_names(path: Path = REAL_UNIVERSITIES) -> list[str]:
-    lines = path.read_text(encoding="utf-8").splitlines()
-    return [l.strip() for l in lines if l.strip() and not l.lstrip().startswith("#")]
+    return [name for name, _ in load_real_universities(path)]
+
+
+def assign_real_names(rows: list[dict], universities: list[tuple[str, str]], seed: int) -> list[dict]:
+    """DATA-02: give each institution a distinct real university name, matched by state where possible.
+
+    Uses its own random.Random (seeded from the main seed) so the main stream, and therefore every other
+    column and table, is unchanged. Pass 1 pairs institutions with unused names from the same state (this
+    reaches the maximum possible number of state matches); pass 2 fills the rest from the leftover names."""
+    if len({n.casefold() for n, _ in universities}) < len(rows):
+        raise ValueError(f"need {len(rows)} distinct real names, the reference list has {len(universities)}")
+    pool = list(universities)
+    random.Random(f"DATA-02 real names {seed}").shuffle(pool)
+    by_state: dict[str, list[str]] = {}
+    for name, state in pool:
+        by_state.setdefault(state, []).append(name)
+    names: list[str | None] = [None] * len(rows)
+    for i, row in enumerate(rows):
+        if by_state.get(row["state"]):
+            names[i] = by_state[row["state"]].pop(0)
+    used = {n for n in names if n}
+    rest = [n for n, _ in pool if n not in used]
+    for i in range(len(rows)):
+        if names[i] is None:
+            names[i] = rest.pop(0)
+    return [{**row, "name": name} for row, name in zip(rows, names)]
 
 
 def make_institutions(rng: random.Random, real_names: list[str]) -> list[dict]:
@@ -597,7 +633,8 @@ def write_json(path: Path, obj) -> None:
 def build(seed: int) -> dict:
     """Generate every table in memory. Returns {"institutions": [...], ..., "ground_truth": {...}}."""
     rng = random.Random(seed)
-    institutions = make_institutions(rng, load_real_names())
+    institutions = make_institutions(rng, load_real_names())  # draws placeholder names: keeps the stream fixed
+    institutions = assign_real_names(institutions, load_real_universities(), seed)
     hidden = make_institution_hidden(rng, institutions)
     statements, statement_labels = make_statements(rng, institutions, hidden)
     clean_courses, course_latent = make_courses(rng, institutions, hidden)

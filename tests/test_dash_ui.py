@@ -203,8 +203,9 @@ def test_tables_and_tiles_show_no_unsourced_numbers(page):
 # ---------- DASH-02 ----------
 @pytest.mark.req("DASH-02")
 def test_synthetic_banner_visible_on_every_view(browser, server):
-    """On every view, at desktop and phone widths, the 'Synthetic data — illustrative only' banner is in the
-    viewport when the view opens, and the loaded data files are all flagged synthetic."""
+    """On every view, at desktop and phone widths, the synthetic-data banner (DASH-02 wording: real names, invented
+    policies and statements) is in the viewport when the view opens, and the loaded data files are all flagged
+    synthetic."""
     for width in (1280, 375):
         p = Page(browser, server, width=width)
         for v in VIEWS:
@@ -212,7 +213,9 @@ def test_synthetic_banner_visible_on_every_view(browser, server):
             p.ev("window.scrollTo(0, 0)")
             box = p.page.locator("#synthetic-banner").bounding_box()
             assert box and box["height"] > 0 and box["y"] < 900, (v, width)
-            assert "Synthetic data — illustrative only" in p.page.locator("#synthetic-banner").inner_text()
+            text = " ".join(p.page.locator("#synthetic-banner").inner_text().split())
+            assert text == ("Synthetic data: real university names are attached to invented policies and statements. "
+                            "Nothing here describes what these schools actually do."), text
         p.page.close()
     for f in DATA.glob("*.json"):
         assert load(f)["synthetic"] is True

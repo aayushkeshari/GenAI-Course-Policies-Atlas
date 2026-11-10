@@ -120,7 +120,7 @@
  },
  "n_excluded_missing_policy": 164,
  "n_used": 1890,
- "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "note": "SYNTHETIC DATA: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.",
  "requirement": [
   "ANL-06",
   "ANL-14"

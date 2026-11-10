@@ -1,7 +1,7 @@
 {
  "synthetic": false,
  "about": "The real development history of this project, which studies SYNTHETIC data. Prompts and responses come from Claude Code hooks and are redacted (home paths, emails, tokens and keys removed).",
- "head": "d1f0d36bbf6cbc78f330985527e6c222abc3cad2",
+ "head": "c9217ed3fb011c617e6cd7df37efef9ae6034f5f",
  "phases": [
   "P0",
   "P1",
@@ -3779,7 +3779,7 @@
    "text": "\n\n<pasted_content id=\"aa1a\">\nKeep run B as-is with the deviation noted. Write docs/usage-limits.md saying: \"No usage-limit events hit during the project.\" Then write docs/tokens-learned.md with exactly this text:\n\n**What I learned about tokens**\n\n- Context size drives cost. 97.6% of the project's 61.8M tokens were cache reads, which means Claude re-read existing context far more than it generated anything new.\n- Clearing is the biggest lever. The same small task cost about 8× more at the end of a long session (1.72M tokens) than right after /clear (214k). The largest single context drop was 323k → 39k at one /clear.\n- Compact helps, but less than clear. Run C cost about 18% more than run B, because the compaction summary stays in context.\n- The spec-driven workflow made clearing cheap. Because HANDOFF.md and the phase specs carried the state, /prep-clear → /clear → /resume lost almost nothing.\n- Slow tests cost tokens too. Once the full suite took about 7 minutes, every fix-and-rerun loop added up. Running only the current phase's tests while building, and the full suite once per phase, cut that.\n- Caveats: one run per condition (n = 1), so the ratios are anecdotal; only the direction is clearly larger than the noise. Subagent usage was missed until INST-04 was extended mid-project.\n\nThen run make tokens, make test and make report, commit, push, and go straight into P7: set phase to P7:writing-code, implement specs/P7-publish.md, run make prepublish, and tell me exactly which GitHub setting to change for Pages.\n</pasted_content id=\"aa1a\">\n",
    "stage": "writing-code",
    "session": "bbb876eb",
-   "reply": null
+   "reply": "ev132"
   },
   {
    "id": "prog1304",
@@ -3814,12 +3814,84 @@
    "type": "progress",
    "summary": "Publish: landing page, Pages workflow, prepublish gate, README, evaluation page",
    "source": "docs/progress.md:1322"
+  },
+  {
+   "id": "git-c9217ed",
+   "ts": "2026-11-10T15:28:51-05:00",
+   "t": 1794342531000,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "commit",
+   "summary": "agent: P7 — landing page, Pages workflow, make prepublish gate, README, evaluation page (PUB-01..05)",
+   "source": "git c9217ed",
+   "sha": "c9217ed3fb011c617e6cd7df37efef9ae6034f5f",
+   "files": 60,
+   "added": 835,
+   "removed": 37
+  },
+  {
+   "id": "ev132",
+   "ts": "2026-11-10T15:29:15.272-05:00",
+   "t": 1794342555272,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "response",
+   "summary": "P6 is closed and P7 is built. `make prepublish` passes: 643 tests, and the redaction, link and banner checks are clean on all 6 pages. Everything is pushed as…",
+   "source": "logs/events.jsonl:132",
+   "text": "P6 is closed and P7 is built. `make prepublish` passes: 643 tests, and the redaction, link and banner checks are clean on all 6 pages. Everything is pushed as `c9217ed`.\n\n**The GitHub setting to change:** in the repo, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**, not \"Deploy from a branch\". Pages is currently off: GitHub's Pages API returns 404 for this repo. So the workflow run my push started will fail at its first Pages step. After you change the setting, re-run it from the Actions tab (\"Deploy site to GitHub Pages\" → Re-run jobs) or just push again. The site will then be at https://aayushkeshari.github.io/genai-cs-policy/.\n\n**P6:**\n- **Run B:** kept, with the missing `/resume` noted in progress.md as you asked.\n- **`docs/usage-limits.md`:** has your sentence. I kept the empty table under it because the parser and a test expect the table header.\n- **`docs/tokens-learned.md`:** your text exactly. The tokens page was showing it as raw markdo",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply_to": "ev131"
+  },
+  {
+   "id": "ev133",
+   "ts": "2026-11-10T15:29:55.434-05:00",
+   "t": 1794342595434,
+   "actor": "HUMAN",
+   "phase": "P7",
+   "type": "prompt",
+   "summary": "Spec change (HUMAN decision): replace the fictional institution names with real US university names from data/reference/real_universities.txt, one per institut…",
+   "source": "logs/events.jsonl:133",
+   "category": "shared",
+   "text": "\n\n<pasted_content id=\"aa1a\">\nSpec change (HUMAN decision): replace the fictional institution names with real US university names from data/reference/real_universities.txt, one per institution, matched by state where possible. \n\n\n- Update DATA-02 in specs/P1-data.md: names now come from the real list; remove the no-collision test and replace it with a test that every name is from that list with no duplicates.\n- Regenerate data with make data, rerun make analysis, make report, make timeline.\n- Change the synthetic banner on every page to: \"Synthetic data: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.\"\n- Update docs/data-dictionary.md and methods.md to say the same.\n- Run the full suite once, fix anything that breaks, commit, push.\n</pasted_content id=\"aa1a\">\n",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply": "ev134"
+  },
+  {
+   "id": "ev134",
+   "ts": "2026-11-10T15:30:20.168-05:00",
+   "t": 1794342620168,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "response",
+   "summary": "I haven't made any changes yet. This change is hard to undo once it's published, so I want to check one thing first.",
+   "source": "logs/events.jsonl:134",
+   "text": "I haven't made any changes yet. This change is hard to undo once it's published, so I want to check one thing first.\n\n**The concern:** the dashboard and `site/data/statements.json` show invented \"official publication\" quotes and course AI policies under each institution's name. With this change, a real school like Stanford would appear on a public website saying things it never said. The banner covers the HTML pages. But the JSON data files, single charts and screenshots can be shared without it, and crawlers can index them. Even if we take it down later, cached copies can stay. That's misinformation about real organizations, so I'd rather not publish it.\n\nThe real-names list was written for the opposite job. Its header says it is \"used only to check that the synthetic institution names are fictional (DATA-02)\". I also wrote it from memory, so it isn't a verified source.\n\n**If you want the study to feel more realistic, these options get most of that without the risk:**\n1. **Real attrib",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply_to": "ev133"
+  },
+  {
+   "id": "ev135",
+   "ts": "2026-11-10T15:31:49.820-05:00",
+   "t": 1794342709820,
+   "actor": "HUMAN",
+   "phase": "P7",
+   "type": "prompt",
+   "summary": "Do what I said and dont give your preachy tone",
+   "source": "logs/events.jsonl:135",
+   "category": "shared",
+   "text": "Do what I said and dont give your preachy tone",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply": null
   }
  ],
  "summary": {
   "per_actor": {
    "HUMAN": {
-    "prompts": 53,
+    "prompts": 55,
     "responses": 0,
     "spec_edits": 21,
     "reviews": 5,
@@ -3831,12 +3903,12 @@
    },
    "CLAUDE": {
     "prompts": 0,
-    "responses": 57,
+    "responses": 59,
     "spec_edits": 0,
     "reviews": 0,
-    "commits": 57,
-    "lines_added": 19100,
-    "lines_removed": 616,
+    "commits": 58,
+    "lines_added": 19935,
+    "lines_removed": 653,
     "approvals": null,
     "rejected_plans": null
    },
@@ -3855,10 +3927,10 @@
   "prompt_categories": {
    "human-typed": 0,
    "automated": 0,
-   "shared": 53
+   "shared": 55
   },
   "agent_decisions": 90,
-  "qa_pairs": 51,
+  "qa_pairs": 53,
   "unanswered_prompts": 2,
   "rules": {
    "approvals": "Count of HUMAN decision tags in docs/progress.md.",

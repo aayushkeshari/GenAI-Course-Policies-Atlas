@@ -43,7 +43,7 @@ OUT = ROOT / "site" / "validation" / "data"
 SCHEMAS = Path(__file__).resolve().parent / "schemas"
 
 RECOVERY_FILES = ["recovery.json", "rhetoric_recovery.json", "coder_dev_eval.json"]
-NOTE = ("SYNTHETIC DATA: the study's institutions, courses and statements are invented. "
+NOTE = ("SYNTHETIC DATA: real university names are attached to invented policies and statements. "
         "This file describes the project's tests, not findings.")
 STATUS_CODE = {"passed": "p", "failed": "f", "error": "e", "skipped": "s", "xfailed": "x", "xpassed": "X"}
 BAD = {"failed", "error", "xpassed"}

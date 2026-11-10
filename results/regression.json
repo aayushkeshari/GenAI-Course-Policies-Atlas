@@ -202,7 +202,7 @@
  "n_clusters": 150,
  "n_excluded_missing_policy": 164,
  "n_used": 1890,
- "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "note": "SYNTHETIC DATA: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.",
  "ratios_to_term_effect": {
   "description": "coefficient / term_index coefficient: each effect in units of one term of the time trend; 95% CI by the delta method on the clustered covariance",
   "ratios": [

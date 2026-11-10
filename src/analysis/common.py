@@ -13,7 +13,8 @@ CLEAN = ROOT / "data" / "clean"
 RESULTS = ROOT / "results"
 TERMS = ["F23", "S24", "F24", "S25", "F25", "S26", "F26"]
 LEVELS = ["intro", "intermediate", "upper", "graduate"]
-SYNTHETIC_NOTE = "SYNTHETIC DATA: every institution, course and statement is invented."
+SYNTHETIC_NOTE = ("SYNTHETIC DATA: real university names are attached to invented policies and statements. "
+                  "Nothing here describes what these schools actually do.")
 
 
 def _jsonable(obj):

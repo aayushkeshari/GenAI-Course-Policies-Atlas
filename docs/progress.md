@@ -1347,3 +1347,33 @@ not backdated. Each step has its own commit, listed below.
 **Open questions**
 - Aayush must set Settings → Pages → Build and deployment → Source = "GitHub Actions" (see the reply). After that, confirm the first workflow run deploys.
 - docs/evaluation.md is still the empty template. Aayush writes it, then runs `make site` to copy it to the page.
+
+## 2026-11-10T15:38:00-05:00 — [P1/P7] DATA-02 spec change: real university names on synthetic institutions
+
+**What changed**
+- specs/P1-data.md DATA-02 (HUMAN spec change): names now come from data/reference/real_universities.txt, one per institution, with no duplicates, matched by state where possible.
+- data/reference/real_universities.txt: each line is now `Name | ST`. The agent added the states from memory, as it did the names on 2026-11-08. Five are DC, which isn't in the generator's STATES, so those can only fill the leftover slots.
+- src/data/generate.py: new load_real_universities() and assign_real_names(). The word-list names are still drawn, so the main random stream is unchanged; a separate seeded shuffle then replaces them. Pass 1 matches by state and reaches the maximum possible number of matches. Pass 2 fills the rest from leftover names. `make data` changed only institutions.csv; courses, statements and ground_truth are byte-identical. `make analysis` therefore changed only the `note` text in results/*.json, with no number moving.
+- Banner on all 6 pages is now exactly: "Synthetic data: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do." The same sentence replaces the old "every institution is invented / names are fictional" wording in:
+  - the results, site-data and validation-data JSON notes
+  - the dashboard header comment and its Institutions KPI label
+  - the landing-page footer
+  - README.md
+  - docs/data-dictionary.md and docs/methods.md
+- specs/P3-dashboard.md DASH-02 quoted the old banner ("Synthetic data — illustrative only"), so its wording was updated to the new banner as a follow-on to the HUMAN banner change.
+- Tests:
+  - DATA-02 no-collision tests removed: test_institutions_have_150_unique_fictional_names and test_generator_rejects_names_on_the_real_list.
+  - New: every name is from the real list with no duplicates (4 seeds); state matches equal the maximum possible; other columns and tables are unchanged by the name swap; a too-short list raises an error; the reference list has valid states.
+  - The DATA-14 dictionary test and the DASH-02 banner test now check the new wording. Their visibility and placement checks are unchanged.
+- `make analysis`, `make report`, `make timeline`, `make site` rerun.
+
+**Tests**
+- `make test`, first run: 3 failed in tests/test_val_data.py (the explorer data was stale after the data change). After `make report`, `make test`: 646 passed. prepublish checks: OK, 6 pages.
+
+**Decisions**
+- HUMAN: real university names replace the fictional ones (DATA-02), with the new banner text. The agent raised a concern about publishing invented statements under real names; Aayush decided to go ahead.
+- AGENT: names are assigned in a separate random stream so the planted effects and every analysis number stay identical.
+- AGENT: DASH-02's quoted banner text was updated to match the new banner.
+
+**Open questions**
+- CLAUDE.md still says "Institution names are fictional". That is Aayush's file, so the agent has left it unchanged.

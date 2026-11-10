@@ -198,7 +198,7 @@
   ],
   "tolerance": 0.25
  },
- "note": "SYNTHETIC DATA: every institution, course and statement is invented.",
+ "note": "SYNTHETIC DATA: real university names are attached to invented policies and statements. Nothing here describes what these schools actually do.",
  "null": {
   "DATA-10": {
    "alpha": 0.05,

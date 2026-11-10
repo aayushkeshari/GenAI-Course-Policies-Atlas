@@ -5,8 +5,10 @@ effects, and P2 must recover them.
 
 ## Generator
 - **DATA-01** `src/data/generate.py --seed 2026` is deterministic: the same seed produces byte-identical files.
-- **DATA-02** `data/raw/institutions.csv` has 150 rows with fictional names built from word lists.
-  No name exactly matches any entry in `data/reference/real_universities.txt` (~150 real US universities with CS programs).
+- **DATA-02** `data/raw/institutions.csv` has 150 rows. Names are real US university names taken from
+  `data/reference/real_universities.txt` (~150 real US universities with CS programs, `Name | ST` per line), one per
+  institution with no duplicates, matched to the institution's state where possible. The policies, courses and
+  statements attached to them are invented (HUMAN spec change, 2026-11-10).
   Columns: inst_id, name, state, census_region, control (public/private), carnegie (R1/R2/Masters/Baccalaureate), cs_enrollment.
 - **DATA-03** `data/raw/statements.csv` has ~350 official-publication excerpts (0–4 per institution).
   Columns: stmt_id, inst_id, pub_type (policy_page/news/strategic_plan/syllabus_template/faq),

@@ -2,7 +2,8 @@
 
 - **DASH-01** Static page that loads `site/data/*.json` (copied from results/ by `make site`).
   Chart.js pinned to an exact version via CDN. No build step.
-- **DASH-02** A visible "Synthetic data — illustrative only" banner on every view.
+- **DASH-02** A visible synthetic-data banner on every view: "Synthetic data: real university names are attached to invented
+  policies and statements. Nothing here describes what these schools actually do." (wording changed by HUMAN, 2026-11-10).
 - **DASH-03** Views: KPI summary; policy distribution by level (stacked bars); SE vs non-SE; trend by term;
   census-region comparison (no state map: with ~3 synthetic institutions per state, state averages are just noise);
   allowed-uses heatmap (use × course level, RQ6); assessment-changes chart by policy level (RQ7);

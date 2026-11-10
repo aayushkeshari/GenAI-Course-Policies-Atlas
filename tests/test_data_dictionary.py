@@ -33,7 +33,10 @@ def test_ground_truth_keys_documented():
 
 @pytest.mark.req("DATA-14")
 def test_states_data_is_synthetic():
-    """The dictionary says, before any table, that all data is SYNTHETIC and names are fictional."""
+    """The dictionary says, before any table, that all data is SYNTHETIC and that the real university names are
+    attached to invented policies and statements (DATA-02 as changed 2026-11-10)."""
     text = DICT.read_text(encoding="utf-8")
-    head = text.split("|", 1)[0]
-    assert "SYNTHETIC" in head and "fictional" in head
+    head = " ".join(text.split("|", 1)[0].replace(">", " ").split())
+    assert "SYNTHETIC" in head
+    assert "Real university names are attached to invented policies and statements" in head
+    assert "Nothing here describes what these schools actually do" in head

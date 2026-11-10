@@ -1,162 +1,164 @@
-# Real US universities and colleges with computer science programs (one per line).
-# Written from memory by the agent (HUMAN decision, 2026-11-08). Used only to check that the
-# synthetic institution names are fictional (DATA-02). Lines starting with # are comments.
-Massachusetts Institute of Technology
-Stanford University
-Carnegie Mellon University
-University of California, Berkeley
-Cornell University
-Princeton University
-Harvard University
-California Institute of Technology
-University of Illinois Urbana-Champaign
-Georgia Institute of Technology
-University of Washington
-University of Texas at Austin
-University of Michigan
-Columbia University
-University of California, Los Angeles
-University of California, San Diego
-University of Wisconsin-Madison
-University of Maryland, College Park
-University of Pennsylvania
-Yale University
-Brown University
-Duke University
-Johns Hopkins University
-New York University
-Northwestern University
-Purdue University
-University of Southern California
-University of Massachusetts Amherst
-Rice University
-University of Chicago
-University of Virginia
-University of North Carolina at Chapel Hill
-Ohio State University
-Pennsylvania State University
-Rutgers University
-Stony Brook University
-University of Minnesota
-University of California, Irvine
-University of California, Santa Barbara
-University of California, Davis
-University of California, Santa Cruz
-University of California, Riverside
-University of Colorado Boulder
-University of Utah
-University of Arizona
-Arizona State University
-University of Florida
-Virginia Tech
-Texas A&M University
-Rensselaer Polytechnic Institute
-Northeastern University
-Boston University
-Dartmouth College
-Vanderbilt University
-Washington University in St. Louis
-Emory University
-University of Rochester
-Michigan State University
-Indiana University Bloomington
-University of Iowa
-Iowa State University
-University of Pittsburgh
-North Carolina State University
-University of Notre Dame
-Tufts University
-Case Western Reserve University
-Georgetown University
-George Mason University
-George Washington University
-University of Delaware
-University of Connecticut
-Syracuse University
-Drexel University
-Lehigh University
-Worcester Polytechnic Institute
-Stevens Institute of Technology
-University at Buffalo
-Binghamton University
-University of Central Florida
-Florida State University
-University of South Florida
-University of Miami
-Clemson University
-University of South Carolina
-University of Georgia
-Auburn University
-University of Alabama
-University of Tennessee, Knoxville
-University of Kentucky
-Louisiana State University
-Tulane University
-University of Oklahoma
-Oklahoma State University
-University of Kansas
-Kansas State University
-University of Missouri
-University of Nebraska-Lincoln
-University of Illinois Chicago
-Illinois Institute of Technology
-Loyola University Chicago
-University of Cincinnati
-Miami University
-Wayne State University
-Western Michigan University
-Oregon State University
-University of Oregon
-Portland State University
-Washington State University
-Boise State University
-University of Nevada, Reno
-University of Nevada, Las Vegas
-University of New Mexico
-New Mexico State University
-Colorado State University
-Colorado School of Mines
-Brigham Young University
-Utah State University
-University of Houston
-University of Texas at Dallas
-University of North Texas
-Texas Tech University
-Baylor University
-Southern Methodist University
-University of Texas at Arlington
-San Jose State University
-San Diego State University
-California Polytechnic State University
-Santa Clara University
-Harvey Mudd College
-Pomona College
-Williams College
-Amherst College
-Swarthmore College
-Carleton College
-Middlebury College
-Grinnell College
-Bucknell University
-Villanova University
-Temple University
-University of Vermont
-University of New Hampshire
-Brandeis University
-Wake Forest University
-University of Hawaii at Manoa
-West Virginia University
-Virginia Commonwealth University
-College of William & Mary
-James Madison University
-Howard University
-Georgia State University
-Mississippi State University
-University of Arkansas
-Montana State University
-Marquette University
-DePaul University
-Rochester Institute of Technology
-Oakwood University
-Elmhurst University
-Stonehill College
+# Real US universities and colleges with computer science programs, one per line: `Name | ST` (postal code).
+# Written from memory by the agent (HUMAN decision, 2026-11-08); states added 2026-11-10.
+# DATA-02 (HUMAN spec change, 2026-11-10): the generator attaches these real names to the synthetic institutions,
+# matched by state where possible. The policies and statements attached to them are invented.
+# Lines starting with # are comments.
+Massachusetts Institute of Technology | MA
+Stanford University | CA
+Carnegie Mellon University | PA
+University of California, Berkeley | CA
+Cornell University | NY
+Princeton University | NJ
+Harvard University | MA
+California Institute of Technology | CA
+University of Illinois Urbana-Champaign | IL
+Georgia Institute of Technology | GA
+University of Washington | WA
+University of Texas at Austin | TX
+University of Michigan | MI
+Columbia University | NY
+University of California, Los Angeles | CA
+University of California, San Diego | CA
+University of Wisconsin-Madison | WI
+University of Maryland, College Park | MD
+University of Pennsylvania | PA
+Yale University | CT
+Brown University | RI
+Duke University | NC
+Johns Hopkins University | MD
+New York University | NY
+Northwestern University | IL
+Purdue University | IN
+University of Southern California | CA
+University of Massachusetts Amherst | MA
+Rice University | TX
+University of Chicago | IL
+University of Virginia | VA
+University of North Carolina at Chapel Hill | NC
+Ohio State University | OH
+Pennsylvania State University | PA
+Rutgers University | NJ
+Stony Brook University | NY
+University of Minnesota | MN
+University of California, Irvine | CA
+University of California, Santa Barbara | CA
+University of California, Davis | CA
+University of California, Santa Cruz | CA
+University of California, Riverside | CA
+University of Colorado Boulder | CO
+University of Utah | UT
+University of Arizona | AZ
+Arizona State University | AZ
+University of Florida | FL
+Virginia Tech | VA
+Texas A&M University | TX
+Rensselaer Polytechnic Institute | NY
+Northeastern University | MA
+Boston University | MA
+Dartmouth College | NH
+Vanderbilt University | TN
+Washington University in St. Louis | MO
+Emory University | GA
+University of Rochester | NY
+Michigan State University | MI
+Indiana University Bloomington | IN
+University of Iowa | IA
+Iowa State University | IA
+University of Pittsburgh | PA
+North Carolina State University | NC
+University of Notre Dame | IN
+Tufts University | MA
+Case Western Reserve University | OH
+Georgetown University | DC
+George Mason University | VA
+George Washington University | DC
+University of Delaware | DE
+University of Connecticut | CT
+Syracuse University | NY
+Drexel University | PA
+Lehigh University | PA
+Worcester Polytechnic Institute | MA
+Stevens Institute of Technology | NJ
+University at Buffalo | NY
+Binghamton University | NY
+University of Central Florida | FL
+Florida State University | FL
+University of South Florida | FL
+University of Miami | FL
+Clemson University | SC
+University of South Carolina | SC
+University of Georgia | GA
+Auburn University | AL
+University of Alabama | AL
+University of Tennessee, Knoxville | TN
+University of Kentucky | KY
+Louisiana State University | LA
+Tulane University | LA
+University of Oklahoma | OK
+Oklahoma State University | OK
+University of Kansas | KS
+Kansas State University | KS
+University of Missouri | MO
+University of Nebraska-Lincoln | NE
+University of Illinois Chicago | IL
+Illinois Institute of Technology | IL
+Loyola University Chicago | IL
+University of Cincinnati | OH
+Miami University | OH
+Wayne State University | MI
+Western Michigan University | MI
+Oregon State University | OR
+University of Oregon | OR
+Portland State University | OR
+Washington State University | WA
+Boise State University | ID
+University of Nevada, Reno | NV
+University of Nevada, Las Vegas | NV
+University of New Mexico | NM
+New Mexico State University | NM
+Colorado State University | CO
+Colorado School of Mines | CO
+Brigham Young University | UT
+Utah State University | UT
+University of Houston | TX
+University of Texas at Dallas | TX
+University of North Texas | TX
+Texas Tech University | TX
+Baylor University | TX
+Southern Methodist University | TX
+University of Texas at Arlington | TX
+San Jose State University | CA
+San Diego State University | CA
+California Polytechnic State University | CA
+Santa Clara University | CA
+Harvey Mudd College | CA
+Pomona College | CA
+Williams College | MA
+Amherst College | MA
+Swarthmore College | PA
+Carleton College | MN
+Middlebury College | VT
+Grinnell College | IA
+Bucknell University | PA
+Villanova University | PA
+Temple University | PA
+University of Vermont | VT
+University of New Hampshire | NH
+Brandeis University | MA
+Wake Forest University | NC
+University of Hawaii at Manoa | HI
+West Virginia University | WV
+Virginia Commonwealth University | VA
+College of William & Mary | VA
+James Madison University | VA
+Howard University | DC
+Georgia State University | GA
+Mississippi State University | MS
+University of Arkansas | AR
+Montana State University | MT
+Marquette University | WI
+DePaul University | IL
+Rochester Institute of Technology | NY
+Oakwood University | AL
+Elmhurst University | IL
+Stonehill College | MA

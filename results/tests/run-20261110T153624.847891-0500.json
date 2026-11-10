@@ -1,0 +1,39 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T15:36:24.847-05:00",
+ "finished": "2026-11-10T15:36:27.135-05:00",
+ "duration_s": 2.287,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "c9217ed3fb011c617e6cd7df37efef9ae6034f5f",
+ "git_dirty": true,
+ "current_phase": "P7:writing-code",
+ "args": [
+  "-q",
+  "tests/test_dash_ui.py",
+  "-k",
+  "banner",
+  "tests/test_data_generate.py",
+  "tests/test_data_dictionary.py"
+ ],
+ "summary": {
+  "passed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_ui.py::test_synthetic_banner_visible_on_every_view",
+   "req_ids": [
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 204,
+   "body_sha256": "dd57e69f24c99061da261be83ae6984568c81e1fdad28a62706bacc30d20f63d",
+   "status": "passed",
+   "duration_s": 2.201935,
+   "failure_message": ""
+  }
+ ]
+}

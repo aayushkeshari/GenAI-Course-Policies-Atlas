@@ -27,7 +27,7 @@ SITE_DATA = ROOT / "site" / "data"
 # results files the dashboard reads
 DASHBOARD_RESULTS = ["descriptives", "allowed_uses", "assessment", "association", "regression",
                      "rhetoric", "coder_eval", "kappa"]
-ROWS_NOTE = ("SYNTHETIC DATA: raw synthetic rows, not results. Every institution, course and statement is invented. "
+ROWS_NOTE = ("SYNTHETIC DATA: raw synthetic rows, not results. Real university names are attached to invented policies and statements; nothing here describes what these schools actually do. "
              "Labels are the rule-based coder's output, not the truth.")
 
 INSTITUTION_FIELDS = ["inst_id", "name", "state", "census_region", "control", "carnegie", "cs_enrollment"]

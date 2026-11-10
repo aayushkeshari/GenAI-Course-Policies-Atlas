@@ -1,4 +1,4 @@
-# Project 2 Starter Kit — Agentic Development with Claude Code
+# Project 2 for CS 4005: Agentic Development with Claude Code
 
 These are **draft specifications**, not code. Claude Code writes all the code; you own the specs.
 

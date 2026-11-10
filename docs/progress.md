@@ -1271,3 +1271,32 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Runs B and C still need doing, and run A's tokens need its session transcript copied. See HANDOFF.
+
+## 2026-11-10T15:13:55-05:00 — [P6] TOK-05 experiment results (A/B/C measured)
+
+**What changed**
+- Aayush ran the remaining conditions. Run C (event line 125) came right after a manual /compact (PreCompact 15:08:54, SessionStart source=compact 15:09:58). Run B (line 128) came right after /clear (SessionStart source=clear 15:10:42).
+- `make tokens` rebuilt results/tokens.json and site/tokens/data/tokens.json. All three conditions now have status = measured and runs = 1. The two earlier attempts (lines 111 and 113) are still excluded as invalid.
+
+**Comparison (task: one standalone bar chart of the policy-level shares in scratch/tok05/<X>/, n = 1 per condition)**
+
+| Condition | Messages | Output | Cache creation | Cache read | Total | First context | Peak context | Cache-read share |
+|---|---|---|---|---|---|---|---|---|
+| A: long session, no clear | 8 | 5,992 | 11,473 | 1,703,562 | 1,721,047 | 208,184 | 219,556 | 99.3% |
+| B: after /clear | 5 | 3,096 | 17,697 | 193,413 | 214,216 | 39,509 | 45,016 | 91.6% |
+| C: after /compact | 4 | 2,501 | 37,933 | 212,907 | 253,349 | 60,097 | 65,252 | 84.9% |
+
+- A cost about 8× B in total tokens, and 7× C. Almost all of that is cache reads: every turn re-reads a ~210k-token context. A also took more turns (8 messages) and wrote a bigger file (7.8 KB, against 3.6 KB for B and 3.3 KB for C).
+- C started with about 20k more context than B, because the compaction summary sits in context. Its cache creation was about twice B's, since the summary had to be written to cache. Its total was about 18% above B's.
+- Sample size: with one run per condition, these differences are anecdotal, not evidence. Task wording, Claude's choices (A's file was twice as large) and cache timing can all move the numbers on their own. Only the direction (a long context makes every turn expensive) is clearly bigger than that noise.
+- Protocol deviation: run B was sent straight after /clear, without /resume first, so its context had no HANDOFF or spec reads in it. The spec defines B as "/clear + /resume". B is therefore a lower bound for the cost of that condition.
+
+**Tests**
+- `make test`: 605 passed (twice, each followed by `make report`).
+
+**Decisions**
+- HUMAN: Aayush declared the experiment done and kept run B as it was, rather than redoing it with /resume.
+- AGENT: the /resume deviation is written up here, not excluded by the validity rule. That rule checks only that the session started with /clear, which B did.
+
+**Open questions**
+- Aayush still needs to write docs/tokens-learned.md (TOK-07) and log any usage-limit events in docs/usage-limits.md (TOK-06).

@@ -1,15 +1,9 @@
 # HANDOFF — overwritten at each /prep-clear
-Updated: 2026-11-10T15:06:57-05:00
-Current phase: P6. TOK-01..04, 06, 07 and 08 are built and tested. TOK-05 analysis is built, but the experiment is incomplete. INST-04 now copies subagent transcripts. .phase is "P6:writing-code".
-Last completed task: tokens page site/tokens/ (make serve, then http://127.0.0.1:8000/tokens/). 605 tests pass. Pushed.
-TOK-05 status (from results/tokens.json): A = valid run logged at events line 109 but "awaiting transcript" (its session 748a356f
-  isn't copied to raw_logs/ until it compacts or ends). B and C = not run. Lines 111 (C) and 113 (B) are excluded: they were sent with no compact or clear.
-If a prompt contains "TOK-05 run B" or "TOK-05 run C": do exactly that task in scratch/tok05/<X>/ only. Ask no questions and do no other work.
-Next task (Aayush must type the slash commands into the prompt box; text in a message does not run them):
-  1. /compact (this also copies the session transcript, so run A becomes measurable), then send the run C prompt.
-  2. /clear, then /resume, then send the run B prompt.
-  3. /clear, then /resume, then "experiment done". Then: `make tokens`, check A/B/C status = measured with runs = 1,
-     write the comparison in progress.md with the n = 1 caveat, `make test` + `make report`, commit, push.
+Updated: 2026-11-10T15:13:55-05:00
+Current phase: P6. All TOK requirements are built and tested. The TOK-05 experiment is done: A, B and C are measured with 1 run each, and the comparison is in progress.md. .phase is "P6:writing-code".
+Last completed task: TOK-05 results written up (entry at 2026-11-10T15:13:55). 605 tests pass. Committed and pushed.
+TOK-05: A total 1.72M tokens, B 214k, C 253k (n = 1, anecdotal). Run B skipped /resume. This is noted as a deviation, and Aayush kept the run.
+Next task: Aayush writes docs/tokens-learned.md and logs any usage-limit events. Then `make tokens && make test && make report`, then close P6 / start P7 (PUB).
 Files touched in P6: specs/P6-tokens.md (TOK-05), specs/P0-instrumentation.md (INST-04), .claude/hooks/log_event.py, Makefile (tokens),
   src/tokens/{__init__,build_tokens}.py, src/report/schemas/tokens.schema.json, results/tokens.json, site/tokens/{index.html,style.css,app.js,data/tokens.json},
   docs/usage-limits.md, tests/{tokutil,test_tok_data,test_tok_ui,test_log_event}.py, .gitignore (scratch/), docs/{progress,HANDOFF}.md

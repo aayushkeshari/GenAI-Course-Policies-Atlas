@@ -1377,3 +1377,20 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - CLAUDE.md still says "Institution names are fictional". That is Aayush's file, so the agent has left it unchanged.
+
+## 2026-11-10T15:44:31-05:00 — [P7] Evaluation facts (docs/evaluation-facts.md)
+
+**What changed**
+- New docs/evaluation-facts.md lists, for each goal G1–G5 in specs/00-overview.md: evidence paths and local URLs, test counts, fault detection, token totals by phase, the TOK-05 results and per-actor contribution counts. It states facts only. Aayush writes the evaluation itself in docs/evaluation.md.
+- Rebuilt site/timeline/data/timeline.json so the contribution counts are current to HEAD.
+- Correction to the 15:38 entry: Aayush's rejection of the agent's proposal was not tagged there. It is recorded here:
+  - REJECTED: the agent's proposal to keep fictional institution names (with real attributes, real names only locally, or name-like labels) instead of real university names. Aayush rejected it and had the DATA-02 change done as specified.
+
+**Tests**
+- `make test`: 646 passed.
+
+**Decisions**
+- AGENT: per-goal test counts group requirement prefixes by the phase table in specs/00-overview.md: G1 = DATA + ANL + DASH, G2 = VAL, G3 = PROV, G4 = TOK, G5 = PUB. INST (P0) is listed separately. A test tagged with several prefixes counts once under each.
+
+**Open questions**
+- results/faults.json is from 2026-11-08 (commit ac34740, 453 tests). It has not been rerun since. `make faults` would refresh it.

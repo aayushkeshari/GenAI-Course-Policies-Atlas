@@ -1,7 +1,7 @@
 {
  "synthetic": false,
  "about": "The real development history of this project, which studies SYNTHETIC data. Prompts and responses come from Claude Code hooks and are redacted (home paths, emails, tokens and keys removed).",
- "head": "5ceb95f147227ba9487e6fcb4d943090169936df",
+ "head": "8edc8609e107f27c9e7bb9e47bb63bfbc5620df4",
  "phases": [
   "P0",
   "P1",
@@ -4009,7 +4009,7 @@
    "text": "Collect facts for my evaluation: for each goal G1–G5 in specs/00-overview.md, list the evidence (file paths or local URLs), test count, fault detection rate, token totals by phase, the TOK-05 results, and per-actor contribution counts. Facts only, no judgments. Write them to docs/evaluation-facts.md and commit.",
    "stage": "writing-code",
    "session": "bbb876eb",
-   "reply": null
+   "reply": "ev140"
   },
   {
    "id": "prog1381",
@@ -4020,29 +4020,125 @@
    "type": "progress",
    "summary": "Evaluation facts (docs/evaluation-facts.md)",
    "source": "docs/progress.md:1381"
+  },
+  {
+   "id": "git-c276c4d",
+   "ts": "2026-11-10T15:46:26-05:00",
+   "t": 1794343586000,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "commit",
+   "summary": "agent: P7 — docs/evaluation-facts.md (facts for G1–G5); record REJECTED tag for the real-names proposal; timeline rebuilt",
+   "source": "git c276c4d",
+   "sha": "c276c4d9248f015469403c49a2da88f15d3c5c7c",
+   "files": 10,
+   "added": 197,
+   "removed": 0
+  },
+  {
+   "id": "ev140",
+   "ts": "2026-11-10T15:46:35.963-05:00",
+   "t": 1794343595963,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "response",
+   "summary": "I wrote `docs/evaluation-facts.md` and pushed it to GitHub as `c276c4d`. `make test` passed (646 tests).",
+   "source": "logs/events.jsonl:140",
+   "text": "I wrote `docs/evaluation-facts.md` and pushed it to GitHub as `c276c4d`. `make test` passed (646 tests).\n\n| Goal | Evidence | Tests | Main facts |\n|---|---|---|---|\n| G1 data, analysis, dashboard | data/raw, results/*.json, site/dashboard/ | 343 (DATA 151, ANL 166, DASH 26) | Text-coder accuracy on the held-out set: macro-F1 0.829, stance accuracy 0.761. Agreement between your 30 hand-coded statements and the coder (kappa) ranges from 0.46 to 1.0 |\n| G2 validation explorer | site/validation/, results/faults.json | 78 | 10 of 10 injected faults caught. Line coverage 93.8%. 149 archived test runs |\n| G3 contribution record | site/timeline/ | 63 | Commits: 8 by you, 60 by Claude, 3 shared. Lines added: 530 by you, 20,103 by Claude. 57 prompts, 56 approvals, 1 rejected plan |\n| G4 token usage | site/tokens/, results/tokens.json | 31 | 78.7M tokens across P0–P6. Run A 1.72M, run B 214k, run C 253k |\n| G5 published | site/index.html, .github/workflows/pages.yml | 37 | Prepublish checks pass.",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply_to": "ev139"
+  },
+  {
+   "id": "ev141",
+   "ts": "2026-11-10T15:51:07.011-05:00",
+   "t": 1794343867011,
+   "actor": "HUMAN",
+   "phase": "P7",
+   "type": "prompt",
+   "summary": "1. Run make faults to refresh the fault results.",
+   "source": "logs/events.jsonl:141",
+   "category": "shared",
+   "text": "\n\n<pasted_content id=\"aa1a\">\n1. Run make faults to refresh the fault results.\n2. In docs/tokens-learned.md, change \"61.8M tokens\" to \"78.7M tokens\" and \"97.6%\" to \"97.8%\".\n3. Write the three blocks below verbatim: the reflection under the Reflection heading in docs/evaluation.md, the table replacing the evaluation table, and docs/timeline-narrative.md. But first apply these number corrections inside them: \"51 of the commits and over 17,000 lines\" → \"60 of the commits and over 20,000 lines\"; \"605 tests\" → \"646 tests\" (or the current count after make faults); \"61.8M tokens, 97.6% cache reads\" → \"78.7M tokens, 97.8% cache reads\". If make faults changes the fault numbers, use the new ones.\n4. Run make timeline, make tokens, make report, make test once, commit as \"human: evaluation, reflection, timeline narrative\", and push.\n\n[paste the three blocks here]\n</pasted_content id=\"aa1a\">\n",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply": "ev142"
+  },
+  {
+   "id": "prog1398",
+   "ts": "2026-11-10T16:04:31-05:00",
+   "t": 1794344671000,
+   "actor": "CLAUDE",
+   "phase": "P4",
+   "type": "progress",
+   "summary": "Fault injection refreshed; runner copies git and logs; seed test hardened",
+   "source": "docs/progress.md:1398"
+  },
+  {
+   "id": "git-8edc860",
+   "ts": "2026-11-10T16:04:43-05:00",
+   "t": 1794344683000,
+   "actor": "CLAUDE",
+   "phase": "P4",
+   "type": "commit",
+   "summary": "agent: P4 — refresh make faults (10/10, behavioural 10/10); fault copy includes .git/logs/raw_logs; harden seed test; tokens-learned figures corrected per Aayush",
+   "source": "git 8edc860",
+   "sha": "8edc8609e107f27c9e7bb9e47bb63bfbc5620df4",
+   "files": 16,
+   "added": 31,
+   "removed": 5
+  },
+  {
+   "id": "ev142",
+   "ts": "2026-11-10T16:04:51.934-05:00",
+   "t": 1794344691934,
+   "actor": "CLAUDE",
+   "phase": "P7",
+   "type": "response",
+   "summary": "Steps 1 and 2 are done and pushed as `8edc860`, but I can't do steps 3 and 4 yet: your message ended with \"[paste the three blocks here]\", so the reflection, t…",
+   "source": "logs/events.jsonl:142",
+   "text": "Steps 1 and 2 are done and pushed as `8edc860`, but I can't do steps 3 and 4 yet: your message ended with \"[paste the three blocks here]\", so the reflection, the evaluation table and the timeline narrative weren't included.\n\n**Step 1, `make faults`:** all 10 faults are caught again. Two fixes were needed first, both committed:\n- **The runner's test copy was missing three folders.** It runs the suite on a temporary copy of the repo, which left out `.git`, `logs/` and `raw_logs/`. The tests added in P5–P7 need those, so its starting run failed before any faults were injected. It now copies them in, about 34 MB.\n- **My real-names change made one fault harder to catch.** After it, the fault where the generator ignores the seed was caught only by a test that compares output files byte for byte. I made `test_different_seed_gives_different_data` stricter, and it now catches that fault again.\n\nThe final run checked 591 tests, or 635 counting the browser tests. It caught 10 of 10 faults, and ev",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply_to": "ev141"
+  },
+  {
+   "id": "ev143",
+   "ts": "2026-11-10T18:07:19.745-05:00",
+   "t": 1794352039745,
+   "actor": "HUMAN",
+   "phase": "P7",
+   "type": "prompt",
+   "summary": "Write these three pieces verbatim, then run make timeline, make tokens, make report, make test once, commit as \"human: evaluation, reflection, timeline narrati…",
+   "source": "logs/events.jsonl:143",
+   "category": "shared",
+   "text": "\n\n<pasted_content id=\"aa1a\">\nWrite these three pieces verbatim, then run make timeline, make tokens, make report, make test once, commit as \"human: evaluation, reflection, timeline narrative\", and push.\n\n=== 1. Put this under the Reflection heading in docs/evaluation.md ===\n\n## Reflection: agentic vs AI-assisted development\nWhat surprised me most was how powerful the agentic approach is. Claude Code wrote nearly all of this project: 60 of the commits and over 20,000 lines, against my 8 commits and about 530 lines, mostly specs and review notes. It built a data generator, a clustered statistical analysis, a dashboard where every number is tested against its source, and a validation explorer that catches all 10 deliberately injected bugs. Watching that happen was impressive, and at times a little scary. It's easy to feel like an imposter when the tool produces in an hour what would take me days.\n\nIt was far from perfect, though. Claude Code often misread what I meant in the specs and requirements. It wrote a test that demanded an effect show up at every single policy level when the spec only described a trend. It aimed another test at the wrong statistic, and it guessed numbers like chart counts instead of checking them. The most serious case: it wrote four text-coding rules from its own knowledge of the data generator, which quietly leaked the answer key into the analysis. None of these were obvious from the output alone. They only surfaced because the specs had testable requirements and I kept asking where things came from.\n\nThat shaped what my job actually was: mostly reviewing and making sure everything worked. I wrote and corrected specs, answered design questions, accepted or pushed back on test changes, and checked results. I wrote very little code directly.\n\nI've used ChatGPT, Cursor, and Claude in an AI-assisted way before, where I stay in the code and the AI suggests or fills in. The agentic approach flips that. I worked at the level of plans and evidence, and the code was something I inspected rather than wrote. It's much faster, but only trustworthy if the specs are precise and the validation is strong. Spec-driven development also made context management practical: clearing the session between phases cost almost nothing because HANDOFF.md carried the state, and a long session cost about 8× more tokens for the same task.\n\n=== 2. Replace the table in docs/evaluation.md with this ===\n\n| Goal | Evidence | How well met | Notes |\n|---|---|---|---|\n| G1 Data, analysis, dashboard | data/raw/, results/*.json, site/dashboard/ | Mostly met | Planted effects recovered on ≥4/5 seeds; clustering removed two false positives (e.g. p = 0.007 → 0.28). Weakest part: the data is synthetic, so findings say nothing about real departments. A future version should collect real published policies. |\n| G2 Validation explorer | site/validation/, results/faults.json | Met | 646 tests, 93.8% line coverage; every requirement traced to tests; 10/10 injected faults caught by behavior-specific tests; recovery vs ground truth shown separately. |\n| G3 Contribution record | site/timeline/, logs/events.jsonl, docs/progress.md, git log | Met | Timestamped prompts, responses, decisions, and commits by actor. Prompt categories are coarse: most prompts are \"shared\". |\n| G4 Token usage | site/tokens/, results/tokens.json | Met, with caveats | 78.7M tokens, 97.8% cache reads. Clear vs compact vs long session compared with n = 1 per condition, so the ratios are anecdotal. |\n| G5 Published | GitHub repo (private, shared with instructor); Pages workflow in P7 | Partially met | Deployment is built and tested, but the site is not publicly deployed because the repo is private. |\n\n=== 3. Create docs/timeline-narrative.md with this ===\n\nClaude Code wrote almost all of the code and tests in this project; my contribution was the specs, the design decisions, and the reviews. The timeline shows that split: most commits and lines are Claude's, while the approvals, spec e",
+   "stage": "writing-code",
+   "session": "bbb876eb",
+   "reply": null
   }
  ],
  "summary": {
   "per_actor": {
    "HUMAN": {
-    "prompts": 57,
+    "prompts": 59,
     "responses": 0,
     "spec_edits": 23,
     "reviews": 5,
     "commits": 8,
     "lines_added": 530,
     "lines_removed": 34,
-    "approvals": 56,
+    "approvals": 57,
     "rejected_plans": 1
    },
    "CLAUDE": {
     "prompts": 0,
-    "responses": 61,
+    "responses": 63,
     "spec_edits": 0,
     "reviews": 0,
-    "commits": 60,
-    "lines_added": 20103,
-    "lines_removed": 720,
+    "commits": 62,
+    "lines_added": 20331,
+    "lines_removed": 725,
     "approvals": null,
     "rejected_plans": null
    },
@@ -4061,10 +4157,10 @@
   "prompt_categories": {
    "human-typed": 0,
    "automated": 0,
-   "shared": 57
+   "shared": 59
   },
-  "agent_decisions": 93,
-  "qa_pairs": 55,
+  "agent_decisions": 95,
+  "qa_pairs": 57,
   "unanswered_prompts": 2,
   "rules": {
    "approvals": "Count of HUMAN decision tags in docs/progress.md.",
@@ -4080,5 +4176,5 @@
    ]
   }
  },
- "narrative": null
+ "narrative": "Claude Code wrote almost all of the code and tests in this project; my contribution was the specs, the design decisions, and the reviews. The timeline shows that split: most commits and lines are Claude's, while the approvals, spec edits, and review-log entries are mine. The most important moments were reviews that caught problems the output alone didn't show, like coder rules that leaked knowledge of the generator, and tests aimed at the wrong statistic.\n"
 }

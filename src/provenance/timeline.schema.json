@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "site/data/timeline.json (PROV-01)",
+  "type": "object",
+  "required": ["synthetic", "about", "phases", "actors", "types", "categories", "items", "summary", "narrative"],
+  "properties": {
+    "synthetic": {"const": false},
+    "about": {"type": "string", "minLength": 1},
+    "head": {"type": ["string", "null"]},
+    "phases": {"type": "array", "items": {"type": "string"}},
+    "actors": {"const": ["HUMAN", "CLAUDE", "shared"]},
+    "types": {"type": "array", "items": {"type": "string"}},
+    "categories": {"const": ["human-typed", "automated", "shared"]},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "ts", "t", "actor", "phase", "type", "summary", "source"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "ts": {"type": "string", "pattern": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(\\.\\d+)?([+-]\\d\\d:\\d\\d|Z)$"},
+          "t": {"type": "integer"},
+          "actor": {"enum": ["HUMAN", "CLAUDE", "shared"]},
+          "phase": {"type": "string", "pattern": "^(P\\d|unknown)$"},
+          "type": {"enum": ["prompt", "response", "session", "commit", "spec_edit", "progress", "review"]},
+          "summary": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "pattern": "^(git [0-9a-f]{7}|[\\w./-]+:\\d+)$"},
+          "category": {"enum": ["human-typed", "automated", "shared"]},
+          "reply": {"type": ["string", "null"]},
+          "reply_to": {"type": "string"},
+          "text": {"type": "string"},
+          "ts_precision": {"enum": ["commit", "day"]}
+        },
+        "allOf": [
+          {"if": {"properties": {"type": {"const": "prompt"}}}, "then": {"required": ["category", "reply", "text"], "properties": {"actor": {"const": "HUMAN"}}}},
+          {"if": {"properties": {"type": {"const": "response"}}}, "then": {"properties": {"actor": {"const": "CLAUDE"}}}},
+          {"if": {"properties": {"type": {"const": "review"}}}, "then": {"properties": {"actor": {"const": "HUMAN"}}}}
+        ]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["per_actor", "prompt_categories", "qa_pairs", "unanswered_prompts", "rules"],
+      "properties": {
+        "per_actor": {
+          "type": "object",
+          "required": ["HUMAN", "CLAUDE", "shared"],
+          "additionalProperties": {
+            "type": "object",
+            "required": ["prompts", "responses", "spec_edits", "reviews", "commits", "lines_added", "lines_removed", "approvals", "rejected_plans"],
+            "additionalProperties": {"type": ["integer", "null"], "minimum": 0}
+          }
+        }
+      }
+    },
+    "narrative": {"type": ["string", "null"]}
+  }
+}

@@ -10,6 +10,7 @@ from src.report import build_site_data as B
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_DATA = ROOT / "site" / "data"
+OTHER_BUILDERS = {"timeline.json": "make timeline (PROV-01): the project's real history, not study data"}
 ROW_FILES = ["institutions.json", "courses.json", "statements.json"]
 
 # Every per-entity field in data/raw/ground_truth.json, plus its top-level sections: banned in every site file.
@@ -33,9 +34,11 @@ def all_keys(obj):
 
 @pytest.mark.req("DASH-01")
 def test_site_data_is_current(tmp_path):
-    """site/data/ equals a fresh `make report` build byte for byte, so the committed site never shows stale numbers."""
+    """site/data/ equals a fresh `make report` build byte for byte, so the committed site never shows stale numbers.
+    The only other file allowed there is timeline.json, which `make timeline` owns (PROV-01, tested in test_prov_data)."""
     written = B.build(out=tmp_path)
-    assert sorted(p.name for p in SITE_DATA.glob("*.json")) == sorted(written)
+    assert sorted(p.name for p in SITE_DATA.glob("*.json") if p.name not in OTHER_BUILDERS) == sorted(written)
+    assert not set(OTHER_BUILDERS) & set(written)
     for name in written:
         assert (SITE_DATA / name).read_bytes() == (tmp_path / name).read_bytes(), name
 

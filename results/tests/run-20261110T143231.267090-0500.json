@@ -1,0 +1,40 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T14:32:31.267-05:00",
+ "finished": "2026-11-10T14:32:31.895-05:00",
+ "duration_s": 0.629,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "13994b7f2c20b5fa9575cd4fbdc0ad7d43b200be",
+ "git_dirty": true,
+ "current_phase": "P5:writing-code",
+ "args": [
+  "tests/test_dash_data.py",
+  "tests/test_dash_ui.py",
+  "tests/test_anl_schemas.py",
+  "-q",
+  "-x",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_data.py::test_site_data_is_current",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 34,
+   "body_sha256": "3695df88cd910c653bbd415734fe53350897dbeb2988a5a54170bc530a058b9a",
+   "status": "failed",
+   "duration_s": 0.107051,
+   "failure_message": "tmp_path = PosixPath('/private/var/folders/4l/t8q42vzx2093hy69qlxp_xwh0000gn/T/pytest-of-aayushkeshari/pytest-164/test_site_data_is_current0')\n\n    @pytest.mark.req(\"DASH-01\")\n    def test_site_data_is_current(tmp_path):\n        \"\"\"site/data/ equals a fresh `make report` build byte for byte, so the committed site never shows stale numbers.\"\"\"\n        written = B.build(out=tmp_path)\n>       assert sorted(p.name for p in SITE_DATA.glob(\"*.json\")) == sorted(written)\nE       AssertionError: assert ['allowed_use...es.json', ...] == ['allowed_use...es.json', ...]\nE         \nE         Left contains one more item: 'timeline.json'\nE         Use -v to get more diff\n\ntests/test_dash_data.py:38: AssertionError"
+  }
+ ]
+}

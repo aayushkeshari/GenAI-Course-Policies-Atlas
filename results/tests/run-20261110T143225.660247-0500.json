@@ -1,0 +1,541 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T14:32:25.660-05:00",
+ "finished": "2026-11-10T14:32:26.631-05:00",
+ "duration_s": 0.971,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "13994b7f2c20b5fa9575cd4fbdc0ad7d43b200be",
+ "git_dirty": true,
+ "current_phase": "P5:writing-code",
+ "args": [
+  "tests/test_prov_data.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 37
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_prov_data.py::test_build_merges_all_four_sources",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 48,
+   "body_sha256": "898ec58ca3ce9b5b7df726d3b35050d4076d11cae05eb0e1240f4d547416ff67",
+   "status": "passed",
+   "duration_s": 0.235482,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_items_are_sorted_unique_and_valid",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 64,
+   "body_sha256": "5f045657297d89089d36e216ea4b0b19bbd91a9b91365d9c066e19c44d2023f3",
+   "status": "passed",
+   "duration_s": 0.009946,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_phases_come_from_the_sources",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 81,
+   "body_sha256": "213dd813c29b95b8142964a6a0477bdb098ea0f8412ae94da75509ce4561e91a",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_review_entries_take_their_commit_time_or_fall_back_to_the_day",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 96,
+   "body_sha256": "1521eb97b27b7f862e482d94dba5f885a7eb144a4e097c60b414034a4a31941d",
+   "status": "passed",
+   "duration_s": 9.5e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_lines_changed_skip_generated_paths",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 108,
+   "body_sha256": "05313df8952ed0485956c4e601c41ae90f818e56ce54b3b526cc262b7bbf3c5e",
+   "status": "passed",
+   "duration_s": 8.2e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_committed_timeline_matches_a_fresh_build",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 116,
+   "body_sha256": "60bf32b54735436d035ab047915038439ce4c8570079f7767381520c6455e76e",
+   "status": "passed",
+   "duration_s": 0.164958,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_every_committed_source_resolves",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 134,
+   "body_sha256": "388d817076a396a38a994532d35a572c55a3f53cf69effbf7f2916a8bae801bc",
+   "status": "passed",
+   "duration_s": 0.022912,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_make_timeline_runs_the_builder",
+   "req_ids": [
+    "PROV-01"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 156,
+   "body_sha256": "c4bdf3d0008e703c9c28db673f39dc31723fd8288cbbc5b987b1249c2ae3f6f8",
+   "status": "passed",
+   "duration_s": 0.01018,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[agent: P1 \\u2014 code-CLAUDE]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.00021,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[human: review-HUMAN]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.000108,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[claude-chat: drafts-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.000109,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[Agent: wrong case-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.000105,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[fix typo-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.000104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_commit_actor_follows_the_prefix_only[humans: not the prefix-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 164,
+   "body_sha256": "f59083f0a128ad3186ae0e247f042ef176d7940e20e1c7d69f27d4105fa6ff1b",
+   "status": "passed",
+   "duration_s": 0.000101,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_spec_edits_are_human_unless_the_commit_is_ambiguous[agent: P5 spec \\u2014 per Aayush-HUMAN]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 175,
+   "body_sha256": "995165c7069694ab704d54edeebb745b15b3a306915b955db97b50f8e4e02d7e",
+   "status": "passed",
+   "duration_s": 0.000104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_spec_edits_are_human_unless_the_commit_is_ambiguous[human: import specs-HUMAN]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 175,
+   "body_sha256": "995165c7069694ab704d54edeebb745b15b3a306915b955db97b50f8e4e02d7e",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_spec_edits_are_human_unless_the_commit_is_ambiguous[claude-chat: revise specs-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 175,
+   "body_sha256": "995165c7069694ab704d54edeebb745b15b3a306915b955db97b50f8e4e02d7e",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[Typed by me: go ahead-human-typed]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 0.000102,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[  \\nTyped by me-human-typed]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[typed by me: lower case-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[Please continue. Typed by me-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[[drafted by Aayush] old marker-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[<task-notification>agent done</task-notification>-automated]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.7e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[<scheduled-task name='x'>run</scheduled-task>-automated]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 0.000104,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[<cross-session-message from='s'>hi</cross-session-message>-automated]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 0.000124,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[\\n\\n<pasted_content id=\"a\">\\n1. yes\\n</pasted_content>-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[git push-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.5e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[/resume-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompt_categories[-shared]",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 185,
+   "body_sha256": "15435f9ed6dfade24c0508c68e9adc98e8f5f85f57f2c4691e4d9b3258479d3c",
+   "status": "passed",
+   "duration_s": 0.000101,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_actor_table_applied_to_every_item",
+   "req_ids": [
+    "PROV-02"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 206,
+   "body_sha256": "a478c981fc2bc125d1a29c77e322056dc27f63b274a924aeb53aa0e0077119b1",
+   "status": "passed",
+   "duration_s": 0.000109,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_prompts_pair_with_the_next_response_in_their_own_session",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 225,
+   "body_sha256": "2af6dcbb5a08d3cf55eb575df657c9802edcd9d1aee136459c669e8e3a51e27e",
+   "status": "passed",
+   "duration_s": 8.4e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_unanswered_prompt_has_null_reply",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 240,
+   "body_sha256": "6c0ad27110694170aa7877af885a78bb998c0da4e521b5847f4cc290db73f085",
+   "status": "passed",
+   "duration_s": 7.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_summary_counts_per_actor",
+   "req_ids": [
+    "PROV-05"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 250,
+   "body_sha256": "197903dc8dcae50be556bd160098c78117f731a0d3a2044dd7e4665d88814b77",
+   "status": "passed",
+   "duration_s": 7.9e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_narrative_is_null_until_written",
+   "req_ids": [
+    "PROV-05"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 265,
+   "body_sha256": "8b820cbcd5736929831e23107b44870bc195b49e71d8feaa0daf92e3a099f40a",
+   "status": "passed",
+   "duration_s": 0.236296,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_rejected_plans_record_when_counting_started",
+   "req_ids": [
+    "PROV-05"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 276,
+   "body_sha256": "72c96bb57118f10d98ff143adc654449aa8046f8e2bea62677609c7f47af20c7",
+   "status": "passed",
+   "duration_s": 0.000554,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_builder_redacts_paths_emails_and_keys",
+   "req_ids": [
+    "PROV-06"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 286,
+   "body_sha256": "6a58982769dcd35f1ce7e85894344e56042de96c25d6ca368fd3b56ef277057f",
+   "status": "passed",
+   "duration_s": 0.000617,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_data.py::test_nothing_under_site_contains_private_data",
+   "req_ids": [
+    "PROV-06"
+   ],
+   "phase": "P5",
+   "kind": "unit",
+   "file": "tests/test_prov_data.py",
+   "line": 298,
+   "body_sha256": "2687ca98a2db26cd62c8467d9e749341e87d4a75df8e3022bfe7ad3e79e08122",
+   "status": "passed",
+   "duration_s": 0.173395,
+   "failure_message": ""
+  }
+ ]
+}

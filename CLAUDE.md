@@ -21,6 +21,8 @@ Human supervisor: Aayush. You are the implementing agent.
 - After each completed task, append to docs/progress.md:
   `## <output of date -Iseconds> — [Phase] <title>` then: what changed, tests run and result,
   decisions tagged HUMAN or AGENT, open questions. Get timestamps from `date -Iseconds`. Never make them up.
+- When Aayush rejects a plan or proposal, record it in that entry as `REJECTED: <what was rejected and why>`
+  (P5 counts these tags as rejected plans).
 - Commit messages begin with `agent:`. Commit messages for Aayush's own changes begin with `human:`.
 - Never edit logs/ or raw_logs/. Hooks own them.
 

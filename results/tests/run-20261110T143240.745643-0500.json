@@ -1,0 +1,1283 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T14:32:40.745-05:00",
+ "finished": "2026-11-10T14:32:55.703-05:00",
+ "duration_s": 14.958,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "13994b7f2c20b5fa9575cd4fbdc0ad7d43b200be",
+ "git_dirty": true,
+ "current_phase": "P5:writing-code",
+ "args": [
+  "tests/test_dash_data.py",
+  "tests/test_dash_ui.py",
+  "tests/test_anl_schemas.py",
+  "tests/test_val_data.py",
+  "tests/test_makefile.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 85,
+  "failed": 4
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_dash_data.py::test_site_data_is_current",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 35,
+   "body_sha256": "5789243df0696449be42cda3e337b259725e27f75384dd3632831b2096237ee0",
+   "status": "passed",
+   "duration_s": 0.098532,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_results_are_copied_unchanged_and_schema_valid",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 46,
+   "body_sha256": "eb0093d8f0db763dd98444cde501b07e33719b47c3d469705f69cffb3710a0db",
+   "status": "passed",
+   "duration_s": 0.000401,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_schema_invalid_results_stop_the_build",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 55,
+   "body_sha256": "97c1f5a9b75b3eba01acb06a5463f5f6afd225b97caa677afce43233c148b4a3",
+   "status": "passed",
+   "duration_s": 0.076243,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_no_ground_truth_reaches_the_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 70,
+   "body_sha256": "2b5407e37f9edae90e6eb754d76213c692a47c8a6d3d687435acf5c0594ded1d",
+   "status": "passed",
+   "duration_s": 0.010231,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_statement_labels_are_the_coders_not_the_truth",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 89,
+   "body_sha256": "1cca180f01e9e513d70f7eff99c205b115122fa665030fb69ff3b21365f9e0df",
+   "status": "passed",
+   "duration_s": 0.00335,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_row_files_are_labelled_synthetic_raw_rows",
+   "req_ids": [
+    "DASH-01",
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 106,
+   "body_sha256": "f3b62e725f15971f26c1c1f53870f46fc5997f47af319b37096322bffe46a053",
+   "status": "passed",
+   "duration_s": 0.002819,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_course_rows_match_clean_data",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 117,
+   "body_sha256": "db72cf1f6cc386b1c3359cd68541361d97cec5a7773a6db294ba4137a4d4e782",
+   "status": "passed",
+   "duration_s": 0.003484,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_data.py::test_export_keeps_every_institution_field_the_dashboard_reads",
+   "req_ids": [
+    "DASH-01",
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_dash_data.py",
+   "line": 126,
+   "body_sha256": "4d765460e22d1eb66a7a00f3899da7c5cf90f5746af1c34e401908931d5a1f5e",
+   "status": "passed",
+   "duration_s": 0.095165,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 1.836897,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-1280]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.94406,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[light-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.913973,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_view_loads_without_errors_and_every_chart_is_drawn[dark-375]",
+   "req_ids": [
+    "DASH-07",
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 117,
+   "body_sha256": "47047335237aa299f469bd2e347e7a577c402a0324bb250f8ca24c730c4cfa82",
+   "status": "passed",
+   "duration_s": 0.923945,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_displayed_number_matches_results_json",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 148,
+   "body_sha256": "b57e780091a1a9d9e6b9c9f0a0d8cf35480dab1a7636e668abb03565c66f5330",
+   "status": "passed",
+   "duration_s": 1.297757,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_chart_value_matches_its_source",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 162,
+   "body_sha256": "fd9a085479a17e2b23c3e78735d1ba5118f6783b1124dd2fed01a4e73d4d744e",
+   "status": "passed",
+   "duration_s": 0.010068,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_tables_and_tiles_show_no_unsourced_numbers",
+   "req_ids": [
+    "DASH-07"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 190,
+   "body_sha256": "87f24feb6ba3d24efa1efbc10f0c3819182727a3e254cc25bcab842c8d4fbec8",
+   "status": "passed",
+   "duration_s": 0.002832,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_synthetic_banner_visible_on_every_view",
+   "req_ids": [
+    "DASH-02"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 204,
+   "body_sha256": "e6db35dcbfcf2c46940d4ab3dc9208d8e6537dfea5b54982037514a0556ac7b5",
+   "status": "passed",
+   "duration_s": 2.310229,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_each_chart_has_takeaway_table_toggle_and_source_link",
+   "req_ids": [
+    "DASH-05"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 224,
+   "body_sha256": "26f589c8c518f69ec182e4d26e175a2a38147557fd1537deaac9aae3c5c323bf",
+   "status": "passed",
+   "duration_s": 1.576872,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_statement_explorer_search_and_filters",
+   "req_ids": [
+    "DASH-04"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 254,
+   "body_sha256": "d1d6e7f150aa3147658df42d6e7b8b25797f8681fef28aaf5e57c7489243f919",
+   "status": "passed",
+   "duration_s": 0.654215,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_clicking_a_scatter_dot_opens_that_institution",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 291,
+   "body_sha256": "0f62d587cd6a3b856448d7f5733c63419c5c9eb889c1cdfa1dba062e8ec721e3",
+   "status": "passed",
+   "duration_s": 0.654993,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_drilldown_picker_and_deep_link",
+   "req_ids": [
+    "DASH-08"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 320,
+   "body_sha256": "e8820a30eb44ed04b076822f49835599d91b0b404d09e04c46cba1db9c9f7f09",
+   "status": "passed",
+   "duration_s": 1.252354,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_keyboard_navigation_and_theme_toggle",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 339,
+   "body_sha256": "68f27a30e0f2659abb5309bbe1b459e54166c29218017c57a27b7a3c2e6a26bc",
+   "status": "passed",
+   "duration_s": 0.75265,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_palettes_are_defined_for_both_themes",
+   "req_ids": [
+    "DASH-06"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 370,
+   "body_sha256": "ae8df10a41e2cecaefa552ef407214ff44e737f92d675ba36450d7ee725fcc46",
+   "status": "passed",
+   "duration_s": 0.000396,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_cdn_libraries_pinned_and_no_build_step",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 385,
+   "body_sha256": "9412210bf3c58ad366f2df381b82552596e5747f05419c2257e8a7e3490743b0",
+   "status": "passed",
+   "duration_s": 0.000645,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_no_secrets_home_paths_or_emails_under_site",
+   "req_ids": [
+    "DASH-01"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 412,
+   "body_sha256": "db4dfd9940643927cf17e1cd8a19695d57c2406bc72b4361a76a08ff92ea1461",
+   "status": "passed",
+   "duration_s": 0.163657,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_dash_ui.py::test_every_required_view_is_present_with_the_right_shape",
+   "req_ids": [
+    "DASH-03"
+   ],
+   "phase": "P3",
+   "kind": "ui",
+   "file": "tests/test_dash_ui.py",
+   "line": 430,
+   "body_sha256": "8be57c8b6f60dd0763483c353973e6e5c1e8d9fbefeb143d35986c8b772f8863",
+   "status": "passed",
+   "duration_s": 0.075249,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_every_results_file_has_a_schema_and_vice_versa",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 22,
+   "body_sha256": "175d026698da809698e2cfeb4c37d9d36f72756c6a6a136404cae0c50cb0e172",
+   "status": "passed",
+   "duration_s": 0.000267,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.004439,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005735,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.00382,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.003144,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.010762,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.038926,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.010949,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.006205,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.002652,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.007358,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.005165,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.006492,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_results_file_validates_against_its_schema[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 29,
+   "body_sha256": "1f40c1dfdc3f8e19156368a0f18fed886d4b0a7f434b2d9c59a8c11dfad8b50f",
+   "status": "passed",
+   "duration_s": 0.001822,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[allowed_uses]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001725,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[assessment]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.002963,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[association]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.00072,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[clean_log]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000366,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_dev_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000734,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[coder_eval]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.002352,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[descriptives]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.011409,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[faults]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001567,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[kappa]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000322,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001203,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[regression]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.001496,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.006758,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_a_file_without_the_synthetic_flag[rhetoric_recovery]",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 39,
+   "body_sha256": "4e6e25be5a1947750cb49cf13d6543f8db803b391b6df37c63149a74c692365f",
+   "status": "passed",
+   "duration_s": 0.000315,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_anl_schemas.py::test_schema_rejects_malformed_values",
+   "req_ids": [
+    "ANL-09"
+   ],
+   "phase": "P2",
+   "kind": "unit",
+   "file": "tests/test_anl_schemas.py",
+   "line": 52,
+   "body_sha256": "a9d6ac31513f725836191c812919e68ae79f0c70aaab0d5b9aa1561b46bc9150",
+   "status": "passed",
+   "duration_s": 0.002599,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_validation_data_is_current",
+   "req_ids": [
+    "VAL-02",
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "integration",
+   "file": "tests/test_val_data.py",
+   "line": 29,
+   "body_sha256": "63ae7ed52ada199eeaa186475351fd168bd9d5f7fc5746af8acf8c74f057be38",
+   "status": "failed",
+   "duration_s": 0.515161,
+   "failure_message": "tmp_path = PosixPath('/private/var/folders/4l/t8q42vzx2093hy69qlxp_xwh0000gn/T/pytest-of-aayushkeshari/pytest-165/test_validation_data_is_curren0')\nmanifest = {'files': ['claims.json', 'coverage.json', 'faults.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/re... 'results/recovery.json': '13b130cb46fd2378ddf8367f01507e3c95700df06fa92522bf8d2b1a857d4343', ...}, 'n_runs': 112, ...}\n\n    @pytest.mark.req(\"VAL-02\", \"VAL-03\")\n    @pytest.mark.kind(\"integration\")\n    def test_validation_data_is_current(tmp_path, manifest):\n        \"\"\"Rebuilding from the run named in manifest.json reproduces every file in site/validation/data/ byte for byte.\n        So the committed explorer data is exactly what `make report` derives from committed inputs (run files,\n        bodies, coverage summary, specs, review log, claims, faults and recovery results).\"\"\"\n        written = V.build(run=manifest[\"run\"], out=tmp_path)\n        committed = sorted(str(p.relative_to(OUT)) for p in OUT.rglob(\"*\") if p.is_file())\n        assert committed == written\n        for name in written:\n>           assert (OUT / name).read_bytes() == (tmp_path / name).read_bytes(), name\nE           AssertionError: manifest.json\nE           assert b'{\"files\":[\"...etic\":true}\\n' == b'{\"files\":[\"...etic\":true}\\n'\nE             \nE             At index 1438 diff: b'2' != b'4'\nE             Use -v to get more diff\n\ntests/test_val_data.py:39: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_tests_json_is_the_snapshot_run_with_bodies",
+   "req_ids": [
+    "VAL-01",
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 42,
+   "body_sha256": "f91e9fe24dc61e5d3f873ae9dbd52172844bdc704e59bfcfbfbf6dc8edbfeb08",
+   "status": "passed",
+   "duration_s": 0.046435,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_history_has_every_run_and_matches_each_run_file",
+   "req_ids": [
+    "VAL-02"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 60,
+   "body_sha256": "c3801c42ff46da7fa997fca98d2ab1cf57f21a1487e91375a690914d17d5eed4",
+   "status": "passed",
+   "duration_s": 0.013785,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_traceability_covers_every_requirement_with_correct_status",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 75,
+   "body_sha256": "b370e2c574dc078a2bc1ca9695a39bc144525beaae2e2a1b073499cf658546a0",
+   "status": "failed",
+   "duration_s": 0.005166,
+   "failure_message": "@pytest.mark.req(\"VAL-03\")\n    def test_traceability_covers_every_requirement_with_correct_status():\n        \"\"\"traceability.json has one row per spec requirement, with its full text. Each row's tests are exactly the\n        snapshot tests tagged with that ID, and its status is the rollup of their statuses (untested when none).\"\"\"\n        t = j(\"traceability.json\")\n        tests = j(\"tests.json\")[\"tests\"]\n        reqs = requirements()\n        assert [r[\"id\"] for r in t[\"requirements\"]] == [r[\"id\"] for r in reqs]\n        for row, spec in zip(t[\"requirements\"], reqs):\n>           assert row[\"text\"] == scrub(spec[\"text\"]) and row[\"spec\"] == spec[\"spec\"]\nE           AssertionError: assert ('`make timeli..., and source.' == '`make timeli..., and source.'\nE             \nE             Skipping 145 identical leading characters in diff, use -v to show\nE             - tor (HUMAN | CLAUDE | shared), phase, type, summary, and source.\nE             ?           ^^^      ---------\nE             + tor (HUMAN/CLAUDE), phase, type, summary, and source.\nE             ?           ^)\n\ntests/test_val_data.py:84: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses0-untested]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000134,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses1-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000103,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses2-passing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000111,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses3-partial]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000111,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses4-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000106,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses5-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000101,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses6-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 9.8e-05,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_rollup_rule[statuses7-failing]",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 91,
+   "body_sha256": "dc1e8d0a328d42a08c1e274b9e837c93c87175acde72215ee9c1f6bb8bd8109b",
+   "status": "passed",
+   "duration_s": 0.000112,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_coverage_is_per_module_for_the_snapshot_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 102,
+   "body_sha256": "a00f7237f903c3e0e9a85b25addbad0eee44399c073a8baaf76b8eb6492db767",
+   "status": "failed",
+   "duration_s": 0.000972,
+   "failure_message": "manifest = {'files': ['claims.json', 'coverage.json', 'faults.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/re... 'results/recovery.json': '13b130cb46fd2378ddf8367f01507e3c95700df06fa92522bf8d2b1a857d4343', ...}, 'n_runs': 112, ...}\n\n    @pytest.mark.req(\"VAL-03\")\n    def test_coverage_is_per_module_for_the_snapshot_run(manifest):\n        \"\"\"coverage.json is the archived pytest-cov summary of the snapshot run: one row per src/ module, with\n        statement, missing and percent figures that add up to the totals.\"\"\"\n        cov = j(\"coverage.json\")\n        assert cov[\"run\"] == manifest[\"run\"]\n        modules = {m[\"module\"] for m in cov[\"modules\"]}\n>       assert {str(p.relative_to(ROOT)) for p in (ROOT / \"src\").rglob(\"*.py\")} <= modules\nE       AssertionError: assert {'src/__init_...ives.py', ...} <= {'src/__init_...ives.py', ...}\nE         \nE         Extra items in the left set:\nE         'src/provenance/__init__.py'\nE         'src/provenance/build_timeline.py'\n\ntests/test_val_data.py:109: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_attach_coverage_refuses_a_report_from_another_run",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 116,
+   "body_sha256": "178cfa8d7bf71ce5dcb591d01ee75253223321c44728b2e59522defd0abfeea9",
+   "status": "passed",
+   "duration_s": 0.000998,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_snapshot_is_a_make_test_run_and_unknown_runs_fail",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 135,
+   "body_sha256": "d9714e2cc4d005d11d53e3d80f8f56ca7a5e1bf076735d31e91fd70d1f8afd85",
+   "status": "passed",
+   "duration_s": 0.00096,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_review_log_is_copied_verbatim",
+   "req_ids": [
+    "VAL-07"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 147,
+   "body_sha256": "50c11b428dfacbe8c6945362a14e17f8c4cc23e762ca90f6bca300815d1cb853",
+   "status": "passed",
+   "duration_s": 0.000119,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_truth_derived_results_only_in_the_validation_recovery_view",
+   "req_ids": [
+    "DASH-01",
+    "VAL-05"
+   ],
+   "phase": "P3",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 153,
+   "body_sha256": "1e2f4f3b4855423fd462277e212c7b73cb3207a52aeb74fe647cc616e693360c",
+   "status": "passed",
+   "duration_s": 0.014055,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_no_private_data_in_the_validation_site",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 173,
+   "body_sha256": "859ca290054e707aaa8216b55fe27b662f52f6a07657356e663a9f857c3b3e22",
+   "status": "passed",
+   "duration_s": 0.094707,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[cd '/Users/alice' && ls-cd '\\u2039redacted-path\\u203a' && ls]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000279,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[see a@b.org now-see \\u2039redacted-email\\u203a now]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000149,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[api_key = \"abcdefghij\"-api_key = \\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000186,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[sk-AAAAAAAAAAAAAAAAAAAAAAAA-\\u2039redacted-secret\\u203a]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000152,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_scrub_replaces_fixture_secrets_with_visible_placeholders[\\n@pytest.mark.req('X')-\\n@pytest.mark.req('X')]",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 191,
+   "body_sha256": "7346c3b8bb8f35149a07493e3d380b8707fd3cc8604ff2cb73775f3e48a89e46",
+   "status": "passed",
+   "duration_s": 0.000168,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_val_data.py::test_every_data_file_is_labelled_synthetic",
+   "req_ids": [
+    "VAL-05"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_val_data.py",
+   "line": 218,
+   "body_sha256": "29598ded797b97966ff0b40c15cbd6ec4fdf75ad1d57526abf94c20a224c9b54",
+   "status": "failed",
+   "duration_s": 0.004499,
+   "failure_message": "manifest = {'files': ['claims.json', 'coverage.json', 'faults.json', 'history.json', 'recovery/coder_dev_eval.json', 'recovery/re... 'results/recovery.json': '13b130cb46fd2378ddf8367f01507e3c95700df06fa92522bf8d2b1a857d4343', ...}, 'n_runs': 112, ...}\n\n    @pytest.mark.req(\"VAL-05\")\n    def test_every_data_file_is_labelled_synthetic(manifest):\n        \"\"\"Every JSON file the explorer loads carries synthetic: true, and the manifest's input hashes match\n        the files on disk.\"\"\"\n        for p in OUT.rglob(\"*.json\"):\n            assert json.loads(p.read_text())[\"synthetic\"] is True, p.name\n        for rel, sha in manifest[\"inputs\"].items():\n>           assert hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == sha, rel\nE           AssertionError: specs/P5-provenance.md\nE           assert 'ec4260b54f9b...0b55bf719869c' == 'ec23f98ef9d4...627ccdfe9a9f6'\nE             \nE             - ec23f98ef9d4afa2838779e0731b2d82f0ae04751bb2190ce2d627ccdfe9a9f6\nE             + ec4260b54f9bb66b89e3af9734b6facc2db020a1149cfd4f16e0b55bf719869c\n\ntests/test_val_data.py:225: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[data]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.014886,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[analysis]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.011752,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[test]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.009127,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[report]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.00841,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[tokens]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008495,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[timeline]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008304,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[site]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.00782,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[serve]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.007769,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_target_exists[clean]",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 16,
+   "body_sha256": "28ff6eb1d9101b4d2c70f67ef25372caf014908e3bcb47687b0089877536c118",
+   "status": "passed",
+   "duration_s": 0.008788,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_clean_never_touches_logs_or_run_history",
+   "req_ids": [
+    "INST-06"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 25,
+   "body_sha256": "146b62929efb51e5a67494c85a18b180807b0ca673c1a920c2c391225fab718c",
+   "status": "passed",
+   "duration_s": 0.009296,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_runs_pytest",
+   "req_ids": [
+    "INST-07"
+   ],
+   "phase": "P0",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 34,
+   "body_sha256": "de61e8af698455247a800898fda1ff0cb6e9e3fcba85b8617cdd0f57ae860556",
+   "status": "passed",
+   "duration_s": 0.009029,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_makefile.py::test_make_test_writes_per_module_coverage",
+   "req_ids": [
+    "VAL-03"
+   ],
+   "phase": "P4",
+   "kind": "unit",
+   "file": "tests/test_makefile.py",
+   "line": 40,
+   "body_sha256": "978c49c1f13a33d62c343ebf66dc040993c7c600b49f36331566523d82635600",
+   "status": "passed",
+   "duration_s": 0.009746,
+   "failure_message": ""
+  }
+ ]
+}

@@ -215,6 +215,8 @@ def test_synthetic_banner_visible_on_every_view(browser, server):
             assert "Synthetic data — illustrative only" in p.page.locator("#synthetic-banner").inner_text()
         p.page.close()
     for f in DATA.glob("*.json"):
+        if f.name == "timeline.json":  # PROV-01: real project history; marked synthetic: false and tested in test_prov_ui
+            continue
         assert load(f)["synthetic"] is True
 
 

@@ -32,8 +32,8 @@ report:  ## P3/P4: build dashboard data into site/data/ and validation explorer 
 tokens:  ## P6: token usage report
 	@echo "tokens: not implemented yet (P6)"
 
-timeline:  ## P5: contribution timeline
-	@echo "timeline: not implemented yet (P5)"
+timeline:  ## P5 (PROV-01): merge hook events, git log, progress and review logs into site/data/timeline.json (redacted, PROV-06)
+	$(PY) -m src.provenance.build_timeline
 
 site:  ## P7: assemble site/
 	@echo "site: not implemented yet (P7)"

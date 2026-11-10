@@ -1099,3 +1099,31 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Carried to HANDOFF: PROV-02 category wording (3 vs 4 categories), and moving .phase to P5.
+
+## 2026-11-10T14:34:16-05:00 — [P5] Step 1: timeline builder, actor/category rules, redaction (PROV-01/02/06)
+
+**What changed**
+- Spec changes Aayush approved: PROV-01 actor is HUMAN | CLAUDE | shared. The PROV-02 human-typed marker is now "Typed by me". PROV-05 names docs/timeline-narrative.md and defines approvals (HUMAN decision tags) and rejected plans (REJECTED: tags, "not recorded" before the rule existed).
+- CLAUDE.md logging rules: record rejected plans as `REJECTED: …` (approved by Aayush).
+- New src/provenance/build_timeline.py and timeline.schema.json. `make timeline` writes site/data/timeline.json with 237 items. It merges logs/events.jsonl, git log (commits and per-file spec edits), docs/progress.md headings and docs/review-log.md headings.
+- New tests/provutil.py (fixture git project) and tests/test_prov_data.py (PROV-01/02/04/05/06 data tests).
+- Test change for Aayush to accept: tests/test_dash_data.py::test_site_data_is_current and tests/test_dash_ui.py's synthetic check now exclude site/data/timeline.json by name. PROV-01 puts it in site/data/, but it is real project history (synthetic: false), so it cannot carry the dashboard's synthetic: true. Every dashboard-owned file is still checked byte for byte.
+
+**Tests**
+- tests/test_prov_data.py: 37 passed.
+- `make test`: the first run had 4 failures, all stale-explorer-snapshot checks in test_val_data after the spec change. After `make report`, the second `make test` passed 545, then `make report` again.
+
+**Decisions**
+- HUMAN: three prompt categories as listed (human-typed "Typed by me" / automated / shared). Approvals = HUMAN decision tags in progress.md. Rejected plans are "not recorded" before 2026-11-10. Narrative in docs/timeline-narrative.md.
+- AGENT: a spec edit inside a commit with neither `agent:` nor `human:` (the three early `claude-chat:` commits) is "shared". Spec edits in `agent:` commits stay HUMAN per PROV-02.
+- AGENT: automated prompts are those starting with `<task-notification`, `<scheduled-task`, `<cross-session-message` or `<teammate-message`. None exist yet.
+- AGENT: per PROV-02, automated prompts still have actor HUMAN. Only their category says automated.
+- AGENT: review-log headings carry only a date, so each is timed by the commit that first added it (`git log -S`), else end of day with ts_precision "day".
+- AGENT: a commit's phase comes from its subject (`agent: P4 …`), else the last earlier hook event's .phase, else "unknown". The 3 pre-hook spec commits are "unknown".
+- AGENT: lines changed exclude generated or hook-owned paths (logs/, raw_logs/, data/, results/, site/data/, site/validation/data/).
+- AGENT: the schema lives in src/provenance/, not src/report/schemas/ (ANL-09 ties that folder 1:1 to results/*.json).
+- AGENT: `make timeline` is not part of `make report`, because events.jsonl grows with every prompt. P7's `make site` will call it.
+
+**Open questions**
+- Aayush wrote "four categories" but listed three. Three are implemented, and a fourth is a one-line rule change.
+- Accept the two dashboard test changes above?

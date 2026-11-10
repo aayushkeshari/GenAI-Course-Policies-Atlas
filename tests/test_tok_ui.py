@@ -179,3 +179,15 @@ def test_what_i_learned_placeholder_and_rendering(browser, server, page):
     assert p.locator("#learned p").all_inner_texts() == ["Clearing helps.", "<img src=x onerror=alert(1)>"]
     assert p.locator("#learned img").count() == 0
     p.close()
+
+
+@pytest.mark.req("TOK-07")
+def test_what_i_learned_bold_title_and_bullets(browser, server):
+    """A lone **bold** line renders as a heading and a block of '- ' lines renders as a list, escaped, so Aayush's
+    markdown in docs/tokens-learned.md shows no raw asterisks or dashes."""
+    text = "**Title**\n\n- One <b>x</b>.\n- Two."
+    p = open_page(browser, server, data={**D, "learned": text})
+    assert p.locator("#learned h3").all_inner_texts() == ["Title"]
+    assert p.locator("#learned li").all_inner_texts() == ["One <b>x</b>.", "Two."]
+    assert p.locator("#learned b").count() == 0
+    p.close()

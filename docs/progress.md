@@ -1300,3 +1300,21 @@ not backdated. Each step has its own commit, listed below.
 
 **Open questions**
 - Aayush still needs to write docs/tokens-learned.md (TOK-07) and log any usage-limit events in docs/usage-limits.md (TOK-06).
+
+## 2026-11-10T15:18:37-05:00 — [P6] TOK-06/TOK-07 docs written; P6 closed
+
+**What changed**
+- docs/usage-limits.md: added the line "No usage-limit events hit during the project." The table stays empty, so the page shows no rows.
+- docs/tokens-learned.md: Aayush's "what I learned" text, copied exactly as he gave it.
+- site/tokens/app.js: the "What I learned" section now renders a lone `**bold**` line as a heading and a block of `- ` lines as a list. Both are still HTML-escaped. Before this change, the raw asterisks and dashes showed on the page.
+- tests/test_tok_ui.py: new TOK-07 test for the heading and list rendering, including escaping.
+
+**Tests**
+- tests/test_tok_ui.py: 14 passed. `make test`: 606 passed (twice, each followed by `make report`).
+
+**Decisions**
+- HUMAN: keep run B with the /resume deviation noted. The text of both docs is Aayush's.
+- AGENT: kept the empty table under the usage-limits sentence, because the TOK-06 test and the parser expect the header.
+
+**Open questions**
+- tokens-learned.md says "97.6% of the project's 61.8M tokens". The current results/tokens.json reports 78.7M total, with a 97.8% cache-read share. I kept the text as given and flagged it to Aayush.

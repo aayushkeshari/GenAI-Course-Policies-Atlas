@@ -1,0 +1,222 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T15:17:02.197-05:00",
+ "finished": "2026-11-10T15:17:04.258-05:00",
+ "duration_s": 2.061,
+ "exit_status": 0,
+ "python": "3.11.16",
+ "git_commit": "ed9169324a8be087d8a8659d076389dee3e0fbf7",
+ "git_dirty": true,
+ "current_phase": "P6:writing-code",
+ "args": [
+  "-q",
+  "tests/test_tok_ui.py"
+ ],
+ "summary": {
+  "passed": 14
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_tok_ui.py::test_usage_limit_table_is_parsed",
+   "req_ids": [
+    "TOK-06"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 62,
+   "body_sha256": "4823ebc5b7d0a286e7f49402d8d797053abc8939ba1b0efb1514a23de8bf408b",
+   "status": "passed",
+   "duration_s": 0.001893,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_committed_usage_log_reaches_the_page_data",
+   "req_ids": [
+    "TOK-06"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 76,
+   "body_sha256": "bdaffbefa769900a2676636e7c288d4868a08d721378b63f10c8d350d91ab4af",
+   "status": "passed",
+   "duration_s": 0.000133,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_usage_limits_show_on_the_page",
+   "req_ids": [
+    "TOK-06",
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 84,
+   "body_sha256": "9063da5807797ad6c1ae43819e6285ae9548b54241e1befac980b1409acbc308",
+   "status": "passed",
+   "duration_s": 0.700425,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_page_data_matches_the_results",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 97,
+   "body_sha256": "fde5037e72a4bd7a7121ff4e4229c3272692b2c46d5dbf351e5928c16b5b7093",
+   "status": "passed",
+   "duration_s": 0.004014,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[light-1280]",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 106,
+   "body_sha256": "e102d42609230455b814182431d97675dd818ed448b60a69276bbe9b0f6c6408",
+   "status": "passed",
+   "duration_s": 0.08187,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[dark-1280]",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 106,
+   "body_sha256": "e102d42609230455b814182431d97675dd818ed448b60a69276bbe9b0f6c6408",
+   "status": "passed",
+   "duration_s": 0.078719,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[light-390]",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 106,
+   "body_sha256": "e102d42609230455b814182431d97675dd818ed448b60a69276bbe9b0f6c6408",
+   "status": "passed",
+   "duration_s": 0.07734,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_kpis_and_group_bars_match_the_data",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 118,
+   "body_sha256": "e4e7f0881dfe8ff2324196ee15626974db88800544d44d5351540d045ed3263d",
+   "status": "passed",
+   "duration_s": 0.006097,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_context_chart_draws_every_message_and_marks_boundaries",
+   "req_ids": [
+    "TOK-07",
+    "TOK-03",
+    "TOK-04"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 130,
+   "body_sha256": "42e3fce885320c530de2968c0751e97f5270eafb8d3dfdfc58d807e55b924d9a",
+   "status": "passed",
+   "duration_s": 0.003094,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_prompt_chart_has_one_bar_per_prompt",
+   "req_ids": [
+    "TOK-07",
+    "TOK-04"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 142,
+   "body_sha256": "075f99b64a2998268655e5039ce4bfe43156a6759d7ea157dc27b907ee0d472e",
+   "status": "passed",
+   "duration_s": 0.001024,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_experiment_table_states_status_and_small_sample",
+   "req_ids": [
+    "TOK-07",
+    "TOK-05"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 149,
+   "body_sha256": "698c1ccc9b55e291eed9890701f53106aed94f2f990604e092a05a2fec59d852",
+   "status": "passed",
+   "duration_s": 0.004093,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_table_toggles_show_and_hide",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 161,
+   "body_sha256": "9ff3fd3831ff61fe583d357612cc7c2f7e43dfc61aae2b48758a3fd98d0921dc",
+   "status": "passed",
+   "duration_s": 0.277929,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_what_i_learned_placeholder_and_rendering",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 172,
+   "body_sha256": "0c0a73b2b6ae8abd750cb2d7a025456f5a0ebd88d592d542c0ba69b705c25db0",
+   "status": "passed",
+   "duration_s": 0.082959,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_tok_ui.py::test_what_i_learned_bold_title_and_bullets",
+   "req_ids": [
+    "TOK-07"
+   ],
+   "phase": "P6",
+   "kind": "unit",
+   "file": "tests/test_tok_ui.py",
+   "line": 184,
+   "body_sha256": "85012bb52a4b88f94737ec68a8e545524c60e5e766fa17998cef32c650f03992",
+   "status": "passed",
+   "duration_s": 0.578463,
+   "failure_message": ""
+  }
+ ]
+}

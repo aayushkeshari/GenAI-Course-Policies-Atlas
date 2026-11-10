@@ -4,5 +4,7 @@ Logged by hand by Aayush whenever the Pro plan's usage limit is hit or warned ab
 table and the tokens page shows it. One row per event. Use an ISO time (`date -Iseconds`), and keep the
 columns as they are.
 
+No usage-limit events hit during the project.
+
 | When | Plan | What happened | Phase | Notes |
 |------|------|---------------|-------|-------|

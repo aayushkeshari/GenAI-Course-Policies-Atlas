@@ -227,7 +227,14 @@ function renderLimits() {
 }
 function renderLearned() {
   $("learned").innerHTML = D.learned
-    ? D.learned.trim().split(/\n\s*\n/).map(b => { const h = b.match(/^#{1,6}\s+(.*)$/); return h && !b.includes("\n") ? `<h3>${esc(h[1])}</h3>` : `<p>${esc(b)}</p>`; }).join("")
+    ? D.learned.trim().split(/\n\s*\n/).map(b => {
+        const one = !b.includes("\n");
+        const h = one && (b.match(/^#{1,6}\s+(.*)$/) || b.match(/^\*\*(.+)\*\*$/));
+        if (h) return `<h3>${esc(h[1])}</h3>`;
+        const lines = b.split("\n");
+        if (lines.every(l => /^\s*[-*]\s+/.test(l))) return `<ul>${lines.map(l => `<li>${esc(l.replace(/^\s*[-*]\s+/, ""))}</li>`).join("")}</ul>`;
+        return `<p>${esc(b)}</p>`;
+      }).join("")
     : `<p class="empty" id="learned-missing">Not written yet. Aayush will add it in <code>docs/tokens-learned.md</code>.</p>`;
 }
 function setupToggles() {

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contribution Timeline</title>
+<meta name="description" content="Who did what while building the synthetic-data GenAI policy study: prompts, responses, commits, spec edits and reviews.">
+<link rel="stylesheet" href="../dashboard/style.css">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Apply a saved theme before first paint (shared with the dashboard). Storage can be blocked; the page works without it.
+  try { const t = localStorage.getItem("dash-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-row">
+    <h1>Contribution timeline</h1>
+    <div class="top-actions">
+      <a href="../dashboard/" class="btn">Findings dashboard</a>
+      <a href="../validation/" class="btn">Validation explorer</a>
+      <button id="theme-toggle" class="btn" type="button" aria-label="Color theme: follow system">Theme: auto</button>
+    </div>
+  </div>
+  <p class="banner" role="note" id="synthetic-banner"><strong>Synthetic data — the study is illustrative only.</strong>
+    Its institutions, courses and statements are invented. This page is different: it shows the <em>real</em> history of
+    how the project was built (prompts, Claude's responses, commits, spec edits and reviews). Home paths, emails, tokens
+    and keys are removed.</p>
+  <nav class="tabs" role="tablist" aria-label="Timeline views" id="tabs">
+    <button role="tab" id="tab-timeline" aria-controls="view-timeline" data-view="timeline">Timeline</button>
+    <button role="tab" id="tab-qa" aria-controls="view-qa" data-view="qa">Prompts &amp; responses</button>
+    <button role="tab" id="tab-summary" aria-controls="view-summary" data-view="summary">Contribution summary</button>
+  </nav>
+</header>
+
+<main id="main">
+  <p id="load-error" class="error" role="alert" hidden></p>
+  <p id="run-line" class="fine"></p>
+
+  <section id="view-timeline" role="tabpanel" aria-labelledby="tab-timeline" hidden>
+    <div class="filters" id="tl-filters">
+      <label>Actor <select id="f-actor"></select></label>
+      <label>Phase <select id="f-phase"></select></label>
+      <label>Type <select id="f-type"></select></label>
+      <label>Prompt category <select id="f-cat"></select></label>
+      <div class="zoom" role="group" aria-label="Zoom">
+        <span class="zl">Zoom</span>
+        <div class="zrow">
+          <button class="btn" type="button" id="zoom-out" aria-label="Zoom out">−</button>
+          <output id="zoom-label" aria-live="polite"></output>
+          <button class="btn" type="button" id="zoom-in" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+      <div class="zoom" role="group" aria-label="Marker style">
+        <span class="zl">Markers</span>
+        <div class="zrow">
+          <button class="btn seg" type="button" id="mode-compact" aria-pressed="true">Compact</button>
+          <button class="btn seg" type="button" id="mode-clear" aria-pressed="false">Clear</button>
+        </div>
+      </div>
+    </div>
+    <div class="legend" id="tl-legend"></div>
+    <p class="count" id="tl-count" aria-live="polite"></p>
+    <ol class="tl" id="tl-list" aria-label="Timeline items, oldest first"></ol>
+    <p class="fine">Spacing between items grows with the time between them at the chosen zoom (Ctrl/⌘ + scroll also zooms).
+      Gaps longer than four hours are shortened and labelled with their real length. Times are as logged, in the author's
+      local time zone.</p>
+  </section>
+
+  <section id="view-qa" role="tabpanel" aria-labelledby="tab-qa" hidden>
+    <div class="filters">
+      <label>Search prompts and responses <input id="qa-q" type="search" placeholder="e.g. phase, faults, approve"></label>
+      <label>Phase <select id="qa-phase"></select></label>
+      <label>Prompt category <select id="qa-cat"></select></label>
+    </div>
+    <p class="count" id="qa-count" aria-live="polite"></p>
+    <ol class="qa" id="qa-list"></ol>
+  </section>
+
+  <section id="view-summary" role="tabpanel" aria-labelledby="tab-summary" hidden>
+    <div class="kpis" id="sum-kpis"></div>
+    <div class="stack">
+      <div class="panel">
+        <h2>Counts per actor</h2>
+        <div class="table-wrap"><table id="sum-table"></table></div>
+        <p class="panel-note" id="sum-notes"></p>
+      </div>
+      <div class="panel">
+        <h2>Prompt categories</h2>
+        <div class="table-wrap"><table id="cat-table"></table></div>
+        <p class="panel-note" id="cat-notes"></p>
+      </div>
+    </div>
+    <div class="panel narrative" id="narrative">
+      <h2>In Aayush's words</h2>
+      <div id="narrative-body"></div>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  Built by <code>make timeline</code> from <code>logs/events.jsonl</code> (Claude Code hooks), the git log,
+  <code>docs/progress.md</code> and <code>docs/review-log.md</code>. Data: <a href="../data/timeline.json">timeline.json</a>.
+</footer>
+</body>
+</html>

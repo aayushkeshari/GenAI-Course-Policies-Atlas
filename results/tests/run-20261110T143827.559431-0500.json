@@ -1,0 +1,388 @@
+{
+ "schema": "test-run/2",
+ "started": "2026-11-10T14:38:27.559-05:00",
+ "finished": "2026-11-10T14:38:32.356-05:00",
+ "duration_s": 4.797,
+ "exit_status": 1,
+ "python": "3.11.16",
+ "git_commit": "559caa92566c9a4f9b80102af15bb3fddecdb935",
+ "git_dirty": true,
+ "current_phase": "P5:writing-code",
+ "args": [
+  "tests/test_prov_ui.py",
+  "-q",
+  "-p",
+  "no:cacheprovider"
+ ],
+ "summary": {
+  "passed": 25,
+  "failed": 1
+ },
+ "collection_errors": [],
+ "tests": [
+  {
+   "nodeid": "tests/test_prov_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[light-1280]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 83,
+   "body_sha256": "22d6794189292b4f855a02de5e54038f44db272e3abff310d4be9c673587896b",
+   "status": "passed",
+   "duration_s": 0.51024,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[dark-1280]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 83,
+   "body_sha256": "22d6794189292b4f855a02de5e54038f44db272e3abff310d4be9c673587896b",
+   "status": "passed",
+   "duration_s": 0.295013,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_page_loads_with_banner_and_no_sideways_scroll[light-390]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 83,
+   "body_sha256": "22d6794189292b4f855a02de5e54038f44db272e3abff310d4be9c673587896b",
+   "status": "passed",
+   "duration_s": 0.293775,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_unfiltered_timeline_shows_every_item_in_time_order",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 98,
+   "body_sha256": "d4400f5463c1c118964a57ea7634132bb7e3b51754b84e412883bf075f82b766",
+   "status": "passed",
+   "duration_s": 0.156215,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params0]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.070057,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params1]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.069237,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params2]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.070938,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params3]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.071077,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params4]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.070128,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params5]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.069959,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params6]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.073343,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filters_show_exactly_the_matching_items[params7]",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 107,
+   "body_sha256": "859ca18dccf697e00790cd5e1d9128096582e8bc0b3dbe0a7811d7c7d2899356",
+   "status": "passed",
+   "duration_s": 0.074942,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_filter_controls_update_the_url_and_list",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 123,
+   "body_sha256": "92bd240f839fe462785f9f153100eaa5685befad0ed808af4f38d80bc28b703f",
+   "status": "passed",
+   "duration_s": 0.155714,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_zoom_spaces_items_by_elapsed_time",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 137,
+   "body_sha256": "4fb41108760ee3879ae6945cc1eb0e5f5389ba9fb163561c34615b24f0846da9",
+   "status": "failed",
+   "duration_s": 0.199029,
+   "failure_message": "page = <Page url='http://127.0.0.1:58450/timeline/#view=timeline&zoom=2'>\n\n    @pytest.mark.req(\"PROV-03\")\n    def test_zoom_spaces_items_by_elapsed_time(page):\n        \"\"\"At 'order only' items are packed; at each zoom level the space above an item equals the time since the\n        previous item × px-per-hour (gaps capped at 4 h, reset at day headers), so higher zoom spreads the same items\n        further apart.\"\"\"\n        totals = []\n        for z, pxh in enumerate(ZOOM_PX):\n            go(page, view=\"timeline\", zoom=z)\n            m = margins(page)\n            want, prev = [], None\n            for it in ITEMS:\n                if prev is None or it[\"ts\"][:10] != prev[\"ts\"][:10]:\n                    want.append(0)\n                else:\n                    want.append(round(min(it[\"t\"] - prev[\"t\"], GAP_CAP_MS) / 3600e3 * pxh))\n                prev = it\n>           assert m == want, z\nE           AssertionError: 2\nE           assert [0, 0, 0, 0, 0, 0, ...] == [0, 0, 0, 0, 0, 0, ...]\nE             \nE             At index 35 diff: 1 != 0\nE             Use -v to get more diff\n\ntests/test_prov_ui.py:153: AssertionError"
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_zoom_buttons_and_ctrl_scroll",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 158,
+   "body_sha256": "07fb8e4e93ccfc84899f60162c0e9d02b80aa73524493240de436ae7e1b69116",
+   "status": "passed",
+   "duration_s": 0.489196,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_markers_differ_by_shape_and_label_and_have_two_densities",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 180,
+   "body_sha256": "226fc12211ce82977d6508536768238289a25c7d91cbda2f17ba80880e0054a3",
+   "status": "passed",
+   "duration_s": 0.201095,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_clicking_an_item_shows_its_details_and_source",
+   "req_ids": [
+    "PROV-03"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 206,
+   "body_sha256": "951205a8fce490f60a4b0cc9bdd147189009c7a577c04d67b0246caebb39474e",
+   "status": "passed",
+   "duration_s": 0.107907,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_each_prompt_is_shown_with_its_paired_response",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 227,
+   "body_sha256": "8ef7958a0348eb7cafd11448768ed12df95a321ebdd82672af9956134ed51cf0",
+   "status": "passed",
+   "duration_s": 0.105481,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_search_matches_prompt_or_response_text[faults]",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 243,
+   "body_sha256": "d216e97632d73d88c5a457d02da60ad6b0304e3da19fb6542818afd23a3cf9fd",
+   "status": "passed",
+   "duration_s": 0.066771,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_search_matches_prompt_or_response_text[approve]",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 243,
+   "body_sha256": "d216e97632d73d88c5a457d02da60ad6b0304e3da19fb6542818afd23a3cf9fd",
+   "status": "passed",
+   "duration_s": 0.065892,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_search_matches_prompt_or_response_text[PROV-02]",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 243,
+   "body_sha256": "d216e97632d73d88c5a457d02da60ad6b0304e3da19fb6542818afd23a3cf9fd",
+   "status": "passed",
+   "duration_s": 0.066892,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_search_matches_prompt_or_response_text[zzz-no-such-text]",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 243,
+   "body_sha256": "d216e97632d73d88c5a457d02da60ad6b0304e3da19fb6542818afd23a3cf9fd",
+   "status": "passed",
+   "duration_s": 0.065137,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_typing_in_search_filters_live",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 259,
+   "body_sha256": "00728e8c81a5f4a4f6dc01d8bfa7e8bd78b582325cd2b0be16c61406d35f31cc",
+   "status": "passed",
+   "duration_s": 0.371677,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_timeline_item_links_to_its_exchange",
+   "req_ids": [
+    "PROV-04"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 270,
+   "body_sha256": "f5734dea9a2ccec6936e7a5047b62397c79a3e1a5d762f759f55383b9cd87e90",
+   "status": "passed",
+   "duration_s": 0.209943,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_summary_table_matches_the_data",
+   "req_ids": [
+    "PROV-05"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 284,
+   "body_sha256": "77583c992042ecd204eacaa59806574f84288864bd8e984de423d5f4e4f8beec",
+   "status": "passed",
+   "duration_s": 0.07946,
+   "failure_message": ""
+  },
+  {
+   "nodeid": "tests/test_prov_ui.py::test_narrative_placeholder_and_rendering",
+   "req_ids": [
+    "PROV-05"
+   ],
+   "phase": "P5",
+   "kind": "ui",
+   "file": "tests/test_prov_ui.py",
+   "line": 306,
+   "body_sha256": "6d61950ae6896985fc0047dc3f85db72364c456760c3263c0f5043efb740f828",
+   "status": "passed",
+   "duration_s": 0.689589,
+   "failure_message": ""
+  }
+ ]
+}

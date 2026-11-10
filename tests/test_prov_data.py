@@ -250,7 +250,7 @@ def test_unanswered_prompt_has_null_reply(fx):
 @pytest.mark.req("PROV-05")
 def test_summary_counts_per_actor(fx):
     """Per-actor counts equal hand counts of the fixture: 4 prompts are HUMAN, 3 responses CLAUDE, 2 HUMAN
-    decision tags (backticked mentions don't count) as approvals, 1 REJECTED: tag, spec edits and commits by
+    decision tags (backticked mentions don't count) as approvals, 1 REJECTED: bullet (a prose mention doesn't count), spec edits and commits by
     prefix rule, and lines changed per actor excluding generated paths."""
     pa = fx["data"]["summary"]["per_actor"]
     assert pa["HUMAN"] == {"prompts": 4, "responses": 0, "spec_edits": 2, "reviews": 2, "commits": 2,

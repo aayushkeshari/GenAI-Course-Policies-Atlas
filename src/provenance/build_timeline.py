@@ -47,6 +47,7 @@ GENERATED_PREFIXES = ("logs/", "raw_logs/", "data/", "results/", "site/data/", "
 # REJECTED: tags were added to CLAUDE.md's logging rules at this time; earlier rejections were not recorded.
 REJECTED_RECORDED_SINCE = "2026-11-10T14:27:58-05:00"
 TAG = r"(?<![`\w]){}:(?!`)"
+REJECTED_TAG = r"(?m)^\s*[-*]\s+REJECTED:"  # a bullet that starts with the tag; prose mentions don't count
 SUMMARY_LEN = 160
 TEXT_LEN = 4000
 
@@ -177,7 +178,7 @@ def git_items(commits: list[dict], event_phases) -> list[dict]:
         for f in c["files"]:
             if re.match(r"^specs/[^/]+\.md$", f["file"]):
                 items.append(item(f"spec-{sha7}-{Path(f['file']).stem}", c["ts"], spec_edit_actor(c["subject"]), phase,
-                                  "spec_edit", f"{f['file']}: +{f['added']} / −{f['removed']} ({c['subject']})",
+                                  "spec_edit", f"{f['file']}: +{f['added']} / −{f['removed']}",
                                   f"git {sha7}", sha=c["sha"], file=f["file"], added=f["added"], removed=f["removed"]))
     return items
 
@@ -245,7 +246,7 @@ def summarize(items: list[dict], progress_text: str) -> dict:
                   "lines_added": sum(c["added"] for c in commits), "lines_removed": sum(c["removed"] for c in commits),
                   "approvals": None, "rejected_plans": None}
     per["HUMAN"]["approvals"] = len(re.findall(TAG.format("HUMAN"), progress_text))
-    per["HUMAN"]["rejected_plans"] = len(re.findall(TAG.format("REJECTED"), progress_text))
+    per["HUMAN"]["rejected_plans"] = len(re.findall(REJECTED_TAG, progress_text))
     cats = {c: sum(1 for i in items if i["type"] == "prompt" and i["category"] == c) for c in CATEGORIES}
     prompts = [i for i in items if i["type"] == "prompt"]
     return {
@@ -256,7 +257,7 @@ def summarize(items: list[dict], progress_text: str) -> dict:
         "unanswered_prompts": sum(1 for p in prompts if not p["reply"]),
         "rules": {
             "approvals": "Count of HUMAN decision tags in docs/progress.md.",
-            "rejected_plans": f"Count of REJECTED: tags in docs/progress.md. Rejections before {REJECTED_RECORDED_SINCE[:10]} were not recorded.",
+            "rejected_plans": f"Count of bullets starting with REJECTED: in docs/progress.md. Rejections before {REJECTED_RECORDED_SINCE[:10]} were not recorded.",
             "rejected_recorded_since": REJECTED_RECORDED_SINCE,
             "lines_changed": "Lines added/removed by each actor's commits (agent: → CLAUDE, human: → HUMAN, other → shared), "
                              "excluding generated or hook-owned paths: " + ", ".join(GENERATED_PREFIXES),

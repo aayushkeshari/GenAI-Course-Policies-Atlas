@@ -35,6 +35,7 @@ PROGRESS = """# Progress log
 - HUMAN: second approval. AGENT: one agent decision.
 - Prose that mentions `HUMAN:` in backticks is not a tag.
 - REJECTED: the first layout.
+Prose about rejected plans (REJECTED: tags) is not a tag either.
 """
 
 REVIEW_COMMITTED = "## 2026-01-01 — P0 instrumentation"

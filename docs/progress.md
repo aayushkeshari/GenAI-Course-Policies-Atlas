@@ -1127,3 +1127,26 @@ not backdated. Each step has its own commit, listed below.
 **Open questions**
 - Aayush wrote "four categories" but listed three. Three are implemented, and a fourth is a one-line rule change.
 - Accept the two dashboard test changes above?
+
+## 2026-11-10T14:40:21-05:00 — [P5] Step 3: timeline page, Q&A view, contribution summary (PROV-03/04/05)
+
+**What changed**
+- New site/timeline/ (index.html, style.css, app.js). It is vanilla JS with no CDN libraries, and it reuses the dashboard's tokens, theme toggle and banner style.
+  - Timeline: a vertical list with filters for actor, phase, type and prompt category, kept in the URL hash. Five zoom levels (buttons or Ctrl/⌘+scroll) space items by elapsed time; gaps over 4 h are shortened and labelled with their real length. A Compact/Clear toggle switches density. Markers differ by shape (circle, diamond, outlined square) and also carry a text label. Clicking a row shows its details and source.
+  - Prompts & responses: every prompt with its paired response excerpt. Search is live and highlights matches, and timeline rows link to their exchange.
+  - Contribution summary: KPI tiles, a per-actor table (— where a measure doesn't apply, with rejected plans "not recorded" before 2026-11-10), a prompt-category table with the rules, and the narrative or a "not yet written" placeholder.
+- Step 2 (Q&A pairing and summary counts in the data) went into step 1's builder with its tests, so it needs no separate commit.
+- Builder fix: a REJECTED tag counts only when it starts a bullet line, because my own step 1 prose mentioned the tag inline and would have counted as a rejection. Spec-edit summaries no longer repeat the commit subject.
+- New tests/test_prov_ui.py, with 26 browser tests for PROV-03/04/05.
+
+**Tests**
+- tests/test_prov_ui.py and tests/test_prov_data.py: 63 passed. One test of mine was wrong at first: it compared spacing using Python's round() (round half to even) against JS Math.round. It now mirrors Math.round.
+- `make test`: 571 passed, twice, with `make report` after each run.
+
+**Decisions**
+- AGENT: no chart library. The timeline is a styled list, so there is nothing to pin.
+- AGENT: times are shown as logged (the author's local offset) and are not converted to the viewer's zone.
+- AGENT: the narrative renders as escaped plain paragraphs, with a line starting "#" shown as a heading. It is not Markdown, so no sanitiser is needed.
+
+**Open questions**
+- None new. Carried: the fourth PROV-02 category, and acceptance of the two dashboard test changes from step 1.

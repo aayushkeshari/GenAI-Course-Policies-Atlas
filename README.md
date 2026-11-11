@@ -4,10 +4,6 @@ A study, using **synthetic data**, of how US computer science departments permit
 generative AI, with a focus on software engineering courses. Claude Code (the agent) wrote the code. Aayush (the
 human supervisor) owned the specs, reviewed the work, and wrote the evaluation and reflection.
 
-> **All study data is synthetic.** Real university names are attached to invented policies and statements. Nothing
-> here describes what these schools actually do. The timeline and token pages are the exception:
-> they show the real record of how the project was built.
-
 **Live site:** https://aayushkeshari.github.io/genai-cs-policy/
 
 | Page | What it shows | Goal |
